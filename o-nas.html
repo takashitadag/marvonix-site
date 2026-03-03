@@ -4,46 +4,75 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>O nás | Marvonix</title>
-  <meta name="description" content="Marvonix je performance agentura zaměřená na růst autoservisů. Marketing, který přináší zakázky." />
+  <meta name="description" content="Marvonix – performance agentura pro růst autoservisů." />
   <link rel="icon" href="favicon.ico">
+
   <style>
-    :root{--bg:#050714;--bg2:#0c1026;--purple:#7c3aed;--purple2:#a855f7;--text:#fff;--muted:rgba(255,255,255,.75);--line:rgba(255,255,255,.08);--shadow:0 25px 70px rgba(0,0,0,.55);--r:20px;--max:1120px;--pad:20px}
+    :root{--bg:#050714;--bg2:#0c1026;--purple:#7c3aed;--purple2:#a855f7;--text:#fff;--muted:rgba(255,255,255,.75);--line:rgba(255,255,255,.10);--shadow:0 18px 60px rgba(0,0,0,.45);--r:18px;--max:1120px;--pad:20px}
     *{box-sizing:border-box}
     html,body{margin:0;background:radial-gradient(900px 600px at 15% 10%, rgba(124,58,237,.25), transparent 60%),radial-gradient(800px 600px at 90% 20%, rgba(168,85,247,.18), transparent 60%),linear-gradient(160deg,var(--bg),var(--bg2));color:var(--text);font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Arial}
     a{color:inherit;text-decoration:none}
     .wrap{max-width:var(--max);margin:0 auto;padding:0 var(--pad)}
-    .nav{position:sticky;top:0;z-index:50;backdrop-filter: blur(12px);background:rgba(5,7,20,.75);border-bottom:1px solid var(--line)}
-    .navin{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:16px 0}
-    .brand{display:flex;align-items:center;gap:14px;min-width:220px}
-    .brand img{height:80px;width:auto;display:block}
-    .links{display:flex;gap:22px;align-items:center;color:var(--muted);font-size:14px}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:12px 18px;border-radius:999px;background:linear-gradient(135deg,var(--purple),var(--purple2));color:#fff;font-weight:900;box-shadow:0 18px 50px rgba(124,58,237,.22);transition:.25s;white-space:nowrap;border:0;cursor:pointer}
+    .btn:hover{transform:translateY(-2px);box-shadow:0 25px 70px rgba(124,58,237,.4)}
+
+    .nav{position:sticky;top:0;z-index:50;backdrop-filter: blur(12px);background:rgba(5,7,20,.72);border-bottom:1px solid var(--line)}
+    .navin{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:14px 0;position:relative}
+    .brand img{height:64px;width:auto;display:block;filter:drop-shadow(0 14px 40px rgba(124,58,237,.25))}
+    .links{display:flex;gap:18px;align-items:center;color:var(--muted);font-size:14px}
     .links a:hover{color:#fff}
-    .cta{display:inline-flex;align-items:center;justify-content:center;padding:12px 20px;border-radius:999px;background:linear-gradient(135deg,var(--purple),var(--purple2));color:#fff;font-weight:800;box-shadow:0 20px 60px rgba(124,58,237,.35);transition:.25s;white-space:nowrap}
-    .cta:hover{transform:translateY(-2px);box-shadow:0 25px 70px rgba(124,58,237,.5)}
-    header{padding:56px 0 10px}
+
+    .burger{display:none;width:44px;height:44px;border:1px solid var(--line);border-radius:14px;background:rgba(255,255,255,.04);align-items:center;justify-content:center;cursor:pointer;transition:.25s}
+    .burger:hover{background:rgba(255,255,255,.06)}
+    .burger .b{width:22px;height:16px;position:relative}
+    .burger .b span{position:absolute;left:0;right:0;height:2.5px;border-radius:99px;background:#fff;transition:.28s}
+    .burger .b span:nth-child(1){top:0}
+    .burger .b span:nth-child(2){top:6.5px}
+    .burger .b span:nth-child(3){bottom:0}
+    .burger.open .b span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
+    .burger.open .b span:nth-child(2){opacity:0}
+    .burger.open .b span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
+
+    @media (max-width: 940px){
+      .btn.navcta{display:none}
+      .burger{display:flex}
+      .links{position:absolute;left:0;right:0;top:86px;display:flex;flex-direction:column;gap:14px;padding:16px;border:1px solid var(--line);border-radius:18px;background:rgba(5,7,20,.92);box-shadow:var(--shadow);opacity:0;transform:translateY(-10px);pointer-events:none}
+      .links.active{opacity:1;transform:translateY(0);pointer-events:auto}
+    }
+
+    header{padding:42px 0 10px}
     h1{margin:0 0 10px;font-size:42px}
     p{margin:0;color:var(--muted);line-height:1.6}
-    section{padding:22px 0 60px}
-    .grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-    .card{background:rgba(255,255,255,.04);border:1px solid var(--line);border-radius:var(--r);padding:18px;box-shadow:0 18px 55px rgba(0,0,0,.35)}
-    .card h3{margin:0 0 8px}
+    section{padding:24px 0}
+    .grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+    .card{background:rgba(255,255,255,.04);border:1px solid var(--line);border-radius:var(--r);padding:18px;box-shadow:var(--shadow)}
+    .card h3{margin:0 0 6px}
     .card p{margin:0;color:var(--muted);line-height:1.6}
+    .big{margin-top:14px;border-radius:22px}
     footer{padding:26px 0 40px;border-top:1px solid var(--line);color:var(--muted);font-size:13px}
     .foot{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
-    @media (max-width: 980px){.grid2{grid-template-columns:1fr}.links{display:none}.brand{min-width:auto}}
+    @media (max-width: 980px){.grid2{grid-template-columns:1fr}}
   </style>
 </head>
+
 <body>
   <div class="nav">
     <div class="wrap navin">
       <a class="brand" href="index.html"><img src="logo.png" alt="Marvonix logo"></a>
-      <div class="links">
+
+      <div class="burger" id="burger" aria-label="Menu" role="button" tabindex="0">
+        <div class="b"><span></span><span></span><span></span></div>
+      </div>
+
+      <div class="links" id="navLinks">
         <a href="index.html">Domů</a>
         <a href="sluzby.html">Služby</a>
         <a href="o-nas.html">O nás</a>
         <a href="kontakt.html">Kontakt</a>
+        <a class="btn" href="kontakt.html" style="width:100%;margin-top:6px">Objednat konzultaci</a>
       </div>
-      <a class="cta" href="kontakt.html">Objednat konzultaci</a>
+
+      <a class="btn navcta" href="kontakt.html">Objednat konzultaci</a>
     </div>
   </div>
 
@@ -58,40 +87,29 @@
     <div class="wrap grid2">
       <div class="card">
         <h3>Jak přemýšlíme</h3>
-        <p>
-          Neřešíme „kolik utratíme“. Řešíme, kolik relevantních poptávek dokážeme přivést a za jakou cenu.
-          Základ je měření, čistá struktura kampaní a práce se sezónností.
-        </p>
+        <p>Neřešíme „kolik utratíme“. Řešíme, kolik relevantních poptávek dokážeme přivést a za jakou cenu. Základ je měření, čistá struktura kampaní a práce se sezónností.</p>
       </div>
       <div class="card">
         <h3>Proč autoservisy</h3>
-        <p>
-          Autoservisy mají jasný produkt, lokální trh a vysoký intent ve vyhledávání.
-          Když je servis vidět ve správný moment, výsledky přichází rychle.
-        </p>
+        <p>Autoservisy mají jasný produkt, lokální trh a vysoký intent ve vyhledávání. Když je servis vidět ve správný moment, výsledky přichází rychle.</p>
       </div>
       <div class="card">
         <h3>Co garantujeme</h3>
-        <p>
-          Proces, transparentnost a práci s daty. Nikdy neslibujeme nesmysly bez znalosti vašich čísel a kapacity.
-        </p>
+        <p>Proces, transparentnost a práci s daty. Nikdy neslibujeme nesmysly bez znalosti vašich čísel a kapacity.</p>
       </div>
       <div class="card">
         <h3>Co od vás potřebujeme</h3>
-        <p>
-          Kapacitu (kolik aut zvládnete), průměrnou hodnotu zakázky a rychlou reakci na poptávky.
-          Marketing přivede zákazníky — servis je musí umět přijmout.
-        </p>
+        <p>Kapacitu (kolik aut zvládnete), průměrnou hodnotu zakázky a rychlou reakci na poptávky. Marketing přivede zákazníky — servis je musí umět přijmout.</p>
       </div>
     </div>
 
-    <div class="wrap" style="margin-top:16px">
-      <div class="card">
-        <h3>Chcete zjistit, co to udělá u vás?</h3>
-        <p>Napište kapacitu aut/měsíc a průměrnou hodnotu zakázky. Pošleme návrh postupu.</p>
-        <div style="margin-top:14px">
-          <a class="cta" href="kontakt.html">Objednat konzultaci</a>
+    <div class="wrap">
+      <div class="card big" style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:center">
+        <div>
+          <b>Chcete zjistit, co to udělá u vás?</b>
+          <div style="color:var(--muted);margin-top:4px">Napište kapacitu aut/měsíc a průměrnou hodnotu zakázky. Pošleme návrh postupu.</div>
         </div>
+        <a class="btn" href="kontakt.html">Objednat konzultaci</a>
       </div>
     </div>
   </section>
@@ -104,6 +122,27 @@
     </div>
   </footer>
 
-  <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+
+    const burger = document.getElementById('burger');
+    const navLinks = document.getElementById('navLinks');
+
+    function toggleMenu(){ navLinks.classList.toggle('active'); burger.classList.toggle('open'); }
+    function closeMenu(){ navLinks.classList.remove('active'); burger.classList.remove('open'); }
+
+    burger.addEventListener('click', toggleMenu);
+    burger.addEventListener('keydown', (e)=>{ if(e.key === 'Enter' || e.key === ' ') toggleMenu(); });
+
+    navLinks.querySelectorAll('a').forEach(a=>a.addEventListener('click', closeMenu));
+
+    document.addEventListener('click', (e)=>{
+      if(!navLinks.classList.contains('active')) return;
+      const isInside = navLinks.contains(e.target) || burger.contains(e.target);
+      if(!isInside) closeMenu();
+    });
+
+    window.addEventListener('resize', ()=>{ if(window.innerWidth > 940) closeMenu(); });
+  </script>
 </body>
 </html>
