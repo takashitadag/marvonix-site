@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="cs">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Služby | Marvonix</title>
+  <meta name="description" content="Balíčky služeb Marvonix pro autoservisy: Google Ads, Google Maps, Meta Ads a měření poptávek." />
+  <style>
+    /* Stejný CSS jako na homepage (zkráceně: vlož sem úplně stejný <style> z index.html) */
+    :root{--bg:#0b1220;--card:#0f1a2e;--text:#e9eefb;--muted:#b8c2da;--line:rgba(255,255,255,.10);--accent:#4f7cff;--shadow:0 18px 60px rgba(0,0,0,.45);--r:18px;--r2:14px;--max:1120px;--pad:20px}
+    *{box-sizing:border-box} html,body{margin:0;background:radial-gradient(1200px 700px at 20% -10%, rgba(79,124,255,.25), transparent 55%),radial-gradient(900px 600px at 90% 10%, rgba(122,162,255,.18), transparent 55%),var(--bg);color:var(--text);font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Arial}
+    a{color:inherit;text-decoration:none} .wrap{max-width:var(--max);margin:0 auto;padding:0 var(--pad)}
+    .nav{position:sticky;top:0;z-index:50;backdrop-filter: blur(10px);background:rgba(11,18,32,.75);border-bottom:1px solid var(--line)}
+    .navin{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:14px 0}
+    .brand{display:flex;align-items:center;gap:12px}
+    .mark{width:34px;height:34px;border-radius:10px;background:linear-gradient(135deg, rgba(79,124,255,.95), rgba(122,162,255,.85));display:grid;place-items:center;font-weight:900;color:#081022;box-shadow:0 18px 50px rgba(79,124,255,.22)}
+    .btxt .n{font-weight:900;letter-spacing:.18em;text-transform:uppercase;font-size:14px}
+    .btxt .t{color:rgba(184,194,218,.85);font-size:12px;letter-spacing:.10em;text-transform:uppercase;margin-top:4px}
+    .links{display:flex;gap:18px;align-items:center;color:var(--muted);font-size:14px}
+    .links a:hover{color:var(--text)}
+    .cta{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:11px 16px;border-radius:999px;background:linear-gradient(135deg, rgba(79,124,255,.95), rgba(122,162,255,.85));color:#081022;font-weight:900;box-shadow:0 18px 50px rgba(79,124,255,.22)}
+    header{padding:42px 0 10px}
+    h1{margin:0 0 10px;font-size:38px}
+    p{color:var(--muted);line-height:1.6;margin:0}
+    section{padding:24px 0}
+    .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+    .card{background:rgba(255,255,255,.03);border:1px solid var(--line);border-radius:var(--r);padding:18px}
+    .card h3{margin:0 0 10px;font-size:17px}
+    .card ul{margin:10px 0 0;padding-left:18px;color:var(--muted);line-height:1.6;font-size:14.5px}
+    .price{font-size:22px;font-weight:900;margin-top:12px}
+    .note{font-size:12px;opacity:.85;margin-top:8px}
+    .panel{background:linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));border:1px solid var(--line);border-radius:var(--r);padding:18px;box-shadow:var(--shadow)}
+    footer{padding:26px 0 40px;border-top:1px solid var(--line);color:var(--muted);font-size:13px}
+    .foot{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+    @media (max-width: 940px){.grid3{grid-template-columns:1fr}.links{display:none}}
+  </style>
+</head>
+<body>
+  <div class="nav">
+    <div class="wrap navin">
+      <a class="brand" href="index.html"><div class="mark">M</div><div class="btxt"><div class="n">MARVONIX</div><div class="t">Performance Growth Agency</div></div></a>
+      <div class="links">
+        <a href="sluzby.html">Služby</a>
+        <a href="o-nas.html">O nás</a>
+        <a href="kontakt.html">Kontakt</a>
+      </div>
+      <a class="cta" href="kontakt.html">Objednat službu</a>
+    </div>
+  </div>
+
+  <header>
+    <div class="wrap">
+      <h1>Služby a balíčky</h1>
+      <p>Nezlevňujeme cenu bez snížení rozsahu. Vyberete si balíček podle kapacity a cíle.</p>
+    </div>
+  </header>
+
+  <section>
+    <div class="wrap grid3">
+      <div class="card">
+        <h3>Start</h3>
+        <p>Pro menší servis / pilotní spolupráci.</p>
+        <div class="price">6 900 Kč / měs.</div>
+        <div class="note">+ rozpočet na reklamu (platí klient)</div>
+        <ul>
+          <li>Google Ads Search (1–2 služby)</li>
+          <li>Základní měření (klik na telefon / formulář)</li>
+          <li>Týdenní kontrola + úpravy</li>
+          <li>Měsíční report (stručný)</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>Standard</h3>
+        <p>Nejlepší poměr cena/výkon pro růst.</p>
+        <div class="price">14 900 Kč / měs.</div>
+        <div class="note">+ rozpočet na reklamu (platí klient)</div>
+        <ul>
+          <li>Google Ads Search (více služeb)</li>
+          <li>Google Maps / Profil firmy (optimalizace)</li>
+          <li>Remarketing (Meta nebo GDN)</li>
+          <li>Týdenní optimalizace</li>
+          <li>Měsíční report + plán na další měsíc</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>Pro</h3>
+        <p>Pro firmy, které chtějí škálovat.</p>
+        <div class="price">24 900 Kč / měs.</div>
+        <div class="note">+ rozpočet na reklamu (platí klient)</div>
+        <ul>
+          <li>Google Ads (Search + rozšíření)</li>
+          <li>Meta Ads (sezónní kampaně + remarketing)</li>
+          <li>Pokročilé měření (call tracking dle možností)</li>
+          <li>Rychlejší reakce + častější optimalizace</li>
+          <li>Strategické řízení sezónnosti</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="panel">
+        <h3 style="margin:0 0 10px;">Jednorázový setup</h3>
+        <p>U většiny klientů dává smysl jednorázové nastavení účtů, struktury a měření.</p>
+        <p style="margin-top:10px;"><b>Setup:</b> 9 900 Kč (jednorázově)</p>
+        <p style="margin-top:10px;"><a class="cta" href="kontakt.html">Chci nabídku na míru</a></p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap foot">
+      <div><b style="letter-spacing:.14em;text-transform:uppercase;">Marvonix</b><div style="opacity:.75;font-size:12px">Performance Growth Agency</div></div>
+      <div>Kontakt: <a href="mailto:info@marvonix.cz">info@marvonix.cz</a></div>
+      <div>© <span id="y"></span> Marvonix</div>
+    </div>
+  </footer>
+  <script>document.getElementById('y').textContent=new Date().getFullYear()</script>
+</body>
+</html>
