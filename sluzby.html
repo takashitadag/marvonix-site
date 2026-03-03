@@ -4,54 +4,55 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Služby | Marvonix</title>
-  <meta name="description" content="Balíčky služeb Marvonix pro autoservisy: Google Ads, Google Maps, Meta Ads a měření poptávek." />
+  <meta name="description" content="Služby Marvonix: Google Ads, Meta Ads, měření, landing page a optimalizace pro autoservisy." />
+  <link rel="icon" href="favicon.ico">
   <style>
-    /* Stejný CSS jako na homepage (zkráceně: vlož sem úplně stejný <style> z index.html) */
-    :root{--bg:#0b1220;--card:#0f1a2e;--text:#e9eefb;--muted:#b8c2da;--line:rgba(255,255,255,.10);--accent:#4f7cff;--shadow:0 18px 60px rgba(0,0,0,.45);--r:18px;--r2:14px;--max:1120px;--pad:20px}
-    *{box-sizing:border-box} html,body{margin:0;background:radial-gradient(1200px 700px at 20% -10%, rgba(79,124,255,.25), transparent 55%),radial-gradient(900px 600px at 90% 10%, rgba(122,162,255,.18), transparent 55%),var(--bg);color:var(--text);font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Arial}
-    a{color:inherit;text-decoration:none} .wrap{max-width:var(--max);margin:0 auto;padding:0 var(--pad)}
-    .nav{position:sticky;top:0;z-index:50;backdrop-filter: blur(10px);background:rgba(11,18,32,.75);border-bottom:1px solid var(--line)}
-    .navin{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:14px 0}
-    .brand{display:flex;align-items:center;gap:12px}
-    .mark{width:34px;height:34px;border-radius:10px;background:linear-gradient(135deg, rgba(79,124,255,.95), rgba(122,162,255,.85));display:grid;place-items:center;font-weight:900;color:#081022;box-shadow:0 18px 50px rgba(79,124,255,.22)}
-    .btxt .n{font-weight:900;letter-spacing:.18em;text-transform:uppercase;font-size:14px}
-    .btxt .t{color:rgba(184,194,218,.85);font-size:12px;letter-spacing:.10em;text-transform:uppercase;margin-top:4px}
-    .links{display:flex;gap:18px;align-items:center;color:var(--muted);font-size:14px}
-    .links a:hover{color:var(--text)}
-    .cta{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:11px 16px;border-radius:999px;background:linear-gradient(135deg, rgba(79,124,255,.95), rgba(122,162,255,.85));color:#081022;font-weight:900;box-shadow:0 18px 50px rgba(79,124,255,.22)}
-    header{padding:42px 0 10px}
-    h1{margin:0 0 10px;font-size:38px}
-    p{color:var(--muted);line-height:1.6;margin:0}
-    section{padding:24px 0}
-    .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-    .card{background:rgba(255,255,255,.03);border:1px solid var(--line);border-radius:var(--r);padding:18px}
-    .card h3{margin:0 0 10px;font-size:17px}
-    .card ul{margin:10px 0 0;padding-left:18px;color:var(--muted);line-height:1.6;font-size:14.5px}
-    .price{font-size:22px;font-weight:900;margin-top:12px}
-    .note{font-size:12px;opacity:.85;margin-top:8px}
-    .panel{background:linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));border:1px solid var(--line);border-radius:var(--r);padding:18px;box-shadow:var(--shadow)}
+    :root{--bg:#050714;--bg2:#0c1026;--purple:#7c3aed;--purple2:#a855f7;--text:#fff;--muted:rgba(255,255,255,.75);--line:rgba(255,255,255,.08);--shadow:0 25px 70px rgba(0,0,0,.55);--r:20px;--max:1120px;--pad:20px}
+    *{box-sizing:border-box}
+    html,body{margin:0;background:radial-gradient(900px 600px at 15% 10%, rgba(124,58,237,.25), transparent 60%),radial-gradient(800px 600px at 90% 20%, rgba(168,85,247,.18), transparent 60%),linear-gradient(160deg,var(--bg),var(--bg2));color:var(--text);font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Arial}
+    a{color:inherit;text-decoration:none}
+    .wrap{max-width:var(--max);margin:0 auto;padding:0 var(--pad)}
+    .nav{position:sticky;top:0;z-index:50;backdrop-filter: blur(12px);background:rgba(5,7,20,.75);border-bottom:1px solid var(--line)}
+    .navin{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:16px 0}
+    .brand{display:flex;align-items:center;gap:14px;min-width:220px}
+    .brand img{height:44px;width:auto;display:block}
+    .links{display:flex;gap:22px;align-items:center;color:var(--muted);font-size:14px}
+    .links a:hover{color:#fff}
+    .cta{display:inline-flex;align-items:center;justify-content:center;padding:12px 20px;border-radius:999px;background:linear-gradient(135deg,var(--purple),var(--purple2));color:#fff;font-weight:800;box-shadow:0 20px 60px rgba(124,58,237,.35);transition:.25s;white-space:nowrap}
+    .cta:hover{transform:translateY(-2px);box-shadow:0 25px 70px rgba(124,58,237,.5)}
+    header{padding:56px 0 10px}
+    h1{margin:0 0 10px;font-size:42px}
+    p{margin:0;color:var(--muted);line-height:1.6}
+    section{padding:26px 0 60px}
+    .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .card{background:rgba(255,255,255,.04);border:1px solid var(--line);border-radius:var(--r);padding:18px;box-shadow:0 18px 55px rgba(0,0,0,.35)}
+    .card h3{margin:0 0 8px}
+    .card p{margin:0;color:var(--muted);line-height:1.6}
+    .price{margin-top:10px;font-weight:900}
+    .note{font-size:12px;opacity:.85;margin-top:10px}
     footer{padding:26px 0 40px;border-top:1px solid var(--line);color:var(--muted);font-size:13px}
     .foot{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
-    @media (max-width: 940px){.grid3{grid-template-columns:1fr}.links{display:none}}
+    @media (max-width: 980px){.grid3{grid-template-columns:1fr}.links{display:none}.brand{min-width:auto}}
   </style>
 </head>
 <body>
   <div class="nav">
     <div class="wrap navin">
-      <a class="brand" href="index.html"><div class="mark">M</div><div class="btxt"><div class="n">MARVONIX</div><div class="t">Performance Growth Agency</div></div></a>
+      <a class="brand" href="index.html"><img src="logo.png" alt="Marvonix logo"></a>
       <div class="links">
+        <a href="index.html">Domů</a>
         <a href="sluzby.html">Služby</a>
         <a href="o-nas.html">O nás</a>
         <a href="kontakt.html">Kontakt</a>
       </div>
-      <a class="cta" href="kontakt.html">Objednat službu</a>
+      <a class="cta" href="kontakt.html">Objednat konzultaci</a>
     </div>
   </div>
 
   <header>
     <div class="wrap">
-      <h1>Služby a balíčky</h1>
-      <p>Nezlevňujeme cenu bez snížení rozsahu. Vyberete si balíček podle kapacity a cíle.</p>
+      <h1>Služby</h1>
+      <p>Balíčky jsou orientační — upravujeme je podle vašeho cíle a kapacity servisu. Důležitý je výkon a návratnost.</p>
     </div>
   </header>
 
@@ -59,54 +60,39 @@
     <div class="wrap grid3">
       <div class="card">
         <h3>Start</h3>
-        <p>Pro menší servis / pilotní spolupráci.</p>
-        <div class="price">6 900 Kč / měs.</div>
-        <div class="note">+ rozpočet na reklamu (platí klient)</div>
-        <ul>
-          <li>Google Ads Search (1–2 služby)</li>
-          <li>Základní měření (klik na telefon / formulář)</li>
-          <li>Týdenní kontrola + úpravy</li>
-          <li>Měsíční report (stručný)</li>
-        </ul>
+        <p>Pro menší servis / první kampaně. Základní struktura + měření.</p>
+        <div class="price">Obsah:</div>
+        <p>Google Search • základní Meta • landing úpravy • reporting 1× týdně</p>
+        <p class="note">Ideální pro pneu/klima/STK sezónu.</p>
+      </div>
+
+      <div class="card" style="border-color:rgba(168,85,247,.28)">
+        <h3>Growth</h3>
+        <p>Pro servis, který chce stabilní přísun poptávek a škálování.</p>
+        <div class="price">Obsah:</div>
+        <p>Google Search + PMax (dle potřeby) • Meta retargeting • lepší měření • pravidelná optimalizace</p>
+        <p class="note">Nejčastější volba.</p>
       </div>
 
       <div class="card">
-        <h3>Standard</h3>
-        <p>Nejlepší poměr cena/výkon pro růst.</p>
-        <div class="price">14 900 Kč / měs.</div>
-        <div class="note">+ rozpočet na reklamu (platí klient)</div>
-        <ul>
-          <li>Google Ads Search (více služeb)</li>
-          <li>Google Maps / Profil firmy (optimalizace)</li>
-          <li>Remarketing (Meta nebo GDN)</li>
-          <li>Týdenní optimalizace</li>
-          <li>Měsíční report + plán na další měsíc</li>
-        </ul>
-      </div>
-
-      <div class="card">
-        <h3>Pro</h3>
-        <p>Pro firmy, které chtějí škálovat.</p>
-        <div class="price">24 900 Kč / měs.</div>
-        <div class="note">+ rozpočet na reklamu (platí klient)</div>
-        <ul>
-          <li>Google Ads (Search + rozšíření)</li>
-          <li>Meta Ads (sezónní kampaně + remarketing)</li>
-          <li>Pokročilé měření (call tracking dle možností)</li>
-          <li>Rychlejší reakce + častější optimalizace</li>
-          <li>Strategické řízení sezónnosti</li>
-        </ul>
+        <h3>Performance+</h3>
+        <p>Pro servis s vyšší kapacitou, více poboček nebo silnou konkurencí.</p>
+        <div class="price">Obsah:</div>
+        <p>Plná struktura kampaní • kreativy • testování • call tracking (dle možností) • reporting + plán na 30 dní</p>
+        <p class="note">Důraz na cenu za zakázku.</p>
       </div>
     </div>
-  </section>
 
-  <section>
-    <div class="wrap">
-      <div class="panel">
-        <h3 style="margin:0 0 10px;">Jednorázový setup</h3>
-        <p>U většiny klientů dává smysl jednorázové nastavení účtů, struktury a měření.</p>
-        <p style="margin-top:10px;"><b>Setup:</b> 9 900 Kč (jednorázově)</p>
-        <p style="margin-top:10px;"><a class="cta" href="kontakt.html">Chci nabídku na míru</a></p>
+    <div class="wrap" style="margin-top:18px">
+      <div class="card">
+        <h3>Co typicky nastavujeme</h3>
+        <p>
+          Pneu sezóna • Klima servis • STK/Emise • Brzdy • Diagnostika • Servisní prohlídky.
+          Vždy podle toho, co vám nejvíc vydělá a co zvládnete odbavit.
+        </p>
+        <div style="margin-top:14px">
+          <a class="cta" href="kontakt.html">Chci návrh pro náš servis</a>
+        </div>
       </div>
     </div>
   </section>
@@ -118,6 +104,7 @@
       <div>© <span id="y"></span> Marvonix</div>
     </div>
   </footer>
-  <script>document.getElementById('y').textContent=new Date().getFullYear()</script>
+
+  <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
 </body>
 </html>
