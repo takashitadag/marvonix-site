@@ -1,251 +1,344 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="cs">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Marvonix | Performance Growth Agency</title>
-<link rel="icon" href="favicon.ico">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Marvonix | Performance Growth Agency</title>
+  <meta name="description" content="Pomáháme autoservisům získat více zákazníků. Výkonnostní marketing bez zbytečných řečí. Meta Ads & Google Ads." />
+  <link rel="icon" href="favicon.ico">
 
-<style>
-
-:root{
---bg:#060816;
---bg2:#0d1228;
---purple:#6d28d9;
---purple2:#9333ea;
---blue:#3b82f6;
---text:#ffffff;
---muted:rgba(255,255,255,.75);
---border:rgba(255,255,255,.08);
-}
-
-*{margin:0;padding:0;box-sizing:border-box;font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
-
-body{
-background:
-radial-gradient(circle at 20% 10%, rgba(147,51,234,.35), transparent 40%),
-radial-gradient(circle at 80% 20%, rgba(59,130,246,.25), transparent 40%),
-var(--bg);
-color:var(--text);
-}
-
-/* NAV */
-
-header{
-display:flex;
-justify-content:space-between;
-align-items:center;
-padding:20px 8%;
-background:rgba(6,8,22,.85);
-backdrop-filter:blur(10px);
-border-bottom:1px solid var(--border);
-position:sticky;
-top:0;
-z-index:10;
-}
-
-.logo img{
-height:60px; /* VĚTŠÍ LOGO */
-}
-
-nav a{
-margin-left:25px;
-color:var(--muted);
-text-decoration:none;
-font-size:15px;
-transition:.2s;
-}
-
-nav a:hover{color:white}
-
-.cta{
-background:linear-gradient(135deg,var(--purple),var(--blue));
-padding:10px 18px;
-border-radius:8px;
-color:white !important;
-font-weight:600;
-}
-
-/* HERO */
-
-.hero{
-padding:120px 8% 100px;
-text-align:center;
-}
-
-.hero h1{
-font-size:clamp(36px,5vw,62px);
-line-height:1.1;
-margin-bottom:20px;
-}
-
-.hero p{
-font-size:19px;
-color:var(--muted);
-max-width:750px;
-margin:0 auto 40px;
-}
-
-.hero button{
-background:linear-gradient(135deg,var(--purple),var(--blue));
-border:none;
-padding:16px 32px;
-border-radius:10px;
-color:white;
-font-size:17px;
-cursor:pointer;
-transition:.3s;
-}
-
-.hero button:hover{transform:scale(1.05)}
-
-/* SECTION */
-
-section{
-padding:100px 8%;
-}
-
-.section-title{
-text-align:center;
-font-size:34px;
-margin-bottom:20px;
-}
-
-.cards{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-gap:30px;
-margin-top:50px;
-}
-
-.card{
-background:var(--bg2);
-padding:30px;
-border-radius:18px;
-border:1px solid var(--border);
-transition:.3s;
-}
-
-.card:hover{
-border:1px solid var(--purple);
-transform:translateY(-6px);
-}
-
-.card h3{margin-bottom:15px}
-.card p{color:var(--muted)}
-
-/* PROCESS */
-
-.process{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:40px;
-margin-top:50px;
-}
-
-.step{
-text-align:center;
-}
-
-.step h3{margin-bottom:10px}
-
-/* CTA SECTION */
-
-.cta-section{
-text-align:center;
-background:var(--bg2);
-border-top:1px solid var(--border);
-border-bottom:1px solid var(--border);
-}
-
-.cta-section h2{
-margin-bottom:20px;
-}
-
-/* FOOTER */
-
-footer{
-padding:50px 8%;
-text-align:center;
-color:var(--muted);
-border-top:1px solid var(--border);
-}
-
-</style>
+  <style>
+    :root{
+      --bg:#050714;
+      --bg2:#0c1026;
+      --purple:#7c3aed;
+      --purple2:#a855f7;
+      --blue:#2d1b66;
+      --text:#ffffff;
+      --muted:rgba(255,255,255,.75);
+      --line:rgba(255,255,255,.08);
+      --shadow:0 25px 70px rgba(0,0,0,.55);
+      --r:20px;
+      --max:1120px;
+      --pad:20px;
+    }
+    *{box-sizing:border-box}
+    html,body{
+      margin:0;
+      background:
+        radial-gradient(900px 600px at 15% 10%, rgba(124,58,237,.25), transparent 60%),
+        radial-gradient(800px 600px at 90% 20%, rgba(168,85,247,.18), transparent 60%),
+        linear-gradient(160deg,var(--bg),var(--bg2));
+      color:var(--text);
+      font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Arial;
+    }
+    a{color:inherit;text-decoration:none}
+    .wrap{max-width:var(--max);margin:0 auto;padding:0 var(--pad)}
+    .nav{
+      position:sticky;top:0;z-index:50;
+      backdrop-filter: blur(12px);
+      background:rgba(5,7,20,.75);
+      border-bottom:1px solid var(--line);
+    }
+    .navin{
+      display:flex;align-items:center;justify-content:space-between;
+      gap:16px;padding:16px 0;
+    }
+    .brand{display:flex;align-items:center;gap:14px;min-width:220px}
+    .brand img{height:44px;width:auto;display:block}
+    .links{display:flex;gap:22px;align-items:center;color:var(--muted);font-size:14px}
+    .links a:hover{color:#fff}
+    .cta{
+      display:inline-flex;align-items:center;justify-content:center;gap:10px;
+      padding:12px 20px;border-radius:999px;
+      background:linear-gradient(135deg,var(--purple),var(--purple2));
+      color:#fff;font-weight:800;
+      box-shadow:0 20px 60px rgba(124,58,237,.35);
+      transition:.25s;
+      white-space:nowrap;
+    }
+    .cta:hover{transform:translateY(-2px);box-shadow:0 25px 70px rgba(124,58,237,.5)}
+    .ghost{
+      display:inline-flex;align-items:center;justify-content:center;
+      padding:12px 18px;border-radius:999px;
+      border:1px solid rgba(255,255,255,.14);
+      background:rgba(255,255,255,.04);
+      color:#fff;font-weight:700;
+    }
+    .ghost:hover{border-color:rgba(168,85,247,.35)}
+    header{padding:72px 0 30px}
+    .hero{
+      display:grid;grid-template-columns:1.25fr .75fr;gap:24px;align-items:center;
+      padding:26px;border-radius:calc(var(--r) + 6px);
+      border:1px solid var(--line);
+      background:
+        radial-gradient(900px 520px at 10% 10%, rgba(124,58,237,.20), transparent 55%),
+        radial-gradient(700px 500px at 100% 0%, rgba(168,85,247,.14), transparent 55%),
+        rgba(255,255,255,.03);
+      box-shadow:var(--shadow);
+      overflow:hidden;
+      position:relative;
+    }
+    .kicker{color:rgba(255,255,255,.85);font-weight:800;letter-spacing:.18em;text-transform:uppercase;font-size:12px}
+    h1{margin:10px 0 10px;font-size:56px;line-height:1.02}
+    .sub{color:var(--muted);font-size:17px;line-height:1.6;max-width:60ch}
+    .hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:18px}
+    .statbox{
+      border:1px solid var(--line);border-radius:var(--r);
+      background:rgba(5,7,20,.55);
+      padding:18px;
+    }
+    .stat{display:flex;justify-content:space-between;gap:12px;padding:10px 0;border-bottom:1px solid rgba(255,255,255,.06)}
+    .stat:last-child{border-bottom:none}
+    .stat b{font-size:16px}
+    .stat span{color:var(--muted);font-size:13px}
+    section{padding:30px 0}
+    .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+    .card{
+      background:rgba(255,255,255,.04);
+      border:1px solid var(--line);
+      border-radius:var(--r);
+      padding:18px;
+      box-shadow:0 18px 55px rgba(0,0,0,.35);
+    }
+    .card h3{margin:0 0 8px}
+    .card p{margin:0;color:var(--muted);line-height:1.6}
+    .badge{
+      display:inline-flex;align-items:center;gap:8px;
+      padding:7px 10px;border-radius:999px;
+      background:rgba(168,85,247,.10);
+      border:1px solid rgba(168,85,247,.18);
+      color:rgba(255,255,255,.9);
+      font-size:12px;font-weight:800;
+      letter-spacing:.08em;text-transform:uppercase;
+    }
+    .section-title{display:flex;align-items:end;justify-content:space-between;gap:14px;margin-bottom:14px}
+    .section-title h2{margin:0;font-size:26px}
+    .section-title p{margin:0;color:var(--muted)}
+    .steps{counter-reset:step}
+    .step{
+      display:flex;gap:12px;align-items:flex-start;
+      padding:16px;border-radius:var(--r);
+      border:1px solid var(--line);background:rgba(255,255,255,.03);
+    }
+    .step::before{
+      counter-increment:step;
+      content:counter(step);
+      width:34px;height:34px;border-radius:10px;
+      display:grid;place-items:center;
+      background:linear-gradient(135deg,var(--purple),var(--purple2));
+      font-weight:900;
+    }
+    .step h4{margin:0 0 6px}
+    .step p{margin:0;color:var(--muted);line-height:1.55}
+    .cta-block{
+      border:1px solid rgba(168,85,247,.22);
+      background:
+        radial-gradient(700px 420px at 10% 20%, rgba(124,58,237,.24), transparent 60%),
+        rgba(255,255,255,.03);
+      border-radius:calc(var(--r) + 8px);
+      padding:24px;
+      display:flex;align-items:center;justify-content:space-between;gap:16px;
+      box-shadow:var(--shadow);
+    }
+    .cta-block h3{margin:0 0 6px;font-size:22px}
+    .cta-block p{margin:0;color:var(--muted);line-height:1.6}
+    footer{
+      padding:26px 0 40px;border-top:1px solid var(--line);
+      color:var(--muted);font-size:13px;
+    }
+    .foot{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+    @media (max-width: 980px){
+      .hero{grid-template-columns:1fr}
+      h1{font-size:44px}
+      .grid3{grid-template-columns:1fr}
+      .grid2{grid-template-columns:1fr}
+      .links{display:none}
+      .brand{min-width:auto}
+    }
+  </style>
 </head>
 
 <body>
+  <div class="nav">
+    <div class="wrap navin">
+      <a class="brand" href="index.html" aria-label="Marvonix domů">
+        <img src="logo.png" alt="Marvonix logo">
+      </a>
 
-<header>
-<div class="logo">
-<img src="logo.png" alt="Marvonix Logo">
-</div>
+      <div class="links">
+        <a href="index.html">Domů</a>
+        <a href="sluzby.html">Služby</a>
+        <a href="o-nas.html">O nás</a>
+        <a href="kontakt.html">Kontakt</a>
+      </div>
 
-<nav>
-<a href="#">Domů</a>
-<a href="sluzby.html">Služby</a>
-<a href="o-nas.html">O nás</a>
-<a href="kontakt.html">Kontakt</a>
-<a href="objednat.html" class="cta">Objednat</a>
-</nav>
-</header>
+      <a class="cta" href="kontakt.html">Objednat konzultaci</a>
+    </div>
+  </div>
 
-<div class="hero">
-<h1>Pomáháme autoservisům získat více zákazníků</h1>
-<p>Výkonnostní marketing bez zbytečných řečí. Specializujeme se na Meta Ads a Google Ads pro lokální firmy.</p>
-<button onclick="location.href='kontakt.html'">Kontaktovat nás</button>
-</div>
+  <header>
+    <div class="wrap">
+      <div class="hero">
+        <div>
+          <div class="kicker">Meta Ads • Google Ads • Local Growth</div>
+          <h1>Pomáháme autoservisům získat víc zákazníků</h1>
+          <p class="sub">
+            Výkonnostní marketing bez zbytečných řečí. Neprodáváme „hezké reporty“ — přivádíme relevantní poptávky
+            a hlídáme cenu za zakázku podle vašich čísel a kapacity.
+          </p>
 
-<section>
-<h2 class="section-title">Naše služby</h2>
+          <div class="hero-actions">
+            <a class="cta" href="kontakt.html">Kontaktovat nás</a>
+            <a class="ghost" href="sluzby.html">Zobrazit služby</a>
+          </div>
 
-<div class="cards">
-<div class="card">
-<h3>Google Ads</h3>
-<p>Zachytíme zákazníky, kteří aktivně hledají autoservis ve vašem městě.</p>
-</div>
+          <div style="margin-top:14px;display:flex;gap:10px;flex-wrap:wrap">
+            <span class="badge">Zaměření: autoservisy</span>
+            <span class="badge">Měření & transparentnost</span>
+            <span class="badge">Rychlá implementace</span>
+          </div>
+        </div>
 
-<div class="card">
-<h3>Meta Ads</h3>
-<p>Budujeme značku a přivádíme nové zákazníky přes Facebook a Instagram.</p>
-</div>
+        <div class="statbox">
+          <div class="stat">
+            <b>Co řešíme</b>
+            <span>zakázky, kapacita, marže</span>
+          </div>
+          <div class="stat">
+            <b>Kanály</b>
+            <span>Google Search + Meta</span>
+          </div>
+          <div class="stat">
+            <b>Výsledek</b>
+            <span>poptávky, které dává smysl vzít</span>
+          </div>
+          <div style="margin-top:14px">
+            <a class="cta" style="width:100%" href="kontakt.html">Chci konzultaci</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
 
-<div class="card">
-<h3>Optimalizace & Reporting</h3>
-<p>Pravidelně optimalizujeme kampaně a reportujeme jasná čísla.</p>
-</div>
-</div>
-</section>
+  <section>
+    <div class="wrap">
+      <div class="section-title">
+        <h2>Proč to funguje</h2>
+        <p>Jednoduchý systém, který se opírá o data.</p>
+      </div>
 
-<section>
-<h2 class="section-title">Jak spolupracujeme</h2>
+      <div class="grid3">
+        <div class="card">
+          <h3>Reálný intent</h3>
+          <p>Lidi hledají „pneu, klima, brzdy, servis“ ve chvíli, kdy to chtějí řešit. Tam vás dostaneme vidět.</p>
+        </div>
+        <div class="card">
+          <h3>Čistá struktura</h3>
+          <p>Správné kampaně, správné klíčové dotazy, správné reklamní texty + landing. Bez chaosu.</p>
+        </div>
+        <div class="card">
+          <h3>Měření a cena za zakázku</h3>
+          <p>Nehádáme. Sledujeme poptávky a optimalizujeme tak, aby to ekonomicky vycházelo.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<div class="process">
-<div class="step">
-<h3>1️⃣ Analýza</h3>
-<p>Projdeme váš autoservis, konkurenci a trh.</p>
-</div>
+  <section>
+    <div class="wrap">
+      <div class="section-title">
+        <h2>Jak spolupráce probíhá</h2>
+        <p>4 kroky. Rychle, jasně, bez omáčky.</p>
+      </div>
 
-<div class="step">
-<h3>2️⃣ Spuštění kampaní</h3>
-<p>Nastavíme Google & Meta reklamy na míru.</p>
-</div>
+      <div class="grid2 steps">
+        <div class="step">
+          <div>
+            <h4>Audit & cíle</h4>
+            <p>Kapacita, průměrná zakázka, sezónnost. Nastavíme cíle a prioritní služby.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div>
+            <h4>Nastavení kampaní</h4>
+            <p>Google Search + Meta. Struktura, texty, měření, call tracking (dle možností).</p>
+          </div>
+        </div>
+        <div class="step">
+          <div>
+            <h4>Optimalizace</h4>
+            <p>Průběžně ladíme rozpočet, dotazy, publika a kreativy podle výsledků.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div>
+            <h4>Reporting bez balastu</h4>
+            <p>Co přineslo poptávky, kolik stála zakázka, co se mění další týden.</p>
+          </div>
+        </div>
+      </div>
 
-<div class="step">
-<h3>3️⃣ Škálování</h3>
-<p>Optimalizujeme a zvyšujeme výkon každý měsíc.</p>
-</div>
-</div>
-</section>
+      <div style="margin-top:16px">
+        <a class="cta" href="sluzby.html">Zobrazit balíčky služeb</a>
+      </div>
+    </div>
+  </section>
 
-<section class="cta-section">
-<h2>Chcete více zákazníků už tento měsíc?</h2>
-<button onclick="location.href='objednat.html'">Začít spolupráci</button>
-</section>
+  <section>
+    <div class="wrap">
+      <div class="cta-block">
+        <div>
+          <h3>Chcete vědět, kolik zakázek se dá reálně přivést?</h3>
+          <p>Napište kapacitu (auta/měsíc) a průměrnou hodnotu zakázky. My navrhneme postup.</p>
+        </div>
+        <a class="cta" href="kontakt.html">Objednat konzultaci</a>
+      </div>
+    </div>
+  </section>
 
-<footer>
-© 2026 Marvonix – Performance Growth Agency
-</footer>
+  <section>
+    <div class="wrap">
+      <div class="section-title">
+        <h2>FAQ</h2>
+        <p>Nejčastější dotazy.</p>
+      </div>
 
+      <div class="grid2">
+        <div class="card">
+          <h3>Jak rychle uvidím výsledky?</h3>
+          <p>U Search kampaní často během dní. Stabilnější výkon typicky 2–4 týdny podle konkurence a rozpočtu.</p>
+        </div>
+        <div class="card">
+          <h3>Co od nás potřebujete?</h3>
+          <p>Kapacitu, cílové služby, ať víme co prodávat. Plus přístup do účtů (Google/Meta) nebo založíme nové.</p>
+        </div>
+        <div class="card">
+          <h3>Děláte i web?</h3>
+          <p>Ano — minimalistický web/landing, aby kampaně konvertovaly. Hlavní je výkon, ne efekty.</p>
+        </div>
+        <div class="card">
+          <h3>Má smysl reklama v sezóně?</h3>
+          <p>Největší smysl. Pneu, klima, STK, brzdy — nastavíme plán podle sezónnosti.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap foot">
+      <div>
+        <b style="letter-spacing:.14em;text-transform:uppercase;">Marvonix</b>
+        <div style="opacity:.75;font-size:12px">Performance Growth Agency</div>
+      </div>
+      <div>Kontakt: <a href="mailto:info@marvonix.cz">info@marvonix.cz</a></div>
+      <div>© <span id="y"></span> Marvonix</div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
