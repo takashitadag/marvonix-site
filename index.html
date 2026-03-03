@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Marvonix | Performance Growth Agency</title>
-  <meta name="description" content="Pomáháme autoservisům získat více zákazníků. Výkonnostní marketing bez zbytečných řečí. Meta Ads & Google Ads." />
+  <meta name="description" content="Pomáháme autoservisům získat více zákazníků pomocí Google Ads a Meta Ads." />
   <link rel="icon" href="favicon.ico">
 
   <style>
@@ -13,14 +13,13 @@
       --bg2:#0c1026;
       --purple:#7c3aed;
       --purple2:#a855f7;
-      --blue:#2d1b66;
       --text:#ffffff;
       --muted:rgba(255,255,255,.75);
-      --line:rgba(255,255,255,.08);
-      --shadow:0 25px 70px rgba(0,0,0,.55);
-      --r:20px;
+      --line:rgba(255,255,255,.10);
+      --shadow:0 18px 60px rgba(0,0,0,.45);
+      --r:18px;
       --max:1120px;
-      --pad:20px;
+      --pad:20px
     }
     *{box-sizing:border-box}
     html,body{
@@ -30,132 +29,169 @@
         radial-gradient(800px 600px at 90% 20%, rgba(168,85,247,.18), transparent 60%),
         linear-gradient(160deg,var(--bg),var(--bg2));
       color:var(--text);
-      font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Arial;
+      font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Arial
     }
     a{color:inherit;text-decoration:none}
     .wrap{max-width:var(--max);margin:0 auto;padding:0 var(--pad)}
-    .nav{
-      position:sticky;top:0;z-index:50;
-      backdrop-filter: blur(12px);
-      background:rgba(5,7,20,.75);
-      border-bottom:1px solid var(--line);
-    }
-    .navin{
-      display:flex;align-items:center;justify-content:space-between;
-      gap:16px;padding:16px 0;
-    }
-    .brand{display:flex;align-items:center;gap:14px;min-width:220px}
-    .brand img{height:80px;width:auto;display:block}
-    .links{display:flex;gap:22px;align-items:center;color:var(--muted);font-size:14px}
-    .links a:hover{color:#fff}
-    .cta{
+    .btn{
       display:inline-flex;align-items:center;justify-content:center;gap:10px;
-      padding:12px 20px;border-radius:999px;
+      padding:12px 18px;border-radius:999px;
       background:linear-gradient(135deg,var(--purple),var(--purple2));
-      color:#fff;font-weight:800;
-      box-shadow:0 20px 60px rgba(124,58,237,.35);
+      color:#fff;font-weight:900;
+      box-shadow:0 18px 50px rgba(124,58,237,.22);
       transition:.25s;
       white-space:nowrap;
+      border:0;
+      cursor:pointer;
     }
-    .cta:hover{transform:translateY(-2px);box-shadow:0 25px 70px rgba(124,58,237,.5)}
-    .ghost{
-      display:inline-flex;align-items:center;justify-content:center;
-      padding:12px 18px;border-radius:999px;
-      border:1px solid rgba(255,255,255,.14);
-      background:rgba(255,255,255,.04);
-      color:#fff;font-weight:700;
+    .btn:hover{transform:translateY(-2px);box-shadow:0 25px 70px rgba(124,58,237,.4)}
+    .btn.secondary{
+      background:rgba(255,255,255,.08);
+      box-shadow:none;
+      font-weight:800;
     }
-    .ghost:hover{border-color:rgba(168,85,247,.35)}
-    header{padding:72px 0 30px}
-    .hero{
-      display:grid;grid-template-columns:1.25fr .75fr;gap:24px;align-items:center;
-      padding:26px;border-radius:calc(var(--r) + 6px);
+    .btn.secondary:hover{transform:translateY(-2px);background:rgba(255,255,255,.12)}
+
+    /* NAV */
+    .nav{position:sticky;top:0;z-index:50;backdrop-filter: blur(12px);background:rgba(5,7,20,.72);border-bottom:1px solid var(--line)}
+    .navin{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:14px 0;position:relative}
+    .brand{display:flex;align-items:center;gap:14px}
+    .brand img{height:64px;width:auto;display:block;filter:drop-shadow(0 14px 40px rgba(124,58,237,.25))}
+
+    .links{display:flex;gap:18px;align-items:center;color:var(--muted);font-size:14px}
+    .links a:hover{color:#fff}
+
+    /* BURGER */
+    .burger{
+      display:none;
+      width:44px;height:44px;
       border:1px solid var(--line);
-      background:
-        radial-gradient(900px 520px at 10% 10%, rgba(124,58,237,.20), transparent 55%),
-        radial-gradient(700px 500px at 100% 0%, rgba(168,85,247,.14), transparent 55%),
-        rgba(255,255,255,.03);
+      border-radius:14px;
+      background:rgba(255,255,255,.04);
+      align-items:center;
+      justify-content:center;
+      cursor:pointer;
+      transition:.25s;
+    }
+    .burger:hover{background:rgba(255,255,255,.06)}
+    .burger .b{
+      width:22px;height:16px;position:relative;
+    }
+    .burger .b span{
+      position:absolute;left:0;right:0;
+      height:2.5px;border-radius:99px;
+      background:#fff;
+      transition:.28s;
+    }
+    .burger .b span:nth-child(1){top:0}
+    .burger .b span:nth-child(2){top:6.5px;opacity:1}
+    .burger .b span:nth-child(3){bottom:0}
+
+    /* burger -> X */
+    .burger.open .b span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
+    .burger.open .b span:nth-child(2){opacity:0}
+    .burger.open .b span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
+
+    /* MOBILE DROPDOWN (SLIDE) */
+    @media (max-width: 940px){
+      .btn.navcta{display:none}
+      .burger{display:flex}
+
+      .links{
+        position:absolute;
+        left:0; right:0;
+        top:86px;
+        display:flex;
+        flex-direction:column;
+        gap:14px;
+        padding:16px;
+        border:1px solid var(--line);
+        border-radius:18px;
+        background:rgba(5,7,20,.92);
+        box-shadow:var(--shadow);
+
+        /* slide closed state */
+        opacity:0;
+        transform:translateY(-10px);
+        pointer-events:none;
+      }
+      .links.active{
+        opacity:1;
+        transform:translateY(0);
+        pointer-events:auto;
+      }
+    }
+
+    /* HERO */
+    header{padding:34px 0 10px}
+    .hero{
+      margin-top:18px;
+      border:1px solid var(--line);
+      border-radius:26px;
+      background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
       box-shadow:var(--shadow);
+      padding:28px;
+      display:grid;
+      grid-template-columns:1.35fr .9fr;
+      gap:18px;
       overflow:hidden;
       position:relative;
     }
-    .kicker{color:rgba(255,255,255,.85);font-weight:800;letter-spacing:.18em;text-transform:uppercase;font-size:12px}
-    h1{margin:10px 0 10px;font-size:56px;line-height:1.02}
-    .sub{color:var(--muted);font-size:17px;line-height:1.6;max-width:60ch}
-    .hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:18px}
-    .statbox{
-      border:1px solid var(--line);border-radius:var(--r);
-      background:rgba(5,7,20,.55);
-      padding:18px;
+    .hero:before{
+      content:"";
+      position:absolute;inset:-60px -60px auto auto;
+      width:320px;height:320px;border-radius:50%;
+      background:radial-gradient(circle at 30% 30%, rgba(168,85,247,.35), transparent 65%);
+      filter:blur(2px);
     }
-    .stat{display:flex;justify-content:space-between;gap:12px;padding:10px 0;border-bottom:1px solid rgba(255,255,255,.06)}
-    .stat:last-child{border-bottom:none}
-    .stat b{font-size:16px}
-    .stat span{color:var(--muted);font-size:13px}
-    section{padding:30px 0}
-    .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-    .grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+    .kicker{color:rgba(255,255,255,.78);letter-spacing:.22em;text-transform:uppercase;font-weight:800;font-size:12px}
+    h1{margin:10px 0 10px;font-size:56px;line-height:1.02}
+    .lead{color:var(--muted);line-height:1.6;font-size:16px;max-width:56ch}
+    .actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:18px}
+    .chips{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+    .chip{
+      padding:8px 12px;border-radius:999px;
+      border:1px solid rgba(168,85,247,.22);
+      background:rgba(124,58,237,.10);
+      color:rgba(255,255,255,.86);
+      font-size:12px;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+      font-weight:800;
+    }
+    .mini{
+      border:1px solid var(--line);
+      border-radius:18px;
+      background:rgba(255,255,255,.03);
+      padding:18px;
+      height:100%;
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+      gap:12px;
+    }
+    .mini h3{margin:0;font-size:16px}
+    .miniRow{display:flex;justify-content:space-between;gap:12px;color:rgba(255,255,255,.78);border-bottom:1px solid rgba(255,255,255,.08);padding:10px 0}
+    .miniRow:last-child{border-bottom:0}
+    .mini .btn{width:100%;margin-top:6px}
+    section{padding:26px 0}
+    .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
     .card{
       background:rgba(255,255,255,.04);
       border:1px solid var(--line);
       border-radius:var(--r);
       padding:18px;
-      box-shadow:0 18px 55px rgba(0,0,0,.35);
-    }
-    .card h3{margin:0 0 8px}
-    .card p{margin:0;color:var(--muted);line-height:1.6}
-    .badge{
-      display:inline-flex;align-items:center;gap:8px;
-      padding:7px 10px;border-radius:999px;
-      background:rgba(168,85,247,.10);
-      border:1px solid rgba(168,85,247,.18);
-      color:rgba(255,255,255,.9);
-      font-size:12px;font-weight:800;
-      letter-spacing:.08em;text-transform:uppercase;
-    }
-    .section-title{display:flex;align-items:end;justify-content:space-between;gap:14px;margin-bottom:14px}
-    .section-title h2{margin:0;font-size:26px}
-    .section-title p{margin:0;color:var(--muted)}
-    .steps{counter-reset:step}
-    .step{
-      display:flex;gap:12px;align-items:flex-start;
-      padding:16px;border-radius:var(--r);
-      border:1px solid var(--line);background:rgba(255,255,255,.03);
-    }
-    .step::before{
-      counter-increment:step;
-      content:counter(step);
-      width:34px;height:34px;border-radius:10px;
-      display:grid;place-items:center;
-      background:linear-gradient(135deg,var(--purple),var(--purple2));
-      font-weight:900;
-    }
-    .step h4{margin:0 0 6px}
-    .step p{margin:0;color:var(--muted);line-height:1.55}
-    .cta-block{
-      border:1px solid rgba(168,85,247,.22);
-      background:
-        radial-gradient(700px 420px at 10% 20%, rgba(124,58,237,.24), transparent 60%),
-        rgba(255,255,255,.03);
-      border-radius:calc(var(--r) + 8px);
-      padding:24px;
-      display:flex;align-items:center;justify-content:space-between;gap:16px;
       box-shadow:var(--shadow);
     }
-    .cta-block h3{margin:0 0 6px;font-size:22px}
-    .cta-block p{margin:0;color:var(--muted);line-height:1.6}
-    footer{
-      padding:26px 0 40px;border-top:1px solid var(--line);
-      color:var(--muted);font-size:13px;
-    }
+    .card h3{margin:0 0 6px}
+    .card p{margin:0;color:var(--muted);line-height:1.6}
+
+    footer{padding:26px 0 40px;border-top:1px solid var(--line);color:var(--muted);font-size:13px}
     .foot{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+
     @media (max-width: 980px){
-      .hero{grid-template-columns:1fr}
       h1{font-size:44px}
-      .grid3{grid-template-columns:1fr}
-      .grid2{grid-template-columns:1fr}
-      .links{display:none}
-      .brand{min-width:auto}
+      .hero{grid-template-columns:1fr}
     }
   </style>
 </head>
@@ -163,18 +199,23 @@
 <body>
   <div class="nav">
     <div class="wrap navin">
-      <a class="brand" href="index.html" aria-label="Marvonix domů">
+      <a class="brand" href="index.html">
         <img src="logo.png" alt="Marvonix logo">
       </a>
 
-      <div class="links">
+      <div class="burger" id="burger" aria-label="Menu" role="button" tabindex="0">
+        <div class="b"><span></span><span></span><span></span></div>
+      </div>
+
+      <div class="links" id="navLinks">
         <a href="index.html">Domů</a>
         <a href="sluzby.html">Služby</a>
         <a href="o-nas.html">O nás</a>
         <a href="kontakt.html">Kontakt</a>
+        <a class="btn" href="kontakt.html" style="width:100%;margin-top:6px">Objednat konzultaci</a>
       </div>
 
-      <a class="cta" href="kontakt.html">Objednat konzultaci</a>
+      <a class="btn navcta" href="kontakt.html">Objednat konzultaci</a>
     </div>
   </div>
 
@@ -182,163 +223,99 @@
     <div class="wrap">
       <div class="hero">
         <div>
-          <div class="kicker">Meta Ads • Google Ads • Local Growth</div>
+          <div class="kicker">META ADS • GOOGLE ADS • LOCAL GROWTH</div>
           <h1>Pomáháme autoservisům získat víc zákazníků</h1>
-          <p class="sub">
-            Výkonnostní marketing bez zbytečných řečí. Neprodáváme „hezké reporty“ — přivádíme relevantní poptávky
-            a hlídáme cenu za zakázku podle vašich čísel a kapacity.
-          </p>
-
-          <div class="hero-actions">
-            <a class="cta" href="kontakt.html">Kontaktovat nás</a>
-            <a class="ghost" href="sluzby.html">Zobrazit služby</a>
+          <div class="lead">
+            Výkonnostní marketing bez zbytečných řečí. Neprodáváme „hezké reporty“ —
+            přivádíme relevantní poptávky a hlídáme cenu za zakázku podle vašich čísel a kapacity.
           </div>
 
-          <div style="margin-top:14px;display:flex;gap:10px;flex-wrap:wrap">
-            <span class="badge">Zaměření: autoservisy</span>
-            <span class="badge">Měření & transparentnost</span>
-            <span class="badge">Rychlá implementace</span>
+          <div class="actions">
+            <a class="btn" href="kontakt.html">Kontaktovat nás</a>
+            <a class="btn secondary" href="sluzby.html">Zobrazit služby</a>
+          </div>
+
+          <div class="chips">
+            <div class="chip">Zaměření: autoservisy</div>
+            <div class="chip">Měření & transparentnost</div>
+            <div class="chip">Rychlá implementace</div>
           </div>
         </div>
 
-        <div class="statbox">
-          <div class="stat">
-            <b>Co řešíme</b>
-            <span>zakázky, kapacita, marže</span>
+        <div class="mini">
+          <div>
+            <h3>Co získáte</h3>
+            <div class="miniRow"><b>Co řešíme</b><span>zakázky, kapacita, marže</span></div>
+            <div class="miniRow"><b>Kanály</b><span>Google Search + Meta</span></div>
+            <div class="miniRow"><b>Výsledek</b><span>poptávky, které dává smysl vzít</span></div>
           </div>
-          <div class="stat">
-            <b>Kanály</b>
-            <span>Google Search + Meta</span>
-          </div>
-          <div class="stat">
-            <b>Výsledek</b>
-            <span>poptávky, které dává smysl vzít</span>
-          </div>
-          <div style="margin-top:14px">
-            <a class="cta" style="width:100%" href="kontakt.html">Chci konzultaci</a>
-          </div>
+          <a class="btn" href="kontakt.html">Chci konzultaci</a>
         </div>
       </div>
     </div>
   </header>
 
   <section>
-    <div class="wrap">
-      <div class="section-title">
-        <h2>Proč to funguje</h2>
-        <p>Jednoduchý systém, který se opírá o data.</p>
+    <div class="wrap grid3">
+      <div class="card">
+        <h3>Google Search Ads</h3>
+        <p>Lidé hledají „pneu servis“, „klimatizace“, „STK“ – zobrazíme vás ve správný moment.</p>
       </div>
-
-      <div class="grid3">
-        <div class="card">
-          <h3>Reálný intent</h3>
-          <p>Lidi hledají „pneu, klima, brzdy, servis“ ve chvíli, kdy to chtějí řešit. Tam vás dostaneme vidět.</p>
-        </div>
-        <div class="card">
-          <h3>Čistá struktura</h3>
-          <p>Správné kampaně, správné klíčové dotazy, správné reklamní texty + landing. Bez chaosu.</p>
-        </div>
-        <div class="card">
-          <h3>Měření a cena za zakázku</h3>
-          <p>Nehádáme. Sledujeme poptávky a optimalizujeme tak, aby to ekonomicky vycházelo.</p>
-        </div>
+      <div class="card">
+        <h3>Meta Ads (Facebook/Instagram)</h3>
+        <p>Budujeme poptávku v sezóně i mimo ni. Kreativy testujeme a škálujeme.</p>
       </div>
-    </div>
-  </section>
-
-  <section>
-    <div class="wrap">
-      <div class="section-title">
-        <h2>Jak spolupráce probíhá</h2>
-        <p>4 kroky. Rychle, jasně, bez omáčky.</p>
-      </div>
-
-      <div class="grid2 steps">
-        <div class="step">
-          <div>
-            <h4>Audit & cíle</h4>
-            <p>Kapacita, průměrná zakázka, sezónnost. Nastavíme cíle a prioritní služby.</p>
-          </div>
-        </div>
-        <div class="step">
-          <div>
-            <h4>Nastavení kampaní</h4>
-            <p>Google Search + Meta. Struktura, texty, měření, call tracking (dle možností).</p>
-          </div>
-        </div>
-        <div class="step">
-          <div>
-            <h4>Optimalizace</h4>
-            <p>Průběžně ladíme rozpočet, dotazy, publika a kreativy podle výsledků.</p>
-          </div>
-        </div>
-        <div class="step">
-          <div>
-            <h4>Reporting bez balastu</h4>
-            <p>Co přineslo poptávky, kolik stála zakázka, co se mění další týden.</p>
-          </div>
-        </div>
-      </div>
-
-      <div style="margin-top:16px">
-        <a class="cta" href="sluzby.html">Zobrazit balíčky služeb</a>
-      </div>
-    </div>
-  </section>
-
-  <section>
-    <div class="wrap">
-      <div class="cta-block">
-        <div>
-          <h3>Chcete vědět, kolik zakázek se dá reálně přivést?</h3>
-          <p>Napište kapacitu (auta/měsíc) a průměrnou hodnotu zakázky. My navrhneme postup.</p>
-        </div>
-        <a class="cta" href="kontakt.html">Objednat konzultaci</a>
-      </div>
-    </div>
-  </section>
-
-  <section>
-    <div class="wrap">
-      <div class="section-title">
-        <h2>FAQ</h2>
-        <p>Nejčastější dotazy.</p>
-      </div>
-
-      <div class="grid2">
-        <div class="card">
-          <h3>Jak rychle uvidím výsledky?</h3>
-          <p>U Search kampaní často během dní. Stabilnější výkon typicky 2–4 týdny podle konkurence a rozpočtu.</p>
-        </div>
-        <div class="card">
-          <h3>Co od nás potřebujete?</h3>
-          <p>Kapacitu, cílové služby, ať víme co prodávat. Plus přístup do účtů (Google/Meta) nebo založíme nové.</p>
-        </div>
-        <div class="card">
-          <h3>Děláte i web?</h3>
-          <p>Ano — minimalistický web/landing, aby kampaně konvertovaly. Hlavní je výkon, ne efekty.</p>
-        </div>
-        <div class="card">
-          <h3>Má smysl reklama v sezóně?</h3>
-          <p>Největší smysl. Pneu, klima, STK, brzdy — nastavíme plán podle sezónnosti.</p>
-        </div>
+      <div class="card">
+        <h3>Měření & optimalizace</h3>
+        <p>Jasný přehled: kolik stojí poptávka a jaký má dopad na zakázky.</p>
       </div>
     </div>
   </section>
 
   <footer>
     <div class="wrap foot">
-      <div>
-        <b style="letter-spacing:.14em;text-transform:uppercase;">Marvonix</b>
-        <div style="opacity:.75;font-size:12px">Performance Growth Agency</div>
-      </div>
+      <div><b style="letter-spacing:.14em;text-transform:uppercase;">Marvonix</b><div style="opacity:.75;font-size:12px">Performance Growth Agency</div></div>
       <div>Kontakt: <a href="mailto:info@marvonix.cz">info@marvonix.cz</a></div>
       <div>© <span id="y"></span> Marvonix</div>
     </div>
   </footer>
 
   <script>
+    // rok
     document.getElementById('y').textContent = new Date().getFullYear();
+
+    // mobile menu
+    const burger = document.getElementById('burger');
+    const navLinks = document.getElementById('navLinks');
+
+    function toggleMenu(){
+      navLinks.classList.toggle('active');
+      burger.classList.toggle('open');
+    }
+    function closeMenu(){
+      navLinks.classList.remove('active');
+      burger.classList.remove('open');
+    }
+
+    burger.addEventListener('click', toggleMenu);
+    burger.addEventListener('keydown', (e)=>{ if(e.key === 'Enter' || e.key === ' ') toggleMenu(); });
+
+    // zavřít po kliknutí na odkaz
+    navLinks.querySelectorAll('a').forEach(a=>{
+      a.addEventListener('click', closeMenu);
+    });
+
+    // zavřít klik mimo menu
+    document.addEventListener('click', (e)=>{
+      if(!navLinks.classList.contains('active')) return;
+      const isInside = navLinks.contains(e.target) || burger.contains(e.target);
+      if(!isInside) closeMenu();
+    });
+
+    // zavřít při resize na desktop
+    window.addEventListener('resize', ()=>{
+      if(window.innerWidth > 940) closeMenu();
+    });
   </script>
 </body>
 </html>
