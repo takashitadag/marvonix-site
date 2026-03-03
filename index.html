@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Marvonix | Performance Growth Agency</title>
-<link rel="icon" type="image/x-icon" href="favicon.ico">
+<link rel="icon" href="favicon.ico">
 
 <style>
 
@@ -16,6 +16,7 @@
 --blue:#3b82f6;
 --text:#ffffff;
 --muted:rgba(255,255,255,.75);
+--border:rgba(255,255,255,.08);
 }
 
 *{margin:0;padding:0;box-sizing:border-box;font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
@@ -28,7 +29,7 @@ var(--bg);
 color:var(--text);
 }
 
-/* NAVBAR */
+/* NAV */
 
 header{
 display:flex;
@@ -37,14 +38,14 @@ align-items:center;
 padding:20px 8%;
 background:rgba(6,8,22,.85);
 backdrop-filter:blur(10px);
-border-bottom:1px solid rgba(255,255,255,.08);
+border-bottom:1px solid var(--border);
 position:sticky;
 top:0;
 z-index:10;
 }
 
 .logo img{
-height:38px;
+height:60px; /* VĚTŠÍ LOGO */
 }
 
 nav a{
@@ -52,12 +53,10 @@ margin-left:25px;
 color:var(--muted);
 text-decoration:none;
 font-size:15px;
-transition:.3s;
+transition:.2s;
 }
 
-nav a:hover{
-color:white;
-}
+nav a:hover{color:white}
 
 .cta{
 background:linear-gradient(135deg,var(--purple),var(--blue));
@@ -70,58 +69,51 @@ font-weight:600;
 /* HERO */
 
 .hero{
-min-height:90vh;
-display:flex;
-flex-direction:column;
-justify-content:center;
-align-items:center;
+padding:120px 8% 100px;
 text-align:center;
-padding:0 8%;
 }
 
 .hero h1{
-font-size:clamp(34px,5vw,60px);
+font-size:clamp(36px,5vw,62px);
 line-height:1.1;
 margin-bottom:20px;
 }
 
 .hero p{
-font-size:18px;
+font-size:19px;
 color:var(--muted);
-max-width:700px;
-margin-bottom:35px;
+max-width:750px;
+margin:0 auto 40px;
 }
 
 .hero button{
 background:linear-gradient(135deg,var(--purple),var(--blue));
 border:none;
-padding:15px 30px;
+padding:16px 32px;
 border-radius:10px;
 color:white;
-font-size:16px;
+font-size:17px;
 cursor:pointer;
 transition:.3s;
 }
 
-.hero button:hover{
-transform:scale(1.05);
-}
+.hero button:hover{transform:scale(1.05)}
 
-/* SERVICES */
+/* SECTION */
 
 section{
 padding:100px 8%;
 }
 
 .section-title{
-font-size:32px;
-margin-bottom:20px;
 text-align:center;
+font-size:34px;
+margin-bottom:20px;
 }
 
 .cards{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
 gap:30px;
 margin-top:50px;
 }
@@ -129,31 +121,54 @@ margin-top:50px;
 .card{
 background:var(--bg2);
 padding:30px;
-border-radius:16px;
-border:1px solid rgba(255,255,255,.08);
+border-radius:18px;
+border:1px solid var(--border);
 transition:.3s;
 }
 
 .card:hover{
 border:1px solid var(--purple);
-transform:translateY(-5px);
+transform:translateY(-6px);
 }
 
-.card h3{
-margin-bottom:15px;
+.card h3{margin-bottom:15px}
+.card p{color:var(--muted)}
+
+/* PROCESS */
+
+.process{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:40px;
+margin-top:50px;
 }
 
-.card p{
-color:var(--muted);
+.step{
+text-align:center;
+}
+
+.step h3{margin-bottom:10px}
+
+/* CTA SECTION */
+
+.cta-section{
+text-align:center;
+background:var(--bg2);
+border-top:1px solid var(--border);
+border-bottom:1px solid var(--border);
+}
+
+.cta-section h2{
+margin-bottom:20px;
 }
 
 /* FOOTER */
 
 footer{
-padding:40px 8%;
+padding:50px 8%;
 text-align:center;
-border-top:1px solid rgba(255,255,255,.08);
 color:var(--muted);
+border-top:1px solid var(--border);
 }
 
 </style>
@@ -185,23 +200,47 @@ color:var(--muted);
 <h2 class="section-title">Naše služby</h2>
 
 <div class="cards">
-
 <div class="card">
 <h3>Google Ads</h3>
-<p>Zachytíme lidi, kteří aktivně hledají autoservis ve vašem městě.</p>
+<p>Zachytíme zákazníky, kteří aktivně hledají autoservis ve vašem městě.</p>
 </div>
 
 <div class="card">
 <h3>Meta Ads</h3>
-<p>Budujeme povědomí a přivádíme nové zákazníky přes Facebook a Instagram.</p>
+<p>Budujeme značku a přivádíme nové zákazníky přes Facebook a Instagram.</p>
 </div>
 
 <div class="card">
 <h3>Optimalizace & Reporting</h3>
-<p>Pravidelně zlepšujeme výkon a reportujeme jasná čísla.</p>
+<p>Pravidelně optimalizujeme kampaně a reportujeme jasná čísla.</p>
+</div>
+</div>
+</section>
+
+<section>
+<h2 class="section-title">Jak spolupracujeme</h2>
+
+<div class="process">
+<div class="step">
+<h3>1️⃣ Analýza</h3>
+<p>Projdeme váš autoservis, konkurenci a trh.</p>
 </div>
 
+<div class="step">
+<h3>2️⃣ Spuštění kampaní</h3>
+<p>Nastavíme Google & Meta reklamy na míru.</p>
 </div>
+
+<div class="step">
+<h3>3️⃣ Škálování</h3>
+<p>Optimalizujeme a zvyšujeme výkon každý měsíc.</p>
+</div>
+</div>
+</section>
+
+<section class="cta-section">
+<h2>Chcete více zákazníků už tento měsíc?</h2>
+<button onclick="location.href='objednat.html'">Začít spolupráci</button>
 </section>
 
 <footer>
