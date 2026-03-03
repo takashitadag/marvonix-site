@@ -1,64 +1,98 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="cs">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Marvonix | Performance Growth Agency</title>
-<style>
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background: #0f172a;
-    color: white;
-    text-align: center;
-}
-.hero {
-    padding: 100px 20px;
-}
-h1 {
-    font-size: 42px;
-    margin-bottom: 20px;
-}
-p {
-    font-size: 18px;
-    max-width: 600px;
-    margin: 0 auto 30px;
-    line-height: 1.6;
-}
-.button {
-    display: inline-block;
-    padding: 15px 30px;
-    background: #2563eb;
-    color: white;
-    text-decoration: none;
-    border-radius: 8px;
-    font-weight: bold;
-}
-.button:hover {
-    background: #1d4ed8;
-}
-footer {
-    margin-top: 80px;
-    padding: 20px;
-    font-size: 14px;
-    opacity: 0.6;
-}
-</style>
-</head>
-<body>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Marvonix pomáhá autoservisům získat více poptávek pomocí výkonnostního marketingu na Google a Meta." />
+  <title>Marvonix | Performance Growth Agency</title>
 
-<div class="hero">
-    <h1>Pomáháme autoservisům získat více zákazníků</h1>
-    <p>
-        Výkonnostní marketing bez zbytečných řečí.  
-        Specializujeme se na Meta Ads a Google Ads pro lokální firmy.
-    </p>
-    <a href="mailto:info@marvonix.cz" class="button">Kontaktovat nás</a>
-</div>
-
-<footer>
-© 2026 Marvonix | Olomouc, Česko
-</footer>
-
-</body>
-</html>
+  <style>
+    :root{
+      --bg:#0b1220;
+      --panel:#0f1a2e;
+      --card:rgba(255,255,255,.03);
+      --text:#e9eefb;
+      --muted:#b8c2da;
+      --line:rgba(255,255,255,.10);
+      --accent:#4f7cff;
+      --accent2:#7aa2ff;
+      --shadow: 0 18px 60px rgba(0,0,0,.45);
+      --radius: 18px;
+      --radius2: 14px;
+      --max: 1120px;
+      --pad: 20px;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;color:var(--text);font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;}
+    body{
+      background:
+        radial-gradient(1200px 700px at 18% -10%, rgba(79,124,255,.25), transparent 55%),
+        radial-gradient(900px 600px at 92% 10%, rgba(122,162,255,.16), transparent 55%),
+        var(--bg);
+    }
+    a{color:inherit;text-decoration:none}
+    .wrap{max-width:var(--max);margin:0 auto;padding:0 var(--pad);}
+    .nav{
+      position:sticky;top:0;z-index:50;
+      backdrop-filter: blur(10px);
+      background: rgba(11,18,32,.70);
+      border-bottom:1px solid var(--line);
+    }
+    .nav-inner{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:14px 0;}
+    .brand{display:flex;align-items:center;gap:12px;}
+    .mark{
+      width:38px;height:38px;border-radius:12px;
+      background: linear-gradient(135deg, rgba(79,124,255,.95), rgba(122,162,255,.85));
+      box-shadow: 0 10px 35px rgba(79,124,255,.18);
+      display:grid;place-items:center;
+      font-weight:900;color:#071022;
+    }
+    .brand-title{letter-spacing:.18em;text-transform:uppercase;font-weight:800;font-size:14px;line-height:1}
+    .brand-sub{color:rgba(184,194,218,.85);font-size:12px;letter-spacing:.12em;text-transform:uppercase;margin-top:4px}
+    .links{display:flex;gap:16px;align-items:center;color:var(--muted);font-size:14px;}
+    .links a:hover{color:var(--text)}
+    .cta{
+      display:inline-flex;align-items:center;justify-content:center;gap:10px;
+      padding:11px 16px;border-radius:999px;
+      background: linear-gradient(135deg, rgba(79,124,255,.95), rgba(122,162,255,.85));
+      color:#071022;font-weight:900;border:0;cursor:pointer;white-space:nowrap;
+      box-shadow: 0 18px 50px rgba(79,124,255,.18);
+    }
+    .ghost{
+      display:inline-flex;align-items:center;justify-content:center;
+      padding:11px 16px;border-radius:999px;
+      border:1px solid var(--line);
+      color:var(--text);
+      background: rgba(255,255,255,.03);
+      font-weight:800;cursor:pointer;
+    }
+    .cta:hover{filter:brightness(1.03)}
+    .ghost:hover{background: rgba(255,255,255,.06)}
+    header{padding:56px 0 18px;}
+    .hero{
+      display:grid;grid-template-columns: 1.25fr .75fr;gap:18px;align-items:stretch;
+    }
+    .panel{
+      background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
+      border:1px solid var(--line);
+      border-radius: var(--radius);
+      padding:20px;
+      box-shadow: var(--shadow);
+    }
+    .kicker{color:var(--muted);letter-spacing:.14em;text-transform:uppercase;font-size:12px;}
+    h1{margin:10px 0 12px;font-size:44px;line-height:1.06;}
+    .sub{color:var(--muted);font-size:16.5px;line-height:1.65;max-width:66ch;margin:0}
+    .hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:18px;}
+    .pill-row{margin-top:14px;}
+    .pill{
+      display:inline-flex;align-items:center;gap:8px;
+      padding:8px 10px;border-radius:999px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.03);
+      color:var(--muted);font-size:13px;
+      margin:8px 8px 0 0;
+    }
+    .mini{display:grid;gap:12px;}
+    .stat{
+      padding:14px;border-radius: var(--radius2);
+      border:1px solid rgba
