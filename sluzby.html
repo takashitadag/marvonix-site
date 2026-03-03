@@ -4,125 +4,153 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Služby | Marvonix</title>
-  <meta name="description" content="Služby Marvonix: Google Ads, Meta Ads, měření, landing page optimalizace." />
+  <meta name="description" content="Služby Marvonix: Meta Ads, Google Ads, měření, landing pages a optimalizace pro autoservisy." />
   <link rel="icon" href="favicon.ico">
 
   <style>
-    :root{--bg:#050714;--bg2:#0c1026;--purple:#7c3aed;--purple2:#a855f7;--text:#fff;--muted:rgba(255,255,255,.75);--line:rgba(255,255,255,.10);--shadow:0 18px 60px rgba(0,0,0,.45);--r:18px;--max:1120px;--pad:20px}
+    :root{
+      --bg:#050714;--bg2:#0c1026;--purple:#7c3aed;--purple2:#a855f7;
+      --text:#fff;--muted:rgba(255,255,255,.75);--line:rgba(255,255,255,.10);
+      --shadow:0 18px 60px rgba(0,0,0,.45);--r:18px;--max:1120px;--pad:20px;--navH:86px;
+    }
     *{box-sizing:border-box}
-    html,body{margin:0;background:radial-gradient(900px 600px at 15% 10%, rgba(124,58,237,.25), transparent 60%),radial-gradient(800px 600px at 90% 20%, rgba(168,85,247,.18), transparent 60%),linear-gradient(160deg,var(--bg),var(--bg2));color:var(--text);font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Arial}
+    html,body{margin:0;background:
+      radial-gradient(900px 600px at 15% 10%, rgba(124,58,237,.25), transparent 60%),
+      radial-gradient(800px 600px at 90% 20%, rgba(168,85,247,.18), transparent 60%),
+      linear-gradient(160deg,var(--bg),var(--bg2));
+      color:var(--text);font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Arial;overflow-x:hidden}
     a{color:inherit;text-decoration:none}
     .wrap{max-width:var(--max);margin:0 auto;padding:0 var(--pad)}
-    .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:12px 18px;border-radius:999px;background:linear-gradient(135deg,var(--purple),var(--purple2));color:#fff;font-weight:900;box-shadow:0 18px 50px rgba(124,58,237,.22);transition:.25s;white-space:nowrap;border:0;cursor:pointer}
-    .btn:hover{transform:translateY(-2px);box-shadow:0 25px 70px rgba(124,58,237,.4)}
-    .btn.secondary{background:rgba(255,255,255,.08);box-shadow:none;font-weight:800}
-    .btn.secondary:hover{background:rgba(255,255,255,.12)}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:11px 16px;border-radius:999px;
+      background:linear-gradient(135deg,var(--purple),var(--purple2));color:#fff;font-weight:900;box-shadow:0 18px 50px rgba(124,58,237,.22);
+      transition:.25s;white-space:nowrap;border:0;cursor:pointer}
+    .btn:hover{transform:translateY(-2px);box-shadow:0 25px 70px rgba(124,58,237,.40)}
+    .btn.secondary{background:rgba(255,255,255,.08);box-shadow:none;border:1px solid rgba(255,255,255,.12);font-weight:800}
+    .btn.secondary:hover{box-shadow:0 14px 40px rgba(0,0,0,.35)}
 
-    .nav{position:sticky;top:0;z-index:50;backdrop-filter: blur(12px);background:rgba(5,7,20,.72);border-bottom:1px solid var(--line)}
-    .navin{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:14px 0;position:relative}
-    .brand img{height:64px;width:auto;display:block;filter:drop-shadow(0 14px 40px rgba(124,58,237,.25))}
+    .nav{position:sticky;top:0;z-index:50;backdrop-filter: blur(12px);background:rgba(5,7,20,.75);border-bottom:1px solid var(--line)}
+    .navin{position:relative;display:flex;align-items:center;justify-content:space-between;gap:14px;padding:14px 0;min-height:var(--navH)}
+    .brand{display:flex;align-items:center;gap:14px}
+    .brand img{height:56px;width:auto;display:block;filter:drop-shadow(0 18px 40px rgba(124,58,237,.25))}
     .links{display:flex;gap:18px;align-items:center;color:var(--muted);font-size:14px}
-    .links a:hover{color:#fff}
-
-    .burger{display:none;width:44px;height:44px;border:1px solid var(--line);border-radius:14px;background:rgba(255,255,255,.04);align-items:center;justify-content:center;cursor:pointer;transition:.25s}
-    .burger:hover{background:rgba(255,255,255,.06)}
-    .burger .b{width:22px;height:16px;position:relative}
-    .burger .b span{position:absolute;left:0;right:0;height:2.5px;border-radius:99px;background:#fff;transition:.28s}
-    .burger .b span:nth-child(1){top:0}
-    .burger .b span:nth-child(2){top:6.5px}
-    .burger .b span:nth-child(3){bottom:0}
-    .burger.open .b span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
-    .burger.open .b span:nth-child(2){opacity:0}
-    .burger.open .b span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
-
+    .links a{padding:10px 8px;border-radius:10px;transition:.2s}
+    .links a:hover{color:#fff;background:rgba(255,255,255,.06)}
+    .navcta-mobile{display:none;}
+    .navcta-desktop{display:inline-flex;}
+    .burger{display:none;width:44px;height:44px;border-radius:12px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.06);
+      align-items:center;justify-content:center;cursor:pointer;transition:.2s}
+    .burger:hover{transform:translateY(-1px)}
+    .burger span{width:20px;height:2px;background:#fff;display:block;position:relative;border-radius:2px}
+    .burger span:before,.burger span:after{content:"";position:absolute;left:0;width:20px;height:2px;background:#fff;border-radius:2px}
+    .burger span:before{top:-6px}.burger span:after{top:6px}
     @media (max-width: 940px){
-      .btn.navcta{display:none}
       .burger{display:flex}
-      .links{position:absolute;left:0;right:0;top:86px;display:flex;flex-direction:column;gap:14px;padding:16px;border:1px solid var(--line);border-radius:18px;background:rgba(5,7,20,.92);box-shadow:var(--shadow);opacity:0;transform:translateY(-10px);pointer-events:none}
-      .links.active{opacity:1;transform:translateY(0);pointer-events:auto}
+      .navcta-desktop{display:none;}
+      .links{
+        position:absolute;left:0;right:0;top:100%;margin-top:12px;
+        display:flex;flex-direction:column;gap:10px;padding:14px;
+        border:1px solid var(--line);border-radius:18px;background:rgba(5,7,20,.92);box-shadow:var(--shadow);
+        opacity:0;transform:translateY(-10px);pointer-events:none;transition:.22s ease}
+      .links.open{opacity:1;transform:translateY(0);pointer-events:auto}
+      .links a{padding:12px 12px}
+      .navcta-mobile{display:inline-flex;width:100%;margin-top:6px}
     }
 
-    header{padding:42px 0 10px}
-    h1{margin:0 0 10px;font-size:42px}
-    p{margin:0;color:var(--muted);line-height:1.6}
-    section{padding:24px 0}
-    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-    .card{background:rgba(255,255,255,.04);border:1px solid var(--line);border-radius:var(--r);padding:18px;box-shadow:var(--shadow)}
-    .card h3{margin:0 0 6px}
-    .card ul{margin:10px 0 0;padding-left:18px;color:var(--muted);line-height:1.6}
-    .ctaBox{margin-top:14px;background:rgba(255,255,255,.04);border:1px solid var(--line);border-radius:22px;padding:18px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:center;box-shadow:var(--shadow)}
+    header{padding:34px 0 10px}
+    h1{margin:0 0 10px;font-size:44px;letter-spacing:-.02em}
+    p{color:var(--muted);line-height:1.65;margin:0}
+    section{padding:22px 0}
+    .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+    .card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.10);border-radius:var(--r);padding:18px;box-shadow:var(--shadow);transition:.25s}
+    .card:hover{transform:translateY(-4px)}
+    .card h3{margin:0 0 8px}
+    .card ul{margin:10px 0 0;padding-left:18px;color:rgba(255,255,255,.86);line-height:1.7}
+    .bar{margin-top:16px;border-radius:24px;border:1px solid rgba(255,255,255,.10);background:rgba(255,255,255,.03);box-shadow:var(--shadow);padding:18px}
+    .barRow{display:flex;gap:12px;flex-wrap:wrap;align-items:center;justify-content:space-between}
     footer{padding:26px 0 40px;border-top:1px solid var(--line);color:var(--muted);font-size:13px}
     .foot{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
-    @media (max-width: 980px){.grid{grid-template-columns:1fr}}
+    .reveal{opacity:0;transform:translateY(14px);transition:.5s ease}
+    .reveal.show{opacity:1;transform:translateY(0)}
+    .reveal.delay1{transition-delay:.06s}.reveal.delay2{transition-delay:.12s}.reveal.delay3{transition-delay:.18s}
+    @media (max-width: 900px){.grid3{grid-template-columns:1fr} h1{font-size:38px}}
   </style>
 </head>
 
 <body>
   <div class="nav">
     <div class="wrap navin">
-      <a class="brand" href="index.html"><img src="logo.png" alt="Marvonix logo"></a>
-
-      <div class="burger" id="burger" aria-label="Menu" role="button" tabindex="0">
-        <div class="b"><span></span><span></span><span></span></div>
-      </div>
+      <a class="brand" href="index.html" aria-label="Marvonix">
+        <img src="logo.png" alt="Marvonix logo">
+      </a>
 
       <div class="links" id="navLinks">
         <a href="index.html">Domů</a>
         <a href="sluzby.html">Služby</a>
         <a href="o-nas.html">O nás</a>
         <a href="kontakt.html">Kontakt</a>
-        <a class="btn" href="kontakt.html" style="width:100%;margin-top:6px">Objednat konzultaci</a>
+        <a class="btn navcta-mobile" href="kontakt.html">Objednat konzultaci</a>
       </div>
 
-      <a class="btn navcta" href="kontakt.html">Objednat konzultaci</a>
+      <a class="btn navcta-desktop" href="kontakt.html">Objednat konzultaci</a>
+
+      <button class="burger" id="burger" aria-label="Otevřít menu" aria-expanded="false">
+        <span></span>
+      </button>
     </div>
   </div>
 
   <header>
     <div class="wrap">
-      <h1>Služby</h1>
-      <p>Balíčky stavíme tak, aby marketing přinášel zakázky — ne jen prokliky.</p>
+      <h1 class="reveal">Služby</h1>
+      <p class="reveal delay1">Balíčky stavíme podle kapacity a cíle. Priorita: relevantní poptávky, měření a stabilní růst.</p>
     </div>
   </header>
 
   <section>
-    <div class="wrap grid">
-      <div class="card">
-        <h3>Google Search Ads</h3>
-        <p>Chytíme poptávku ve chvíli, kdy lidé hledají servis.</p>
-        <ul>
-          <li>kampaně na sezónní služby</li>
-          <li>lokální cílení + optimalizace</li>
-          <li>kontrola ceny za poptávku</li>
-        </ul>
-      </div>
-      <div class="card">
-        <h3>Meta Ads</h3>
-        <p>Vytváříme poptávku a budujeme značku v okolí.</p>
-        <ul>
-          <li>kreativy + testování</li>
-          <li>remarketing</li>
-          <li>škálování výherních reklam</li>
-        </ul>
-      </div>
-      <div class="card">
-        <h3>Měření & web</h3>
-        <p>Bez měření nevíš, co vydělává. Dáme tomu řád.</p>
-        <ul>
-          <li>měření konverzí</li>
-          <li>landing page optimalizace</li>
-          <li>reporty jen to podstatné</li>
-        </ul>
-      </div>
-    </div>
-
     <div class="wrap">
-      <div class="ctaBox">
-        <div>
-          <b>Chcete návrh postupu pro váš servis?</b>
-          <div style="color:var(--muted);margin-top:4px">Napište kapacitu aut/měsíc a průměrnou hodnotu zakázky.</div>
+      <div class="grid3">
+        <div class="card reveal">
+          <h3>Google Ads (Search)</h3>
+          <p>Váš servis se ukáže lidem, kteří právě hledají službu.</p>
+          <ul>
+            <li>struktura kampaní + klíčová slova</li>
+            <li>negativní slova a čištění dotazů</li>
+            <li>optimalizace na cenu/poptávku</li>
+          </ul>
         </div>
-        <a class="btn" href="kontakt.html">Objednat konzultaci</a>
+
+        <div class="card reveal delay1">
+          <h3>Meta Ads (Facebook/Instagram)</h3>
+          <p>Oslovíme lidi v okolí a vytvoříme poptávku (sezónnost).</p>
+          <ul>
+            <li>lokální cílení + kreativy</li>
+            <li>retargeting (návštěvníci webu)</li>
+            <li>lead formuláře / web konverze</li>
+          </ul>
+        </div>
+
+        <div class="card reveal delay2">
+          <h3>Měření & reporting</h3>
+          <p>Bez měření je to hádání. U nás uvidíte, co se děje.</p>
+          <ul>
+            <li>konverze, události, kvalita leadů</li>
+            <li>jasný report bez omáčky</li>
+            <li>následující krok dopředu</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="bar reveal delay1">
+        <div class="barRow">
+          <div>
+            <div style="font-weight:900;font-size:16px;margin-bottom:4px">Chcete nabídku na míru?</div>
+            <div style="color:var(--muted);font-size:13px;line-height:1.5">Pošlete kapacitu aut/měsíc a průměrnou hodnotu zakázky.</div>
+          </div>
+          <div style="display:flex;gap:10px;flex-wrap:wrap">
+            <a class="btn" href="kontakt.html">Objednat konzultaci</a>
+            <a class="btn secondary" href="o-nas.html">Jak přemýšlíme</a>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -140,22 +168,24 @@
 
     const burger = document.getElementById('burger');
     const navLinks = document.getElementById('navLinks');
-
-    function toggleMenu(){ navLinks.classList.toggle('active'); burger.classList.toggle('open'); }
-    function closeMenu(){ navLinks.classList.remove('active'); burger.classList.remove('open'); }
-
-    burger.addEventListener('click', toggleMenu);
-    burger.addEventListener('keydown', (e)=>{ if(e.key === 'Enter' || e.key === ' ') toggleMenu(); });
-
-    navLinks.querySelectorAll('a').forEach(a=>a.addEventListener('click', closeMenu));
-
-    document.addEventListener('click', (e)=>{
-      if(!navLinks.classList.contains('active')) return;
-      const isInside = navLinks.contains(e.target) || burger.contains(e.target);
-      if(!isInside) closeMenu();
+    function closeMenu(){ navLinks.classList.remove('open'); burger.setAttribute('aria-expanded','false'); }
+    burger.addEventListener('click', () => {
+      const open = navLinks.classList.toggle('open');
+      burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+    document.addEventListener('click', (e) => {
+      if (!navLinks.contains(e.target) && !burger.contains(e.target)) closeMenu();
     });
 
-    window.addEventListener('resize', ()=>{ if(window.innerWidth > 940) closeMenu(); });
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(en=>{
+        if(en.isIntersecting){
+          en.target.classList.add('show');
+          io.unobserve(en.target);
+        }
+      });
+    }, {threshold:0.12});
+    document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
   </script>
 </body>
 </html>
