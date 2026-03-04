@@ -1,378 +1,387 @@
 <!doctype html>
 <html lang="cs">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Marvonix | Performance Growth Agency</title>
-  <meta name="description" content="Pomáháme autoservisům získat více zákazníků díky Meta Ads a Google Ads. Měření, transparentnost, rychlá implementace." />
-  <link rel="icon" href="favicon.ico">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Marvonix | Performance Growth Agency</title>
 
-  <style>
-    :root{
-      --bg:#050714;
-      --bg2:#0c1026;
-      --purple:#7c3aed;
-      --purple2:#a855f7;
-      --text:#ffffff;
-      --muted:rgba(255,255,255,.75);
-      --line:rgba(255,255,255,.10);
-      --shadow:0 18px 60px rgba(0,0,0,.45);
-      --r:18px;
-      --max:1120px;
-      --pad:20px;
-      --navH:86px;
-    }
-    *{box-sizing:border-box}
-    html,body{
-      margin:0;
-      background:
-        radial-gradient(900px 600px at 15% 10%, rgba(124,58,237,.25), transparent 60%),
-        radial-gradient(800px 600px at 90% 20%, rgba(168,85,247,.18), transparent 60%),
-        linear-gradient(160deg,var(--bg),var(--bg2));
-      color:var(--text);
-      font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Arial;
-      overflow-x:hidden;
-    }
-    a{color:inherit;text-decoration:none}
-    .wrap{max-width:var(--max);margin:0 auto;padding:0 var(--pad)}
-    .btn{
-      display:inline-flex;align-items:center;justify-content:center;gap:10px;
-      padding:11px 16px;border-radius:999px;
-      background:linear-gradient(135deg,var(--purple),var(--purple2));
-      color:#fff;font-weight:900;
-      box-shadow:0 18px 50px rgba(124,58,237,.22);
-      transition:.25s;
-      white-space:nowrap;
-      border:0;
-      cursor:pointer;
-    }
-    .btn:hover{transform:translateY(-2px);box-shadow:0 25px 70px rgba(124,58,237,.40)}
-    .btn.secondary{
-      background:rgba(255,255,255,.08);
-      box-shadow:none;
-      border:1px solid rgba(255,255,255,.12);
-      color:#fff;
-      font-weight:800;
-    }
-    .btn.secondary:hover{transform:translateY(-2px);box-shadow:0 14px 40px rgba(0,0,0,.35)}
+<style>
 
-    /* NAV */
-    .nav{
-      position:sticky;top:0;z-index:50;
-      backdrop-filter: blur(12px);
-      background:rgba(5,7,20,.75);
-      border-bottom:1px solid var(--line);
-    }
-    .navin{
-      position:relative;
-      display:flex;align-items:center;justify-content:space-between;gap:14px;
-      padding:14px 0;
-      min-height:var(--navH);
-    }
-    .brand{display:flex;align-items:center;gap:14px}
-    .brand img{height:56px;width:auto;display:block;filter:drop-shadow(0 18px 40px rgba(124,58,237,.25))}
-    .links{
-      display:flex;gap:18px;align-items:center;color:var(--muted);font-size:14px
-    }
-    .links a{padding:10px 8px;border-radius:10px;transition:.2s}
-    .links a:hover{color:#fff;background:rgba(255,255,255,.06)}
-    .navcta-mobile{display:none;}
-    .navcta-desktop{display:inline-flex;}
+:root{
+--bg:#050714;
+--bg2:#0c1026;
+--purple:#7c3aed;
+--purple2:#a855f7;
+--text:#ffffff;
+--muted:rgba(255,255,255,.75);
+--line:rgba(255,255,255,.10);
+--shadow:0 18px 60px rgba(0,0,0,.45);
+--r:18px;
+--max:1120px;
+--pad:20px;
+}
 
-    .burger{
-      display:none;
-      width:44px;height:44px;
-      border-radius:12px;
-      border:1px solid rgba(255,255,255,.12);
-      background:rgba(255,255,255,.06);
-      align-items:center;justify-content:center;
-      cursor:pointer;
-      transition:.2s;
-    }
-    .burger:hover{transform:translateY(-1px)}
-    .burger span{
-      width:20px;height:2px;background:#fff;display:block;position:relative;border-radius:2px;
-    }
-    .burger span:before,.burger span:after{
-      content:"";position:absolute;left:0;width:20px;height:2px;background:#fff;border-radius:2px;
-      transition:.2s;
-    }
-    .burger span:before{top:-6px}
-    .burger span:after{top:6px}
+*{box-sizing:border-box}
 
-    /* mobile dropdown menu */
-    @media (max-width: 940px){
-      .burger{display:flex}
-      .navcta-desktop{display:none;}
-      .links{
-        position:absolute;
-        left:0; right:0;
-        top:100%;
-        margin-top:12px;
+html,body{
+margin:0;
+background:
+radial-gradient(900px 600px at 15% 10%, rgba(124,58,237,.25), transparent 60%),
+radial-gradient(800px 600px at 90% 20%, rgba(168,85,247,.18), transparent 60%),
+linear-gradient(160deg,var(--bg),var(--bg2));
+color:var(--text);
+font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial;
+overflow-x:hidden;
+}
 
-        display:flex;
-        flex-direction:column;
-        gap:10px;
-        padding:14px;
-        border:1px solid var(--line);
-        border-radius:18px;
-        background:rgba(5,7,20,.92);
-        box-shadow:var(--shadow);
+.wrap{
+max-width:var(--max);
+margin:auto;
+padding:0 var(--pad);
+}
 
-        opacity:0;
-        transform:translateY(-10px);
-        pointer-events:none;
-        transition:.22s ease;
-      }
-      .links.open{
-        opacity:1;
-        transform:translateY(0);
-        pointer-events:auto;
-      }
-      .links a{padding:12px 12px}
-      .navcta-mobile{display:inline-flex; width:100%; margin-top:6px;}
-    }
+a{text-decoration:none;color:inherit}
 
-    /* HERO */
-    header{padding:34px 0 10px}
-    .hero{
-      margin-top:22px;
-      border-radius:24px;
-      border:1px solid rgba(255,255,255,.10);
-      background:
-        radial-gradient(700px 500px at 20% 20%, rgba(124,58,237,.30), transparent 60%),
-        radial-gradient(700px 500px at 85% 35%, rgba(168,85,247,.22), transparent 55%),
-        rgba(255,255,255,.03);
-      box-shadow:var(--shadow);
-      padding:28px;
-      overflow:hidden;
-    }
-    .heroGrid{display:grid;grid-template-columns:1.3fr .9fr;gap:18px;align-items:stretch}
-    h1{margin:0 0 12px;font-size:56px;line-height:1.02;letter-spacing:-.02em}
-    .sub{color:var(--muted);line-height:1.65;margin:0;max-width:58ch}
-    .badgeRow{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
-    .pill{
-      padding:8px 12px;border-radius:999px;
-      border:1px solid rgba(168,85,247,.25);
-      background:rgba(124,58,237,.10);
-      color:rgba(255,255,255,.88);
-      font-size:12px;font-weight:800;
-      letter-spacing:.10em;
-      text-transform:uppercase;
-    }
-    .ctaRow{display:flex;gap:12px;flex-wrap:wrap;margin-top:18px}
-    .sideCard{
-      border-radius:18px;
-      border:1px solid rgba(255,255,255,.10);
-      background:rgba(0,0,0,.20);
-      box-shadow:0 18px 60px rgba(0,0,0,.35);
-      padding:18px;
-      display:flex;flex-direction:column;justify-content:space-between;gap:14px;
-    }
-    .kv{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:6px}
-    .kv .row{
-      display:flex;justify-content:space-between;gap:12px;
-      padding:10px 12px;border-radius:14px;
-      background:rgba(255,255,255,.04);
-      border:1px solid rgba(255,255,255,.08);
-      color:rgba(255,255,255,.90);
-    }
-    .kv .row b{font-weight:900}
-    .bigBtn{
-      width:100%;
-      padding:12px 16px;
-      font-size:16px;
-    }
+/* NAV */
 
-    section{padding:26px 0}
-    .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-    .card{
-      background:rgba(255,255,255,.04);
-      border:1px solid rgba(255,255,255,.10);
-      border-radius:var(--r);
-      padding:18px;
-      box-shadow:var(--shadow);
-      transition:.25s;
-      transform:translateY(0);
-    }
-    .card:hover{transform:translateY(-4px)}
-    .card h3{margin:0 0 8px}
-    .card p{margin:0;color:var(--muted);line-height:1.6}
+.nav{
+position:sticky;
+top:0;
+background:rgba(5,7,20,.75);
+backdrop-filter:blur(12px);
+border-bottom:1px solid var(--line);
+z-index:50;
+}
 
-    .split{
-      display:grid;grid-template-columns:1fr 1fr;gap:14px;align-items:start
-    }
+.navin{
+display:flex;
+align-items:center;
+justify-content:space-between;
+padding:14px 0;
+}
 
-    footer{padding:26px 0 40px;border-top:1px solid var(--line);color:var(--muted);font-size:13px}
-    .foot{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.brand img{
+height:54px;
+}
 
-    /* animations (reveal) */
-    .reveal{opacity:0;transform:translateY(14px);transition:.5s ease}
-    .reveal.show{opacity:1;transform:translateY(0)}
-    .reveal.delay1{transition-delay:.06s}
-    .reveal.delay2{transition-delay:.12s}
-    .reveal.delay3{transition-delay:.18s}
+.links{
+display:flex;
+gap:20px;
+color:var(--muted);
+font-size:14px;
+}
 
-    @media (max-width: 980px){
-      h1{font-size:44px}
-      .heroGrid{grid-template-columns:1fr}
-    }
-    @media (max-width: 720px){
-      h1{font-size:38px}
-      .grid3{grid-template-columns:1fr}
-      .split{grid-template-columns:1fr}
-      .brand img{height:52px}
-    }
-  </style>
+.links a:hover{color:white}
+
+.burger{
+display:none;
+width:42px;
+height:42px;
+border-radius:10px;
+border:1px solid rgba(255,255,255,.15);
+background:rgba(255,255,255,.06);
+align-items:center;
+justify-content:center;
+cursor:pointer;
+}
+
+.burger span{
+width:20px;
+height:2px;
+background:white;
+display:block;
+position:relative;
+}
+
+.burger span:before,
+.burger span:after{
+content:"";
+position:absolute;
+width:20px;
+height:2px;
+background:white;
+left:0;
+}
+
+.burger span:before{top:-6px}
+.burger span:after{top:6px}
+
+.btn{
+display:inline-flex;
+align-items:center;
+justify-content:center;
+padding:12px 18px;
+border-radius:999px;
+background:linear-gradient(135deg,var(--purple),var(--purple2));
+font-weight:700;
+white-space:nowrap;
+}
+
+.btn.secondary{
+background:rgba(255,255,255,.08);
+border:1px solid rgba(255,255,255,.1);
+}
+
+/* HERO */
+
+header{padding:30px 0}
+
+.hero{
+border-radius:24px;
+border:1px solid rgba(255,255,255,.1);
+background:rgba(255,255,255,.03);
+padding:28px;
+box-shadow:var(--shadow);
+overflow:hidden;
+}
+
+.heroGrid{
+display:grid;
+grid-template-columns:1.3fr .9fr;
+gap:20px;
+}
+
+.heroGrid>*{
+min-width:0;
+}
+
+h1{
+margin:0 0 12px;
+font-size:56px;
+line-height:1.05;
+letter-spacing:-.02em;
+overflow-wrap:anywhere;
+}
+
+.sub{
+color:var(--muted);
+line-height:1.6;
+}
+
+.ctaRow{
+display:flex;
+gap:12px;
+flex-wrap:wrap;
+margin-top:18px;
+}
+
+.badgeRow{
+display:flex;
+gap:10px;
+flex-wrap:wrap;
+margin-top:16px;
+}
+
+.pill{
+padding:8px 12px;
+border-radius:999px;
+background:rgba(124,58,237,.12);
+border:1px solid rgba(168,85,247,.3);
+font-size:12px;
+font-weight:700;
+letter-spacing:.1em;
+text-transform:uppercase;
+}
+
+.sideCard{
+border-radius:18px;
+border:1px solid rgba(255,255,255,.1);
+background:rgba(0,0,0,.25);
+padding:18px;
+display:flex;
+flex-direction:column;
+gap:14px;
+min-width:0;
+}
+
+.kv{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:10px;
+}
+
+.row{
+background:rgba(255,255,255,.05);
+border:1px solid rgba(255,255,255,.1);
+border-radius:12px;
+padding:10px;
+display:flex;
+justify-content:space-between;
+}
+
+.bigBtn{
+width:100%;
+text-align:center;
+}
+
+/* CARDS */
+
+section{padding:30px 0}
+
+.grid3{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:16px;
+}
+
+.card{
+background:rgba(255,255,255,.04);
+border:1px solid rgba(255,255,255,.1);
+border-radius:var(--r);
+padding:18px;
+}
+
+.card h3{margin:0 0 8px}
+
+.split{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:16px;
+}
+
+/* FOOTER */
+
+footer{
+padding:30px 0;
+border-top:1px solid var(--line);
+color:var(--muted);
+}
+
+.foot{
+display:flex;
+justify-content:space-between;
+flex-wrap:wrap;
+}
+
+/* MOBILE */
+
+@media (max-width:980px){
+
+.heroGrid{
+grid-template-columns:1fr;
+}
+
+h1{
+font-size:44px;
+}
+
+}
+
+@media (max-width:720px){
+
+.links{
+display:none;
+}
+
+.burger{
+display:flex;
+}
+
+.hero{
+padding:20px 16px;
+}
+
+h1{
+font-size:clamp(32px,8.5vw,42px);
+}
+
+.grid3{
+grid-template-columns:1fr;
+}
+
+.split{
+grid-template-columns:1fr;
+}
+
+.ctaRow .btn{
+width:100%;
+}
+
+}
+
+</style>
 </head>
 
 <body>
-  <div class="nav">
-    <div class="wrap navin">
-      <a class="brand" href="index.html" aria-label="Marvonix">
-        <img src="logo.png" alt="Marvonix logo">
-      </a>
 
-      <div class="links" id="navLinks">
-        <a href="index.html">Domů</a>
-        <a href="sluzby.html">Služby</a>
-        <a href="o-nas.html">O nás</a>
-        <a href="kontakt.html">Kontakt</a>
-        <a class="btn navcta-mobile" href="kontakt.html">Objednat konzultaci</a>
-      </div>
+<div class="nav">
+<div class="wrap navin">
 
-      <a class="btn navcta-desktop" href="kontakt.html">Objednat konzultaci</a>
+<a class="brand" href="#">
+<img src="logo.png" alt="Marvonix logo">
+</a>
 
-      <button class="burger" id="burger" aria-label="Otevřít menu" aria-expanded="false">
-        <span></span>
-      </button>
-    </div>
-  </div>
+<div class="links">
+<a href="#">Domů</a>
+<a href="#">Služby</a>
+<a href="#">O nás</a>
+<a href="#">Kontakt</a>
+</div>
 
-  <header>
-    <div class="wrap">
-      <div class="hero reveal">
-        <div class="heroGrid">
-          <div>
-            <div style="letter-spacing:.22em;text-transform:uppercase;font-weight:900;font-size:12px;color:rgba(255,255,255,.75)">
-              Meta Ads • Google Ads • Local Growth
-            </div>
-            <h1>Pomáháme autoservisům získat víc zákazníků</h1>
-            <p class="sub">
-              Výkonnostní marketing bez zbytečných řečí. Neprodáváme „hezké reporty“ — přivádíme relevantní poptávky a hlídáme cenu za zakázku podle vašich čísel a kapacity.
-            </p>
+<button class="burger">
+<span></span>
+</button>
 
-            <div class="ctaRow">
-              <a class="btn" href="kontakt.html">Kontaktovat nás</a>
-              <a class="btn secondary" href="sluzby.html">Zobrazit služby</a>
-            </div>
+</div>
+</div>
 
-            <div class="badgeRow">
-              <span class="pill">Zaměření: autoservisy</span>
-              <span class="pill">Měření & transparentnost</span>
-              <span class="pill">Rychlá implementace</span>
-            </div>
-          </div>
+<header>
+<div class="wrap">
 
-          <aside class="sideCard reveal delay1">
-            <div style="display:flex;justify-content:space-between;gap:10px;align-items:flex-start">
-              <div>
-                <div style="font-weight:900;font-size:16px;margin-bottom:2px">Co získáte</div>
-                <div style="color:var(--muted);font-size:13px;line-height:1.5">jasná čísla, kontrolu a smysluplné poptávky</div>
-              </div>
-              <div style="width:10px;height:10px;border-radius:999px;background:linear-gradient(135deg,var(--purple),var(--purple2));box-shadow:0 0 0 6px rgba(124,58,237,.12)"></div>
-            </div>
+<div class="hero">
 
-            <div class="kv">
-              <div class="row"><b>Co řešíme</b><span style="color:var(--muted)">zakázky, kapacita, marže</span></div>
-              <div class="row"><b>Kanály</b><span style="color:var(--muted)">Google + Meta</span></div>
-              <div class="row" style="grid-column:1/3"><b>Výsledek</b><span style="color:var(--muted)">poptávky, které dává smysl vzít</span></div>
-            </div>
+<div class="heroGrid">
 
-            <a class="btn bigBtn" href="kontakt.html">Chci konzultaci</a>
-          </aside>
-        </div>
-      </div>
-    </div>
-  </header>
+<div>
 
-  <section>
-    <div class="wrap">
-      <div class="grid3">
-        <div class="card reveal">
-          <h3>Růst bez chaosu</h3>
-          <p>Čistá struktura kampaní + měření. Víš, co funguje a proč.</p>
-        </div>
-        <div class="card reveal delay1">
-          <h3>Sezónnost pod kontrolou</h3>
-          <p>Pneu, klima, STK — kampaně stavíme podle období a poptávky.</p>
-        </div>
-        <div class="card reveal delay2">
-          <h3>Transparentní komunikace</h3>
-          <p>Žádné mlžení. Uvidíš čísla i další krok dopředu.</p>
-        </div>
-      </div>
-    </div>
-  </section>
+<div style="letter-spacing:.22em;text-transform:uppercase;font-weight:800;font-size:12px;color:rgba(255,255,255,.7)">
+Meta Ads • Google Ads • Local Growth
+</div>
 
-  <section>
-    <div class="wrap split">
-      <div class="card reveal">
-        <h3>Jak začneme</h3>
-        <p>Pošleš kapacitu aut/měsíc a průměrnou hodnotu zakázky. My navrhneme postup a první kroky.</p>
-        <div style="margin-top:14px;display:flex;gap:10px;flex-wrap:wrap">
-          <a class="btn" href="kontakt.html">Objednat konzultaci</a>
-          <a class="btn secondary" href="o-nas.html">Kdo jsme</a>
-        </div>
-      </div>
-      <div class="card reveal delay1">
-        <h3>Co od vás potřebujeme</h3>
-        <p>Rychlou reakci na poptávky a přehled o kapacitě. Marketing přivede zákazníky — servis je musí umět přijmout.</p>
-        <div style="margin-top:14px;color:rgba(255,255,255,.85);font-size:13px;line-height:1.6">
-          Tip: nastavíme jednoduchý proces „poptávka → telefon → termín“.
-        </div>
-      </div>
-    </div>
-  </section>
+<h1>Pomáháme autoservisům získat víc zákazníků</h1>
 
-  <footer>
-    <div class="wrap foot">
-      <div><b style="letter-spacing:.14em;text-transform:uppercase;">Marvonix</b><div style="opacity:.75;font-size:12px">Performance Growth Agency</div></div>
-      <div>Kontakt: <a href="mailto:info@marvonix.cz">info@marvonix.cz</a></div>
-      <div>© <span id="y"></span> Marvonix</div>
-    </div>
-  </footer>
+<p class="sub">
+Výkonnostní marketing bez zbytečných řečí. Přivádíme relevantní poptávky a hlídáme cenu za zakázku podle vaší kapacity.
+</p>
 
-  <script>
-    // year
-    document.getElementById('y').textContent = new Date().getFullYear();
+<div class="ctaRow">
+<a class="btn">Kontaktovat nás</a>
+<a class="btn secondary">Zobrazit služby</a>
+</div>
 
-    // burger
-    const burger = document.getElementById('burger');
-    const navLinks = document.getElementById('navLinks');
+<div class="badgeRow">
+<span class="pill">Zaměření: autoservisy</span>
+<span class="pill">Měření & transparentnost</span>
+<span class="pill">Rychlá implementace</span>
+</div>
 
-    function closeMenu(){
-      navLinks.classList.remove('open');
-      burger.setAttribute('aria-expanded','false');
-    }
-    burger.addEventListener('click', () => {
-      const open = navLinks.classList.toggle('open');
-      burger.setAttribute('aria-expanded', open ? 'true' : 'false');
-    });
-    document.addEventListener('click', (e) => {
-      if (!navLinks.contains(e.target) && !burger.contains(e.target)) closeMenu();
-    });
+</div>
 
-    // reveal
-    const io = new IntersectionObserver((entries)=>{
-      entries.forEach(en=>{
-        if(en.isIntersecting){
-          en.target.classList.add('show');
-          io.unobserve(en.target);
-        }
-      });
-    }, {threshold: 0.12});
-    document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
-  </script>
+<aside class="sideCard">
+
+<div>
+<b>Co získáte</b>
+<div style="color:var(--muted);font-size:13px">
+jasná čísla a smysluplné poptávky
+</div>
+</div>
+
+<div class="kv">
+<div class="row"><b>Co řešíme</b><span>zakázky</span></div>
+<div class="row"><b>Kanály</b><span>Google + Meta</span></div>
+<div class="row" style="grid-column:1/3"><b>Výsledek</b><span>poptávky</span></div>
+</div>
+
+<a class="btn bigBtn">Chci konzultaci</a>
+
+</aside>
+
+</div>
+
+</div>
+
+</div>
+</header>
+
 </body>
 </html>
