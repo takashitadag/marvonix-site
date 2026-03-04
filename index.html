@@ -185,12 +185,26 @@
       border:1px solid rgba(255,255,255,.08);
       color:rgba(255,255,255,.90);
     }
-    .kv .row{
-      display:flex;justify-content:space-between;gap:12px;
-      padding:10px 12px;border-radius:14px;
-      background:rgba(255,255,255,.04);
-      border:1px solid rgba(255,255,255,.08);
-      color:rgba(255,255,255,.90);
+    /* FIX: aby text v boxech nepřetékal na mobilu */
+    .kv .row{ 
+       min-width: 0;          /* dovolí flexu zmenšit se */
+       flex-wrap: wrap;       /* když je málo místa, zalom */
+       align-items: flex-start;
+    }
+    .kv .row b,
+    .kv .row span{
+      min-width: 0;          /* nejdůležitější fix pro iOS/Safari */
+    }
+    .kv .row span{
+      overflow-wrap: anywhere;
+      word-break: break-word;
+    }
+
+/* extra: na hodně úzkých mobilech dej kv pod sebe */
+    @media (max-width: 520px){
+      .kv{ grid-template-columns: 1fr; }
+      .kv .row{ grid-column: auto !important; }
+    }
     }
     .kv .row b{font-weight:900}
     .bigBtn{
