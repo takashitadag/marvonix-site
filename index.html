@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Marvonix | Performance Growth Agency</title>
-  <meta name="description" content="Pomáháme autoservisům získat více zákazníků díky Meta Ads a Google Ads. Měření, transparentnost, rychlá implementace." />
+  <title>Marvonix | Marketing pro autoservisy</title>
+  <meta name="description" content="Pomáháme autoservisům získávat více zakázek pomocí Google Ads a Meta Ads. Transparentní reporting, rychlá implementace a výkon zaměřený na reálné výsledky." />
   <link rel="icon" href="favicon.ico">
 
   <style>
@@ -56,7 +56,6 @@
     }
     .btn.secondary:hover{transform:translateY(-2px);box-shadow:0 14px 40px rgba(0,0,0,.35)}
 
-    /* NAV */
     .nav{
       position:sticky;top:0;z-index:50;
       backdrop-filter: blur(12px);
@@ -105,7 +104,6 @@
     .burger span:before{top:-6px}
     .burger span:after{top:6px}
 
-    /* mobile dropdown menu */
     @media (max-width: 940px){
       .burger{display:flex}
       .navcta-desktop{display:none;}
@@ -114,7 +112,6 @@
         left:0; right:0;
         top:100%;
         margin-top:12px;
-
         display:flex;
         flex-direction:column;
         gap:10px;
@@ -123,7 +120,6 @@
         border-radius:18px;
         background:rgba(5,7,20,.92);
         box-shadow:var(--shadow);
-
         opacity:0;
         transform:translateY(-10px);
         pointer-events:none;
@@ -138,7 +134,6 @@
       .navcta-mobile{display:inline-flex; width:100%; margin-top:6px;}
     }
 
-    /* HERO */
     header{padding:34px 0 10px}
     .hero{
       margin-top:22px;
@@ -156,12 +151,12 @@
     .heroGrid > *{min-width:0;}
     .sideCard{min-width:0;}
     h1{
-  margin:0 0 12px;
-  font-size:clamp(34px, 7.6vw, 56px);
-  line-height:1.05;
-  letter-spacing:-.02em;
-  overflow-wrap:anywhere;
-}
+      margin:0 0 12px;
+      font-size:clamp(34px, 7.6vw, 56px);
+      line-height:1.05;
+      letter-spacing:-.02em;
+      overflow-wrap:anywhere;
+    }
     .sub{color:var(--muted);line-height:1.65;margin:0;max-width:58ch}
     .badgeRow{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
     .pill{
@@ -184,34 +179,31 @@
     }
     .kv{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:6px}
     .kv .row{
-      display:flex;justify-content:space-between;gap:12px;
-      padding:10px 12px;border-radius:14px;
+      display:flex;
+      justify-content:space-between;
+      gap:12px;
+      padding:10px 12px;
+      border-radius:14px;
       background:rgba(255,255,255,.04);
       border:1px solid rgba(255,255,255,.08);
       color:rgba(255,255,255,.90);
-    }
-    /* FIX: aby text v boxech nepřetékal na mobilu */
-    .kv .row{ 
-       min-width: 0;          /* dovolí flexu zmenšit se */
-       flex-wrap: wrap;       /* když je málo místa, zalom */
-       align-items: flex-start;
+      min-width:0;
+      flex-wrap:wrap;
+      align-items:flex-start;
     }
     .kv .row b,
     .kv .row span{
-      min-width: 0;          /* nejdůležitější fix pro iOS/Safari */
+      min-width:0;
     }
     .kv .row span{
-      overflow-wrap: anywhere;
-      word-break: break-word;
+      overflow-wrap:anywhere;
+      word-break:break-word;
+    }
+    @media (max-width: 520px){
+      .kv{grid-template-columns:1fr}
+      .kv .row{grid-column:auto !important;}
     }
 
-/* extra: na hodně úzkých mobilech dej kv pod sebe */
-    @media (max-width: 520px){
-      .kv{ grid-template-columns: 1fr; }
-      .kv .row{ grid-column: auto !important; }
-    }
-    }
-    .kv .row b{font-weight:900}
     .bigBtn{
       width:100%;
       padding:12px 16px;
@@ -237,10 +229,68 @@
       display:grid;grid-template-columns:1fr 1fr;gap:14px;align-items:start
     }
 
+    .pricingTeaser{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:14px;
+      margin-top:8px;
+    }
+    .priceCard{
+      background:rgba(255,255,255,.04);
+      border:1px solid rgba(255,255,255,.10);
+      border-radius:var(--r);
+      padding:20px;
+      box-shadow:var(--shadow);
+    }
+    .priceCard.featured{
+      border:1px solid rgba(168,85,247,.35);
+      background:linear-gradient(180deg, rgba(124,58,237,.14), rgba(255,255,255,.04));
+    }
+    .mini{
+      font-size:12px;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+      color:rgba(255,255,255,.72);
+      font-weight:900;
+      margin-bottom:8px;
+    }
+    .price{
+      font-size:30px;
+      font-weight:900;
+      line-height:1.05;
+      letter-spacing:-.02em;
+      margin:0 0 10px;
+    }
+    .priceSub{
+      color:var(--muted);
+      font-size:14px;
+      line-height:1.6;
+      margin-bottom:14px;
+    }
+    .priceList{
+      margin:0;
+      padding-left:18px;
+      color:rgba(255,255,255,.86);
+      line-height:1.7;
+    }
+
+    .steps{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:14px;
+    }
+    .stepNum{
+      width:34px;height:34px;border-radius:999px;
+      display:inline-flex;align-items:center;justify-content:center;
+      background:linear-gradient(135deg,var(--purple),var(--purple2));
+      font-weight:900;
+      margin-bottom:12px;
+      box-shadow:0 12px 28px rgba(124,58,237,.25);
+    }
+
     footer{padding:26px 0 40px;border-top:1px solid var(--line);color:var(--muted);font-size:13px}
     .foot{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 
-    /* animations (reveal) */
     .reveal{opacity:0;transform:translateY(14px);transition:.5s ease}
     .reveal.show{opacity:1;transform:translateY(0)}
     .reveal.delay1{transition-delay:.06s}
@@ -253,8 +303,12 @@
     }
     @media (max-width: 720px){
       h1{font-size:38px}
-      .grid3{grid-template-columns:1fr}
-      .split{grid-template-columns:1fr}
+      .grid3,
+      .split,
+      .pricingTeaser,
+      .steps{
+        grid-template-columns:1fr;
+      }
       .brand img{height:64px}
     }
   </style>
@@ -289,22 +343,22 @@
         <div class="heroGrid">
           <div>
             <div style="letter-spacing:.22em;text-transform:uppercase;font-weight:900;font-size:12px;color:rgba(255,255,255,.75)">
-              Meta Ads • Google Ads • Local Growth
+              Google Ads • Meta Ads • Marketing pro autoservisy
             </div>
-            <h1>Pomáháme autoservisům získat více zákazníků</h1>
+            <h1>Přivádíme autoservisům více zakázek pomocí výkonnostního marketingu</h1>
             <p class="sub">
-              Výkonnostní marketing bez zbytečných řečí. Neprodáváme „hezké reporty“ — přivádíme relevantní poptávky a hlídáme cenu za zakázku podle vašich čísel a kapacity.
+              Pomáháme autoservisům získávat relevantní poptávky, lépe využít kapacitu a růst bez chaosu. Nestavíme marketing na dojmech, ale na číslech, měření a reálných výsledcích.
             </p>
 
             <div class="ctaRow">
-              <a class="btn" href="kontakt.html">Kontaktovat nás</a>
-              <a class="btn secondary" href="sluzby.html">Zobrazit služby</a>
+              <a class="btn" href="kontakt.html">Objednat konzultaci</a>
+              <a class="btn secondary" href="sluzby.html">Zobrazit služby a ceny</a>
             </div>
 
             <div class="badgeRow">
               <span class="pill">Zaměření: autoservisy</span>
+              <span class="pill">Google + Meta Ads</span>
               <span class="pill">Měření & transparentnost</span>
-              <span class="pill">Rychlá implementace</span>
             </div>
           </div>
 
@@ -312,7 +366,7 @@
             <div style="display:flex;justify-content:space-between;gap:10px;align-items:flex-start">
               <div>
                 <div style="font-weight:900;font-size:16px;margin-bottom:2px">Co získáte</div>
-                <div style="color:var(--muted);font-size:13px;line-height:1.5">jasná čísla, kontrolu a smysluplné poptávky</div>
+                <div style="color:var(--muted);font-size:13px;line-height:1.5">jasná čísla, kontrolu a relevantní poptávky</div>
               </div>
               <div style="width:10px;height:10px;border-radius:999px;background:linear-gradient(135deg,var(--purple),var(--purple2));box-shadow:0 0 0 6px rgba(124,58,237,.12)"></div>
             </div>
@@ -335,15 +389,90 @@
       <div class="grid3">
         <div class="card reveal">
           <h3>Růst bez chaosu</h3>
-          <p>Čistá struktura kampaní + měření. Víte, co funguje a proč.</p>
+          <p>Čistá struktura kampaní, měření a kontrola nad tím, co opravdu funguje.</p>
         </div>
         <div class="card reveal delay1">
           <h3>Sezónnost pod kontrolou</h3>
-          <p>Pneu, klima, STK — kampaně stavíme podle období a poptávky.</p>
+          <p>Pneu, klima, STK nebo servisní špičky — kampaně stavíme podle období a lokální poptávky.</p>
         </div>
         <div class="card reveal delay2">
-          <h3>Transparentní komunikace</h3>
-          <p>Žádné mlžení. Uvidíte čísla i další krok dopředu.</p>
+          <h3>Transparentní spolupráce</h3>
+          <p>Bez mlžení a bez omáčky. Uvidíte čísla, výsledky i další krok dopředu.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div style="margin-bottom:16px">
+        <h2 style="margin:0 0 8px;font-size:32px;letter-spacing:-.02em">Orientační balíčky</h2>
+        <p>Každý servis má jinou kapacitu a jiný cíl. Tohle je orientační rozdělení našich nejčastějších spoluprací.</p>
+      </div>
+
+      <div class="pricingTeaser">
+        <div class="priceCard reveal">
+          <div class="mini">Jednorázově</div>
+          <div class="price">10 000–20 000 Kč</div>
+          <div class="priceSub">Podle rozsahu webu, technického nastavení a zvolených kanálů.</div>
+          <ul class="priceList">
+            <li>web / landing page</li>
+            <li>nastavení Google Ads a / nebo Meta Ads</li>
+            <li>základní měření</li>
+          </ul>
+        </div>
+
+        <div class="priceCard featured reveal delay1">
+          <div class="mini">Měsíční správa</div>
+          <div class="price">15 000 Kč / měsíc</div>
+          <div class="priceSub">Stabilní správa kampaní a pravidelná optimalizace pro většinu servisů.</div>
+          <ul class="priceList">
+            <li>správa kampaní</li>
+            <li>optimalizace a reporting</li>
+            <li>konzultace a další kroky</li>
+          </ul>
+        </div>
+
+        <div class="priceCard reveal delay2">
+          <div class="mini">Rozšířená správa</div>
+          <div class="price">20 000 Kč / měsíc</div>
+          <div class="priceSub">Pro servisy, které chtějí širší podporu růstu a víc než jen správu reklam.</div>
+          <ul class="priceList">
+            <li>vše z měsíční správy</li>
+            <li>rozšířená strategie</li>
+            <li>web / landing pages / lead flow</li>
+          </ul>
+        </div>
+      </div>
+
+      <div style="margin-top:18px">
+        <a class="btn" href="sluzby.html">Zobrazit detail služeb</a>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div style="margin-bottom:16px">
+        <h2 style="margin:0 0 8px;font-size:32px;letter-spacing:-.02em">Jak spolupráce probíhá</h2>
+        <p>Jednoduše, rychle a bez zbytečného chaosu.</p>
+      </div>
+
+      <div class="steps">
+        <div class="card reveal">
+          <div class="stepNum">1</div>
+          <h3>Konzultace</h3>
+          <p>Zjistíme vaši kapacitu, průměrnou hodnotu zakázky a cíl spolupráce.</p>
+        </div>
+        <div class="card reveal delay1">
+          <div class="stepNum">2</div>
+          <h3>Návrh postupu</h3>
+          <p>Navrhneme vhodný balíček, kanály a první kroky, které dávají smysl pro váš servis.</p>
+        </div>
+        <div class="card reveal delay2">
+          <div class="stepNum">3</div>
+          <h3>Spuštění a optimalizace</h3>
+          <p>Spustíme kampaně, měříme výsledky a průběžně optimalizujeme výkon.</p>
         </div>
       </div>
     </div>
@@ -353,7 +482,7 @@
     <div class="wrap split">
       <div class="card reveal">
         <h3>Jak začneme</h3>
-        <p>Pošlete kapacitu aut/měsíc a průměrnou hodnotu zakázky. My navrhneme postup a první kroky.</p>
+        <p>Pošlete kapacitu aut za měsíc, průměrnou hodnotu zakázky a město, kde působíte. Podle toho navrhneme další kroky.</p>
         <div style="margin-top:14px;display:flex;gap:10px;flex-wrap:wrap">
           <a class="btn" href="kontakt.html">Objednat konzultaci</a>
           <a class="btn secondary" href="o-nas.html">Kdo jsme</a>
@@ -363,7 +492,7 @@
         <h3>Co od vás potřebujeme</h3>
         <p>Rychlou reakci na poptávky a přehled o kapacitě. Marketing přivede zákazníky — servis je musí umět přijmout.</p>
         <div style="margin-top:14px;color:rgba(255,255,255,.85);font-size:13px;line-height:1.6">
-          Tip: nastavíme jednoduchý proces „poptávka → telefon → termín“.
+          Tip: pomůžeme vám nastavit jednoduchý proces „poptávka → telefon → termín“.
         </div>
       </div>
     </div>
@@ -371,17 +500,22 @@
 
   <footer>
     <div class="wrap foot">
-      <div><b style="letter-spacing:.14em;text-transform:uppercase;">Marvonix</b><div style="opacity:.75;font-size:12px">Performance Growth Agency</div></div>
-      <div>Kontakt: <a href="mailto:info@marvonix.cz">info@marvonix.cz</a></div>
-      <div>© <span id="y"></span> Marvonix</div>
+      <div>
+        <b style="letter-spacing:.14em;text-transform:uppercase;">Marvonix</b>
+        <div style="opacity:.75;font-size:12px">Marketing pro autoservisy</div>
+      </div>
+      <div>
+        Kontakt: <a href="mailto:info@marvonix.cz">info@marvonix.cz</a>
+      </div>
+      <div>
+        © <span id="y"></span> Marvonix
+      </div>
     </div>
   </footer>
 
   <script>
-    // year
     document.getElementById('y').textContent = new Date().getFullYear();
 
-    // burger
     const burger = document.getElementById('burger');
     const navLinks = document.getElementById('navLinks');
 
@@ -397,7 +531,6 @@
       if (!navLinks.contains(e.target) && !burger.contains(e.target)) closeMenu();
     });
 
-    // reveal
     const io = new IntersectionObserver((entries)=>{
       entries.forEach(en=>{
         if(en.isIntersecting){
