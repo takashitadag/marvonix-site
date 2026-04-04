@@ -4,16 +4,27 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Kontakt | Marvonix</title>
-  <meta name="description" content="Kontaktujte Marvonix. Objednejte konzultaci pro váš autoservis." />
+  <meta name="description" content="Kontaktujte Marvonix a objednejte si konzultaci pro váš autoservis. Navrhneme další krok podle vaší kapacity, zakázek a cílů." />
   <link rel="icon" href="favicon.ico">
 
   <style>
     :root{
-      --bg:#050714;--bg2:#0c1026;--purple:#7c3aed;--purple2:#a855f7;
-      --text:#ffffff;--muted:rgba(255,255,255,.75);--line:rgba(255,255,255,.10);
-      --shadow:0 18px 60px rgba(0,0,0,.45);--r:18px;--max:1120px;--pad:20px;--navH:86px;
+      --bg:#050714;
+      --bg2:#0c1026;
+      --purple:#7c3aed;
+      --purple2:#a855f7;
+      --text:#ffffff;
+      --muted:rgba(255,255,255,.75);
+      --line:rgba(255,255,255,.10);
+      --shadow:0 18px 60px rgba(0,0,0,.45);
+      --r:18px;
+      --max:1120px;
+      --pad:20px;
+      --navH:86px;
     }
+
     *{box-sizing:border-box}
+
     html,body{
       margin:0;
       background:
@@ -24,91 +35,345 @@
       font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Arial;
       overflow-x:hidden;
     }
+
     a{color:inherit;text-decoration:none}
     .wrap{max-width:var(--max);margin:0 auto;padding:0 var(--pad)}
 
     .btn{
-      display:inline-flex;align-items:center;justify-content:center;gap:10px;
-      padding:11px 16px;border-radius:999px;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      padding:11px 16px;
+      border-radius:999px;
       background:linear-gradient(135deg,var(--purple),var(--purple2));
-      color:#fff;font-weight:900;border:0;cursor:pointer;
+      color:#fff;
+      font-weight:900;
+      border:0;
+      cursor:pointer;
       box-shadow:0 18px 50px rgba(124,58,237,.22);
-      transition:.25s;white-space:nowrap;
+      transition:.25s;
+      white-space:nowrap;
     }
-    .btn:hover{transform:translateY(-2px);box-shadow:0 25px 70px rgba(124,58,237,.40)}
-    .btn.secondary{background:rgba(255,255,255,.08);box-shadow:none;border:1px solid rgba(255,255,255,.12);font-weight:800}
 
-    /* NAV */
-    .nav{position:sticky;top:0;z-index:50;backdrop-filter: blur(12px);background:rgba(5,7,20,.75);border-bottom:1px solid var(--line)}
-    .navin{position:relative;display:flex;align-items:center;justify-content:space-between;gap:14px;padding:14px 0;min-height:var(--navH)}
+    .btn:hover{
+      transform:translateY(-2px);
+      box-shadow:0 25px 70px rgba(124,58,237,.40);
+    }
+
+    .btn.secondary{
+      background:rgba(255,255,255,.08);
+      box-shadow:none;
+      border:1px solid rgba(255,255,255,.12);
+      font-weight:800;
+    }
+
+    .nav{
+      position:sticky;
+      top:0;
+      z-index:50;
+      backdrop-filter: blur(12px);
+      background:rgba(5,7,20,.75);
+      border-bottom:1px solid var(--line);
+    }
+
+    .navin{
+      position:relative;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:14px;
+      padding:14px 0;
+      min-height:var(--navH);
+    }
+
     .brand{display:flex;align-items:center;gap:14px}
-    .brand img{height:72px;width:auto;display:block;filter:drop-shadow(0 18px 40px rgba(124,58,237,.35))}
-    .links{display:flex;gap:18px;align-items:center;color:var(--muted);font-size:14px}
-    .links a{padding:10px 8px;border-radius:10px;transition:.2s}
-    .links a:hover{color:#fff;background:rgba(255,255,255,.06)}
+    .brand img{
+      height:72px;
+      width:auto;
+      display:block;
+      filter:drop-shadow(0 18px 40px rgba(124,58,237,.35));
+    }
+
+    .links{
+      display:flex;
+      gap:18px;
+      align-items:center;
+      color:var(--muted);
+      font-size:14px;
+    }
+
+    .links a{
+      padding:10px 8px;
+      border-radius:10px;
+      transition:.2s;
+    }
+
+    .links a:hover{
+      color:#fff;
+      background:rgba(255,255,255,.06);
+    }
+
     .links a.active{
       color:#fff;
       background:rgba(124,58,237,.18);
       border:1px solid rgba(124,58,237,.35);
     }
+
     .navcta-mobile{display:none;}
     .navcta-desktop{display:inline-flex;}
-    .burger{display:none;width:44px;height:44px;border-radius:12px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.06);
-      align-items:center;justify-content:center;cursor:pointer;transition:.2s}
+
+    .burger{
+      display:none;
+      width:44px;
+      height:44px;
+      border-radius:12px;
+      border:1px solid rgba(255,255,255,.12);
+      background:rgba(255,255,255,.06);
+      align-items:center;
+      justify-content:center;
+      cursor:pointer;
+      transition:.2s;
+    }
+
     .burger:hover{transform:translateY(-1px)}
-    .burger span{width:20px;height:2px;background:#fff;display:block;position:relative;border-radius:2px}
-    .burger span:before,.burger span:after{content:"";position:absolute;left:0;width:20px;height:2px;background:#fff;border-radius:2px}
-    .burger span:before{top:-6px}.burger span:after{top:6px}
+
+    .burger span{
+      width:20px;
+      height:2px;
+      background:#fff;
+      display:block;
+      position:relative;
+      border-radius:2px;
+    }
+
+    .burger span:before,
+    .burger span:after{
+      content:"";
+      position:absolute;
+      left:0;
+      width:20px;
+      height:2px;
+      background:#fff;
+      border-radius:2px;
+    }
+
+    .burger span:before{top:-6px}
+    .burger span:after{top:6px}
+
     @media (max-width: 940px){
       .burger{display:flex}
       .navcta-desktop{display:none;}
+
       .links{
-        position:absolute;left:0;right:0;top:100%;margin-top:12px;
-        display:flex;flex-direction:column;gap:10px;padding:14px;
-        border:1px solid var(--line);border-radius:18px;background:rgba(5,7,20,.92);box-shadow:var(--shadow);
-        opacity:0;transform:translateY(-10px);pointer-events:none;transition:.22s ease}
-      .links.open{opacity:1;transform:translateY(0);pointer-events:auto}
+        position:absolute;
+        left:0;
+        right:0;
+        top:100%;
+        margin-top:12px;
+        display:flex;
+        flex-direction:column;
+        gap:10px;
+        padding:14px;
+        border:1px solid var(--line);
+        border-radius:18px;
+        background:rgba(5,7,20,.92);
+        box-shadow:var(--shadow);
+        opacity:0;
+        transform:translateY(-10px);
+        pointer-events:none;
+        transition:.22s ease;
+      }
+
+      .links.open{
+        opacity:1;
+        transform:translateY(0);
+        pointer-events:auto;
+      }
+
       .links a{padding:12px 12px}
       .navcta-mobile{display:inline-flex;width:100%;margin-top:6px}
     }
 
     header{padding:34px 0 10px}
-    h1{margin:0 0 10px;font-size:44px}
-    p{color:var(--muted);line-height:1.6;margin:0}
-    section{padding:22px 0}
 
-    .grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-    .panel{background:rgba(255,255,255,.04);border:1px solid var(--line);border-radius:var(--r);padding:18px;box-shadow:var(--shadow)}
-    label{display:block;font-size:13px;color:var(--muted);margin:10px 0 6px}
-    input,textarea{width:100%;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.12);border-radius:12px;padding:12px;color:var(--text);font-size:14.5px;outline:none}
-    input:focus,textarea:focus{border-color:rgba(168,85,247,.55);box-shadow:0 0 0 4px rgba(124,58,237,.12)}
-    textarea{min-height:120px;resize:vertical}
+    .hero{
+      margin-top:22px;
+      border-radius:24px;
+      border:1px solid rgba(255,255,255,.10);
+      background:
+        radial-gradient(700px 500px at 20% 20%, rgba(124,58,237,.30), transparent 60%),
+        radial-gradient(700px 500px at 85% 35%, rgba(168,85,247,.22), transparent 55%),
+        rgba(255,255,255,.03);
+      box-shadow:var(--shadow);
+      padding:28px;
+      overflow:hidden;
+    }
 
-    footer{padding:26px 0 40px;border-top:1px solid var(--line);color:var(--muted);font-size:13px}
-    .foot{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
-    .reveal{opacity:0;transform:translateY(14px);transition:.5s ease}
-    .reveal.show{opacity:1;transform:translateY(0)}
-    .reveal.delay1{transition-delay:.06s}.reveal.delay2{transition-delay:.12s}
-    @media (max-width: 940px){.grid2{grid-template-columns:1fr}}
+    h1{
+      margin:0 0 12px;
+      font-size:clamp(34px, 7vw, 52px);
+      line-height:1.06;
+      letter-spacing:-.02em;
+    }
+
+    h2{
+      margin:0 0 10px;
+      font-size:30px;
+      letter-spacing:-.02em;
+    }
+
+    p{
+      color:var(--muted);
+      line-height:1.65;
+      margin:0;
+    }
+
+    .sub{
+      max-width:68ch;
+    }
+
+    .badgeRow{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-top:16px;
+    }
+
+    .pill{
+      padding:8px 12px;
+      border-radius:999px;
+      border:1px solid rgba(168,85,247,.25);
+      background:rgba(124,58,237,.10);
+      color:rgba(255,255,255,.88);
+      font-size:12px;
+      font-weight:800;
+      letter-spacing:.10em;
+      text-transform:uppercase;
+    }
+
+    section{padding:24px 0}
+
+    .grid2{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:14px;
+    }
+
+    .panel{
+      background:rgba(255,255,255,.04);
+      border:1px solid var(--line);
+      border-radius:var(--r);
+      padding:18px;
+      box-shadow:var(--shadow);
+    }
+
+    label{
+      display:block;
+      font-size:13px;
+      color:var(--muted);
+      margin:10px 0 6px;
+    }
+
+    input,textarea,select{
+      width:100%;
+      background:rgba(255,255,255,.03);
+      border:1px solid rgba(255,255,255,.12);
+      border-radius:12px;
+      padding:12px;
+      color:var(--text);
+      font-size:14.5px;
+      outline:none;
+      font-family:inherit;
+    }
+
+    input:focus,textarea:focus,select:focus{
+      border-color:rgba(168,85,247,.55);
+      box-shadow:0 0 0 4px rgba(124,58,237,.12);
+    }
+
+    textarea{
+      min-height:120px;
+      resize:vertical;
+    }
+
+    .infoList{
+      display:grid;
+      gap:10px;
+      margin-top:14px;
+    }
+
+    .infoRow{
+      padding:12px 14px;
+      border-radius:14px;
+      background:rgba(255,255,255,.04);
+      border:1px solid rgba(255,255,255,.08);
+      color:rgba(255,255,255,.9);
+    }
+
+    .small{
+      font-size:13px;
+      color:var(--muted);
+      line-height:1.6;
+    }
+
+    .formActions{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+      margin-top:14px;
+    }
+
+    footer{
+      padding:26px 0 40px;
+      border-top:1px solid var(--line);
+      color:var(--muted);
+      font-size:13px;
+    }
+
+    .foot{
+      display:flex;
+      justify-content:space-between;
+      gap:16px;
+      flex-wrap:wrap;
+    }
+
+    .reveal{
+      opacity:0;
+      transform:translateY(14px);
+      transition:.5s ease;
+    }
+
+    .reveal.show{
+      opacity:1;
+      transform:translateY(0);
+    }
+
+    .reveal.delay1{transition-delay:.06s}
+    .reveal.delay2{transition-delay:.12s}
+
+    @media (max-width: 940px){
+      .grid2{grid-template-columns:1fr}
+    }
+
     @media (max-width: 720px){
       h1{font-size:38px}
+      h2{font-size:28px}
 
-      .brand img{
-        height:64px;
-    }
+      .brand img{height:64px}
 
-      .panel{
-        padding:16px;
-    }
+      .panel{padding:16px}
 
-      .btn{
-        width:100%;
-    }
+      .btn{width:100%}
+
+      .formActions{
+        flex-direction:column;
+      }
 
       .navin{
         min-height:74px;
+      }
     }
-  }
   </style>
 </head>
 
@@ -137,23 +402,53 @@
 
   <header>
     <div class="wrap">
-      <h1 class="reveal">Kontakt</h1>
-      <p class="reveal delay1">Napište nám pár údajů. Ozveme se s návrhem podle vaší kapacity a čísel.</p>
+      <div class="hero reveal">
+        <h1>Objednejte si konzultaci pro váš autoservis</h1>
+        <p class="sub">
+          Napište nám základní informace o vašem servisu a cíli spolupráce. Ozveme se vám s návrhem dalšího postupu podle vaší kapacity, typu zakázek a lokality.
+        </p>
+
+        <div class="badgeRow">
+          <span class="pill">Rychlý kontakt</span>
+          <span class="pill">Nezávazná konzultace</span>
+          <span class="pill">Marketing pro autoservisy</span>
+        </div>
+      </div>
     </div>
   </header>
 
   <section>
     <div class="wrap grid2">
       <div class="panel reveal">
-        <h3 style="margin:0 0 10px;">Rychlý kontakt</h3>
-        <p>Nejrychlejší je e-mail: <b><a href="mailto:info@marvonix.cz">info@marvonix.cz</a></b></p>
-        <p style="margin-top:10px;">Olomouc | Česko</p>
-        <p style="margin-top:10px;"><a class="btn" href="mailto:info@marvonix.cz?subject=Marvonix%20-%20Konzultace">Napsat e-mail</a></p>
-        <p style="margin-top:12px;font-size:12px;opacity:.85;">Tip: napište „kapacita aut/měsíc“ a „průměrná zakázka“.</p>
+        <h2>Rychlý kontakt</h2>
+        <p>Nejrychlejší cesta je e-mail. Když nám pošlete pár základních čísel, můžeme navrhnout smysluplný další krok.</p>
+
+        <div class="infoList">
+          <div class="infoRow">
+            <b>E-mail:</b> <a href="mailto:info@marvonix.cz">info@marvonix.cz</a>
+          </div>
+          <div class="infoRow">
+            <b>Lokalita:</b> Olomouc | Česko
+          </div>
+          <div class="infoRow">
+            <b>Tip:</b> napište kapacitu aut za měsíc a průměrnou hodnotu zakázky
+          </div>
+        </div>
+
+        <div style="margin-top:14px;">
+          <a class="btn" href="mailto:info@marvonix.cz?subject=Marvonix%20-%20Konzultace">Napsat e-mail</a>
+        </div>
+
+        <div style="margin-top:16px;">
+          <h3 style="margin:0 0 8px;">Co se stane po odeslání?</h3>
+          <p class="small">
+            Projdeme vaše informace, zhodnotíme, co dává smysl řešit jako první, a ozveme se vám s návrhem dalšího postupu. Nejde o automatický „sales call“, ale o smysluplný první krok.
+          </p>
+        </div>
       </div>
 
       <div class="panel reveal delay2">
-        <h3 style="margin:0 0 10px;">Objednat konzultaci</h3>
+        <h2>Objednat konzultaci</h2>
 
         <form id="leadForm">
           <label for="name">Jméno</label>
@@ -166,13 +461,28 @@
           <input id="city" name="city" placeholder="Např. Olomouc" />
 
           <label for="phone">Telefon</label>
-          <input id="phone" name="phone" placeholder="+420…" />
+          <input id="phone" name="phone" placeholder="+420..." />
+
+          <label for="capacity">Kapacita aut za měsíc</label>
+          <input id="capacity" name="capacity" placeholder="Např. 40 aut / měsíc" />
+
+          <label for="value">Průměrná hodnota zakázky</label>
+          <input id="value" name="value" placeholder="Např. 4 500 Kč" />
+
+          <label for="service">O jakou službu máte zájem</label>
+          <select id="service" name="service">
+            <option value="">Vyberte možnost</option>
+            <option>Jednorázový balíček</option>
+            <option>Měsíční správa 15 000 Kč</option>
+            <option>Rozšířená správa 20 000 Kč</option>
+            <option>Chci doporučení</option>
+          </select>
 
           <label for="msg">Co chcete zlepšit</label>
-          <textarea id="msg" name="msg" placeholder="Např. více zakázek v pneu sezóně, klima v létě, STK…"></textarea>
+          <textarea id="msg" name="msg" placeholder="Např. více zakázek v pneu sezóně, více poptávek na klima, lepší výkon Google Ads, nový web..."></textarea>
 
-          <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:12px;">
-            <button class="btn" type="submit">Odeslat</button>
+          <div class="formActions">
+            <button class="btn" type="submit">Odeslat poptávku</button>
             <button class="btn secondary" type="button" onclick="document.getElementById('leadForm').reset()">Vymazat</button>
           </div>
         </form>
@@ -182,9 +492,16 @@
 
   <footer>
     <div class="wrap foot">
-      <div><b style="letter-spacing:.14em;text-transform:uppercase;">Marvonix</b><div style="opacity:.75;font-size:12px">Performance Growth Agency</div></div>
-      <div>Kontakt: <a href="mailto:info@marvonix.cz">info@marvonix.cz</a></div>
-      <div>© <span id="y"></span> Marvonix</div>
+      <div>
+        <b style="letter-spacing:.14em;text-transform:uppercase;">Marvonix</b>
+        <div style="opacity:.75;font-size:12px">Marketing pro autoservisy</div>
+      </div>
+      <div>
+        Kontakt: <a href="mailto:info@marvonix.cz">info@marvonix.cz</a>
+      </div>
+      <div>
+        © <span id="y"></span> Marvonix
+      </div>
     </div>
   </footer>
 
@@ -193,33 +510,42 @@
 
     const burger = document.getElementById('burger');
     const navLinks = document.getElementById('navLinks');
-    function closeMenu(){ navLinks.classList.remove('open'); burger.setAttribute('aria-expanded','false'); }
+
+    function closeMenu(){
+      navLinks.classList.remove('open');
+      burger.setAttribute('aria-expanded','false');
+    }
+
     burger.addEventListener('click', () => {
       const open = navLinks.classList.toggle('open');
       burger.setAttribute('aria-expanded', open ? 'true' : 'false');
     });
+
     document.addEventListener('click', (e) => {
       if (!navLinks.contains(e.target) && !burger.contains(e.target)) closeMenu();
     });
 
-    // mailto lead
     document.getElementById('leadForm').addEventListener('submit', function(e){
       e.preventDefault();
       const v = (id)=>document.getElementById(id).value.trim();
+
       const subject = encodeURIComponent("Marvonix – konzultace");
       const body = encodeURIComponent(
         "Dobrý den,\n\n" +
         "Jméno: " + v("name") + "\n" +
         "Firma: " + v("company") + "\n" +
         "Město: " + (v("city")||"-") + "\n" +
-        "Telefon: " + (v("phone")||"-") + "\n\n" +
-        "Cíl / poznámka:\n" + (v("msg")||"-") + "\n\n" +
+        "Telefon: " + (v("phone")||"-") + "\n" +
+        "Kapacita aut za měsíc: " + (v("capacity")||"-") + "\n" +
+        "Průměrná hodnota zakázky: " + (v("value")||"-") + "\n" +
+        "Zájem o službu: " + (v("service")||"-") + "\n\n" +
+        "Co chce klient zlepšit:\n" + (v("msg")||"-") + "\n\n" +
         "Děkuji."
       );
+
       window.location.href = "mailto:info@marvonix.cz?subject=" + subject + "&body=" + body;
     });
 
-    // reveal
     const io = new IntersectionObserver((entries)=>{
       entries.forEach(en=>{
         if(en.isIntersecting){
@@ -228,6 +554,7 @@
         }
       });
     }, {threshold:0.12});
+
     document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
   </script>
 </body>
