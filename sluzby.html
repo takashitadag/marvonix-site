@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Služby | Marvonix</title>
-  <meta name="description" content="Služby Marvonix: Meta Ads, Google Ads, měření, landing pages a optimalizace pro autoservisy." />
+  <meta name="description" content="Služby Marvonix: Meta Ads, Google Ads, měření, landing pages, weby a výkonnostní marketing pro autoservisy." />
   <link rel="icon" href="favicon.ico">
 
   <style>
@@ -72,36 +72,73 @@
     .card ul{margin:10px 0 0;padding-left:18px;color:rgba(255,255,255,.86);line-height:1.7}
     .bar{margin-top:16px;border-radius:24px;border:1px solid rgba(255,255,255,.10);background:rgba(255,255,255,.03);box-shadow:var(--shadow);padding:18px}
     .barRow{display:flex;gap:12px;flex-wrap:wrap;align-items:center;justify-content:space-between}
+    .pricing{margin-top:14px;display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+    .priceTag{
+      display:inline-block;
+      margin:8px 0 10px;
+      font-size:28px;
+      font-weight:900;
+      letter-spacing:-.02em;
+    }
+    .priceNote{
+      font-size:13px;
+      color:var(--muted);
+      margin-bottom:10px;
+      line-height:1.5;
+    }
+    .featured{
+      position:relative;
+      border:1px solid rgba(168,85,247,.35);
+      background:linear-gradient(180deg, rgba(124,58,237,.12), rgba(255,255,255,.04));
+    }
+    .featured::before{
+      content:"Doporučeno";
+      position:absolute;
+      top:14px;
+      right:14px;
+      font-size:11px;
+      font-weight:900;
+      text-transform:uppercase;
+      letter-spacing:.12em;
+      color:#fff;
+      background:rgba(124,58,237,.28);
+      border:1px solid rgba(168,85,247,.35);
+      padding:7px 10px;
+      border-radius:999px;
+    }
+    .mini{
+      font-size:12px;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+      color:rgba(255,255,255,.72);
+      font-weight:900;
+      margin-bottom:6px;
+    }
     footer{padding:26px 0 40px;border-top:1px solid var(--line);color:var(--muted);font-size:13px}
     .foot{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
     .reveal{opacity:0;transform:translateY(14px);transition:.5s ease}
     .reveal.show{opacity:1;transform:translateY(0)}
     .reveal.delay1{transition-delay:.06s}.reveal.delay2{transition-delay:.12s}.reveal.delay3{transition-delay:.18s}
     @media (max-width: 900px){
-
-      .grid3{
+      .grid3,
+      .pricing{
         grid-template-columns:1fr;
       }
-
       h1{
         font-size:38px;
       }
-
       .brand img{
         height:64px;
       }
-
       .barRow{
         flex-direction:column;
         align-items:flex-start;
         gap:14px;
       }
-
       .barRow .btn{
-      width:100%;
+        width:100%;
+      }
     }
-
-  }
   </style>
 </head>
 
@@ -150,10 +187,10 @@
 
         <div class="card reveal delay1">
           <h3>Meta Ads (Facebook/Instagram)</h3>
-          <p>Oslovíme lidi v okolí a vytvoříme poptávku (sezónnost).</p>
+          <p>Oslovíme lidi v okolí a vytvoříme poptávku podle sezóny a lokality.</p>
           <ul>
             <li>lokální cílení + kreativy</li>
-            <li>retargeting (návštěvníci webu)</li>
+            <li>retargeting návštěvníků webu</li>
             <li>lead formuláře / web konverze</li>
           </ul>
         </div>
@@ -164,7 +201,52 @@
           <ul>
             <li>konverze, události, kvalita leadů</li>
             <li>jasný report bez omáčky</li>
-            <li>následující krok dopředu</li>
+            <li>další krok dopředu</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="pricing">
+        <div class="card reveal">
+          <div class="mini">Jednorázový balíček</div>
+          <h3>Start & Setup</h3>
+          <div class="priceTag">10 000–20 000 Kč</div>
+          <div class="priceNote">Cena závisí na tom, jak se balíček poskládá a co všechno bude obsahovat.</div>
+          <ul>
+            <li>založení nebo úprava webu / landing page</li>
+            <li>nastavení Google Ads a / nebo Meta Ads</li>
+            <li>základní měření a technické nastavení</li>
+            <li>příprava na spuštění kampaní</li>
+          </ul>
+        </div>
+
+        <div class="card featured reveal delay1">
+          <div class="mini">Měsíční správa</div>
+          <h3>Performance</h3>
+          <div class="priceTag">15 000 Kč / měsíc</div>
+          <div class="priceNote">Pro autoservisy, které chtějí stabilní přísun relevantních poptávek a pravidelnou optimalizaci.</div>
+          <ul>
+            <li>správa Google Ads a / nebo Meta Ads</li>
+            <li>průběžná optimalizace kampaní</li>
+            <li>reporting a vyhodnocení</li>
+            <li>konzultace a návrhy dalších kroků</li>
+          </ul>
+        </div>
+
+        <div class="card reveal delay2">
+          <div class="mini">Rozšířená měsíční správa</div>
+          <h3>Growth</h3>
+          <div class="priceTag">20 000 Kč / měsíc</div>
+          <div class="priceNote">Pro servisy, které chtějí víc než jen správu reklam a potřebují širší podporu růstu.</div>
+          <ul>
+            <li>vše z balíčku Performance</li>
+            <li>rozšířené konzultace a strategie</li>
+            <li>práce s webem / landing pages</li>
+            <li>hlubší optimalizace výkonu a lead flow</li>
           </ul>
         </div>
       </div>
@@ -173,7 +255,7 @@
         <div class="barRow">
           <div>
             <div style="font-weight:900;font-size:16px;margin-bottom:4px">Chcete nabídku na míru?</div>
-            <div style="color:var(--muted);font-size:13px;line-height:1.5">Pošlete kapacitu aut/měsíc a průměrnou hodnotu zakázky.</div>
+            <div style="color:var(--muted);font-size:13px;line-height:1.5">Pošlete kapacitu aut za měsíc, průměrnou hodnotu zakázky a město, kde působíte.</div>
           </div>
           <div style="display:flex;gap:10px;flex-wrap:wrap">
             <a class="btn" href="kontakt.html">Objednat konzultaci</a>
