@@ -15,14 +15,19 @@
       --purple2:#a855f7;
       --text:#ffffff;
       --muted:rgba(255,255,255,.75);
+      --muted2:rgba(255,255,255,.58);
       --line:rgba(255,255,255,.10);
+      --line2:rgba(168,85,247,.28);
       --shadow:0 18px 60px rgba(0,0,0,.45);
+      --shadow-soft:0 12px 30px rgba(124,58,237,.16);
       --r:18px;
       --max:1120px;
       --pad:20px;
       --navH:86px;
     }
+
     *{box-sizing:border-box}
+
     html,body{
       margin:0;
       background:
@@ -33,20 +38,32 @@
       font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Arial;
       overflow-x:hidden;
     }
+
     a{color:inherit;text-decoration:none}
     .wrap{max-width:var(--max);margin:0 auto;padding:0 var(--pad)}
+
     .btn{
-      display:inline-flex;align-items:center;justify-content:center;gap:10px;
-      padding:11px 16px;border-radius:999px;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      padding:11px 16px;
+      border-radius:999px;
       background:linear-gradient(135deg,var(--purple),var(--purple2));
-      color:#fff;font-weight:900;
+      color:#fff;
+      font-weight:900;
       box-shadow:0 18px 50px rgba(124,58,237,.22);
       transition:.25s;
       white-space:nowrap;
       border:0;
       cursor:pointer;
     }
-    .btn:hover{transform:translateY(-2px);box-shadow:0 25px 70px rgba(124,58,237,.40)}
+
+    .btn:hover{
+      transform:translateY(-2px);
+      box-shadow:0 25px 70px rgba(124,58,237,.40);
+    }
+
     .btn.secondary{
       background:rgba(255,255,255,.08);
       box-shadow:none;
@@ -54,32 +71,64 @@
       color:#fff;
       font-weight:800;
     }
-    .btn.secondary:hover{transform:translateY(-2px);box-shadow:0 14px 40px rgba(0,0,0,.35)}
+
+    .btn.secondary:hover{
+      transform:translateY(-2px);
+      box-shadow:0 14px 40px rgba(0,0,0,.35);
+    }
 
     .nav{
-      position:sticky;top:0;z-index:50;
+      position:sticky;
+      top:0;
+      z-index:50;
       backdrop-filter: blur(12px);
       background:rgba(5,7,20,.75);
       border-bottom:1px solid var(--line);
     }
+
     .navin{
       position:relative;
-      display:flex;align-items:center;justify-content:space-between;gap:14px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:14px;
       padding:14px 0;
       min-height:var(--navH);
     }
+
     .brand{display:flex;align-items:center;gap:14px}
-    .brand img{height:72px;width:auto;display:block;filter:drop-shadow(0 18px 40px rgba(124,58,237,.35))}
-    .links{
-      display:flex;gap:18px;align-items:center;color:var(--muted);font-size:14px
+    .brand img{
+      height:72px;
+      width:auto;
+      display:block;
+      filter:drop-shadow(0 18px 40px rgba(124,58,237,.35));
     }
-    .links a{padding:10px 8px;border-radius:10px;transition:.2s}
-    .links a:hover{color:#fff;background:rgba(255,255,255,.06)}
+
+    .links{
+      display:flex;
+      gap:18px;
+      align-items:center;
+      color:var(--muted);
+      font-size:14px;
+    }
+
+    .links a{
+      padding:10px 8px;
+      border-radius:10px;
+      transition:.2s;
+    }
+
+    .links a:hover{
+      color:#fff;
+      background:rgba(255,255,255,.06);
+    }
+
     .links a.active{
       color:#fff;
       background:rgba(124,58,237,.18);
       border:1px solid rgba(124,58,237,.35);
     }
+
     .navcta-mobile{display:none;}
     .navcta-desktop{display:inline-flex;}
 
@@ -93,14 +142,18 @@
       cursor:pointer;
       transition:.2s;
     }
+
     .burger:hover{transform:translateY(-1px)}
+
     .burger span{
       width:20px;height:2px;background:#fff;display:block;position:relative;border-radius:2px;
     }
+
     .burger span:before,.burger span:after{
       content:"";position:absolute;left:0;width:20px;height:2px;background:#fff;border-radius:2px;
       transition:.2s;
     }
+
     .burger span:before{top:-6px}
     .burger span:after{top:6px}
 
@@ -131,10 +184,11 @@
         pointer-events:auto;
       }
       .links a{padding:12px 12px}
-      .navcta-mobile{display:inline-flex; width:100%; margin-top:6px;}
+      .navcta-mobile{display:inline-flex;width:100%;margin-top:6px;}
     }
 
     header{padding:34px 0 10px}
+
     .hero{
       margin-top:22px;
       border-radius:24px;
@@ -146,10 +200,29 @@
       box-shadow:var(--shadow);
       padding:28px;
       overflow:hidden;
+      position:relative;
     }
-    .heroGrid{display:grid;grid-template-columns:1.3fr .9fr;gap:18px;align-items:stretch}
-    .heroGrid > *{min-width:0;}
-    .sideCard{min-width:0;}
+
+    .hero::after{
+      content:"";
+      position:absolute;
+      inset:auto -120px -140px auto;
+      width:300px;
+      height:300px;
+      background:radial-gradient(circle, rgba(168,85,247,.18), transparent 70%);
+      pointer-events:none;
+    }
+
+    .heroGrid{
+      display:grid;
+      grid-template-columns:1.3fr .9fr;
+      gap:18px;
+      align-items:stretch;
+    }
+
+    .heroGrid > *{min-width:0}
+    .sideCard{min-width:0}
+
     h1{
       margin:0 0 12px;
       font-size:clamp(34px, 7.6vw, 56px);
@@ -157,27 +230,65 @@
       letter-spacing:-.02em;
       overflow-wrap:anywhere;
     }
-    .sub{color:var(--muted);line-height:1.65;margin:0;max-width:58ch}
-    .badgeRow{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+
+    h2{
+      margin:0 0 8px;
+      font-size:32px;
+      letter-spacing:-.02em;
+    }
+
+    .sub{
+      color:var(--muted);
+      line-height:1.7;
+      margin:0;
+      max-width:60ch;
+    }
+
+    .badgeRow{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-top:14px;
+    }
+
     .pill{
-      padding:8px 12px;border-radius:999px;
+      padding:8px 12px;
+      border-radius:999px;
       border:1px solid rgba(168,85,247,.25);
       background:rgba(124,58,237,.10);
       color:rgba(255,255,255,.88);
-      font-size:12px;font-weight:800;
+      font-size:12px;
+      font-weight:800;
       letter-spacing:.10em;
       text-transform:uppercase;
     }
-    .ctaRow{display:flex;gap:12px;flex-wrap:wrap;margin-top:18px}
+
+    .ctaRow{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+      margin-top:18px;
+    }
+
     .sideCard{
       border-radius:18px;
       border:1px solid rgba(255,255,255,.10);
       background:rgba(0,0,0,.20);
       box-shadow:0 18px 60px rgba(0,0,0,.35);
       padding:18px;
-      display:flex;flex-direction:column;justify-content:space-between;gap:14px;
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+      gap:14px;
     }
-    .kv{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:6px}
+
+    .kv{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:10px;
+      margin-top:6px;
+    }
+
     .kv .row{
       display:flex;
       justify-content:space-between;
@@ -191,14 +302,17 @@
       flex-wrap:wrap;
       align-items:flex-start;
     }
+
     .kv .row b,
     .kv .row span{
       min-width:0;
     }
+
     .kv .row span{
       overflow-wrap:anywhere;
       word-break:break-word;
     }
+
     @media (max-width: 520px){
       .kv{grid-template-columns:1fr}
       .kv .row{grid-column:auto !important;}
@@ -210,8 +324,23 @@
       font-size:16px;
     }
 
+    .miniTrust{
+      margin-top:14px;
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+      color:var(--muted2);
+      font-size:13px;
+    }
+
     section{padding:26px 0}
-    .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+
+    .grid3{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:14px;
+    }
+
     .card{
       background:rgba(255,255,255,.04);
       border:1px solid rgba(255,255,255,.10);
@@ -221,12 +350,16 @@
       transition:.25s;
       transform:translateY(0);
     }
+
     .card:hover{transform:translateY(-4px)}
     .card h3{margin:0 0 8px}
     .card p{margin:0;color:var(--muted);line-height:1.6}
 
     .split{
-      display:grid;grid-template-columns:1fr 1fr;gap:14px;align-items:start
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:14px;
+      align-items:start;
     }
 
     .pricingTeaser{
@@ -235,17 +368,24 @@
       gap:14px;
       margin-top:8px;
     }
+
     .priceCard{
       background:rgba(255,255,255,.04);
       border:1px solid rgba(255,255,255,.10);
       border-radius:var(--r);
       padding:20px;
       box-shadow:var(--shadow);
+      transition:.25s;
     }
+
+    .priceCard:hover{transform:translateY(-4px)}
+
     .priceCard.featured{
       border:1px solid rgba(168,85,247,.35);
       background:linear-gradient(180deg, rgba(124,58,237,.14), rgba(255,255,255,.04));
+      box-shadow:0 20px 60px rgba(124,58,237,.12);
     }
+
     .mini{
       font-size:12px;
       letter-spacing:.12em;
@@ -254,6 +394,7 @@
       font-weight:900;
       margin-bottom:8px;
     }
+
     .price{
       font-size:30px;
       font-weight:900;
@@ -261,12 +402,14 @@
       letter-spacing:-.02em;
       margin:0 0 10px;
     }
+
     .priceSub{
       color:var(--muted);
       font-size:14px;
       line-height:1.6;
       margin-bottom:14px;
     }
+
     .priceList{
       margin:0;
       padding-left:18px;
@@ -279,20 +422,115 @@
       grid-template-columns:repeat(3,1fr);
       gap:14px;
     }
+
     .stepNum{
-      width:34px;height:34px;border-radius:999px;
-      display:inline-flex;align-items:center;justify-content:center;
+      width:34px;
+      height:34px;
+      border-radius:999px;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
       background:linear-gradient(135deg,var(--purple),var(--purple2));
       font-weight:900;
       margin-bottom:12px;
       box-shadow:0 12px 28px rgba(124,58,237,.25);
     }
 
-    footer{padding:26px 0 40px;border-top:1px solid var(--line);color:var(--muted);font-size:13px}
-    .foot{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+    .proofBar{
+      margin-top:10px;
+      padding:16px 18px;
+      border-radius:18px;
+      border:1px solid var(--line2);
+      background:linear-gradient(180deg, rgba(124,58,237,.10), rgba(255,255,255,.03));
+      box-shadow:var(--shadow-soft);
+      display:flex;
+      gap:18px;
+      flex-wrap:wrap;
+      align-items:center;
+      justify-content:space-between;
+    }
 
-    .reveal{opacity:0;transform:translateY(14px);transition:.5s ease}
-    .reveal.show{opacity:1;transform:translateY(0)}
+    .proofBar strong{
+      display:block;
+      font-size:15px;
+      margin-bottom:4px;
+    }
+
+    .proofBar span{
+      color:var(--muted);
+      font-size:13px;
+      line-height:1.55;
+    }
+
+    .logoStrip{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:12px;
+      margin-top:14px;
+    }
+
+    .logoItem{
+      border-radius:14px;
+      border:1px solid rgba(255,255,255,.08);
+      background:rgba(255,255,255,.03);
+      padding:14px;
+      text-align:center;
+      color:rgba(255,255,255,.82);
+      font-size:13px;
+      font-weight:800;
+      letter-spacing:.03em;
+    }
+
+    .faq{
+      display:grid;
+      gap:14px;
+    }
+
+    .faq .card h3{
+      font-size:18px;
+    }
+
+    footer{
+      padding:26px 0 40px;
+      border-top:1px solid var(--line);
+      color:var(--muted);
+      font-size:13px;
+      margin-top:8px;
+    }
+
+    .foot{
+      display:flex;
+      justify-content:space-between;
+      gap:16px;
+      flex-wrap:wrap;
+    }
+
+    .footNav{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      align-items:center;
+    }
+
+    .footNav a{
+      color:var(--muted);
+    }
+
+    .footNav a:hover{
+      color:#fff;
+    }
+
+    .reveal{
+      opacity:0;
+      transform:translateY(14px);
+      transition:.5s ease;
+    }
+
+    .reveal.show{
+      opacity:1;
+      transform:translateY(0);
+    }
+
     .reveal.delay1{transition-delay:.06s}
     .reveal.delay2{transition-delay:.12s}
     .reveal.delay3{transition-delay:.18s}
@@ -301,15 +539,19 @@
       h1{font-size:44px}
       .heroGrid{grid-template-columns:1fr}
     }
+
     @media (max-width: 720px){
       h1{font-size:38px}
+      h2{font-size:28px}
       .grid3,
       .split,
       .pricingTeaser,
-      .steps{
+      .steps,
+      .logoStrip{
         grid-template-columns:1fr;
       }
       .brand img{height:64px}
+      .proofBar{flex-direction:column;align-items:flex-start}
     }
   </style>
 </head>
@@ -346,7 +588,9 @@
             <div style="letter-spacing:.22em;text-transform:uppercase;font-weight:900;font-size:12px;color:rgba(255,255,255,.75)">
               Google Ads • Meta Ads • Marketing pro autoservisy
             </div>
+
             <h1>Přivádíme autoservisům více zakázek pomocí výkonnostního marketingu</h1>
+
             <p class="sub">
               Pomáháme autoservisům získávat relevantní poptávky, lépe využít kapacitu a růst bez chaosu. Nestavíme marketing na dojmech, ale na číslech, měření a reálných výsledcích.
             </p>
@@ -360,6 +604,12 @@
               <span class="pill">Zaměření: autoservisy</span>
               <span class="pill">Google + Meta Ads</span>
               <span class="pill">Měření & transparentnost</span>
+            </div>
+
+            <div class="miniTrust">
+              <span>✓ Jasný proces spolupráce</span>
+              <span>✓ Transparentní reporting</span>
+              <span>✓ Rychlé rozhodování a malý tým</span>
             </div>
           </div>
 
@@ -382,11 +632,27 @@
           </aside>
         </div>
       </div>
+
+      <div class="proofBar reveal delay1">
+        <div>
+          <strong>Specializace místo všeho pro všechny</strong>
+          <span>Zaměřujeme se na autoservisy, protože u nich dává lokální performance marketing největší smysl.</span>
+        </div>
+        <div>
+          <strong>Výkon místo omáčky</strong>
+          <span>Neprodáváme “aktivitu”. Zajímá nás, kolik relevantních zakázek dokážeme přivést.</span>
+        </div>
+      </div>
     </div>
   </header>
 
   <section>
     <div class="wrap">
+      <div style="margin-bottom:16px">
+        <h2 class="reveal">Proč právě Marvonix</h2>
+        <p class="reveal delay1">Marketing stavíme tak, aby dával smysl z pohledu kapacity servisu, typu zakázek i sezónnosti.</p>
+      </div>
+
       <div class="grid3">
         <div class="card reveal">
           <h3>Růst bez chaosu</h3>
@@ -407,8 +673,8 @@
   <section>
     <div class="wrap">
       <div style="margin-bottom:16px">
-        <h2 style="margin:0 0 8px;font-size:32px;letter-spacing:-.02em">Orientační balíčky</h2>
-        <p>Každý servis má jinou kapacitu a jiný cíl. Tohle je orientační rozdělení našich nejčastějších spoluprací.</p>
+        <h2 class="reveal">Orientační balíčky</h2>
+        <p class="reveal delay1">Každý servis má jinou kapacitu a jiný cíl. Tohle je orientační rozdělení našich nejčastějších spoluprací.</p>
       </div>
 
       <div class="pricingTeaser">
@@ -455,8 +721,39 @@
   <section>
     <div class="wrap">
       <div style="margin-bottom:16px">
-        <h2 style="margin:0 0 8px;font-size:32px;letter-spacing:-.02em">Jak spolupráce probíhá</h2>
-        <p>Jednoduše, rychle a bez zbytečného chaosu.</p>
+        <h2 class="reveal">Pro koho je to vhodné</h2>
+        <p class="reveal delay1">Nejvíc smysl dává spolupráce tam, kde servis ví, co chce růstově zlepšit, a zvládne pracovat s novými poptávkami.</p>
+      </div>
+
+      <div class="grid3">
+        <div class="card reveal">
+          <h3>Pneuservisy</h3>
+          <p>Silně sezónní služba, kde rychlost, lokální viditelnost a správné načasování rozhodují o výsledku.</p>
+        </div>
+        <div class="card reveal delay1">
+          <h3>Menší a střední autoservisy</h3>
+          <p>Servisy, které chtějí stabilnější přísun zakázek, lepší využití kapacity a větší kontrolu nad růstem.</p>
+        </div>
+        <div class="card reveal delay2">
+          <h3>Servisy s ambicí růst</h3>
+          <p>Pokud nechcete jen “být na internetu”, ale opravdu řešit výkon a návratnost, dává to největší smysl.</p>
+        </div>
+      </div>
+
+      <div class="logoStrip reveal delay1">
+        <div class="logoItem">Google Ads</div>
+        <div class="logoItem">Meta Ads</div>
+        <div class="logoItem">Měření výkonu</div>
+        <div class="logoItem">Lead flow</div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div style="margin-bottom:16px">
+        <h2 class="reveal">Jak spolupráce probíhá</h2>
+        <p class="reveal delay1">Jednoduše, rychle a bez zbytečného chaosu.</p>
       </div>
 
       <div class="steps">
@@ -489,11 +786,38 @@
           <a class="btn secondary" href="o-nas.html">Kdo jsme</a>
         </div>
       </div>
+
       <div class="card reveal delay1">
         <h3>Co od vás potřebujeme</h3>
         <p>Rychlou reakci na poptávky a přehled o kapacitě. Marketing přivede zákazníky — servis je musí umět přijmout.</p>
         <div style="margin-top:14px;color:rgba(255,255,255,.85);font-size:13px;line-height:1.6">
           Tip: pomůžeme vám nastavit jednoduchý proces „poptávka → telefon → termín“.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div style="margin-bottom:16px">
+        <h2 class="reveal">Časté otázky</h2>
+        <p class="reveal delay1">Krátce a bez omáčky.</p>
+      </div>
+
+      <div class="faq">
+        <div class="card reveal">
+          <h3>Je to vhodné i pro menší autoservis?</h3>
+          <p>Ano, pokud máte kapacitu přijímat nové zakázky a chcete růst systematicky, ne náhodně.</p>
+        </div>
+
+        <div class="card reveal delay1">
+          <h3>Musím mít velký reklamní rozpočet?</h3>
+          <p>Ne nutně. Důležité je, aby rozpočet odpovídal cíli, lokalitě a tomu, co reálně zvládnete odbavit.</p>
+        </div>
+
+        <div class="card reveal delay2">
+          <h3>Co když nevím, jaký balíček je pro mě vhodný?</h3>
+          <p>Od toho je první konzultace. Podíváme se na kapacitu, typ zakázek a navrhneme směr, který dává smysl.</p>
         </div>
       </div>
     </div>
@@ -505,9 +829,19 @@
         <b style="letter-spacing:.14em;text-transform:uppercase;">Marvonix</b>
         <div style="opacity:.75;font-size:12px">Marketing pro autoservisy</div>
       </div>
+
+      <div class="footNav">
+        <a href="index.html">Domů</a> ·
+        <a href="sluzby.html">Služby</a> ·
+        <a href="o-nas.html">O nás</a> ·
+        <a href="tym.html">Tým</a> ·
+        <a href="kontakt.html">Kontakt</a>
+      </div>
+
       <div>
         Kontakt: <a href="mailto:info@marvonix.cz">info@marvonix.cz</a>
       </div>
+
       <div>
         © <span id="y"></span> Marvonix
       </div>
@@ -524,10 +858,12 @@
       navLinks.classList.remove('open');
       burger.setAttribute('aria-expanded','false');
     }
+
     burger.addEventListener('click', () => {
       const open = navLinks.classList.toggle('open');
       burger.setAttribute('aria-expanded', open ? 'true' : 'false');
     });
+
     document.addEventListener('click', (e) => {
       if (!navLinks.contains(e.target) && !burger.contains(e.target)) closeMenu();
     });
@@ -540,6 +876,7 @@
         }
       });
     }, {threshold: 0.12});
+
     document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
   </script>
 </body>
