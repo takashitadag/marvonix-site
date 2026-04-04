@@ -1,0 +1,551 @@
+<!doctype html>
+<html lang="cs">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Tým | Marvonix</title>
+  <meta name="description" content="Poznejte tým Marvonix. Martin, Václav, Petr, Anna a Nicolas – lidé, kteří stojí za růstem autoservisů." />
+  <link rel="icon" href="favicon.ico">
+
+  <style>
+    :root{
+      --bg:#050714;
+      --bg2:#0c1026;
+      --purple:#7c3aed;
+      --purple2:#a855f7;
+      --text:#ffffff;
+      --muted:rgba(255,255,255,.75);
+      --line:rgba(255,255,255,.10);
+      --shadow:0 18px 60px rgba(0,0,0,.45);
+      --r:18px;
+      --max:1120px;
+      --pad:20px;
+      --navH:86px;
+    }
+
+    *{box-sizing:border-box}
+
+    html,body{
+      margin:0;
+      background:
+        radial-gradient(900px 600px at 15% 10%, rgba(124,58,237,.25), transparent 60%),
+        radial-gradient(800px 600px at 90% 20%, rgba(168,85,247,.18), transparent 60%),
+        linear-gradient(160deg,var(--bg),var(--bg2));
+      color:var(--text);
+      font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Arial;
+      overflow-x:hidden;
+    }
+
+    a{color:inherit;text-decoration:none}
+    .wrap{max-width:var(--max);margin:0 auto;padding:0 var(--pad)}
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      padding:11px 16px;
+      border-radius:999px;
+      background:linear-gradient(135deg,var(--purple),var(--purple2));
+      color:#fff;
+      font-weight:900;
+      box-shadow:0 18px 50px rgba(124,58,237,.22);
+      transition:.25s;
+      white-space:nowrap;
+      border:0;
+      cursor:pointer;
+    }
+
+    .btn:hover{
+      transform:translateY(-2px);
+      box-shadow:0 25px 70px rgba(124,58,237,.40);
+    }
+
+    .btn.secondary{
+      background:rgba(255,255,255,.08);
+      box-shadow:none;
+      border:1px solid rgba(255,255,255,.12);
+      color:#fff;
+      font-weight:800;
+    }
+
+    .btn.secondary:hover{
+      transform:translateY(-2px);
+      box-shadow:0 14px 40px rgba(0,0,0,.35);
+    }
+
+    .nav{
+      position:sticky;
+      top:0;
+      z-index:50;
+      backdrop-filter: blur(12px);
+      background:rgba(5,7,20,.75);
+      border-bottom:1px solid var(--line);
+    }
+
+    .navin{
+      position:relative;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:14px;
+      padding:14px 0;
+      min-height:var(--navH);
+    }
+
+    .brand{display:flex;align-items:center;gap:14px}
+    .brand img{
+      height:72px;
+      width:auto;
+      display:block;
+      filter:drop-shadow(0 18px 40px rgba(124,58,237,.35));
+    }
+
+    .links{
+      display:flex;
+      gap:18px;
+      align-items:center;
+      color:var(--muted);
+      font-size:14px;
+    }
+
+    .links a{
+      padding:10px 8px;
+      border-radius:10px;
+      transition:.2s;
+    }
+
+    .links a:hover{
+      color:#fff;
+      background:rgba(255,255,255,.06);
+    }
+
+    .links a.active{
+      color:#fff;
+      background:rgba(124,58,237,.18);
+      border:1px solid rgba(124,58,237,.35);
+    }
+
+    .navcta-mobile{display:none;}
+    .navcta-desktop{display:inline-flex;}
+
+    .burger{
+      display:none;
+      width:44px;height:44px;
+      border-radius:12px;
+      border:1px solid rgba(255,255,255,.12);
+      background:rgba(255,255,255,.06);
+      align-items:center;justify-content:center;
+      cursor:pointer;
+      transition:.2s;
+    }
+
+    .burger:hover{transform:translateY(-1px)}
+
+    .burger span{
+      width:20px;height:2px;background:#fff;display:block;position:relative;border-radius:2px;
+    }
+
+    .burger span:before,.burger span:after{
+      content:"";position:absolute;left:0;width:20px;height:2px;background:#fff;border-radius:2px;
+    }
+
+    .burger span:before{top:-6px}
+    .burger span:after{top:6px}
+
+    @media (max-width: 940px){
+      .burger{display:flex}
+      .navcta-desktop{display:none;}
+      .links{
+        position:absolute;
+        left:0; right:0;
+        top:100%;
+        margin-top:12px;
+        display:flex;
+        flex-direction:column;
+        gap:10px;
+        padding:14px;
+        border:1px solid var(--line);
+        border-radius:18px;
+        background:rgba(5,7,20,.92);
+        box-shadow:var(--shadow);
+        opacity:0;
+        transform:translateY(-10px);
+        pointer-events:none;
+        transition:.22s ease;
+      }
+      .links.open{
+        opacity:1;
+        transform:translateY(0);
+        pointer-events:auto;
+      }
+      .links a{padding:12px 12px}
+      .navcta-mobile{display:inline-flex;width:100%;margin-top:6px;}
+    }
+
+    header{padding:34px 0 10px}
+
+    .hero{
+      margin-top:22px;
+      border-radius:24px;
+      border:1px solid rgba(255,255,255,.10);
+      background:
+        radial-gradient(700px 500px at 20% 20%, rgba(124,58,237,.30), transparent 60%),
+        radial-gradient(700px 500px at 85% 35%, rgba(168,85,247,.22), transparent 55%),
+        rgba(255,255,255,.03);
+      box-shadow:var(--shadow);
+      padding:28px;
+      overflow:hidden;
+    }
+
+    h1{
+      margin:0 0 12px;
+      font-size:clamp(34px, 7.2vw, 54px);
+      line-height:1.06;
+      letter-spacing:-.02em;
+    }
+
+    h2{
+      margin:0 0 10px;
+      font-size:32px;
+      letter-spacing:-.02em;
+    }
+
+    p{
+      color:var(--muted);
+      line-height:1.7;
+      margin:0;
+    }
+
+    .sub{max-width:70ch}
+
+    .badgeRow{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-top:16px;
+    }
+
+    .pill{
+      padding:8px 12px;
+      border-radius:999px;
+      border:1px solid rgba(168,85,247,.25);
+      background:rgba(124,58,237,.10);
+      color:rgba(255,255,255,.88);
+      font-size:12px;
+      font-weight:800;
+      letter-spacing:.10em;
+      text-transform:uppercase;
+    }
+
+    .ctaRow{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+      margin-top:20px;
+    }
+
+    section{padding:26px 0}
+
+    .gridTeam{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:14px;
+    }
+
+    .card{
+      background:rgba(255,255,255,.04);
+      border:1px solid rgba(255,255,255,.10);
+      border-radius:var(--r);
+      padding:20px;
+      box-shadow:var(--shadow);
+      transition:.25s;
+    }
+
+    .card:hover{transform:translateY(-4px)}
+
+    .roleTag{
+      display:inline-block;
+      margin-bottom:10px;
+      padding:7px 11px;
+      border-radius:999px;
+      border:1px solid rgba(168,85,247,.25);
+      background:rgba(124,58,237,.12);
+      color:rgba(255,255,255,.9);
+      font-size:11px;
+      font-weight:900;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+    }
+
+    .memberName{
+      margin:0 0 8px;
+      font-size:26px;
+      letter-spacing:-.02em;
+    }
+
+    .memberText{
+      color:var(--muted);
+      line-height:1.7;
+      margin:0;
+    }
+
+    .grid3{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:14px;
+    }
+
+    .ctaBox{
+      margin-top:8px;
+      border-radius:24px;
+      border:1px solid rgba(255,255,255,.10);
+      background:rgba(255,255,255,.03);
+      box-shadow:var(--shadow);
+      padding:18px;
+    }
+
+    footer{
+      padding:26px 0 40px;
+      border-top:1px solid var(--line);
+      color:var(--muted);
+      font-size:13px;
+    }
+
+    .foot{
+      display:flex;
+      justify-content:space-between;
+      gap:16px;
+      flex-wrap:wrap;
+    }
+
+    .reveal{
+      opacity:0;
+      transform:translateY(14px);
+      transition:.5s ease;
+    }
+
+    .reveal.show{
+      opacity:1;
+      transform:translateY(0);
+    }
+
+    .reveal.delay1{transition-delay:.06s}
+    .reveal.delay2{transition-delay:.12s}
+    .reveal.delay3{transition-delay:.18s}
+
+    @media (max-width: 900px){
+      .gridTeam,
+      .grid3{
+        grid-template-columns:1fr;
+      }
+
+      h1{font-size:38px}
+      h2{font-size:28px}
+      .brand img{height:64px}
+
+      .ctaBox div{
+        width:100%;
+      }
+
+      .ctaBox .btn{
+        width:100%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="nav">
+    <div class="wrap navin">
+      <a class="brand" href="index.html" aria-label="Marvonix">
+        <img src="logo.png" alt="Marvonix logo">
+      </a>
+
+      <div class="links" id="navLinks">
+        <a href="index.html">Domů</a>
+        <a href="sluzby.html">Služby</a>
+        <a href="o-nas.html">O nás</a>
+        <a class="active" href="tym.html">Tým</a>
+        <a href="kontakt.html">Kontakt</a>
+        <a class="btn navcta-mobile" href="kontakt.html">Objednat konzultaci</a>
+      </div>
+
+      <a class="btn navcta-desktop" href="kontakt.html">Objednat konzultaci</a>
+
+      <button class="burger" id="burger" aria-label="Otevřít menu" aria-expanded="false">
+        <span></span>
+      </button>
+    </div>
+  </div>
+
+  <header>
+    <div class="wrap">
+      <div class="hero reveal">
+        <h1>Kdo stojí za Marvonix</h1>
+        <p class="sub">
+          Marvonix nestaví na prázdných frázích, ale na lidech, kteří řeší výkon, systémy a reálné výsledky. Každý člen týmu má jasnou roli a společný cíl: pomáhat autoservisům růst efektivně a bez chaosu.
+        </p>
+
+        <div class="ctaRow">
+          <a class="btn" href="kontakt.html">Objednat konzultaci</a>
+          <a class="btn secondary" href="sluzby.html">Zobrazit služby</a>
+        </div>
+
+        <div class="badgeRow">
+          <span class="pill">Malý tým</span>
+          <span class="pill">Rychlé rozhodování</span>
+          <span class="pill">Zaměření na výkon</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section>
+    <div class="wrap" style="margin-bottom:16px">
+      <h2 class="reveal">Náš tým</h2>
+      <p class="reveal delay1">Každý z nás řeší jinou část růstu, ale všichni pracujeme na jednom cíli: přivádět klientům relevantní zakázky a budovat systém, který dává smysl.</p>
+    </div>
+
+    <div class="wrap gridTeam">
+      <div class="card reveal">
+        <div class="roleTag">CEO</div>
+        <h3 class="memberName">Martin</h3>
+        <p class="memberText">
+          Řídí směr agentury, obchod a spolupráci s klienty. Zaměřuje se na to, aby marketing přinášel reálné zakázky, ne jen „hezká čísla“ v reportech.
+        </p>
+      </div>
+
+      <div class="card reveal delay1">
+        <div class="roleTag">CTO</div>
+        <h3 class="memberName">Václav</h3>
+        <p class="memberText">
+          Zajišťuje technické řešení, weby, systémy a měření. Dohlíží na to, aby technická část fungovala rychle, správně a bez zbytečných chyb.
+        </p>
+      </div>
+
+      <div class="card reveal delay2">
+        <div class="roleTag">CMO</div>
+        <h3 class="memberName">Petr</h3>
+        <p class="memberText">
+          Řídí marketingové kampaně a strategii. Zaměřuje se na výkon, testování a škálování toho, co funguje pro klienty nejlépe.
+        </p>
+      </div>
+
+      <div class="card reveal delay3">
+        <div class="roleTag">CEO Assistant</div>
+        <h3 class="memberName">Anna</h3>
+        <p class="memberText">
+          Zajišťuje organizaci, komunikaci a podporu týmu. Pomáhá udržovat chod agentury přehledný, efektivní a dobře řízený.
+        </p>
+      </div>
+
+      <div class="card reveal delay1">
+        <div class="roleTag">IT Manager</div>
+        <h3 class="memberName">Nicolas</h3>
+        <p class="memberText">
+          Pomáhá s technologickou stránkou, automatizací a rozvojem interních řešení. Jeho role je stavět procesy, které šetří čas a zvyšují výkon.
+        </p>
+      </div>
+
+      <div class="card reveal delay2">
+        <div class="roleTag">Jak fungujeme</div>
+        <h3 class="memberName">Výkon před egem</h3>
+        <p class="memberText">
+          Nejsme velká agentura s vrstvami managementu. Jsme tým, který se rozhoduje rychle, pracuje systematicky a soustředí se na výsledky.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap" style="margin-bottom:16px">
+      <h2 class="reveal">Na čem stavíme</h2>
+      <p class="reveal delay1">To, jak pracujeme uvnitř, se přímo promítá do kvality spolupráce s klienty.</p>
+    </div>
+
+    <div class="wrap grid3">
+      <div class="card reveal">
+        <h3>Jasné role</h3>
+        <p>Každý v týmu ví, za co odpovídá. Díky tomu je komunikace rychlá a práce efektivní.</p>
+      </div>
+
+      <div class="card reveal delay1">
+        <h3>Vlastní systém</h3>
+        <p>Pracujeme ve vlastním interním OS, kde máme přehled o úkolech, klientech, procesech i výsledcích.</p>
+      </div>
+
+      <div class="card reveal delay2">
+        <h3>Dlouhodobý růst</h3>
+        <p>Neřešíme jednorázový hype. Stavíme procesy a marketing tak, aby klientům fungovaly i dlouhodobě.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="ctaBox reveal delay1">
+        <div style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:center">
+          <div>
+            <div style="font-weight:900;font-size:16px;margin-bottom:4px">Chcete s námi probrat váš autoservis?</div>
+            <div style="color:var(--muted);font-size:13px;line-height:1.5">
+              Napište nám základní informace o vaší kapacitě, typu zakázek a cíli. Navrhneme další krok.
+            </div>
+          </div>
+          <div style="display:flex;gap:10px;flex-wrap:wrap">
+            <a class="btn" href="kontakt.html">Objednat konzultaci</a>
+            <a class="btn secondary" href="o-nas.html">Jak přemýšlíme</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap foot">
+      <div>
+        <b style="letter-spacing:.14em;text-transform:uppercase;">Marvonix</b>
+        <div style="opacity:.75;font-size:12px">Marketing pro autoservisy</div>
+      </div>
+      <div>
+        Kontakt: <a href="mailto:info@marvonix.cz">info@marvonix.cz</a>
+      </div>
+      <div>
+        © <span id="y"></span> Marvonix
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+
+    const burger = document.getElementById('burger');
+    const navLinks = document.getElementById('navLinks');
+
+    function closeMenu(){
+      navLinks.classList.remove('open');
+      burger.setAttribute('aria-expanded','false');
+    }
+
+    burger.addEventListener('click', () => {
+      const open = navLinks.classList.toggle('open');
+      burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+
+    document.addEventListener('click', (e) => {
+      if (!navLinks.contains(e.target) && !burger.contains(e.target)) closeMenu();
+    });
+
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(en=>{
+        if(en.isIntersecting){
+          en.target.classList.add('show');
+          io.unobserve(en.target);
+        }
+      });
+    }, {threshold:0.12});
+
+    document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+  </script>
+</body>
+</html>
