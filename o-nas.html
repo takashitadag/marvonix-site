@@ -4,82 +4,333 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>O nás | Marvonix</title>
-  <meta name="description" content="Marvonix – performance agentura pro růst autoservisů. Měření, transparentnost a výsledky." />
+  <meta name="description" content="Marvonix je agentura zaměřená na marketing pro autoservisy. Stavíme růst na datech, měření, transparentnosti a reálných výsledcích." />
   <link rel="icon" href="favicon.ico">
 
   <style>
-    :root{--bg:#050714;--bg2:#0c1026;--purple:#7c3aed;--purple2:#a855f7;--text:#fff;--muted:rgba(255,255,255,.75);
-      --line:rgba(255,255,255,.10);--shadow:0 18px 60px rgba(0,0,0,.45);--r:18px;--max:1120px;--pad:20px;--navH:86px;}
+    :root{
+      --bg:#050714;
+      --bg2:#0c1026;
+      --purple:#7c3aed;
+      --purple2:#a855f7;
+      --text:#fff;
+      --muted:rgba(255,255,255,.75);
+      --line:rgba(255,255,255,.10);
+      --shadow:0 18px 60px rgba(0,0,0,.45);
+      --r:18px;
+      --max:1120px;
+      --pad:20px;
+      --navH:86px;
+    }
+
     *{box-sizing:border-box}
-    html,body{margin:0;background:
-      radial-gradient(900px 600px at 15% 10%, rgba(124,58,237,.25), transparent 60%),
-      radial-gradient(800px 600px at 90% 20%, rgba(168,85,247,.18), transparent 60%),
-      linear-gradient(160deg,var(--bg),var(--bg2));
-      color:var(--text);font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Arial;overflow-x:hidden}
+
+    html,body{
+      margin:0;
+      background:
+        radial-gradient(900px 600px at 15% 10%, rgba(124,58,237,.25), transparent 60%),
+        radial-gradient(800px 600px at 90% 20%, rgba(168,85,247,.18), transparent 60%),
+        linear-gradient(160deg,var(--bg),var(--bg2));
+      color:var(--text);
+      font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Arial;
+      overflow-x:hidden;
+    }
+
     a{color:inherit;text-decoration:none}
     .wrap{max-width:var(--max);margin:0 auto;padding:0 var(--pad)}
-    .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:11px 16px;border-radius:999px;
-      background:linear-gradient(135deg,var(--purple),var(--purple2));color:#fff;font-weight:900;box-shadow:0 18px 50px rgba(124,58,237,.22);
-      transition:.25s;white-space:nowrap;border:0;cursor:pointer}
-    .btn:hover{transform:translateY(-2px);box-shadow:0 25px 70px rgba(124,58,237,.40)}
-    .btn.secondary{background:rgba(255,255,255,.08);box-shadow:none;border:1px solid rgba(255,255,255,.12);font-weight:800}
 
-    .nav{position:sticky;top:0;z-index:50;backdrop-filter: blur(12px);background:rgba(5,7,20,.75);border-bottom:1px solid var(--line)}
-    .navin{position:relative;display:flex;align-items:center;justify-content:space-between;gap:14px;padding:14px 0;min-height:var(--navH)}
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      padding:11px 16px;
+      border-radius:999px;
+      background:linear-gradient(135deg,var(--purple),var(--purple2));
+      color:#fff;
+      font-weight:900;
+      box-shadow:0 18px 50px rgba(124,58,237,.22);
+      transition:.25s;
+      white-space:nowrap;
+      border:0;
+      cursor:pointer;
+    }
+
+    .btn:hover{
+      transform:translateY(-2px);
+      box-shadow:0 25px 70px rgba(124,58,237,.40);
+    }
+
+    .btn.secondary{
+      background:rgba(255,255,255,.08);
+      box-shadow:none;
+      border:1px solid rgba(255,255,255,.12);
+      font-weight:800;
+    }
+
+    .nav{
+      position:sticky;
+      top:0;
+      z-index:50;
+      backdrop-filter: blur(12px);
+      background:rgba(5,7,20,.75);
+      border-bottom:1px solid var(--line);
+    }
+
+    .navin{
+      position:relative;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:14px;
+      padding:14px 0;
+      min-height:var(--navH);
+    }
+
     .brand{display:flex;align-items:center;gap:14px}
-    .brand img{height:72px;width:auto;display:block;filter:drop-shadow(0 18px 40px rgba(124,58,237,.35))}
-    .links{display:flex;gap:18px;align-items:center;color:var(--muted);font-size:14px}
-    .links a{padding:10px 8px;border-radius:10px;transition:.2s}
-    .links a:hover{color:#fff;background:rgba(255,255,255,.06)}
+    .brand img{
+      height:72px;
+      width:auto;
+      display:block;
+      filter:drop-shadow(0 18px 40px rgba(124,58,237,.35));
+    }
+
+    .links{
+      display:flex;
+      gap:18px;
+      align-items:center;
+      color:var(--muted);
+      font-size:14px;
+    }
+
+    .links a{
+      padding:10px 8px;
+      border-radius:10px;
+      transition:.2s;
+    }
+
+    .links a:hover{
+      color:#fff;
+      background:rgba(255,255,255,.06);
+    }
+
     .links a.active{
       color:#fff;
       background:rgba(124,58,237,.18);
       border:1px solid rgba(124,58,237,.35);
     }
+
     .navcta-mobile{display:none;}
     .navcta-desktop{display:inline-flex;}
-    .burger{display:none;width:44px;height:44px;border-radius:12px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.06);
-      align-items:center;justify-content:center;cursor:pointer;transition:.2s}
-    .burger span{width:20px;height:2px;background:#fff;display:block;position:relative;border-radius:2px}
-    .burger span:before,.burger span:after{content:"";position:absolute;left:0;width:20px;height:2px;background:#fff;border-radius:2px}
-    .burger span:before{top:-6px}.burger span:after{top:6px}
+
+    .burger{
+      display:none;
+      width:44px;
+      height:44px;
+      border-radius:12px;
+      border:1px solid rgba(255,255,255,.12);
+      background:rgba(255,255,255,.06);
+      align-items:center;
+      justify-content:center;
+      cursor:pointer;
+      transition:.2s;
+    }
+
+    .burger span{
+      width:20px;
+      height:2px;
+      background:#fff;
+      display:block;
+      position:relative;
+      border-radius:2px;
+    }
+
+    .burger span:before,
+    .burger span:after{
+      content:"";
+      position:absolute;
+      left:0;
+      width:20px;
+      height:2px;
+      background:#fff;
+      border-radius:2px;
+    }
+
+    .burger span:before{top:-6px}
+    .burger span:after{top:6px}
+
     @media (max-width: 940px){
       .burger{display:flex}
       .navcta-desktop{display:none;}
-      .links{position:absolute;left:0;right:0;top:100%;margin-top:12px;display:flex;flex-direction:column;gap:10px;padding:14px;
-        border:1px solid var(--line);border-radius:18px;background:rgba(5,7,20,.92);box-shadow:var(--shadow);
-        opacity:0;transform:translateY(-10px);pointer-events:none;transition:.22s ease}
-      .links.open{opacity:1;transform:translateY(0);pointer-events:auto}
+
+      .links{
+        position:absolute;
+        left:0;
+        right:0;
+        top:100%;
+        margin-top:12px;
+        display:flex;
+        flex-direction:column;
+        gap:10px;
+        padding:14px;
+        border:1px solid var(--line);
+        border-radius:18px;
+        background:rgba(5,7,20,.92);
+        box-shadow:var(--shadow);
+        opacity:0;
+        transform:translateY(-10px);
+        pointer-events:none;
+        transition:.22s ease;
+      }
+
+      .links.open{
+        opacity:1;
+        transform:translateY(0);
+        pointer-events:auto;
+      }
+
       .links a{padding:12px 12px}
       .navcta-mobile{display:inline-flex;width:100%;margin-top:6px}
     }
 
     header{padding:34px 0 10px}
-    h1{margin:0 0 10px;font-size:44px;letter-spacing:-.02em}
-    p{color:var(--muted);line-height:1.65;margin:0}
-    section{padding:22px 0}
-    .grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-    .card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.10);border-radius:var(--r);padding:18px;box-shadow:var(--shadow)}
+
+    .hero{
+      margin-top:22px;
+      border-radius:24px;
+      border:1px solid rgba(255,255,255,.10);
+      background:
+        radial-gradient(700px 500px at 20% 20%, rgba(124,58,237,.30), transparent 60%),
+        radial-gradient(700px 500px at 85% 35%, rgba(168,85,247,.22), transparent 55%),
+        rgba(255,255,255,.03);
+      box-shadow:var(--shadow);
+      padding:28px;
+      overflow:hidden;
+    }
+
+    h1{
+      margin:0 0 12px;
+      font-size:clamp(34px, 7.2vw, 54px);
+      line-height:1.06;
+      letter-spacing:-.02em;
+    }
+
+    h2{
+      margin:0 0 10px;
+      font-size:32px;
+      letter-spacing:-.02em;
+    }
+
+    p{
+      color:var(--muted);
+      line-height:1.7;
+      margin:0;
+    }
+
+    .sub{
+      max-width:68ch;
+    }
+
+    .badgeRow{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-top:16px;
+    }
+
+    .pill{
+      padding:8px 12px;
+      border-radius:999px;
+      border:1px solid rgba(168,85,247,.25);
+      background:rgba(124,58,237,.10);
+      color:rgba(255,255,255,.88);
+      font-size:12px;
+      font-weight:800;
+      letter-spacing:.10em;
+      text-transform:uppercase;
+    }
+
+    .ctaRow{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+      margin-top:20px;
+    }
+
+    section{padding:26px 0}
+
+    .grid2{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:14px;
+    }
+
+    .grid3{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:14px;
+    }
+
+    .card{
+      background:rgba(255,255,255,.04);
+      border:1px solid rgba(255,255,255,.10);
+      border-radius:var(--r);
+      padding:18px;
+      box-shadow:var(--shadow);
+      transition:.25s;
+    }
+
+    .card:hover{transform:translateY(-4px)}
     .card h3{margin:0 0 8px}
     .card p{margin:0;color:var(--muted);line-height:1.65}
-    .ctaBox{margin-top:14px;border-radius:24px;border:1px solid rgba(255,255,255,.10);background:rgba(255,255,255,.03);box-shadow:var(--shadow);padding:18px}
-    footer{padding:26px 0 40px;border-top:1px solid var(--line);color:var(--muted);font-size:13px}
-    .foot{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
-    .reveal{opacity:0;transform:translateY(14px);transition:.5s ease}
-    .reveal.show{opacity:1;transform:translateY(0)}
-    .reveal.delay1{transition-delay:.06s}.reveal.delay2{transition-delay:.12s}.reveal.delay3{transition-delay:.18s}
+
+    .ctaBox{
+      margin-top:14px;
+      border-radius:24px;
+      border:1px solid rgba(255,255,255,.10);
+      background:rgba(255,255,255,.03);
+      box-shadow:var(--shadow);
+      padding:18px;
+    }
+
+    footer{
+      padding:26px 0 40px;
+      border-top:1px solid var(--line);
+      color:var(--muted);
+      font-size:13px;
+    }
+
+    .foot{
+      display:flex;
+      justify-content:space-between;
+      gap:16px;
+      flex-wrap:wrap;
+    }
+
+    .reveal{
+      opacity:0;
+      transform:translateY(14px);
+      transition:.5s ease;
+    }
+
+    .reveal.show{
+      opacity:1;
+      transform:translateY(0);
+    }
+
+    .reveal.delay1{transition-delay:.06s}
+    .reveal.delay2{transition-delay:.12s}
+    .reveal.delay3{transition-delay:.18s}
+
     @media (max-width: 900px){
-      .grid2{
+      .grid2,
+      .grid3{
         grid-template-columns:1fr;
       }
 
-      h1{
-        font-size:38px;
-      }
-
-      .brand img{
-        height:64px;
-      }
+      h1{font-size:38px}
+      h2{font-size:28px}
+      .brand img{height:64px}
 
       .ctaBox div{
         width:100%;
@@ -117,38 +368,117 @@
 
   <header>
     <div class="wrap">
-      <h1 class="reveal">O nás</h1>
-      <p class="reveal delay1">Marvonix je performance agentura zaměřená na růst autoservisů. Stavíme marketing, který přináší zakázky — ne „hezké reporty“.</p>
+      <div class="hero reveal">
+        <h1>Stavíme marketing pro autoservisy, který dává smysl</h1>
+        <p class="sub">
+          Marvonix je agentura zaměřená na výkon, měření a stabilní růst autoservisů. Nehoníme vanity metrics ani „hezké prezentace“. Zajímá nás, kolik relevantních poptávek dokážeme přivést a jaký mají reálný přínos pro váš servis.
+        </p>
+
+        <div class="ctaRow">
+          <a class="btn" href="kontakt.html">Objednat konzultaci</a>
+          <a class="btn secondary" href="sluzby.html">Zobrazit služby a ceny</a>
+        </div>
+
+        <div class="badgeRow">
+          <span class="pill">Zaměření: autoservisy</span>
+          <span class="pill">Výkon místo omáčky</span>
+          <span class="pill">Data & transparentnost</span>
+        </div>
+      </div>
     </div>
   </header>
 
   <section>
+    <div class="wrap" style="margin-bottom:16px">
+      <h2 class="reveal">Na čem si zakládáme</h2>
+      <p class="reveal delay1">Spolupráci stavíme na tom, aby klient přesně věděl, co děláme, proč to děláme a co od toho čekáme.</p>
+    </div>
+
     <div class="wrap grid2">
       <div class="card reveal">
-        <h3>Jak přemýšlíme</h3>
-        <p>Neřešíme „kolik utratíme“. Řešíme, kolik relevantních poptávek dokážeme přivést a za jakou cenu. Základ je měření, čistá struktura kampaní a práce se sezónností.</p>
+        <h3>Výsledky před dojmem</h3>
+        <p>Neřešíme jen to, jak reklama vypadá, ale hlavně to, jestli přivádí zakázky za rozumnou cenu a ve správný čas.</p>
       </div>
+
       <div class="card reveal delay1">
-        <h3>Proč autoservisy</h3>
-        <p>Autoservisy mají jasný produkt, lokální trh a vysoký intent ve vyhledávání. Když je servis vidět ve správný moment, výsledky přichází rychle.</p>
+        <h3>Transparentní komunikace</h3>
+        <p>Říkáme věci narovinu. Pokud něco nefunguje, upravíme to. Pokud něco dává smysl škálovat, řekneme to taky.</p>
       </div>
 
       <div class="card reveal delay2">
-        <h3>Co garantujeme</h3>
-        <p>Proces, transparentnost a práci s daty. Nikdy neslibujeme nesmysly bez znalosti vašich čísel a kapacity.</p>
+        <h3>Rozhodování podle dat</h3>
+        <p>Bez měření je marketing jen odhad. Stavíme na číslech, konverzích, kapacitě servisu a kvalitě poptávek.</p>
       </div>
+
       <div class="card reveal delay3">
-        <h3>Co od vás potřebujeme</h3>
-        <p>Kapacitu (kolik aut zvládnete), průměrnou hodnotu zakázky a rychlou reakci na poptávky. Marketing přivede zákazníky — servis je musí umět přijmout.</p>
+        <h3>Dlouhodobý pohled</h3>
+        <p>Nechceme jednorázový hype. Chceme systém, který autoservisu pomůže růst dlouhodobě a bez chaosu.</p>
       </div>
     </div>
+  </section>
 
+  <section>
+    <div class="wrap" style="margin-bottom:16px">
+      <h2 class="reveal">Proč právě autoservisy</h2>
+      <p class="reveal delay1">Specializace nám umožňuje jít víc do hloubky, chápat sezónnost a stavět marketing podle reálného fungování servisu.</p>
+    </div>
+
+    <div class="wrap grid3">
+      <div class="card reveal">
+        <h3>Lokální trh</h3>
+        <p>Autoservisy fungují lokálně. To znamená přesnější cílení, jasnější strategii a rychlejší vyhodnocení výsledků.</p>
+      </div>
+
+      <div class="card reveal delay1">
+        <h3>Silný intent</h3>
+        <p>Když někdo hledá servis, pneuservis nebo opravu, často už má konkrétní potřebu. To je silný základ pro výkon.</p>
+      </div>
+
+      <div class="card reveal delay2">
+        <h3>Sezónnost a kapacita</h3>
+        <p>Pneu, klima, STK, servisní špičky. Marketing musí odpovídat tomu, co servis zvládne a kdy to dává největší smysl.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap" style="margin-bottom:16px">
+      <h2 class="reveal">Jak pracujeme</h2>
+      <p class="reveal delay1">Nejdřív potřebujeme pochopit realitu servisu. Teprve potom dává smysl řešit kanály, kampaně a rozpočet.</p>
+    </div>
+
+    <div class="wrap grid2">
+      <div class="card reveal">
+        <h3>1. Zjistíme čísla a kapacitu</h3>
+        <p>Kolik aut za měsíc zvládnete, jaká je průměrná hodnota zakázky a kde jsou vaše nejsilnější služby.</p>
+      </div>
+
+      <div class="card reveal delay1">
+        <h3>2. Navrhneme směr</h3>
+        <p>Vybereme vhodný balíček, kanály a první kroky, které dávají smysl pro váš konkrétní servis a lokalitu.</p>
+      </div>
+
+      <div class="card reveal delay2">
+        <h3>3. Spustíme a měříme</h3>
+        <p>Kampaně nespouštíme naslepo. Měříme, vyhodnocujeme a podle dat upravujeme další postup.</p>
+      </div>
+
+      <div class="card reveal delay3">
+        <h3>4. Zlepšujeme výkon</h3>
+        <p>Průběžně hledáme, co zlepšit. Nejen v reklamě, ale i v tom, jak servis pracuje s poptávkou a kapacitou.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
     <div class="wrap">
       <div class="ctaBox reveal delay1">
         <div style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:center">
           <div>
-            <div style="font-weight:900;font-size:16px;margin-bottom:4px">Chcete zjistit, co to udělá u vás?</div>
-            <div style="color:var(--muted);font-size:13px;line-height:1.5">Napište kapacitu aut/měsíc a průměrnou hodnotu zakázky. Pošleme návrh postupu.</div>
+            <div style="font-weight:900;font-size:16px;margin-bottom:4px">Chcete zjistit, jestli to dává smysl i pro vás?</div>
+            <div style="color:var(--muted);font-size:13px;line-height:1.5">
+              Napište nám kapacitu aut za měsíc, průměrnou hodnotu zakázky a město, kde působíte. Podle toho navrhneme další krok.
+            </div>
           </div>
           <div style="display:flex;gap:10px;flex-wrap:wrap">
             <a class="btn" href="kontakt.html">Objednat konzultaci</a>
@@ -161,9 +491,16 @@
 
   <footer>
     <div class="wrap foot">
-      <div><b style="letter-spacing:.14em;text-transform:uppercase;">Marvonix</b><div style="opacity:.75;font-size:12px">Performance Growth Agency</div></div>
-      <div>Kontakt: <a href="mailto:info@marvonix.cz">info@marvonix.cz</a></div>
-      <div>© <span id="y"></span> Marvonix</div>
+      <div>
+        <b style="letter-spacing:.14em;text-transform:uppercase;">Marvonix</b>
+        <div style="opacity:.75;font-size:12px">Marketing pro autoservisy</div>
+      </div>
+      <div>
+        Kontakt: <a href="mailto:info@marvonix.cz">info@marvonix.cz</a>
+      </div>
+      <div>
+        © <span id="y"></span> Marvonix
+      </div>
     </div>
   </footer>
 
@@ -172,11 +509,17 @@
 
     const burger = document.getElementById('burger');
     const navLinks = document.getElementById('navLinks');
-    function closeMenu(){ navLinks.classList.remove('open'); burger.setAttribute('aria-expanded','false'); }
+
+    function closeMenu(){
+      navLinks.classList.remove('open');
+      burger.setAttribute('aria-expanded','false');
+    }
+
     burger.addEventListener('click', () => {
       const open = navLinks.classList.toggle('open');
       burger.setAttribute('aria-expanded', open ? 'true' : 'false');
     });
+
     document.addEventListener('click', (e) => {
       if (!navLinks.contains(e.target) && !burger.contains(e.target)) closeMenu();
     });
@@ -189,6 +532,7 @@
         }
       });
     }, {threshold:0.12});
+
     document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
   </script>
 </body>
