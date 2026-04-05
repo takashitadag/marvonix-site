@@ -21,8 +21,8 @@
       --shadow:0 18px 60px rgba(0,0,0,.45);
       --shadow-soft:0 12px 30px rgba(124,58,237,.16);
       --r:18px;
-      --max:1180px;
-      --pad:28px;
+      --max:1120px;
+      --pad:20px;
       --navH:86px;
 
       --card-bg:rgba(255,255,255,.045);
@@ -209,9 +209,7 @@
       .navcta-mobile{display:inline-flex;width:100%;margin-top:6px;}
     }
 
-    header{
-      padding:34px 0 10px;
-    }
+    header{padding:34px 0 10px}
 
     .hero{
       margin-top:22px;
@@ -222,7 +220,7 @@
         radial-gradient(700px 500px at 85% 35%, rgba(168,85,247,.22), transparent 55%),
         rgba(255,255,255,.03);
       box-shadow:var(--shadow);
-      padding:34px 34px 30px;
+      padding:28px;
       overflow:hidden;
       position:relative;
     }
@@ -239,10 +237,13 @@
 
     .heroGrid{
       display:grid;
-      grid-template-columns:1.2fr .85fr;
-      gap:24px;
+      grid-template-columns:1.3fr .9fr;
+      gap:18px;
       align-items:stretch;
     }
+
+    .heroGrid > *{min-width:0}
+    .sideCard{min-width:0}
 
     h1{
       margin:0 0 12px;
@@ -262,7 +263,7 @@
       color:var(--muted);
       line-height:1.7;
       margin:0;
-      max-width:62ch;
+      max-width:60ch;
     }
 
     .badgeRow{
@@ -296,7 +297,7 @@
       border:1px solid rgba(255,255,255,.10);
       background:rgba(0,0,0,.20);
       box-shadow:0 18px 60px rgba(0,0,0,.35);
-      padding:22px;
+      padding:18px;
       display:flex;
       flex-direction:column;
       justify-content:space-between;
@@ -305,7 +306,7 @@
 
     .kv{
       display:grid;
-      grid-template-columns:1fr;
+      grid-template-columns:1fr 1fr;
       gap:10px;
       margin-top:6px;
     }
@@ -322,6 +323,21 @@
       min-width:0;
       flex-wrap:wrap;
       align-items:flex-start;
+    }
+
+    .kv .row b,
+    .kv .row span{
+      min-width:0;
+    }
+
+    .kv .row span{
+      overflow-wrap:anywhere;
+      word-break:break-word;
+    }
+
+    @media (max-width: 520px){
+      .kv{grid-template-columns:1fr}
+      .kv .row{grid-column:auto !important;}
     }
 
     .bigBtn{
@@ -346,8 +362,8 @@
     }
 
     .proofBar{
-      margin-top:22px;
-      padding:18px 22px;
+      margin-top:10px;
+      padding:16px 18px;
       border-radius:18px;
       border:1px solid var(--line2);
       background:linear-gradient(180deg, rgba(124,58,237,.10), rgba(255,255,255,.03));
@@ -374,7 +390,7 @@
     .toolbar{
       display:flex;
       justify-content:space-between;
-      align-items:flex-end;
+      align-items:center;
       gap:14px;
       flex-wrap:wrap;
       margin-bottom:16px;
@@ -383,14 +399,12 @@
     .toolbarMeta{
       color:var(--muted);
       font-size:14px;
-      line-height:1.55;
     }
 
     .filterRow{
       display:flex;
       gap:10px;
       flex-wrap:wrap;
-      justify-content:flex-end;
     }
 
     .filterPill{
@@ -411,24 +425,22 @@
 
     .auditGrid{
       display:grid;
-      grid-template-columns:repeat(3, minmax(0,1fr));
-      gap:18px;
+      grid-template-columns:repeat(3,1fr);
+      gap:14px;
     }
 
     .auditCard{
-      background:var(--card-bg);
-      border:1px solid var(--card-border);
-      border-radius:22px;
+      background:rgba(255,255,255,.04);
+      border:1px solid rgba(255,255,255,.10);
+      border-radius:var(--r);
       padding:18px;
       box-shadow:var(--shadow);
       transition:.25s;
+      transform:translateY(0);
       min-width:0;
     }
 
-    .auditCard:hover{
-      transform:translateY(-4px);
-      box-shadow:0 24px 70px rgba(0,0,0,.40);
-    }
+    .auditCard:hover{transform:translateY(-4px)}
 
     .auditTop{
       display:flex;
@@ -439,11 +451,11 @@
     }
 
     .auditTitle{
+      margin:0 0 4px;
       font-size:28px;
       font-weight:900;
       line-height:1.05;
       letter-spacing:-.02em;
-      margin:0 0 4px;
     }
 
     .auditRegion{
@@ -505,7 +517,7 @@
 
     .metricGrid{
       display:grid;
-      grid-template-columns:repeat(3, minmax(0,1fr));
+      grid-template-columns:repeat(3,1fr);
       gap:10px;
       margin:12px 0 14px;
     }
@@ -582,10 +594,14 @@
     .summaryCard{
       background:rgba(255,255,255,.04);
       border:1px solid rgba(255,255,255,.10);
-      border-radius:18px;
+      border-radius:var(--r);
       padding:18px;
       box-shadow:var(--shadow);
+      transition:.25s;
+      transform:translateY(0);
     }
+
+    .summaryCard:hover{transform:translateY(-4px)}
 
     .summaryCard h3{
       margin:0 0 8px;
@@ -595,7 +611,7 @@
     .summaryCard p{
       margin:0;
       color:var(--muted);
-      line-height:1.65;
+      line-height:1.6;
     }
 
     footer{
@@ -603,7 +619,7 @@
       border-top:1px solid var(--line);
       color:var(--muted);
       font-size:13px;
-      margin-top:20px;
+      margin-top:8px;
     }
 
     .foot{
@@ -643,38 +659,26 @@
     .reveal.delay2{transition-delay:.12s}
     .reveal.delay3{transition-delay:.18s}
 
-    @media (max-width: 1100px){
-      .auditGrid{grid-template-columns:repeat(2, minmax(0,1fr));}
-      .summarySection{grid-template-columns:1fr}
+    @media (max-width: 980px){
+      h1{font-size:44px}
       .heroGrid{grid-template-columns:1fr}
-      .metricValue{font-size:clamp(16px, 3.3vw, 24px)}
-      .metricValue.medium{font-size:clamp(15px, 2.9vw, 19px)}
+      .auditGrid,
+      .summarySection{
+        grid-template-columns:1fr;
+      }
     }
 
     @media (max-width: 720px){
-      :root{ --pad:20px; }
-
       h1{font-size:38px}
       h2{font-size:28px}
-      .hero{padding:24px}
-      .auditGrid{grid-template-columns:1fr}
-      .metricGrid{grid-template-columns:repeat(3, minmax(0,1fr))}
+      .metricGrid{grid-template-columns:1fr 1fr}
       .brand img{height:64px}
       .proofBar{flex-direction:column;align-items:flex-start}
-      .toolbar{align-items:flex-start}
-      .filterRow{justify-content:flex-start}
     }
 
-    @media (max-width: 520px){
-      .metricGrid{grid-template-columns:1fr 1fr}
-      .metricValue{font-size:clamp(18px, 6vw, 24px)}
-      .metricValue.medium{font-size:clamp(16px, 5.3vw, 20px)}
-    }
-
-    @media (max-width: 420px){
+    @media (max-width: 460px){
       .metricGrid{grid-template-columns:1fr}
       .auditTitle{font-size:24px}
-      .hero{padding:20px}
     }
   </style>
 </head>
@@ -749,7 +753,7 @@
             <div class="kv">
               <div class="row"><b>Lokalita</b><span style="color:var(--muted)">Olomouc a okolí</span></div>
               <div class="row"><b>Hodnocení</b><span style="color:var(--muted)">High / Medium, Approved, Passed</span></div>
-              <div class="row"><b>Ukazatele</b><span style="color:var(--muted)">Website, Google, Ads</span></div>
+              <div class="row" style="grid-column:1/3"><b>Ukazatele</b><span style="color:var(--muted)">Website, Google, Ads</span></div>
             </div>
 
             <a class="btn bigBtn" href="kontakt.html">Nechat si udělat audit</a>
