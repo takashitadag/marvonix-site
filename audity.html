@@ -399,6 +399,7 @@
     .toolbarMeta{
       color:var(--muted);
       font-size:14px;
+      line-height:1.55;
     }
 
     .filterRow{
@@ -416,6 +417,12 @@
       font-size:13px;
       font-weight:800;
       white-space:nowrap;
+      cursor:pointer;
+      transition:.2s;
+    }
+
+    .filterPill:hover{
+      background:rgba(255,255,255,.08);
     }
 
     .filterPill.active{
@@ -582,6 +589,11 @@
       font-size:13px;
       letter-spacing:.10em;
       text-transform:uppercase;
+    }
+
+    .loadMoreWrap{
+      text-align:center;
+      margin-top:20px;
     }
 
     .summarySection{
@@ -783,655 +795,661 @@
         </div>
 
         <div class="filterRow">
-          <span class="filterPill active">Vše</span>
-          <span class="filterPill">High potenciál</span>
-          <span class="filterPill">Medium potenciál</span>
-          <span class="filterPill">S reklamou</span>
+          <button class="filterPill active" type="button" data-filter="all">Vše</button>
+          <button class="filterPill" type="button" data-filter="high">High potenciál</button>
+          <button class="filterPill" type="button" data-filter="medium">Medium potenciál</button>
+          <button class="filterPill" type="button" data-filter="ads">S reklamou</button>
         </div>
       </div>
 
-      <div class="auditGrid">
+      <div class="auditGrid" id="auditGrid">
 
-  <article class="auditCard reveal">
-    <div class="auditTop">
-      <div>
-        <h3 class="auditTitle">Audit #001</h3>
-        <div class="auditRegion">Olomouc • autoservis</div>
+        <article class="auditCard reveal" data-potential="high" data-ads="no">
+          <div class="auditTop">
+            <div>
+              <h3 class="auditTitle">Audit #001</h3>
+              <div class="auditRegion">Olomouc • autoservis</div>
+            </div>
+            <div class="auditCode">A-001</div>
+          </div>
+          <div class="chipRow">
+            <span class="chip green">✅ Completed</span>
+            <span class="chip red">🔥 High</span>
+          </div>
+          <div class="chipRow">
+            <span class="chip green">✅ Approved</span>
+            <span class="chip green">✔ Passed</span>
+          </div>
+          <div class="metricGrid">
+            <div class="metric"><div class="metricLabel">Website</div><div class="metricValue low">Low</div></div>
+            <div class="metric"><div class="metricLabel">Google</div><div class="metricValue low">Low</div></div>
+            <div class="metric"><div class="metricLabel">Ads</div><div class="metricValue no">No</div></div>
+          </div>
+          <div class="auditFooter">
+            <div><b>Typ</b><br>Autoservis</div>
+            <div><b>Kontakt</b><br>Anonymizováno</div>
+          </div>
+        </article>
+
+        <article class="auditCard reveal delay1" data-potential="high" data-ads="no">
+          <div class="auditTop">
+            <div>
+              <h3 class="auditTitle">Audit #002</h3>
+              <div class="auditRegion">Olomouc • autoservis</div>
+            </div>
+            <div class="auditCode">A-002</div>
+          </div>
+          <div class="chipRow">
+            <span class="chip green">✅ Completed</span>
+            <span class="chip red">🔥 High</span>
+          </div>
+          <div class="chipRow">
+            <span class="chip green">✅ Approved</span>
+            <span class="chip green">✔ Passed</span>
+          </div>
+          <div class="metricGrid">
+            <div class="metric"><div class="metricLabel">Google</div><div class="metricValue low">Low</div></div>
+            <div class="metric"><div class="metricLabel">Ads</div><div class="metricValue no">No</div></div>
+          </div>
+          <div class="auditFooter">
+            <div><b>Typ</b><br>Autoservis</div>
+            <div><b>Kontakt</b><br>Anonymizováno</div>
+          </div>
+        </article>
+
+        <article class="auditCard reveal delay2" data-potential="high" data-ads="no">
+          <div class="auditTop">
+            <div>
+              <h3 class="auditTitle">Audit #003</h3>
+              <div class="auditRegion">Olomouc • autoservis</div>
+            </div>
+            <div class="auditCode">A-003</div>
+          </div>
+          <div class="chipRow">
+            <span class="chip green">✅ Completed</span>
+            <span class="chip red">🔥 High</span>
+          </div>
+          <div class="chipRow">
+            <span class="chip green">✅ Approved</span>
+            <span class="chip green">✔ Passed</span>
+          </div>
+          <div class="metricGrid">
+            <div class="metric"><div class="metricLabel">Google</div><div class="metricValue low">Low</div></div>
+            <div class="metric"><div class="metricLabel">Ads</div><div class="metricValue no">No</div></div>
+          </div>
+          <div class="auditFooter">
+            <div><b>Typ</b><br>Autoservis</div>
+            <div><b>Kontakt</b><br>Anonymizováno</div>
+          </div>
+        </article>
+
+        <article class="auditCard reveal" data-potential="high" data-ads="no">
+          <div class="auditTop">
+            <div>
+              <h3 class="auditTitle">Audit #004</h3>
+              <div class="auditRegion">Olomouc • autoservis</div>
+            </div>
+            <div class="auditCode">A-004</div>
+          </div>
+          <div class="chipRow">
+            <span class="chip green">✅ Completed</span>
+            <span class="chip red">🔥 High</span>
+          </div>
+          <div class="chipRow">
+            <span class="chip green">✅ Approved</span>
+            <span class="chip green">✔ Passed</span>
+          </div>
+          <div class="metricGrid">
+            <div class="metric"><div class="metricLabel">Google</div><div class="metricValue low">Low</div></div>
+            <div class="metric"><div class="metricLabel">Ads</div><div class="metricValue no">No</div></div>
+          </div>
+          <div class="auditFooter">
+            <div><b>Typ</b><br>Autoservis</div>
+            <div><b>Kontakt</b><br>Anonymizováno</div>
+          </div>
+        </article>
+
+        <article class="auditCard reveal delay1" data-potential="high" data-ads="no">
+          <div class="auditTop">
+            <div>
+              <h3 class="auditTitle">Audit #005</h3>
+              <div class="auditRegion">Olomouc • autoservis</div>
+            </div>
+            <div class="auditCode">A-005</div>
+          </div>
+          <div class="chipRow">
+            <span class="chip green">✅ Completed</span>
+            <span class="chip red">🔥 High</span>
+          </div>
+          <div class="chipRow">
+            <span class="chip green">✅ Approved</span>
+            <span class="chip green">✔ Passed</span>
+          </div>
+          <div class="metricGrid">
+            <div class="metric"><div class="metricLabel">Google</div><div class="metricValue low">Low</div></div>
+            <div class="metric"><div class="metricLabel">Ads</div><div class="metricValue no">No</div></div>
+          </div>
+          <div class="auditFooter">
+            <div><b>Typ</b><br>Autoservis</div>
+            <div><b>Kontakt</b><br>Anonymizováno</div>
+          </div>
+        </article>
+
+        <article class="auditCard reveal delay2" data-potential="high" data-ads="no">
+          <div class="auditTop">
+            <div>
+              <h3 class="auditTitle">Audit #006</h3>
+              <div class="auditRegion">Olomouc • autoservis</div>
+            </div>
+            <div class="auditCode">A-006</div>
+          </div>
+          <div class="chipRow">
+            <span class="chip green">✅ Completed</span>
+            <span class="chip red">🔥 High</span>
+          </div>
+          <div class="chipRow">
+            <span class="chip green">✅ Approved</span>
+            <span class="chip green">✔ Passed</span>
+          </div>
+          <div class="metricGrid">
+            <div class="metric"><div class="metricLabel">Google</div><div class="metricValue low">Low</div></div>
+            <div class="metric"><div class="metricLabel">Ads</div><div class="metricValue no">No</div></div>
+          </div>
+          <div class="auditFooter">
+            <div><b>Typ</b><br>Autoservis</div>
+            <div><b>Kontakt</b><br>Anonymizováno</div>
+          </div>
+        </article>
+
+        <article class="auditCard reveal" data-potential="high" data-ads="no">
+          <div class="auditTop">
+            <div>
+              <h3 class="auditTitle">Audit #007</h3>
+              <div class="auditRegion">Olomouc • autoservis</div>
+            </div>
+            <div class="auditCode">A-007</div>
+          </div>
+          <div class="chipRow">
+            <span class="chip green">✅ Completed</span>
+            <span class="chip red">🔥 High</span>
+          </div>
+          <div class="chipRow">
+            <span class="chip green">✅ Approved</span>
+            <span class="chip green">✔ Passed</span>
+          </div>
+          <div class="metricGrid">
+            <div class="metric"><div class="metricLabel">Google</div><div class="metricValue low">Low</div></div>
+            <div class="metric"><div class="metricLabel">Ads</div><div class="metricValue no">No</div></div>
+          </div>
+          <div class="auditFooter">
+            <div><b>Typ</b><br>Autoservis</div>
+            <div><b>Kontakt</b><br>Anonymizováno</div>
+          </div>
+        </article>
+
+        <article class="auditCard reveal delay1" data-potential="high" data-ads="no">
+          <div class="auditTop">
+            <div>
+              <h3 class="auditTitle">Audit #008</h3>
+              <div class="auditRegion">Olomouc • autoservis</div>
+            </div>
+            <div class="auditCode">A-008</div>
+          </div>
+          <div class="chipRow">
+            <span class="chip green">✅ Completed</span>
+            <span class="chip red">🔥 High</span>
+          </div>
+          <div class="chipRow">
+            <span class="chip green">✅ Approved</span>
+            <span class="chip green">✔ Passed</span>
+          </div>
+          <div class="metricGrid">
+            <div class="metric"><div class="metricLabel">Google</div><div class="metricValue low">Low</div></div>
+            <div class="metric"><div class="metricLabel">Ads</div><div class="metricValue no">No</div></div>
+          </div>
+          <div class="auditFooter">
+            <div><b>Typ</b><br>Autoservis</div>
+            <div><b>Kontakt</b><br>Anonymizováno</div>
+          </div>
+        </article>
+
+        <article class="auditCard reveal delay2" data-potential="high" data-ads="no">
+          <div class="auditTop">
+            <div>
+              <h3 class="auditTitle">Audit #009</h3>
+              <div class="auditRegion">Olomouc • autoservis</div>
+            </div>
+            <div class="auditCode">A-009</div>
+          </div>
+          <div class="chipRow">
+            <span class="chip green">✅ Completed</span>
+            <span class="chip red">🔥 High</span>
+          </div>
+          <div class="chipRow">
+            <span class="chip green">✅ Approved</span>
+            <span class="chip green">✔ Passed</span>
+          </div>
+          <div class="metricGrid">
+            <div class="metric"><div class="metricLabel">Google</div><div class="metricValue low">Low</div></div>
+            <div class="metric"><div class="metricLabel">Ads</div><div class="metricValue no">No</div></div>
+          </div>
+          <div class="auditFooter">
+            <div><b>Typ</b><br>Autoservis</div>
+            <div><b>Kontakt</b><br>Anonymizováno</div>
+          </div>
+        </article>
+
+        <article class="auditCard reveal" data-potential="medium" data-ads="no">
+          <div class="auditTop">
+            <div>
+              <h3 class="auditTitle">Audit #010</h3>
+              <div class="auditRegion">Olomouc • autoservis</div>
+            </div>
+            <div class="auditCode">A-010</div>
+          </div>
+          <div class="chipRow">
+            <span class="chip green">✅ Completed</span>
+            <span class="chip yellow">🟡 Medium</span>
+          </div>
+          <div class="chipRow">
+            <span class="chip green">✅ Approved</span>
+            <span class="chip green">✔ Passed</span>
+          </div>
+          <div class="metricGrid">
+            <div class="metric"><div class="metricLabel">Website</div><div class="metricValue medium">Medium</div></div>
+            <div class="metric"><div class="metricLabel">Google</div><div class="metricValue low">Low</div></div>
+            <div class="metric"><div class="metricLabel">Ads</div><div class="metricValue no">No</div></div>
+          </div>
+          <div class="auditFooter">
+            <div><b>Typ</b><br>Autoservis</div>
+            <div><b>Kontakt</b><br>Anonymizováno</div>
+          </div>
+        </article>
+
+        <article class="auditCard reveal delay1" data-potential="high" data-ads="no">
+          <div class="auditTop">
+            <div>
+              <h3 class="auditTitle">Audit #011</h3>
+              <div class="auditRegion">Olomouc • autoservis</div>
+            </div>
+            <div class="auditCode">A-011</div>
+          </div>
+          <div class="chipRow">
+            <span class="chip green">✅ Completed</span>
+            <span class="chip red">🔥 High</span>
+          </div>
+          <div class="chipRow">
+            <span class="chip green">✅ Approved</span>
+            <span class="chip green">✔ Passed</span>
+          </div>
+          <div class="metricGrid">
+            <div class="metric"><div class="metricLabel">Website</div><div class="metricValue low">Low</div></div>
+            <div class="metric"><div class="metricLabel">Google</div><div class="metricValue low">Low</div></div>
+            <div class="metric"><div class="metricLabel">Ads</div><div class="metricValue no">No</div></div>
+          </div>
+          <div class="auditFooter">
+            <div><b>Typ</b><br>Autoservis</div>
+            <div><b>Kontakt</b><br>Anonymizováno</div>
+          </div>
+        </article>
+
+        <article class="auditCard reveal delay2" data-potential="high" data-ads="no">
+          <div class="auditTop">
+            <div>
+              <h3 class="auditTitle">Audit #012</h3>
+              <div class="auditRegion">Olomouc • autoservis</div>
+            </div>
+            <div class="auditCode">A-012</div>
+          </div>
+          <div class="chipRow">
+            <span class="chip green">✅ Completed</span>
+            <span class="chip red">🔥 High</span>
+          </div>
+          <div class="chipRow">
+            <span class="chip green">✅ Approved</span>
+            <span class="chip green">✔ Passed</span>
+          </div>
+          <div class="metricGrid">
+            <div class="metric"><div class="metricLabel">Google</div><div class="metricValue low">Low</div></div>
+            <div class="metric"><div class="metricLabel">Ads</div><div class="metricValue no">No</div></div>
+          </div>
+          <div class="auditFooter">
+            <div><b>Typ</b><br>Autoservis</div>
+            <div><b>Kontakt</b><br>Anonymizováno</div>
+          </div>
+        </article>
+
+        <article class="auditCard reveal hidden-audit" data-potential="high" data-ads="no" style="display:none;">
+          <div class="auditTop">
+            <div>
+              <h3 class="auditTitle">Audit #013</h3>
+              <div class="auditRegion">Olomouc • autoservis</div>
+            </div>
+            <div class="auditCode">A-013</div>
+          </div>
+          <div class="chipRow">
+            <span class="chip green">✅ Completed</span>
+            <span class="chip red">🔥 High</span>
+          </div>
+          <div class="chipRow">
+            <span class="chip green">✅ Approved</span>
+            <span class="chip green">✔ Passed</span>
+          </div>
+          <div class="metricGrid">
+            <div class="metric"><div class="metricLabel">Website</div><div class="metricValue low">Low</div></div>
+            <div class="metric"><div class="metricLabel">Google</div><div class="metricValue low">Low</div></div>
+            <div class="metric"><div class="metricLabel">Ads</div><div class="metricValue no">No</div></div>
+          </div>
+          <div class="auditFooter">
+            <div><b>Typ</b><br>Autoservis</div>
+            <div><b>Kontakt</b><br>Anonymizováno</div>
+          </div>
+        </article>
+
+        <article class="auditCard reveal hidden-audit" data-potential="high" data-ads="no" style="display:none;">
+          <div class="auditTop">
+            <div>
+              <h3 class="auditTitle">Audit #014</h3>
+              <div class="auditRegion">Olomouc • autoservis</div>
+            </div>
+            <div class="auditCode">A-014</div>
+          </div>
+          <div class="chipRow">
+            <span class="chip green">✅ Completed</span>
+            <span class="chip red">🔥 High</span>
+          </div>
+          <div class="chipRow">
+            <span class="chip green">✅ Approved</span>
+            <span class="chip green">✔ Passed</span>
+          </div>
+          <div class="metricGrid">
+            <div class="metric"><div class="metricLabel">Website</div><div class="metricValue low">Low</div></div>
+            <div class="metric"><div class="metricLabel">Google</div><div class="metricValue low">Low</div></div>
+            <div class="metric"><div class="metricLabel">Ads</div><div class="metricValue no">No</div></div>
+          </div>
+          <div class="auditFooter">
+            <div><b>Typ</b><br>Autoservis</div>
+            <div><b>Kontakt</b><br>Anonymizováno</div>
+          </div>
+        </article>
+
+        <article class="auditCard reveal hidden-audit" data-potential="high" data-ads="no" style="display:none;">
+          <div class="auditTop">
+            <div>
+              <h3 class="auditTitle">Audit #015</h3>
+              <div class="auditRegion">Olomouc • autoservis</div>
+            </div>
+            <div class="auditCode">A-015</div>
+          </div>
+          <div class="chipRow">
+            <span class="chip green">✅ Completed</span>
+            <span class="chip red">🔥 High</span>
+          </div>
+          <div class="chipRow">
+            <span class="chip green">✅ Approved</span>
+            <span class="chip green">✔ Passed</span>
+          </div>
+          <div class="metricGrid">
+            <div class="metric"><div class="metricLabel">Website</div><div class="metricValue low">Low</div></div>
+            <div class="metric"><div class="metricLabel">Google</div><div class="metricValue low">Low</div></div>
+            <div class="metric"><div class="metricLabel">Ads</div><div class="metricValue no">No</div></div>
+          </div>
+          <div class="auditFooter">
+            <div><b>Typ</b><br>Autoservis</div>
+            <div><b>Kontakt</b><br>Anonymizováno</div>
+          </div>
+        </article>
+
+        <article class="auditCard reveal hidden-audit" data-potential="high" data-ads="no" style="display:none;">
+          <div class="auditTop">
+            <div>
+              <h3 class="auditTitle">Audit #016</h3>
+              <div class="auditRegion">Olomouc • autoservis</div>
+            </div>
+            <div class="auditCode">A-016</div>
+          </div>
+          <div class="chipRow">
+            <span class="chip green">✅ Completed</span>
+            <span class="chip red">🔥 High</span>
+          </div>
+          <div class="chipRow">
+            <span class="chip green">✅ Approved</span>
+            <span class="chip green">✔ Passed</span>
+          </div>
+          <div class="metricGrid">
+            <div class="metric"><div class="metricLabel">Website</div><div class="metricValue low">Low</div></div>
+            <div class="metric"><div class="metricLabel">Google</div><div class="metricValue low">Low</div></div>
+            <div class="metric"><div class="metricLabel">Ads</div><div class="metricValue no">No</div></div>
+          </div>
+          <div class="auditFooter">
+            <div><b>Typ</b><br>Autoservis</div>
+            <div><b>Kontakt</b><br>Anonymizováno</div>
+          </div>
+        </article>
+
+        <article class="auditCard reveal hidden-audit" data-potential="high" data-ads="no" style="display:none;">
+          <div class="auditTop">
+            <div>
+              <h3 class="auditTitle">Audit #017</h3>
+              <div class="auditRegion">Olomouc • autoservis</div>
+            </div>
+            <div class="auditCode">A-017</div>
+          </div>
+          <div class="chipRow">
+            <span class="chip green">✅ Completed</span>
+            <span class="chip red">🔥 High</span>
+          </div>
+          <div class="chipRow">
+            <span class="chip green">✅ Approved</span>
+            <span class="chip green">✔ Passed</span>
+          </div>
+          <div class="metricGrid">
+            <div class="metric"><div class="metricLabel">Website</div><div class="metricValue low">Low</div></div>
+            <div class="metric"><div class="metricLabel">Google</div><div class="metricValue low">Low</div></div>
+            <div class="metric"><div class="metricLabel">Ads</div><div class="metricValue no">No</div></div>
+          </div>
+          <div class="auditFooter">
+            <div><b>Typ</b><br>Autoservis</div>
+            <div><b>Kontakt</b><br>Anonymizováno</div>
+          </div>
+        </article>
+
+        <article class="auditCard reveal hidden-audit" data-potential="high" data-ads="no" style="display:none;">
+          <div class="auditTop">
+            <div>
+              <h3 class="auditTitle">Audit #018</h3>
+              <div class="auditRegion">Olomouc • autoservis</div>
+            </div>
+            <div class="auditCode">A-018</div>
+          </div>
+          <div class="chipRow">
+            <span class="chip green">✅ Completed</span>
+            <span class="chip red">🔥 High</span>
+          </div>
+          <div class="chipRow">
+            <span class="chip green">✅ Approved</span>
+            <span class="chip green">✔ Passed</span>
+          </div>
+          <div class="metricGrid">
+            <div class="metric"><div class="metricLabel">Website</div><div class="metricValue low">Low</div></div>
+            <div class="metric"><div class="metricLabel">Google</div><div class="metricValue low">Low</div></div>
+            <div class="metric"><div class="metricLabel">Ads</div><div class="metricValue no">No</div></div>
+          </div>
+          <div class="auditFooter">
+            <div><b>Typ</b><br>Autoservis</div>
+            <div><b>Kontakt</b><br>Anonymizováno</div>
+          </div>
+        </article>
+
+        <article class="auditCard reveal hidden-audit" data-potential="high" data-ads="no" style="display:none;">
+          <div class="auditTop">
+            <div>
+              <h3 class="auditTitle">Audit #019</h3>
+              <div class="auditRegion">Olomouc • autoservis</div>
+            </div>
+            <div class="auditCode">A-019</div>
+          </div>
+          <div class="chipRow">
+            <span class="chip green">✅ Completed</span>
+            <span class="chip red">🔥 High</span>
+          </div>
+          <div class="chipRow">
+            <span class="chip green">✅ Approved</span>
+            <span class="chip green">✔ Passed</span>
+          </div>
+          <div class="metricGrid">
+            <div class="metric"><div class="metricLabel">Website</div><div class="metricValue low">Low</div></div>
+            <div class="metric"><div class="metricLabel">Google</div><div class="metricValue low">Low</div></div>
+            <div class="metric"><div class="metricLabel">Ads</div><div class="metricValue no">No</div></div>
+          </div>
+          <div class="auditFooter">
+            <div><b>Typ</b><br>Autoservis</div>
+            <div><b>Kontakt</b><br>Anonymizováno</div>
+          </div>
+        </article>
+
+        <article class="auditCard reveal hidden-audit" data-potential="high" data-ads="no" style="display:none;">
+          <div class="auditTop">
+            <div>
+              <h3 class="auditTitle">Audit #020</h3>
+              <div class="auditRegion">Olomouc • autoservis</div>
+            </div>
+            <div class="auditCode">A-020</div>
+          </div>
+          <div class="chipRow">
+            <span class="chip green">✅ Completed</span>
+            <span class="chip red">🔥 High</span>
+          </div>
+          <div class="chipRow">
+            <span class="chip green">✅ Approved</span>
+            <span class="chip green">✔ Passed</span>
+          </div>
+          <div class="metricGrid">
+            <div class="metric"><div class="metricLabel">Website</div><div class="metricValue low">Low</div></div>
+            <div class="metric"><div class="metricLabel">Google</div><div class="metricValue low">Low</div></div>
+            <div class="metric"><div class="metricLabel">Ads</div><div class="metricValue no">No</div></div>
+          </div>
+          <div class="auditFooter">
+            <div><b>Typ</b><br>Autoservis</div>
+            <div><b>Kontakt</b><br>Anonymizováno</div>
+          </div>
+        </article>
+
+        <article class="auditCard reveal hidden-audit" data-potential="high" data-ads="no" style="display:none;">
+          <div class="auditTop">
+            <div>
+              <h3 class="auditTitle">Audit #021</h3>
+              <div class="auditRegion">Olomouc • autoservis</div>
+            </div>
+            <div class="auditCode">A-021</div>
+          </div>
+          <div class="chipRow">
+            <span class="chip green">✅ Completed</span>
+            <span class="chip red">🔥 High</span>
+          </div>
+          <div class="chipRow">
+            <span class="chip green">✅ Approved</span>
+            <span class="chip green">✔ Passed</span>
+          </div>
+          <div class="metricGrid">
+            <div class="metric"><div class="metricLabel">Website</div><div class="metricValue low">Low</div></div>
+            <div class="metric"><div class="metricLabel">Google</div><div class="metricValue low">Low</div></div>
+            <div class="metric"><div class="metricLabel">Ads</div><div class="metricValue no">No</div></div>
+          </div>
+          <div class="auditFooter">
+            <div><b>Typ</b><br>Autoservis</div>
+            <div><b>Kontakt</b><br>Anonymizováno</div>
+          </div>
+        </article>
+
+        <article class="auditCard reveal hidden-audit" data-potential="high" data-ads="no" style="display:none;">
+          <div class="auditTop">
+            <div>
+              <h3 class="auditTitle">Audit #022</h3>
+              <div class="auditRegion">Olomouc • autoservis</div>
+            </div>
+            <div class="auditCode">A-022</div>
+          </div>
+          <div class="chipRow">
+            <span class="chip green">✅ Completed</span>
+            <span class="chip red">🔥 High</span>
+          </div>
+          <div class="chipRow">
+            <span class="chip green">✅ Approved</span>
+            <span class="chip green">✔ Passed</span>
+          </div>
+          <div class="metricGrid">
+            <div class="metric"><div class="metricLabel">Website</div><div class="metricValue low">Low</div></div>
+            <div class="metric"><div class="metricLabel">Google</div><div class="metricValue low">Low</div></div>
+            <div class="metric"><div class="metricLabel">Ads</div><div class="metricValue no">No</div></div>
+          </div>
+          <div class="auditFooter">
+            <div><b>Typ</b><br>Autoservis</div>
+            <div><b>Kontakt</b><br>Anonymizováno</div>
+          </div>
+        </article>
+
+        <article class="auditCard reveal hidden-audit" data-potential="medium" data-ads="yes" style="display:none;">
+          <div class="auditTop">
+            <div>
+              <h3 class="auditTitle">Audit #023</h3>
+              <div class="auditRegion">Olomouc • autoservis</div>
+            </div>
+            <div class="auditCode">A-023</div>
+          </div>
+          <div class="chipRow">
+            <span class="chip green">✅ Completed</span>
+            <span class="chip yellow">🟡 Medium</span>
+          </div>
+          <div class="chipRow">
+            <span class="chip green">✅ Approved</span>
+            <span class="chip green">✔ Passed</span>
+          </div>
+          <div class="metricGrid">
+            <div class="metric"><div class="metricLabel">Website</div><div class="metricValue medium">Medium</div></div>
+            <div class="metric"><div class="metricLabel">Google</div><div class="metricValue medium">Medium</div></div>
+            <div class="metric"><div class="metricLabel">Ads</div><div class="metricValue yes">Yes</div></div>
+          </div>
+          <div class="auditFooter">
+            <div><b>Typ</b><br>Autoservis</div>
+            <div><b>Kontakt</b><br>Anonymizováno</div>
+          </div>
+        </article>
+
+        <article class="auditCard reveal hidden-audit" data-potential="medium" data-ads="yes" style="display:none;">
+          <div class="auditTop">
+            <div>
+              <h3 class="auditTitle">Audit #024</h3>
+              <div class="auditRegion">Olomouc • autoservis</div>
+            </div>
+            <div class="auditCode">A-024</div>
+          </div>
+          <div class="chipRow">
+            <span class="chip green">✅ Completed</span>
+            <span class="chip yellow">🟡 Medium</span>
+          </div>
+          <div class="chipRow">
+            <span class="chip green">✅ Approved</span>
+            <span class="chip green">✔ Passed</span>
+          </div>
+          <div class="metricGrid">
+            <div class="metric"><div class="metricLabel">Website</div><div class="metricValue medium">Medium</div></div>
+            <div class="metric"><div class="metricLabel">Google</div><div class="metricValue medium">Medium</div></div>
+            <div class="metric"><div class="metricLabel">Ads</div><div class="metricValue yes">Yes</div></div>
+          </div>
+          <div class="auditFooter">
+            <div><b>Typ</b><br>Autoservis</div>
+            <div><b>Kontakt</b><br>Anonymizováno</div>
+          </div>
+        </article>
+
       </div>
-      <div class="auditCode">A-001</div>
-    </div>
-    <div class="chipRow">
-      <span class="chip green">✅ Completed</span>
-      <span class="chip red">🔥 High</span>
-    </div>
-    <div class="chipRow">
-      <span class="chip green">✅ Approved</span>
-      <span class="chip green">✔ Passed</span>
-    </div>
-    <div class="metricGrid">
-      <div class="metric"><div class="metricLabel">Website</div><div class="metricValue low">Low</div></div>
-      <div class="metric"><div class="metricLabel">Google</div><div class="metricValue low">Low</div></div>
-      <div class="metric"><div class="metricLabel">Ads</div><div class="metricValue no">No</div></div>
-    </div>
-    <div class="auditFooter">
-      <div><b>Typ</b><br>Autoservis</div>
-      <div><b>Kontakt</b><br>Anonymizováno</div>
-    </div>
-  </article>
 
-  <article class="auditCard reveal delay1">
-    <div class="auditTop">
-      <div>
-        <h3 class="auditTitle">Audit #002</h3>
-        <div class="auditRegion">Olomouc • autoservis</div>
+      <div class="loadMoreWrap">
+        <button class="btn secondary" id="loadMoreBtn" type="button">Načíst další audity</button>
       </div>
-      <div class="auditCode">A-002</div>
     </div>
-    <div class="chipRow">
-      <span class="chip green">✅ Completed</span>
-      <span class="chip red">🔥 High</span>
-    </div>
-    <div class="chipRow">
-      <span class="chip green">✅ Approved</span>
-      <span class="chip green">✔ Passed</span>
-    </div>
-    <div class="metricGrid">
-      <div class="metric"><div class="metricLabel">Google</div><div class="metricValue low">Low</div></div>
-      <div class="metric"><div class="metricLabel">Ads</div><div class="metricValue no">No</div></div>
-    </div>
-    <div class="auditFooter">
-      <div><b>Typ</b><br>Autoservis</div>
-      <div><b>Kontakt</b><br>Anonymizováno</div>
-    </div>
-  </article>
-
-  <article class="auditCard reveal delay2">
-    <div class="auditTop">
-      <div>
-        <h3 class="auditTitle">Audit #003</h3>
-        <div class="auditRegion">Olomouc • autoservis</div>
-      </div>
-      <div class="auditCode">A-003</div>
-    </div>
-    <div class="chipRow">
-      <span class="chip green">✅ Completed</span>
-      <span class="chip red">🔥 High</span>
-    </div>
-    <div class="chipRow">
-      <span class="chip green">✅ Approved</span>
-      <span class="chip green">✔ Passed</span>
-    </div>
-    <div class="metricGrid">
-      <div class="metric"><div class="metricLabel">Google</div><div class="metricValue low">Low</div></div>
-      <div class="metric"><div class="metricLabel">Ads</div><div class="metricValue no">No</div></div>
-    </div>
-    <div class="auditFooter">
-      <div><b>Typ</b><br>Autoservis</div>
-      <div><b>Kontakt</b><br>Anonymizováno</div>
-    </div>
-  </article>
-
-  <article class="auditCard reveal">
-    <div class="auditTop">
-      <div>
-        <h3 class="auditTitle">Audit #004</h3>
-        <div class="auditRegion">Olomouc • autoservis</div>
-      </div>
-      <div class="auditCode">A-004</div>
-    </div>
-    <div class="chipRow">
-      <span class="chip green">✅ Completed</span>
-      <span class="chip red">🔥 High</span>
-    </div>
-    <div class="chipRow">
-      <span class="chip green">✅ Approved</span>
-      <span class="chip green">✔ Passed</span>
-    </div>
-    <div class="metricGrid">
-      <div class="metric"><div class="metricLabel">Google</div><div class="metricValue low">Low</div></div>
-      <div class="metric"><div class="metricLabel">Ads</div><div class="metricValue no">No</div></div>
-    </div>
-    <div class="auditFooter">
-      <div><b>Typ</b><br>Autoservis</div>
-      <div><b>Kontakt</b><br>Anonymizováno</div>
-    </div>
-  </article>
-
-  <article class="auditCard reveal delay1">
-    <div class="auditTop">
-      <div>
-        <h3 class="auditTitle">Audit #005</h3>
-        <div class="auditRegion">Olomouc • autoservis</div>
-      </div>
-      <div class="auditCode">A-005</div>
-    </div>
-    <div class="chipRow">
-      <span class="chip green">✅ Completed</span>
-      <span class="chip red">🔥 High</span>
-    </div>
-    <div class="chipRow">
-      <span class="chip green">✅ Approved</span>
-      <span class="chip green">✔ Passed</span>
-    </div>
-    <div class="metricGrid">
-      <div class="metric"><div class="metricLabel">Google</div><div class="metricValue low">Low</div></div>
-      <div class="metric"><div class="metricLabel">Ads</div><div class="metricValue no">No</div></div>
-    </div>
-    <div class="auditFooter">
-      <div><b>Typ</b><br>Autoservis</div>
-      <div><b>Kontakt</b><br>Anonymizováno</div>
-    </div>
-  </article>
-
-  <article class="auditCard reveal delay2">
-    <div class="auditTop">
-      <div>
-        <h3 class="auditTitle">Audit #006</h3>
-        <div class="auditRegion">Olomouc • autoservis</div>
-      </div>
-      <div class="auditCode">A-006</div>
-    </div>
-    <div class="chipRow">
-      <span class="chip green">✅ Completed</span>
-      <span class="chip red">🔥 High</span>
-    </div>
-    <div class="chipRow">
-      <span class="chip green">✅ Approved</span>
-      <span class="chip green">✔ Passed</span>
-    </div>
-    <div class="metricGrid">
-      <div class="metric"><div class="metricLabel">Google</div><div class="metricValue low">Low</div></div>
-      <div class="metric"><div class="metricLabel">Ads</div><div class="metricValue no">No</div></div>
-    </div>
-    <div class="auditFooter">
-      <div><b>Typ</b><br>Autoservis</div>
-      <div><b>Kontakt</b><br>Anonymizováno</div>
-    </div>
-  </article>
-
-  <article class="auditCard reveal">
-    <div class="auditTop">
-      <div>
-        <h3 class="auditTitle">Audit #007</h3>
-        <div class="auditRegion">Olomouc • autoservis</div>
-      </div>
-      <div class="auditCode">A-007</div>
-    </div>
-    <div class="chipRow">
-      <span class="chip green">✅ Completed</span>
-      <span class="chip red">🔥 High</span>
-    </div>
-    <div class="chipRow">
-      <span class="chip green">✅ Approved</span>
-      <span class="chip green">✔ Passed</span>
-    </div>
-    <div class="metricGrid">
-      <div class="metric"><div class="metricLabel">Google</div><div class="metricValue low">Low</div></div>
-      <div class="metric"><div class="metricLabel">Ads</div><div class="metricValue no">No</div></div>
-    </div>
-    <div class="auditFooter">
-      <div><b>Typ</b><br>Autoservis</div>
-      <div><b>Kontakt</b><br>Anonymizováno</div>
-    </div>
-  </article>
-
-  <article class="auditCard reveal delay1">
-    <div class="auditTop">
-      <div>
-        <h3 class="auditTitle">Audit #008</h3>
-        <div class="auditRegion">Olomouc • autoservis</div>
-      </div>
-      <div class="auditCode">A-008</div>
-    </div>
-    <div class="chipRow">
-      <span class="chip green">✅ Completed</span>
-      <span class="chip red">🔥 High</span>
-    </div>
-    <div class="chipRow">
-      <span class="chip green">✅ Approved</span>
-      <span class="chip green">✔ Passed</span>
-    </div>
-    <div class="metricGrid">
-      <div class="metric"><div class="metricLabel">Google</div><div class="metricValue low">Low</div></div>
-      <div class="metric"><div class="metricLabel">Ads</div><div class="metricValue no">No</div></div>
-    </div>
-    <div class="auditFooter">
-      <div><b>Typ</b><br>Autoservis</div>
-      <div><b>Kontakt</b><br>Anonymizováno</div>
-    </div>
-  </article>
-
-  <article class="auditCard reveal delay2">
-    <div class="auditTop">
-      <div>
-        <h3 class="auditTitle">Audit #009</h3>
-        <div class="auditRegion">Olomouc • autoservis</div>
-      </div>
-      <div class="auditCode">A-009</div>
-    </div>
-    <div class="chipRow">
-      <span class="chip green">✅ Completed</span>
-      <span class="chip red">🔥 High</span>
-    </div>
-    <div class="chipRow">
-      <span class="chip green">✅ Approved</span>
-      <span class="chip green">✔ Passed</span>
-    </div>
-    <div class="metricGrid">
-      <div class="metric"><div class="metricLabel">Google</div><div class="metricValue low">Low</div></div>
-      <div class="metric"><div class="metricLabel">Ads</div><div class="metricValue no">No</div></div>
-    </div>
-    <div class="auditFooter">
-      <div><b>Typ</b><br>Autoservis</div>
-      <div><b>Kontakt</b><br>Anonymizováno</div>
-    </div>
-  </article>
-
-  <article class="auditCard reveal">
-    <div class="auditTop">
-      <div>
-        <h3 class="auditTitle">Audit #010</h3>
-        <div class="auditRegion">Olomouc • autoservis</div>
-      </div>
-      <div class="auditCode">A-010</div>
-    </div>
-    <div class="chipRow">
-      <span class="chip green">✅ Completed</span>
-      <span class="chip yellow">🟡 Medium</span>
-    </div>
-    <div class="chipRow">
-      <span class="chip green">✅ Approved</span>
-      <span class="chip green">✔ Passed</span>
-    </div>
-    <div class="metricGrid">
-      <div class="metric"><div class="metricLabel">Website</div><div class="metricValue medium">Medium</div></div>
-      <div class="metric"><div class="metricLabel">Google</div><div class="metricValue low">Low</div></div>
-      <div class="metric"><div class="metricLabel">Ads</div><div class="metricValue no">No</div></div>
-    </div>
-    <div class="auditFooter">
-      <div><b>Typ</b><br>Autoservis</div>
-      <div><b>Kontakt</b><br>Anonymizováno</div>
-    </div>
-  </article>
-
-  <article class="auditCard reveal delay1">
-    <div class="auditTop">
-      <div>
-        <h3 class="auditTitle">Audit #011</h3>
-        <div class="auditRegion">Olomouc • autoservis</div>
-      </div>
-      <div class="auditCode">A-011</div>
-    </div>
-    <div class="chipRow">
-      <span class="chip green">✅ Completed</span>
-      <span class="chip red">🔥 High</span>
-    </div>
-    <div class="chipRow">
-      <span class="chip green">✅ Approved</span>
-      <span class="chip green">✔ Passed</span>
-    </div>
-    <div class="metricGrid">
-      <div class="metric"><div class="metricLabel">Website</div><div class="metricValue low">Low</div></div>
-      <div class="metric"><div class="metricLabel">Google</div><div class="metricValue low">Low</div></div>
-      <div class="metric"><div class="metricLabel">Ads</div><div class="metricValue no">No</div></div>
-    </div>
-    <div class="auditFooter">
-      <div><b>Typ</b><br>Autoservis</div>
-      <div><b>Kontakt</b><br>Anonymizováno</div>
-    </div>
-  </article>
-
-  <article class="auditCard reveal delay2">
-    <div class="auditTop">
-      <div>
-        <h3 class="auditTitle">Audit #012</h3>
-        <div class="auditRegion">Olomouc • autoservis</div>
-      </div>
-      <div class="auditCode">A-012</div>
-    </div>
-    <div class="chipRow">
-      <span class="chip green">✅ Completed</span>
-      <span class="chip red">🔥 High</span>
-    </div>
-    <div class="chipRow">
-      <span class="chip green">✅ Approved</span>
-      <span class="chip green">✔ Passed</span>
-    </div>
-    <div class="metricGrid">
-      <div class="metric"><div class="metricLabel">Google</div><div class="metricValue low">Low</div></div>
-      <div class="metric"><div class="metricLabel">Ads</div><div class="metricValue no">No</div></div>
-    </div>
-    <div class="auditFooter">
-      <div><b>Typ</b><br>Autoservis</div>
-      <div><b>Kontakt</b><br>Anonymizováno</div>
-    </div>
-  </article>
-
-  <article class="auditCard reveal">
-    <div class="auditTop">
-      <div>
-        <h3 class="auditTitle">Audit #013</h3>
-        <div class="auditRegion">Olomouc • autoservis</div>
-      </div>
-      <div class="auditCode">A-013</div>
-    </div>
-    <div class="chipRow">
-      <span class="chip green">✅ Completed</span>
-      <span class="chip red">🔥 High</span>
-    </div>
-    <div class="chipRow">
-      <span class="chip green">✅ Approved</span>
-      <span class="chip green">✔ Passed</span>
-    </div>
-    <div class="metricGrid">
-      <div class="metric"><div class="metricLabel">Website</div><div class="metricValue low">Low</div></div>
-      <div class="metric"><div class="metricLabel">Google</div><div class="metricValue low">Low</div></div>
-      <div class="metric"><div class="metricLabel">Ads</div><div class="metricValue no">No</div></div>
-    </div>
-    <div class="auditFooter">
-      <div><b>Typ</b><br>Autoservis</div>
-      <div><b>Kontakt</b><br>Anonymizováno</div>
-    </div>
-  </article>
-
-  <article class="auditCard reveal delay1">
-    <div class="auditTop">
-      <div>
-        <h3 class="auditTitle">Audit #014</h3>
-        <div class="auditRegion">Olomouc • autoservis</div>
-      </div>
-      <div class="auditCode">A-014</div>
-    </div>
-    <div class="chipRow">
-      <span class="chip green">✅ Completed</span>
-      <span class="chip red">🔥 High</span>
-    </div>
-    <div class="chipRow">
-      <span class="chip green">✅ Approved</span>
-      <span class="chip green">✔ Passed</span>
-    </div>
-    <div class="metricGrid">
-      <div class="metric"><div class="metricLabel">Website</div><div class="metricValue low">Low</div></div>
-      <div class="metric"><div class="metricLabel">Google</div><div class="metricValue low">Low</div></div>
-      <div class="metric"><div class="metricLabel">Ads</div><div class="metricValue no">No</div></div>
-    </div>
-    <div class="auditFooter">
-      <div><b>Typ</b><br>Autoservis</div>
-      <div><b>Kontakt</b><br>Anonymizováno</div>
-    </div>
-  </article>
-
-  <article class="auditCard reveal delay2">
-    <div class="auditTop">
-      <div>
-        <h3 class="auditTitle">Audit #015</h3>
-        <div class="auditRegion">Olomouc • autoservis</div>
-      </div>
-      <div class="auditCode">A-015</div>
-    </div>
-    <div class="chipRow">
-      <span class="chip green">✅ Completed</span>
-      <span class="chip red">🔥 High</span>
-    </div>
-    <div class="chipRow">
-      <span class="chip green">✅ Approved</span>
-      <span class="chip green">✔ Passed</span>
-    </div>
-    <div class="metricGrid">
-      <div class="metric"><div class="metricLabel">Website</div><div class="metricValue low">Low</div></div>
-      <div class="metric"><div class="metricLabel">Google</div><div class="metricValue low">Low</div></div>
-      <div class="metric"><div class="metricLabel">Ads</div><div class="metricValue no">No</div></div>
-    </div>
-    <div class="auditFooter">
-      <div><b>Typ</b><br>Autoservis</div>
-      <div><b>Kontakt</b><br>Anonymizováno</div>
-    </div>
-  </article>
-
-  <article class="auditCard reveal">
-    <div class="auditTop">
-      <div>
-        <h3 class="auditTitle">Audit #016</h3>
-        <div class="auditRegion">Olomouc • autoservis</div>
-      </div>
-      <div class="auditCode">A-016</div>
-    </div>
-    <div class="chipRow">
-      <span class="chip green">✅ Completed</span>
-      <span class="chip red">🔥 High</span>
-    </div>
-    <div class="chipRow">
-      <span class="chip green">✅ Approved</span>
-      <span class="chip green">✔ Passed</span>
-    </div>
-    <div class="metricGrid">
-      <div class="metric"><div class="metricLabel">Website</div><div class="metricValue low">Low</div></div>
-      <div class="metric"><div class="metricLabel">Google</div><div class="metricValue low">Low</div></div>
-      <div class="metric"><div class="metricLabel">Ads</div><div class="metricValue no">No</div></div>
-    </div>
-    <div class="auditFooter">
-      <div><b>Typ</b><br>Autoservis</div>
-      <div><b>Kontakt</b><br>Anonymizováno</div>
-    </div>
-  </article>
-
-  <article class="auditCard reveal delay1">
-    <div class="auditTop">
-      <div>
-        <h3 class="auditTitle">Audit #017</h3>
-        <div class="auditRegion">Olomouc • autoservis</div>
-      </div>
-      <div class="auditCode">A-017</div>
-    </div>
-    <div class="chipRow">
-      <span class="chip green">✅ Completed</span>
-      <span class="chip red">🔥 High</span>
-    </div>
-    <div class="chipRow">
-      <span class="chip green">✅ Approved</span>
-      <span class="chip green">✔ Passed</span>
-    </div>
-    <div class="metricGrid">
-      <div class="metric"><div class="metricLabel">Website</div><div class="metricValue low">Low</div></div>
-      <div class="metric"><div class="metricLabel">Google</div><div class="metricValue low">Low</div></div>
-      <div class="metric"><div class="metricLabel">Ads</div><div class="metricValue no">No</div></div>
-    </div>
-    <div class="auditFooter">
-      <div><b>Typ</b><br>Autoservis</div>
-      <div><b>Kontakt</b><br>Anonymizováno</div>
-    </div>
-  </article>
-
-  <article class="auditCard reveal delay2">
-    <div class="auditTop">
-      <div>
-        <h3 class="auditTitle">Audit #018</h3>
-        <div class="auditRegion">Olomouc • autoservis</div>
-      </div>
-      <div class="auditCode">A-018</div>
-    </div>
-    <div class="chipRow">
-      <span class="chip green">✅ Completed</span>
-      <span class="chip red">🔥 High</span>
-    </div>
-    <div class="chipRow">
-      <span class="chip green">✅ Approved</span>
-      <span class="chip green">✔ Passed</span>
-    </div>
-    <div class="metricGrid">
-      <div class="metric"><div class="metricLabel">Website</div><div class="metricValue low">Low</div></div>
-      <div class="metric"><div class="metricLabel">Google</div><div class="metricValue low">Low</div></div>
-      <div class="metric"><div class="metricLabel">Ads</div><div class="metricValue no">No</div></div>
-    </div>
-    <div class="auditFooter">
-      <div><b>Typ</b><br>Autoservis</div>
-      <div><b>Kontakt</b><br>Anonymizováno</div>
-    </div>
-  </article>
-
-  <article class="auditCard reveal">
-    <div class="auditTop">
-      <div>
-        <h3 class="auditTitle">Audit #019</h3>
-        <div class="auditRegion">Olomouc • autoservis</div>
-      </div>
-      <div class="auditCode">A-019</div>
-    </div>
-    <div class="chipRow">
-      <span class="chip green">✅ Completed</span>
-      <span class="chip red">🔥 High</span>
-    </div>
-    <div class="chipRow">
-      <span class="chip green">✅ Approved</span>
-      <span class="chip green">✔ Passed</span>
-    </div>
-    <div class="metricGrid">
-      <div class="metric"><div class="metricLabel">Website</div><div class="metricValue low">Low</div></div>
-      <div class="metric"><div class="metricLabel">Google</div><div class="metricValue low">Low</div></div>
-      <div class="metric"><div class="metricLabel">Ads</div><div class="metricValue no">No</div></div>
-    </div>
-    <div class="auditFooter">
-      <div><b>Typ</b><br>Autoservis</div>
-      <div><b>Kontakt</b><br>Anonymizováno</div>
-    </div>
-  </article>
-
-  <article class="auditCard reveal delay1">
-    <div class="auditTop">
-      <div>
-        <h3 class="auditTitle">Audit #020</h3>
-        <div class="auditRegion">Olomouc • autoservis</div>
-      </div>
-      <div class="auditCode">A-020</div>
-    </div>
-    <div class="chipRow">
-      <span class="chip green">✅ Completed</span>
-      <span class="chip red">🔥 High</span>
-    </div>
-    <div class="chipRow">
-      <span class="chip green">✅ Approved</span>
-      <span class="chip green">✔ Passed</span>
-    </div>
-    <div class="metricGrid">
-      <div class="metric"><div class="metricLabel">Website</div><div class="metricValue low">Low</div></div>
-      <div class="metric"><div class="metricLabel">Google</div><div class="metricValue low">Low</div></div>
-      <div class="metric"><div class="metricLabel">Ads</div><div class="metricValue no">No</div></div>
-    </div>
-    <div class="auditFooter">
-      <div><b>Typ</b><br>Autoservis</div>
-      <div><b>Kontakt</b><br>Anonymizováno</div>
-    </div>
-  </article>
-
-  <article class="auditCard reveal delay2">
-    <div class="auditTop">
-      <div>
-        <h3 class="auditTitle">Audit #021</h3>
-        <div class="auditRegion">Olomouc • autoservis</div>
-      </div>
-      <div class="auditCode">A-021</div>
-    </div>
-    <div class="chipRow">
-      <span class="chip green">✅ Completed</span>
-      <span class="chip red">🔥 High</span>
-    </div>
-    <div class="chipRow">
-      <span class="chip green">✅ Approved</span>
-      <span class="chip green">✔ Passed</span>
-    </div>
-    <div class="metricGrid">
-      <div class="metric"><div class="metricLabel">Website</div><div class="metricValue low">Low</div></div>
-      <div class="metric"><div class="metricLabel">Google</div><div class="metricValue low">Low</div></div>
-      <div class="metric"><div class="metricLabel">Ads</div><div class="metricValue no">No</div></div>
-    </div>
-    <div class="auditFooter">
-      <div><b>Typ</b><br>Autoservis</div>
-      <div><b>Kontakt</b><br>Anonymizováno</div>
-    </div>
-  </article>
-
-  <article class="auditCard reveal">
-    <div class="auditTop">
-      <div>
-        <h3 class="auditTitle">Audit #022</h3>
-        <div class="auditRegion">Olomouc • autoservis</div>
-      </div>
-      <div class="auditCode">A-022</div>
-    </div>
-    <div class="chipRow">
-      <span class="chip green">✅ Completed</span>
-      <span class="chip red">🔥 High</span>
-    </div>
-    <div class="chipRow">
-      <span class="chip green">✅ Approved</span>
-      <span class="chip green">✔ Passed</span>
-    </div>
-    <div class="metricGrid">
-      <div class="metric"><div class="metricLabel">Website</div><div class="metricValue low">Low</div></div>
-      <div class="metric"><div class="metricLabel">Google</div><div class="metricValue low">Low</div></div>
-      <div class="metric"><div class="metricLabel">Ads</div><div class="metricValue no">No</div></div>
-    </div>
-    <div class="auditFooter">
-      <div><b>Typ</b><br>Autoservis</div>
-      <div><b>Kontakt</b><br>Anonymizováno</div>
-    </div>
-  </article>
-
-  <article class="auditCard reveal delay1">
-    <div class="auditTop">
-      <div>
-        <h3 class="auditTitle">Audit #023</h3>
-        <div class="auditRegion">Olomouc • autoservis</div>
-      </div>
-      <div class="auditCode">A-023</div>
-    </div>
-    <div class="chipRow">
-      <span class="chip green">✅ Completed</span>
-      <span class="chip yellow">🟡 Medium</span>
-    </div>
-    <div class="chipRow">
-      <span class="chip green">✅ Approved</span>
-      <span class="chip green">✔ Passed</span>
-    </div>
-    <div class="metricGrid">
-      <div class="metric"><div class="metricLabel">Website</div><div class="metricValue medium">Medium</div></div>
-      <div class="metric"><div class="metricLabel">Google</div><div class="metricValue medium">Medium</div></div>
-      <div class="metric"><div class="metricLabel">Ads</div><div class="metricValue yes">Yes</div></div>
-    </div>
-    <div class="auditFooter">
-      <div><b>Typ</b><br>Autoservis</div>
-      <div><b>Kontakt</b><br>Anonymizováno</div>
-    </div>
-  </article>
-
-  <article class="auditCard reveal delay2">
-    <div class="auditTop">
-      <div>
-        <h3 class="auditTitle">Audit #024</h3>
-        <div class="auditRegion">Olomouc • autoservis</div>
-      </div>
-      <div class="auditCode">A-024</div>
-    </div>
-    <div class="chipRow">
-      <span class="chip green">✅ Completed</span>
-      <span class="chip yellow">🟡 Medium</span>
-    </div>
-    <div class="chipRow">
-      <span class="chip green">✅ Approved</span>
-      <span class="chip green">✔ Passed</span>
-    </div>
-    <div class="metricGrid">
-      <div class="metric"><div class="metricLabel">Website</div><div class="metricValue medium">Medium</div></div>
-      <div class="metric"><div class="metricLabel">Google</div><div class="metricValue medium">Medium</div></div>
-      <div class="metric"><div class="metricLabel">Ads</div><div class="metricValue yes">Yes</div></div>
-    </div>
-    <div class="auditFooter">
-      <div><b>Typ</b><br>Autoservis</div>
-      <div><b>Kontakt</b><br>Anonymizováno</div>
-    </div>
-  </article>
-
-</div>
+  </section>
 
   <section>
     <div class="wrap">
@@ -1519,6 +1537,63 @@
     }, {threshold: 0.12});
 
     document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+    const filterButtons = document.querySelectorAll('.filterPill');
+    const auditCards = document.querySelectorAll('.auditCard');
+    const loadMoreBtn = document.getElementById('loadMoreBtn');
+
+    let visibleCount = 12;
+    let currentFilter = 'all';
+
+    function matchesFilter(card, filter){
+      const potential = card.dataset.potential;
+      const ads = card.dataset.ads;
+
+      if(filter === 'all') return true;
+      if(filter === 'high') return potential === 'high';
+      if(filter === 'medium') return potential === 'medium';
+      if(filter === 'ads') return ads === 'yes';
+      return true;
+    }
+
+    function updateAudits(){
+      const matchedCards = Array.from(auditCards).filter(card => matchesFilter(card, currentFilter));
+
+      matchedCards.forEach((card, index) => {
+        card.style.display = index < visibleCount ? '' : 'none';
+      });
+
+      auditCards.forEach(card => {
+        if(!matchesFilter(card, currentFilter)){
+          card.style.display = 'none';
+        }
+      });
+
+      if(matchedCards.length > visibleCount){
+        loadMoreBtn.style.display = 'inline-flex';
+      } else {
+        loadMoreBtn.style.display = 'none';
+      }
+    }
+
+    filterButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        currentFilter = button.dataset.filter;
+        visibleCount = 12;
+
+        filterButtons.forEach(btn => btn.classList.remove('active'));
+        button.classList.add('active');
+
+        updateAudits();
+      });
+    });
+
+    loadMoreBtn.addEventListener('click', () => {
+      visibleCount += 6;
+      updateAudits();
+    });
+
+    updateAudits();
   </script>
 </body>
 </html>
