@@ -504,6 +504,7 @@
       padding:12px 10px;
       text-align:center;
       min-width:0;
+      overflow:hidden;
     }
 
     .metricLabel{
@@ -516,10 +517,11 @@
     }
 
     .metricValue{
-      font-size:27px;
+      font-size:clamp(20px, 2.2vw, 27px);
       font-weight:900;
       line-height:1.05;
       letter-spacing:-.02em;
+      white-space:nowrap;
     }
 
     .metricValue.low{color:#fff}
@@ -674,10 +676,10 @@
               Audit • Marketing • Autoservisy
             </div>
 
-            <h1>Anonymní audity autoservisů</h1>
+            <h1>Anonymní audity autoservisů z Olomouce</h1>
 
             <p class="sub">
-              Ukázka vybraných auditů v anonymizované podobě. Rychle uvidíš, jak hodnotíme web, Google profil, reklamu a celkový marketingový potenciál servisu.
+              Ukázka vybraných auditů v anonymizované podobě. Všechny níže uvedené audity se týkají autoservisů z Olomouce a okolí. Rychle uvidíš, jak hodnotíme web, Google profil, reklamu a celkový marketingový potenciál servisu.
             </p>
 
             <div class="ctaRow">
@@ -687,7 +689,7 @@
 
             <div class="badgeRow">
               <span class="pill">Anonymizovaná data</span>
-              <span class="pill">Rychlé vizuální hodnocení</span>
+              <span class="pill">Olomouc a okolí</span>
               <span class="pill">Web • Google • Ads</span>
             </div>
 
@@ -708,7 +710,7 @@
             </div>
 
             <div class="kv">
-              <div class="row"><b>Forma</b><span style="color:var(--muted)">karty s rychlým přehledem</span></div>
+              <div class="row"><b>Lokalita</b><span style="color:var(--muted)">Olomouc a okolí</span></div>
               <div class="row"><b>Hodnocení</b><span style="color:var(--muted)">High / Medium, Approved, Passed</span></div>
               <div class="row"><b>Ukazatele</b><span style="color:var(--muted)">Website, Google, Ads</span></div>
             </div>
@@ -724,8 +726,8 @@
           <span>Karty jsou navržené tak, aby připomínaly dashboard a působily důvěryhodně i přehledně.</span>
         </div>
         <div>
-          <strong>Vhodné pro web i prezentaci služeb</strong>
-          <span>Můžeš je použít jako veřejnou ukázku, social proof nebo samostatnou sekci „reference / audity“.</span>
+          <strong>Reálné ukázky z jednoho trhu</strong>
+          <span>Všechny audity níže pochází z autoservisů v Olomouci, takže srovnání dává větší smysl.</span>
         </div>
       </div>
     </div>
@@ -736,7 +738,7 @@
       <div class="toolbar reveal">
         <div>
           <h2 style="margin-bottom:6px">Přehled auditů</h2>
-          <div class="toolbarMeta">Anonymní ukázky z různých lokalit a úrovní marketingové připravenosti.</div>
+          <div class="toolbarMeta">Anonymní ukázky autoservisů z Olomouce a okolí s různou úrovní marketingové připravenosti.</div>
         </div>
 
         <div class="filterRow">
@@ -752,7 +754,7 @@
           <div class="auditTop">
             <div>
               <h3 class="auditTitle">Audit #001</h3>
-              <div class="auditRegion">Morava • větší město</div>
+              <div class="auditRegion">Olomouc • autoservis</div>
             </div>
             <div class="auditCode">A-001</div>
           </div>
@@ -792,7 +794,7 @@
           <div class="auditTop">
             <div>
               <h3 class="auditTitle">Audit #002</h3>
-              <div class="auditRegion">Čechy • okresní město</div>
+              <div class="auditRegion">Olomouc • pneuservis</div>
             </div>
             <div class="auditCode">A-002</div>
           </div>
@@ -832,7 +834,7 @@
           <div class="auditTop">
             <div>
               <h3 class="auditTitle">Audit #003</h3>
-              <div class="auditRegion">Morava • menší město</div>
+              <div class="auditRegion">Olomouc • autoservis</div>
             </div>
             <div class="auditCode">A-003</div>
           </div>
@@ -872,7 +874,7 @@
           <div class="auditTop">
             <div>
               <h3 class="auditTitle">Audit #004</h3>
-              <div class="auditRegion">Čechy • větší město</div>
+              <div class="auditRegion">Olomouc • autoservis</div>
             </div>
             <div class="auditCode">A-004</div>
           </div>
@@ -912,7 +914,7 @@
           <div class="auditTop">
             <div>
               <h3 class="auditTitle">Audit #005</h3>
-              <div class="auditRegion">Morava • krajské město</div>
+              <div class="auditRegion">Olomouc • servis + pneu</div>
             </div>
             <div class="auditCode">A-005</div>
           </div>
@@ -952,7 +954,7 @@
           <div class="auditTop">
             <div>
               <h3 class="auditTitle">Audit #006</h3>
-              <div class="auditRegion">Čechy • menší město</div>
+              <div class="auditRegion">Olomouc • autoservis</div>
             </div>
             <div class="auditCode">A-006</div>
           </div>
@@ -992,7 +994,7 @@
           <div class="auditTop">
             <div>
               <h3 class="auditTitle">Audit #007</h3>
-              <div class="auditRegion">Morava • větší město</div>
+              <div class="auditRegion">Olomouc • autoservis</div>
             </div>
             <div class="auditCode">A-007</div>
           </div>
@@ -1032,7 +1034,7 @@
           <div class="auditTop">
             <div>
               <h3 class="auditTitle">Audit #008</h3>
-              <div class="auditRegion">Čechy • menší město</div>
+              <div class="auditRegion">Olomouc • pneuservis</div>
             </div>
             <div class="auditCode">A-008</div>
           </div>
@@ -1072,7 +1074,7 @@
           <div class="auditTop">
             <div>
               <h3 class="auditTitle">Audit #009</h3>
-              <div class="auditRegion">Morava • okresní město</div>
+              <div class="auditRegion">Olomouc • autoservis</div>
             </div>
             <div class="auditCode">A-009</div>
           </div>
@@ -1115,7 +1117,7 @@
     <div class="wrap">
       <div style="margin-bottom:16px">
         <h2 class="reveal">Co z auditů nejčastěji vychází</h2>
-        <p class="reveal delay1" style="color:var(--muted)">Typické vzorce, které se u servisů opakují.</p>
+        <p class="reveal delay1" style="color:var(--muted)">Typické vzorce, které se u servisů v Olomouci opakují.</p>
       </div>
 
       <div class="summarySection">
@@ -1154,7 +1156,7 @@
         <a href="o-nas.html">O nás</a> ·
         <a href="tym.html">Tým</a> ·
         <a href="audity.html">Audity</a> ·
-        <a href="kontakt.html">Kontakt</a> 
+        <a href="kontakt.html">Kontakt</a>
       </div>
 
       <div>
