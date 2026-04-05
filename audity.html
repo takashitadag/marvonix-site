@@ -46,6 +46,10 @@
 
     *{box-sizing:border-box}
 
+    html{
+      scroll-behavior:smooth;
+    }
+
     html,body{
       margin:0;
       background:
@@ -335,6 +339,10 @@
 
     section{padding:26px 0}
 
+    #audity{
+      scroll-margin-top:120px;
+    }
+
     .proofBar{
       margin-top:18px;
       padding:16px 18px;
@@ -364,7 +372,7 @@
     .toolbar{
       display:flex;
       justify-content:space-between;
-      align-items:center;
+      align-items:flex-end;
       gap:14px;
       flex-wrap:wrap;
       margin-bottom:16px;
@@ -373,12 +381,14 @@
     .toolbarMeta{
       color:var(--muted);
       font-size:14px;
+      line-height:1.55;
     }
 
     .filterRow{
       display:flex;
       gap:10px;
       flex-wrap:wrap;
+      justify-content:flex-end;
     }
 
     .filterPill{
@@ -389,6 +399,7 @@
       color:#fff;
       font-size:13px;
       font-weight:800;
+      white-space:nowrap;
     }
 
     .filterPill.active{
@@ -492,7 +503,7 @@
 
     .metricGrid{
       display:grid;
-      grid-template-columns:repeat(3,1fr);
+      grid-template-columns:repeat(3, minmax(0,1fr));
       gap:10px;
       margin:12px 0 14px;
     }
@@ -504,7 +515,12 @@
       padding:12px 10px;
       text-align:center;
       min-width:0;
+      min-height:92px;
       overflow:hidden;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      justify-content:center;
     }
 
     .metricLabel{
@@ -514,18 +530,23 @@
       text-transform:uppercase;
       color:rgba(255,255,255,.55);
       margin-bottom:6px;
-    }
-
-    .metricValue{
-      font-size:clamp(20px, 2.2vw, 27px);
-      font-weight:900;
-      line-height:1.05;
-      letter-spacing:-.02em;
       white-space:nowrap;
     }
 
+    .metricValue{
+      font-size:clamp(13px, 1.45vw, 25px);
+      font-weight:900;
+      line-height:1.02;
+      letter-spacing:-.03em;
+      white-space:nowrap;
+      max-width:100%;
+    }
+
     .metricValue.low{color:#fff}
-    .metricValue.medium{color:#ffe7a0}
+    .metricValue.medium{
+      color:#ffe7a0;
+      font-size:clamp(13px, 1.28vw, 20px);
+    }
     .metricValue.high{color:#ffd0d0}
     .metricValue.yes{color:#b7ffd8}
     .metricValue.no{color:rgba(255,255,255,.82)}
@@ -624,18 +645,28 @@
       .auditGrid{grid-template-columns:repeat(2, minmax(0,1fr));}
       .summarySection{grid-template-columns:1fr}
       .heroGrid{grid-template-columns:1fr}
+      .metricValue{font-size:clamp(16px, 3.3vw, 24px)}
+      .metricValue.medium{font-size:clamp(15px, 2.9vw, 19px)}
     }
 
     @media (max-width: 720px){
       h1{font-size:38px}
       h2{font-size:28px}
       .auditGrid{grid-template-columns:1fr}
-      .metricGrid{grid-template-columns:1fr 1fr}
+      .metricGrid{grid-template-columns:repeat(3, minmax(0,1fr))}
       .brand img{height:64px}
       .proofBar{flex-direction:column;align-items:flex-start}
+      .toolbar{align-items:flex-start}
+      .filterRow{justify-content:flex-start}
     }
 
-    @media (max-width: 460px){
+    @media (max-width: 520px){
+      .metricGrid{grid-template-columns:1fr 1fr}
+      .metricValue{font-size:clamp(18px, 6vw, 24px)}
+      .metricValue.medium{font-size:clamp(16px, 5.3vw, 20px)}
+    }
+
+    @media (max-width: 420px){
       .metricGrid{grid-template-columns:1fr}
       .auditTitle{font-size:24px}
     }
