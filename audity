@@ -1,0 +1,1202 @@
+<!doctype html>
+<html lang="cs">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Marvonix | Audity autoservisů</title>
+  <meta name="description" content="Ukázka anonymních auditů autoservisů od Marvonix. Přehled stavu webu, Google profilu, reklam a marketingového potenciálu." />
+  <link rel="icon" href="favicon.ico">
+
+  <style>
+    :root{
+      --bg:#050714;
+      --bg2:#0c1026;
+      --purple:#7c3aed;
+      --purple2:#a855f7;
+      --text:#ffffff;
+      --muted:rgba(255,255,255,.75);
+      --muted2:rgba(255,255,255,.58);
+      --line:rgba(255,255,255,.10);
+      --line2:rgba(168,85,247,.28);
+      --shadow:0 18px 60px rgba(0,0,0,.45);
+      --shadow-soft:0 12px 30px rgba(124,58,237,.16);
+      --r:18px;
+      --max:1180px;
+      --pad:20px;
+      --navH:86px;
+
+      --card-bg:rgba(255,255,255,.045);
+      --card-border:rgba(255,255,255,.10);
+
+      --green:#27c27a;
+      --green-bg:rgba(39,194,122,.16);
+      --green-line:rgba(39,194,122,.26);
+
+      --red:#ff6b6b;
+      --red-bg:rgba(255,107,107,.14);
+      --red-line:rgba(255,107,107,.24);
+
+      --yellow:#f5c542;
+      --yellow-bg:rgba(245,197,66,.16);
+      --yellow-line:rgba(245,197,66,.26);
+
+      --gray-soft:rgba(255,255,255,.06);
+      --gray-line:rgba(255,255,255,.08);
+    }
+
+    *{box-sizing:border-box}
+
+    html,body{
+      margin:0;
+      background:
+        radial-gradient(900px 600px at 15% 10%, rgba(124,58,237,.25), transparent 60%),
+        radial-gradient(800px 600px at 90% 20%, rgba(168,85,247,.18), transparent 60%),
+        linear-gradient(160deg,var(--bg),var(--bg2));
+      color:var(--text);
+      font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Arial;
+      overflow-x:hidden;
+    }
+
+    a{color:inherit;text-decoration:none}
+    .wrap{max-width:var(--max);margin:0 auto;padding:0 var(--pad)}
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      padding:11px 16px;
+      border-radius:999px;
+      background:linear-gradient(135deg,var(--purple),var(--purple2));
+      color:#fff;
+      font-weight:900;
+      box-shadow:0 18px 50px rgba(124,58,237,.22);
+      transition:.25s;
+      white-space:nowrap;
+      border:0;
+      cursor:pointer;
+    }
+
+    .btn:hover{
+      transform:translateY(-2px);
+      box-shadow:0 25px 70px rgba(124,58,237,.40);
+    }
+
+    .btn.secondary{
+      background:rgba(255,255,255,.08);
+      box-shadow:none;
+      border:1px solid rgba(255,255,255,.12);
+      color:#fff;
+      font-weight:800;
+    }
+
+    .btn.secondary:hover{
+      transform:translateY(-2px);
+      box-shadow:0 14px 40px rgba(0,0,0,.35);
+    }
+
+    .nav{
+      position:sticky;
+      top:0;
+      z-index:50;
+      backdrop-filter: blur(12px);
+      background:rgba(5,7,20,.75);
+      border-bottom:1px solid var(--line);
+    }
+
+    .navin{
+      position:relative;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:14px;
+      padding:14px 0;
+      min-height:var(--navH);
+    }
+
+    .brand{display:flex;align-items:center;gap:14px}
+    .brand img{
+      height:72px;
+      width:auto;
+      display:block;
+      filter:drop-shadow(0 18px 40px rgba(124,58,237,.35));
+    }
+
+    .links{
+      display:flex;
+      gap:18px;
+      align-items:center;
+      color:var(--muted);
+      font-size:14px;
+    }
+
+    .links a{
+      padding:10px 8px;
+      border-radius:10px;
+      transition:.2s;
+    }
+
+    .links a:hover{
+      color:#fff;
+      background:rgba(255,255,255,.06);
+    }
+
+    .links a.active{
+      color:#fff;
+      background:rgba(124,58,237,.18);
+      border:1px solid rgba(124,58,237,.35);
+    }
+
+    .navcta-mobile{display:none;}
+    .navcta-desktop{display:inline-flex;}
+
+    .burger{
+      display:none;
+      width:44px;height:44px;
+      border-radius:12px;
+      border:1px solid rgba(255,255,255,.12);
+      background:rgba(255,255,255,.06);
+      align-items:center;justify-content:center;
+      cursor:pointer;
+      transition:.2s;
+    }
+
+    .burger:hover{transform:translateY(-1px)}
+
+    .burger span{
+      width:20px;height:2px;background:#fff;display:block;position:relative;border-radius:2px;
+    }
+
+    .burger span:before,.burger span:after{
+      content:"";position:absolute;left:0;width:20px;height:2px;background:#fff;border-radius:2px;
+      transition:.2s;
+    }
+
+    .burger span:before{top:-6px}
+    .burger span:after{top:6px}
+
+    @media (max-width: 940px){
+      .burger{display:flex}
+      .navcta-desktop{display:none;}
+      .links{
+        position:absolute;
+        left:0; right:0;
+        top:100%;
+        margin-top:12px;
+        display:flex;
+        flex-direction:column;
+        gap:10px;
+        padding:14px;
+        border:1px solid var(--line);
+        border-radius:18px;
+        background:rgba(5,7,20,.92);
+        box-shadow:var(--shadow);
+        opacity:0;
+        transform:translateY(-10px);
+        pointer-events:none;
+        transition:.22s ease;
+      }
+      .links.open{
+        opacity:1;
+        transform:translateY(0);
+        pointer-events:auto;
+      }
+      .links a{padding:12px 12px}
+      .navcta-mobile{display:inline-flex;width:100%;margin-top:6px;}
+    }
+
+    header{padding:34px 0 10px}
+
+    .hero{
+      margin-top:22px;
+      border-radius:24px;
+      border:1px solid rgba(255,255,255,.10);
+      background:
+        radial-gradient(700px 500px at 20% 20%, rgba(124,58,237,.30), transparent 60%),
+        radial-gradient(700px 500px at 85% 35%, rgba(168,85,247,.22), transparent 55%),
+        rgba(255,255,255,.03);
+      box-shadow:var(--shadow);
+      padding:28px;
+      overflow:hidden;
+      position:relative;
+    }
+
+    .hero::after{
+      content:"";
+      position:absolute;
+      inset:auto -120px -140px auto;
+      width:300px;
+      height:300px;
+      background:radial-gradient(circle, rgba(168,85,247,.18), transparent 70%);
+      pointer-events:none;
+    }
+
+    .heroGrid{
+      display:grid;
+      grid-template-columns:1.2fr .85fr;
+      gap:18px;
+      align-items:stretch;
+    }
+
+    h1{
+      margin:0 0 12px;
+      font-size:clamp(34px, 7.6vw, 56px);
+      line-height:1.05;
+      letter-spacing:-.02em;
+      overflow-wrap:anywhere;
+    }
+
+    h2{
+      margin:0 0 8px;
+      font-size:32px;
+      letter-spacing:-.02em;
+    }
+
+    .sub{
+      color:var(--muted);
+      line-height:1.7;
+      margin:0;
+      max-width:62ch;
+    }
+
+    .badgeRow{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-top:14px;
+    }
+
+    .pill{
+      padding:8px 12px;
+      border-radius:999px;
+      border:1px solid rgba(168,85,247,.25);
+      background:rgba(124,58,237,.10);
+      color:rgba(255,255,255,.88);
+      font-size:12px;
+      font-weight:800;
+      letter-spacing:.10em;
+      text-transform:uppercase;
+    }
+
+    .ctaRow{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+      margin-top:18px;
+    }
+
+    .sideCard{
+      border-radius:18px;
+      border:1px solid rgba(255,255,255,.10);
+      background:rgba(0,0,0,.20);
+      box-shadow:0 18px 60px rgba(0,0,0,.35);
+      padding:18px;
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+      gap:14px;
+    }
+
+    .kv{
+      display:grid;
+      grid-template-columns:1fr;
+      gap:10px;
+      margin-top:6px;
+    }
+
+    .kv .row{
+      display:flex;
+      justify-content:space-between;
+      gap:12px;
+      padding:10px 12px;
+      border-radius:14px;
+      background:rgba(255,255,255,.04);
+      border:1px solid rgba(255,255,255,.08);
+      color:rgba(255,255,255,.90);
+      min-width:0;
+      flex-wrap:wrap;
+      align-items:flex-start;
+    }
+
+    .bigBtn{
+      width:100%;
+      padding:12px 16px;
+      font-size:16px;
+    }
+
+    .miniTrust{
+      margin-top:14px;
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+      color:var(--muted2);
+      font-size:13px;
+    }
+
+    section{padding:26px 0}
+
+    .proofBar{
+      margin-top:18px;
+      padding:16px 18px;
+      border-radius:18px;
+      border:1px solid var(--line2);
+      background:linear-gradient(180deg, rgba(124,58,237,.10), rgba(255,255,255,.03));
+      box-shadow:var(--shadow-soft);
+      display:flex;
+      gap:18px;
+      flex-wrap:wrap;
+      align-items:center;
+      justify-content:space-between;
+    }
+
+    .proofBar strong{
+      display:block;
+      font-size:15px;
+      margin-bottom:4px;
+    }
+
+    .proofBar span{
+      color:var(--muted);
+      font-size:13px;
+      line-height:1.55;
+    }
+
+    .toolbar{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:14px;
+      flex-wrap:wrap;
+      margin-bottom:16px;
+    }
+
+    .toolbarMeta{
+      color:var(--muted);
+      font-size:14px;
+    }
+
+    .filterRow{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+
+    .filterPill{
+      padding:10px 14px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.10);
+      background:rgba(255,255,255,.05);
+      color:#fff;
+      font-size:13px;
+      font-weight:800;
+    }
+
+    .filterPill.active{
+      background:rgba(124,58,237,.18);
+      border-color:rgba(124,58,237,.35);
+    }
+
+    .auditGrid{
+      display:grid;
+      grid-template-columns:repeat(3, minmax(0,1fr));
+      gap:18px;
+    }
+
+    .auditCard{
+      background:var(--card-bg);
+      border:1px solid var(--card-border);
+      border-radius:22px;
+      padding:18px;
+      box-shadow:var(--shadow);
+      transition:.25s;
+      min-width:0;
+    }
+
+    .auditCard:hover{
+      transform:translateY(-4px);
+      box-shadow:0 24px 70px rgba(0,0,0,.40);
+    }
+
+    .auditTop{
+      display:flex;
+      justify-content:space-between;
+      gap:12px;
+      align-items:flex-start;
+      margin-bottom:4px;
+    }
+
+    .auditTitle{
+      font-size:28px;
+      font-weight:900;
+      line-height:1.05;
+      letter-spacing:-.02em;
+      margin:0 0 4px;
+    }
+
+    .auditRegion{
+      color:var(--muted);
+      font-size:14px;
+      margin-bottom:14px;
+    }
+
+    .auditCode{
+      font-size:12px;
+      font-weight:900;
+      letter-spacing:.14em;
+      text-transform:uppercase;
+      color:rgba(255,255,255,.62);
+      padding:7px 10px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.10);
+      background:rgba(255,255,255,.05);
+      white-space:nowrap;
+    }
+
+    .chipRow{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-bottom:10px;
+    }
+
+    .chip{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:9px 13px;
+      border-radius:999px;
+      font-size:14px;
+      font-weight:800;
+      line-height:1;
+      border:1px solid transparent;
+      white-space:nowrap;
+    }
+
+    .chip.green{
+      color:#b7ffd8;
+      background:var(--green-bg);
+      border-color:var(--green-line);
+    }
+
+    .chip.red{
+      color:#ffd0d0;
+      background:var(--red-bg);
+      border-color:var(--red-line);
+    }
+
+    .chip.yellow{
+      color:#ffe7a0;
+      background:var(--yellow-bg);
+      border-color:var(--yellow-line);
+    }
+
+    .metricGrid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:10px;
+      margin:12px 0 14px;
+    }
+
+    .metric{
+      border-radius:16px;
+      background:var(--gray-soft);
+      border:1px solid var(--gray-line);
+      padding:12px 10px;
+      text-align:center;
+      min-width:0;
+    }
+
+    .metricLabel{
+      font-size:11px;
+      font-weight:900;
+      letter-spacing:.14em;
+      text-transform:uppercase;
+      color:rgba(255,255,255,.55);
+      margin-bottom:6px;
+    }
+
+    .metricValue{
+      font-size:27px;
+      font-weight:900;
+      line-height:1.05;
+      letter-spacing:-.02em;
+    }
+
+    .metricValue.low{color:#fff}
+    .metricValue.medium{color:#ffe7a0}
+    .metricValue.high{color:#ffd0d0}
+    .metricValue.yes{color:#b7ffd8}
+    .metricValue.no{color:rgba(255,255,255,.82)}
+
+    .auditFooter{
+      display:flex;
+      justify-content:space-between;
+      gap:12px;
+      border-top:1px solid rgba(255,255,255,.10);
+      padding-top:14px;
+      margin-top:2px;
+      color:var(--muted);
+      font-size:14px;
+      flex-wrap:wrap;
+    }
+
+    .auditFooter b{
+      color:#fff;
+      font-size:13px;
+      letter-spacing:.10em;
+      text-transform:uppercase;
+    }
+
+    .summarySection{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:14px;
+      margin-top:8px;
+    }
+
+    .summaryCard{
+      background:rgba(255,255,255,.04);
+      border:1px solid rgba(255,255,255,.10);
+      border-radius:18px;
+      padding:18px;
+      box-shadow:var(--shadow);
+    }
+
+    .summaryCard h3{
+      margin:0 0 8px;
+      font-size:18px;
+    }
+
+    .summaryCard p{
+      margin:0;
+      color:var(--muted);
+      line-height:1.65;
+    }
+
+    footer{
+      padding:26px 0 40px;
+      border-top:1px solid var(--line);
+      color:var(--muted);
+      font-size:13px;
+      margin-top:20px;
+    }
+
+    .foot{
+      display:flex;
+      justify-content:space-between;
+      gap:16px;
+      flex-wrap:wrap;
+    }
+
+    .footNav{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      align-items:center;
+    }
+
+    .footNav a{
+      color:var(--muted);
+    }
+
+    .footNav a:hover{
+      color:#fff;
+    }
+
+    .reveal{
+      opacity:0;
+      transform:translateY(14px);
+      transition:.5s ease;
+    }
+
+    .reveal.show{
+      opacity:1;
+      transform:translateY(0);
+    }
+
+    .reveal.delay1{transition-delay:.06s}
+    .reveal.delay2{transition-delay:.12s}
+    .reveal.delay3{transition-delay:.18s}
+
+    @media (max-width: 1100px){
+      .auditGrid{grid-template-columns:repeat(2, minmax(0,1fr));}
+      .summarySection{grid-template-columns:1fr}
+      .heroGrid{grid-template-columns:1fr}
+    }
+
+    @media (max-width: 720px){
+      h1{font-size:38px}
+      h2{font-size:28px}
+      .auditGrid{grid-template-columns:1fr}
+      .metricGrid{grid-template-columns:1fr 1fr}
+      .brand img{height:64px}
+      .proofBar{flex-direction:column;align-items:flex-start}
+    }
+
+    @media (max-width: 460px){
+      .metricGrid{grid-template-columns:1fr}
+      .auditTitle{font-size:24px}
+    }
+  </style>
+</head>
+
+<body>
+  <div class="nav">
+    <div class="wrap navin">
+      <a class="brand" href="index.html" aria-label="Marvonix">
+        <img src="logo.png" alt="Marvonix logo">
+      </a>
+
+      <div class="links" id="navLinks">
+        <a href="index.html">Domů</a>
+        <a href="sluzby.html">Služby</a>
+        <a href="o-nas.html">O nás</a>
+        <a href="tym.html">Tým</a>
+        <a href="kontakt.html">Kontakt</a>
+        <a class="active" href="audity.html">Audity</a>
+        <a class="btn navcta-mobile" href="kontakt.html">Objednat konzultaci</a>
+      </div>
+
+      <a class="btn navcta-desktop" href="kontakt.html">Objednat konzultaci</a>
+
+      <button class="burger" id="burger" aria-label="Otevřít menu" aria-expanded="false">
+        <span></span>
+      </button>
+    </div>
+  </div>
+
+  <header>
+    <div class="wrap">
+      <div class="hero reveal">
+        <div class="heroGrid">
+          <div>
+            <div style="letter-spacing:.22em;text-transform:uppercase;font-weight:900;font-size:12px;color:rgba(255,255,255,.75)">
+              Audit • Marketing • Autoservisy
+            </div>
+
+            <h1>Anonymní audity autoservisů</h1>
+
+            <p class="sub">
+              Ukázka vybraných auditů v anonymizované podobě. Rychle uvidíš, jak hodnotíme web, Google profil, reklamu a celkový marketingový potenciál servisu.
+            </p>
+
+            <div class="ctaRow">
+              <a class="btn" href="kontakt.html">Chci vlastní audit</a>
+              <a class="btn secondary" href="#audity">Zobrazit audity</a>
+            </div>
+
+            <div class="badgeRow">
+              <span class="pill">Anonymizovaná data</span>
+              <span class="pill">Rychlé vizuální hodnocení</span>
+              <span class="pill">Web • Google • Ads</span>
+            </div>
+
+            <div class="miniTrust">
+              <span>✓ Bez citlivých údajů</span>
+              <span>✓ Přehledný scoring</span>
+              <span>✓ Vhodné jako reference i lead magnet</span>
+            </div>
+          </div>
+
+          <aside class="sideCard reveal delay1">
+            <div style="display:flex;justify-content:space-between;gap:10px;align-items:flex-start">
+              <div>
+                <div style="font-weight:900;font-size:16px;margin-bottom:2px">Co na stránce najdeš</div>
+                <div style="color:var(--muted);font-size:13px;line-height:1.5">ukázky auditů bez názvů firem a osobních údajů</div>
+              </div>
+              <div style="width:10px;height:10px;border-radius:999px;background:linear-gradient(135deg,var(--purple),var(--purple2));box-shadow:0 0 0 6px rgba(124,58,237,.12)"></div>
+            </div>
+
+            <div class="kv">
+              <div class="row"><b>Forma</b><span style="color:var(--muted)">karty s rychlým přehledem</span></div>
+              <div class="row"><b>Hodnocení</b><span style="color:var(--muted)">High / Medium, Approved, Passed</span></div>
+              <div class="row"><b>Ukazatele</b><span style="color:var(--muted)">Website, Google, Ads</span></div>
+            </div>
+
+            <a class="btn bigBtn" href="kontakt.html">Nechat si udělat audit</a>
+          </aside>
+        </div>
+      </div>
+
+      <div class="proofBar reveal delay1">
+        <div>
+          <strong>Stejný styl jako v interním systému</strong>
+          <span>Karty jsou navržené tak, aby připomínaly dashboard a působily důvěryhodně i přehledně.</span>
+        </div>
+        <div>
+          <strong>Vhodné pro web i prezentaci služeb</strong>
+          <span>Můžeš je použít jako veřejnou ukázku, social proof nebo samostatnou sekci „reference / audity“.</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section id="audity">
+    <div class="wrap">
+      <div class="toolbar reveal">
+        <div>
+          <h2 style="margin-bottom:6px">Přehled auditů</h2>
+          <div class="toolbarMeta">Anonymní ukázky z různých lokalit a úrovní marketingové připravenosti.</div>
+        </div>
+
+        <div class="filterRow">
+          <span class="filterPill active">Vše</span>
+          <span class="filterPill">High potenciál</span>
+          <span class="filterPill">Medium potenciál</span>
+          <span class="filterPill">S reklamou</span>
+        </div>
+      </div>
+
+      <div class="auditGrid">
+        <article class="auditCard reveal">
+          <div class="auditTop">
+            <div>
+              <h3 class="auditTitle">Audit #001</h3>
+              <div class="auditRegion">Morava • větší město</div>
+            </div>
+            <div class="auditCode">A-001</div>
+          </div>
+
+          <div class="chipRow">
+            <span class="chip green">✅ Completed</span>
+            <span class="chip red">🔥 High</span>
+          </div>
+
+          <div class="chipRow">
+            <span class="chip green">✅ Approved</span>
+            <span class="chip green">✔ Passed</span>
+          </div>
+
+          <div class="metricGrid">
+            <div class="metric">
+              <div class="metricLabel">Website</div>
+              <div class="metricValue low">Low</div>
+            </div>
+            <div class="metric">
+              <div class="metricLabel">Google</div>
+              <div class="metricValue low">Low</div>
+            </div>
+            <div class="metric">
+              <div class="metricLabel">Ads</div>
+              <div class="metricValue no">No</div>
+            </div>
+          </div>
+
+          <div class="auditFooter">
+            <div><b>Typ</b><br>Autoservis</div>
+            <div><b>Kontakt</b><br>Anonymizováno</div>
+          </div>
+        </article>
+
+        <article class="auditCard reveal delay1">
+          <div class="auditTop">
+            <div>
+              <h3 class="auditTitle">Audit #002</h3>
+              <div class="auditRegion">Čechy • okresní město</div>
+            </div>
+            <div class="auditCode">A-002</div>
+          </div>
+
+          <div class="chipRow">
+            <span class="chip green">✅ Completed</span>
+            <span class="chip red">🔥 High</span>
+          </div>
+
+          <div class="chipRow">
+            <span class="chip green">✅ Approved</span>
+            <span class="chip green">✔ Passed</span>
+          </div>
+
+          <div class="metricGrid">
+            <div class="metric">
+              <div class="metricLabel">Website</div>
+              <div class="metricValue low">Low</div>
+            </div>
+            <div class="metric">
+              <div class="metricLabel">Google</div>
+              <div class="metricValue low">Low</div>
+            </div>
+            <div class="metric">
+              <div class="metricLabel">Ads</div>
+              <div class="metricValue no">No</div>
+            </div>
+          </div>
+
+          <div class="auditFooter">
+            <div><b>Typ</b><br>Pneuservis</div>
+            <div><b>Kontakt</b><br>Anonymizováno</div>
+          </div>
+        </article>
+
+        <article class="auditCard reveal delay2">
+          <div class="auditTop">
+            <div>
+              <h3 class="auditTitle">Audit #003</h3>
+              <div class="auditRegion">Morava • menší město</div>
+            </div>
+            <div class="auditCode">A-003</div>
+          </div>
+
+          <div class="chipRow">
+            <span class="chip green">✅ Completed</span>
+            <span class="chip yellow">🟡 Medium</span>
+          </div>
+
+          <div class="chipRow">
+            <span class="chip green">✅ Approved</span>
+            <span class="chip green">✔ Passed</span>
+          </div>
+
+          <div class="metricGrid">
+            <div class="metric">
+              <div class="metricLabel">Website</div>
+              <div class="metricValue medium">Medium</div>
+            </div>
+            <div class="metric">
+              <div class="metricLabel">Google</div>
+              <div class="metricValue low">Low</div>
+            </div>
+            <div class="metric">
+              <div class="metricLabel">Ads</div>
+              <div class="metricValue no">No</div>
+            </div>
+          </div>
+
+          <div class="auditFooter">
+            <div><b>Typ</b><br>Autoservis</div>
+            <div><b>Kontakt</b><br>Anonymizováno</div>
+          </div>
+        </article>
+
+        <article class="auditCard reveal">
+          <div class="auditTop">
+            <div>
+              <h3 class="auditTitle">Audit #004</h3>
+              <div class="auditRegion">Čechy • větší město</div>
+            </div>
+            <div class="auditCode">A-004</div>
+          </div>
+
+          <div class="chipRow">
+            <span class="chip green">✅ Completed</span>
+            <span class="chip red">🔥 High</span>
+          </div>
+
+          <div class="chipRow">
+            <span class="chip green">✅ Approved</span>
+            <span class="chip green">✔ Passed</span>
+          </div>
+
+          <div class="metricGrid">
+            <div class="metric">
+              <div class="metricLabel">Website</div>
+              <div class="metricValue low">Low</div>
+            </div>
+            <div class="metric">
+              <div class="metricLabel">Google</div>
+              <div class="metricValue low">Low</div>
+            </div>
+            <div class="metric">
+              <div class="metricLabel">Ads</div>
+              <div class="metricValue no">No</div>
+            </div>
+          </div>
+
+          <div class="auditFooter">
+            <div><b>Typ</b><br>Autoservis</div>
+            <div><b>Kontakt</b><br>Anonymizováno</div>
+          </div>
+        </article>
+
+        <article class="auditCard reveal delay1">
+          <div class="auditTop">
+            <div>
+              <h3 class="auditTitle">Audit #005</h3>
+              <div class="auditRegion">Morava • krajské město</div>
+            </div>
+            <div class="auditCode">A-005</div>
+          </div>
+
+          <div class="chipRow">
+            <span class="chip green">✅ Completed</span>
+            <span class="chip red">🔥 High</span>
+          </div>
+
+          <div class="chipRow">
+            <span class="chip green">✅ Approved</span>
+            <span class="chip green">✔ Passed</span>
+          </div>
+
+          <div class="metricGrid">
+            <div class="metric">
+              <div class="metricLabel">Website</div>
+              <div class="metricValue low">Low</div>
+            </div>
+            <div class="metric">
+              <div class="metricLabel">Google</div>
+              <div class="metricValue low">Low</div>
+            </div>
+            <div class="metric">
+              <div class="metricLabel">Ads</div>
+              <div class="metricValue no">No</div>
+            </div>
+          </div>
+
+          <div class="auditFooter">
+            <div><b>Typ</b><br>Servis + pneu</div>
+            <div><b>Kontakt</b><br>Anonymizováno</div>
+          </div>
+        </article>
+
+        <article class="auditCard reveal delay2">
+          <div class="auditTop">
+            <div>
+              <h3 class="auditTitle">Audit #006</h3>
+              <div class="auditRegion">Čechy • menší město</div>
+            </div>
+            <div class="auditCode">A-006</div>
+          </div>
+
+          <div class="chipRow">
+            <span class="chip green">✅ Completed</span>
+            <span class="chip yellow">🟡 Medium</span>
+          </div>
+
+          <div class="chipRow">
+            <span class="chip green">✅ Approved</span>
+            <span class="chip green">✔ Passed</span>
+          </div>
+
+          <div class="metricGrid">
+            <div class="metric">
+              <div class="metricLabel">Website</div>
+              <div class="metricValue medium">Medium</div>
+            </div>
+            <div class="metric">
+              <div class="metricLabel">Google</div>
+              <div class="metricValue medium">Medium</div>
+            </div>
+            <div class="metric">
+              <div class="metricLabel">Ads</div>
+              <div class="metricValue yes">Yes</div>
+            </div>
+          </div>
+
+          <div class="auditFooter">
+            <div><b>Typ</b><br>Autoservis</div>
+            <div><b>Kontakt</b><br>Anonymizováno</div>
+          </div>
+        </article>
+
+        <article class="auditCard reveal">
+          <div class="auditTop">
+            <div>
+              <h3 class="auditTitle">Audit #007</h3>
+              <div class="auditRegion">Morava • větší město</div>
+            </div>
+            <div class="auditCode">A-007</div>
+          </div>
+
+          <div class="chipRow">
+            <span class="chip green">✅ Completed</span>
+            <span class="chip red">🔥 High</span>
+          </div>
+
+          <div class="chipRow">
+            <span class="chip green">✅ Approved</span>
+            <span class="chip green">✔ Passed</span>
+          </div>
+
+          <div class="metricGrid">
+            <div class="metric">
+              <div class="metricLabel">Website</div>
+              <div class="metricValue low">Low</div>
+            </div>
+            <div class="metric">
+              <div class="metricLabel">Google</div>
+              <div class="metricValue low">Low</div>
+            </div>
+            <div class="metric">
+              <div class="metricLabel">Ads</div>
+              <div class="metricValue no">No</div>
+            </div>
+          </div>
+
+          <div class="auditFooter">
+            <div><b>Typ</b><br>Autoservis</div>
+            <div><b>Kontakt</b><br>Anonymizováno</div>
+          </div>
+        </article>
+
+        <article class="auditCard reveal delay1">
+          <div class="auditTop">
+            <div>
+              <h3 class="auditTitle">Audit #008</h3>
+              <div class="auditRegion">Čechy • menší město</div>
+            </div>
+            <div class="auditCode">A-008</div>
+          </div>
+
+          <div class="chipRow">
+            <span class="chip green">✅ Completed</span>
+            <span class="chip red">🔥 High</span>
+          </div>
+
+          <div class="chipRow">
+            <span class="chip green">✅ Approved</span>
+            <span class="chip green">✔ Passed</span>
+          </div>
+
+          <div class="metricGrid">
+            <div class="metric">
+              <div class="metricLabel">Website</div>
+              <div class="metricValue low">Low</div>
+            </div>
+            <div class="metric">
+              <div class="metricLabel">Google</div>
+              <div class="metricValue low">Low</div>
+            </div>
+            <div class="metric">
+              <div class="metricLabel">Ads</div>
+              <div class="metricValue no">No</div>
+            </div>
+          </div>
+
+          <div class="auditFooter">
+            <div><b>Typ</b><br>Pneuservis</div>
+            <div><b>Kontakt</b><br>Anonymizováno</div>
+          </div>
+        </article>
+
+        <article class="auditCard reveal delay2">
+          <div class="auditTop">
+            <div>
+              <h3 class="auditTitle">Audit #009</h3>
+              <div class="auditRegion">Morava • okresní město</div>
+            </div>
+            <div class="auditCode">A-009</div>
+          </div>
+
+          <div class="chipRow">
+            <span class="chip green">✅ Completed</span>
+            <span class="chip yellow">🟡 Medium</span>
+          </div>
+
+          <div class="chipRow">
+            <span class="chip green">✅ Approved</span>
+            <span class="chip green">✔ Passed</span>
+          </div>
+
+          <div class="metricGrid">
+            <div class="metric">
+              <div class="metricLabel">Website</div>
+              <div class="metricValue medium">Medium</div>
+            </div>
+            <div class="metric">
+              <div class="metricLabel">Google</div>
+              <div class="metricValue medium">Medium</div>
+            </div>
+            <div class="metric">
+              <div class="metricLabel">Ads</div>
+              <div class="metricValue yes">Yes</div>
+            </div>
+          </div>
+
+          <div class="auditFooter">
+            <div><b>Typ</b><br>Autoservis</div>
+            <div><b>Kontakt</b><br>Anonymizováno</div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div style="margin-bottom:16px">
+        <h2 class="reveal">Co z auditů nejčastěji vychází</h2>
+        <p class="reveal delay1" style="color:var(--muted)">Typické vzorce, které se u servisů opakují.</p>
+      </div>
+
+      <div class="summarySection">
+        <div class="summaryCard reveal">
+          <h3>Slabý nebo zastaralý web</h3>
+          <p>Často chybí jasná nabídka služeb, důvěryhodnost, call to action nebo správně nastavený mobilní zážitek.</p>
+        </div>
+
+        <div class="summaryCard reveal delay1">
+          <h3>Nedotažený Google profil</h3>
+          <p>Málo fotek, slabé recenze, chybějící příspěvky nebo nevyužitý potenciál lokální viditelnosti.</p>
+        </div>
+
+        <div class="summaryCard reveal delay2">
+          <h3>Neaktivní nebo žádné reklamy</h3>
+          <p>Mnoho servisů reklamu vůbec nepoužívá, nebo ji mají spuštěnou bez měření, strategie a jasného cíle.</p>
+        </div>
+      </div>
+
+      <div style="margin-top:18px" class="reveal delay1">
+        <a class="btn" href="kontakt.html">Chci zjistit stav svého servisu</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap foot">
+      <div>
+        <b style="letter-spacing:.14em;text-transform:uppercase;">Marvonix</b>
+        <div style="opacity:.75;font-size:12px">Marketing pro autoservisy</div>
+      </div>
+
+      <div class="footNav">
+        <a href="index.html">Domů</a> ·
+        <a href="sluzby.html">Služby</a> ·
+        <a href="o-nas.html">O nás</a> ·
+        <a href="tym.html">Tým</a> ·
+        <a href="kontakt.html">Kontakt</a> ·
+        <a href="audity.html">Audity</a>
+      </div>
+
+      <div>
+        Kontakt: <a href="mailto:info@marvonix.cz">info@marvonix.cz</a>
+      </div>
+
+      <div>
+        © <span id="y"></span> Marvonix
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+
+    const burger = document.getElementById('burger');
+    const navLinks = document.getElementById('navLinks');
+
+    function closeMenu(){
+      navLinks.classList.remove('open');
+      burger.setAttribute('aria-expanded','false');
+    }
+
+    burger.addEventListener('click', () => {
+      const open = navLinks.classList.toggle('open');
+      burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+
+    document.addEventListener('click', (e) => {
+      if (!navLinks.contains(e.target) && !burger.contains(e.target)) closeMenu();
+    });
+
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(en=>{
+        if(en.isIntersecting){
+          en.target.classList.add('show');
+          io.unobserve(en.target);
+        }
+      });
+    }, {threshold: 0.12});
+
+    document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+  </script>
+</body>
+</html>
