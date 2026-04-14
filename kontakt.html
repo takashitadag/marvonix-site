@@ -81,6 +81,7 @@
       top:0;
       z-index:50;
       backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
       background:rgba(5,7,20,.75);
       border-bottom:1px solid var(--line);
     }
@@ -153,6 +154,7 @@
       display:block;
       position:relative;
       border-radius:2px;
+      transition:.25s ease;
     }
 
     .burger span:before,
@@ -164,10 +166,25 @@
       height:2px;
       background:#fff;
       border-radius:2px;
+      transition:.25s ease;
     }
 
     .burger span:before{top:-6px}
     .burger span:after{top:6px}
+
+    .burger.active span{
+      background:transparent;
+    }
+
+    .burger.active span:before{
+      top:0;
+      transform:rotate(45deg);
+    }
+
+    .burger.active span:after{
+      top:0;
+      transform:rotate(-45deg);
+    }
 
     @media (max-width: 940px){
       .burger{display:flex}
@@ -323,6 +340,7 @@
       font-size:14.5px;
       outline:none;
       font-family:inherit;
+      transition:.2s ease;
     }
 
     input:focus,textarea:focus,select:focus{
@@ -379,6 +397,21 @@
     .miniCard h3{
       margin:0 0 8px;
       font-size:18px;
+    }
+
+    .formStatus{
+      margin-top:14px;
+      min-height:22px;
+      font-size:14px;
+      font-weight:700;
+    }
+
+    .formStatus.success{
+      color:#4ade80;
+    }
+
+    .formStatus.error{
+      color:#f87171;
     }
 
     footer{
@@ -503,11 +536,11 @@
     <div class="wrap grid2">
       <div class="panel highlight reveal">
         <h2>Rychlý kontakt</h2>
-        <p>Nejrychlejší cesta je e-mail. Když nám pošlete pár základních čísel, můžeme navrhnout smysluplný další krok.</p>
+        <p>Nejrychlejší cesta je formulář vpravo. Když nám pošlete pár základních čísel, můžeme navrhnout smysluplný další krok.</p>
 
         <div class="infoList">
           <div class="infoRow">
-            <b>E-mail:</b> <a href="mailto:info@marvonix.cz">info@marvonix.cz</a>
+            <b>E-mail:</b> <span id="emailText">info@marvonix.cz</span>
           </div>
           <div class="infoRow">
             <b>Lokalita:</b> Olomouc | Česko
@@ -518,13 +551,15 @@
         </div>
 
         <div style="margin-top:14px;">
-          <a class="btn" href="mailto:info@marvonix.cz?subject=Marvonix%20-%20Konzultace">Napsat e-mail</a>
+          <button class="btn" type="button" id="copyEmailBtn">Zkopírovat e-mail</button>
         </div>
+
+        <div id="copyStatus" class="formStatus" aria-live="polite"></div>
 
         <div style="margin-top:16px;">
           <h3>Co se stane po odeslání?</h3>
           <p class="small">
-            Projdeme vaše informace, zhodnotíme, co dává smysl řešit jako první, a ozveme se vám s návrhem dalšího postupu. Nejde o automatický „sales call“, ale o smysluplný první krok.
+            Projdeme vaše informace, zhodnotíme, co dává smysl řešit jako první, a ozveme se vám s návrhem dalšího postupu. Nejde o automatický sales call, ale o smysluplný první krok.
           </p>
         </div>
       </div>
@@ -533,23 +568,31 @@
         <h2>Objednat konzultaci</h2>
 
         <form id="leadForm">
+          <input type="hidden" name="access_key" value="cdb8d24e-b1b2-4ffd-b73a-f33c016ffed3">
+          <input type="hidden" name="subject" value="Nová poptávka z webu Marvonix">
+          <input type="hidden" name="from_name" value="Marvonix Web">
+          <input type="checkbox" name="botcheck" style="display:none">
+
           <label for="name">Jméno</label>
-          <input id="name" name="name" required placeholder="Jméno a příjmení" />
+          <input id="name" name="name" required placeholder="Jméno a příjmení">
+
+          <label for="email">E-mail</label>
+          <input id="email" name="email" type="email" required placeholder="vas@email.cz">
 
           <label for="company">Autoservis / firma</label>
-          <input id="company" name="company" required placeholder="Název firmy" />
+          <input id="company" name="company" required placeholder="Název firmy">
 
           <label for="city">Město</label>
-          <input id="city" name="city" placeholder="Např. Olomouc" />
+          <input id="city" name="city" placeholder="Např. Olomouc">
 
           <label for="phone">Telefon</label>
-          <input id="phone" name="phone" placeholder="+420..." />
+          <input id="phone" name="phone" placeholder="+420...">
 
           <label for="capacity">Kapacita aut za měsíc</label>
-          <input id="capacity" name="capacity" placeholder="Např. 40 aut / měsíc" />
+          <input id="capacity" name="capacity" placeholder="Např. 40 aut / měsíc">
 
           <label for="value">Průměrná hodnota zakázky</label>
-          <input id="value" name="value" placeholder="Např. 4 500 Kč" />
+          <input id="value" name="value" placeholder="Např. 4 500 Kč">
 
           <label for="service">O jakou službu máte zájem</label>
           <select id="service" name="service">
@@ -561,12 +604,14 @@
           </select>
 
           <label for="msg">Co chcete zlepšit</label>
-          <textarea id="msg" name="msg" placeholder="Např. více zakázek v pneu sezóně, více poptávek na klima, lepší výkon Google Ads, nový web..."></textarea>
+          <textarea id="msg" name="message" placeholder="Např. více zakázek v pneu sezóně, více poptávek na klima, lepší výkon Google Ads, nový web..."></textarea>
 
           <div class="formActions">
             <button class="btn" type="submit">Odeslat poptávku</button>
-            <button class="btn secondary" type="button" onclick="document.getElementById('leadForm').reset()">Vymazat</button>
+            <button class="btn secondary" type="button" id="resetFormBtn">Vymazat</button>
           </div>
+
+          <div id="formStatus" class="formStatus" aria-live="polite"></div>
         </form>
       </div>
     </div>
@@ -614,7 +659,7 @@
       </div>
 
       <div>
-        Kontakt: <a href="mailto:info@marvonix.cz">info@marvonix.cz</a>
+        Kontakt: info@marvonix.cz
       </div>
 
       <div>
@@ -631,11 +676,13 @@
 
     function closeMenu(){
       navLinks.classList.remove('open');
+      burger.classList.remove('active');
       burger.setAttribute('aria-expanded','false');
     }
 
     burger.addEventListener('click', () => {
       const open = navLinks.classList.toggle('open');
+      burger.classList.toggle('active', open);
       burger.setAttribute('aria-expanded', open ? 'true' : 'false');
     });
 
@@ -643,25 +690,63 @@
       if (!navLinks.contains(e.target) && !burger.contains(e.target)) closeMenu();
     });
 
-    document.getElementById('leadForm').addEventListener('submit', function(e){
+    const leadForm = document.getElementById('leadForm');
+    const formStatus = document.getElementById('formStatus');
+    const resetFormBtn = document.getElementById('resetFormBtn');
+    const copyEmailBtn = document.getElementById('copyEmailBtn');
+    const copyStatus = document.getElementById('copyStatus');
+
+    resetFormBtn.addEventListener('click', () => {
+      leadForm.reset();
+      formStatus.textContent = '';
+      formStatus.className = 'formStatus';
+    });
+
+    copyEmailBtn.addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText('info@marvonix.cz');
+        copyStatus.textContent = '✅ E-mail byl zkopírován.';
+        copyStatus.className = 'formStatus success';
+      } catch (error) {
+        copyStatus.textContent = '❌ Nepodařilo se zkopírovat e-mail.';
+        copyStatus.className = 'formStatus error';
+      }
+    });
+
+    leadForm.addEventListener('submit', async function(e){
       e.preventDefault();
-      const v = (id)=>document.getElementById(id).value.trim();
 
-      const subject = encodeURIComponent("Marvonix – konzultace");
-      const body = encodeURIComponent(
-        "Dobrý den,\n\n" +
-        "Jméno: " + v("name") + "\n" +
-        "Firma: " + v("company") + "\n" +
-        "Město: " + (v("city")||"-") + "\n" +
-        "Telefon: " + (v("phone")||"-") + "\n" +
-        "Kapacita aut za měsíc: " + (v("capacity")||"-") + "\n" +
-        "Průměrná hodnota zakázky: " + (v("value")||"-") + "\n" +
-        "Zájem o službu: " + (v("service")||"-") + "\n\n" +
-        "Co chce klient zlepšit:\n" + (v("msg")||"-") + "\n\n" +
-        "Děkuji."
-      );
+      formStatus.textContent = 'Odesílám...';
+      formStatus.className = 'formStatus';
 
-      window.location.href = "mailto:info@marvonix.cz?subject=" + subject + "&body=" + body;
+      const formData = new FormData(leadForm);
+      const object = Object.fromEntries(formData.entries());
+      const json = JSON.stringify(object);
+
+      try {
+        const response = await fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+          },
+          body: json
+        });
+
+        const data = await response.json();
+
+        if (response.ok && data.success) {
+          formStatus.textContent = '✅ Zpráva byla úspěšně odeslána. Brzy se vám ozveme.';
+          formStatus.className = 'formStatus success';
+          leadForm.reset();
+        } else {
+          formStatus.textContent = '❌ Nepodařilo se odeslat formulář. Zkuste to prosím znovu.';
+          formStatus.className = 'formStatus error';
+        }
+      } catch (error) {
+        formStatus.textContent = '❌ Došlo k chybě při odesílání. Zkuste to prosím znovu.';
+        formStatus.className = 'formStatus error';
+      }
     });
 
     const io = new IntersectionObserver((entries)=>{
@@ -677,4 +762,3 @@
   </script>
 </body>
 </html>
-Uprav
