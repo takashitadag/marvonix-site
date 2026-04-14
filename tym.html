@@ -4,40 +4,86 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Tým | Marvonix</title>
-  <meta name="description" content="Poznejte tým Marvonix. Martin, Václav, Petr, Anna a Nicolas – lidé, kteří stojí za růstem autoservisů." />
+  <meta name="description" content="Poznejte tým Marvonix. Martin, Václav, Petr, Anna, Nicolas a Dominik – lidé, kteří stojí za růstem autoservisů." />
   <link rel="icon" href="favicon.ico">
 
   <style>
     :root{
-      --bg:#050714;
-      --bg2:#0c1026;
-      --purple:#7c3aed;
-      --purple2:#a855f7;
+      --bg:#060818;
+      --bg2:#0d1230;
+      --bg3:#18214a;
+
+      --purple:#a855f7;
+      --purple2:#c084fc;
+
       --text:#ffffff;
-      --muted:rgba(255,255,255,.75);
+      --muted:rgba(255,255,255,.78);
+      --muted2:rgba(255,255,255,.60);
+
       --line:rgba(255,255,255,.10);
-      --shadow:0 18px 60px rgba(0,0,0,.45);
-      --r:18px;
+      --line2:rgba(192,132,252,.30);
+
+      --shadow:0 18px 60px rgba(0,0,0,.42);
+      --cta-glow:0 18px 50px rgba(168,85,247,.22);
+      --cta-glow-strong:0 25px 70px rgba(168,85,247,.40);
+      --bubble-glow:
+        0 18px 50px rgba(168,85,247,.16),
+        0 0 0 1px rgba(192,132,252,.07);
+
+      --r:20px;
       --max:1120px;
       --pad:20px;
-      --navH:86px;
+      --navH:82px;
     }
 
     *{box-sizing:border-box}
 
-    html,body{
+    html{
       margin:0;
-      background:
-        radial-gradient(900px 600px at 15% 10%, rgba(124,58,237,.25), transparent 60%),
-        radial-gradient(800px 600px at 90% 20%, rgba(168,85,247,.18), transparent 60%),
-        linear-gradient(160deg,var(--bg),var(--bg2));
+      padding:0;
+      min-height:100%;
+      background:#060818;
+      overflow-x:hidden;
+      scroll-behavior:smooth;
+    }
+
+    body{
+      margin:0;
+      padding:0;
+      min-height:100vh;
       color:var(--text);
       font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Arial;
       overflow-x:hidden;
+      background:
+        radial-gradient(900px 620px at 12% 8%, rgba(168,85,247,.18), transparent 58%),
+        radial-gradient(820px 560px at 88% 18%, rgba(24,33,74,.70), transparent 56%),
+        radial-gradient(760px 520px at 78% 12%, rgba(192,132,252,.10), transparent 50%),
+        linear-gradient(180deg,var(--bg),var(--bg2) 52%, var(--bg3));
+      -webkit-overflow-scrolling:touch;
+      position:relative;
+    }
+
+    body::before{
+      content:"";
+      position:fixed;
+      inset:0;
+      z-index:-1;
+      pointer-events:none;
+      background:
+        radial-gradient(900px 620px at 12% 8%, rgba(168,85,247,.18), transparent 58%),
+        radial-gradient(820px 560px at 88% 18%, rgba(24,33,74,.70), transparent 56%),
+        radial-gradient(760px 520px at 78% 12%, rgba(192,132,252,.10), transparent 50%),
+        linear-gradient(180deg,var(--bg),var(--bg2) 52%, var(--bg3));
     }
 
     a{color:inherit;text-decoration:none}
     .wrap{max-width:var(--max);margin:0 auto;padding:0 var(--pad)}
+
+    .hl{
+      color:#fff;
+      font-weight:900;
+      text-shadow:0 0 16px rgba(192,132,252,.12);
+    }
 
     .btn{
       display:inline-flex;
@@ -49,7 +95,7 @@
       background:linear-gradient(135deg,var(--purple),var(--purple2));
       color:#fff;
       font-weight:900;
-      box-shadow:0 18px 50px rgba(124,58,237,.22);
+      box-shadow:var(--cta-glow);
       transition:.25s;
       white-space:nowrap;
       border:0;
@@ -58,29 +104,39 @@
 
     .btn:hover{
       transform:translateY(-2px);
-      box-shadow:0 25px 70px rgba(124,58,237,.40);
+      box-shadow:var(--cta-glow-strong);
     }
 
     .btn.secondary{
       background:rgba(255,255,255,.08);
-      box-shadow:none;
-      border:1px solid rgba(255,255,255,.12);
+      border:1px solid rgba(255,255,255,.14);
       color:#fff;
       font-weight:800;
+      box-shadow:0 0 0 1px rgba(255,255,255,.03);
     }
 
     .btn.secondary:hover{
-      transform:translateY(-2px);
-      box-shadow:0 14px 40px rgba(0,0,0,.35);
+      background:rgba(255,255,255,.11);
     }
 
     .nav{
       position:sticky;
       top:0;
-      z-index:50;
-      backdrop-filter: blur(12px);
-      background:rgba(5,7,20,.75);
-      border-bottom:1px solid var(--line);
+      z-index:200;
+      background:rgba(5,7,20,.26);
+      backdrop-filter:blur(16px);
+      -webkit-backdrop-filter:blur(16px);
+      border-bottom:1px solid rgba(255,255,255,.06);
+    }
+
+    .nav::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      pointer-events:none;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,0)),
+        radial-gradient(520px 140px at 14% 0%, rgba(168,85,247,.08), transparent 72%);
     }
 
     .navin{
@@ -89,16 +145,32 @@
       align-items:center;
       justify-content:space-between;
       gap:14px;
-      padding:14px 0;
       min-height:var(--navH);
+      padding:12px 0;
     }
 
-    .brand{display:flex;align-items:center;gap:14px}
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:14px;
+      position:relative;
+      z-index:2;
+    }
+
     .brand img{
-      height:72px;
+      height:68px;
       width:auto;
       display:block;
-      filter:drop-shadow(0 18px 40px rgba(124,58,237,.35));
+      filter:
+        drop-shadow(0 0 6px rgba(168,85,247,.14))
+        drop-shadow(0 0 18px rgba(192,132,252,.10));
+      transition:.25s ease;
+    }
+
+    .brand:hover img{
+      filter:
+        drop-shadow(0 0 8px rgba(168,85,247,.18))
+        drop-shadow(0 0 20px rgba(192,132,252,.12));
     }
 
     .links{
@@ -107,106 +179,159 @@
       align-items:center;
       color:var(--muted);
       font-size:14px;
+      position:relative;
+      z-index:2;
     }
 
     .links a{
-      padding:10px 8px;
-      border-radius:10px;
+      padding:10px 10px;
+      border-radius:12px;
       transition:.2s;
     }
 
     .links a:hover{
       color:#fff;
-      background:rgba(255,255,255,.06);
+      background:rgba(255,255,255,.05);
+      box-shadow:0 0 0 1px rgba(192,132,252,.08), 0 0 14px rgba(192,132,252,.06);
     }
 
     .links a.active{
       color:#fff;
-      background:rgba(124,58,237,.18);
-      border:1px solid rgba(124,58,237,.35);
+      background:rgba(168,85,247,.14);
+      border:1px solid rgba(192,132,252,.24);
+      box-shadow:0 0 14px rgba(192,132,252,.08);
     }
 
     .navcta-mobile{display:none;}
-    .navcta-desktop{display:inline-flex;}
+    .navcta-desktop{display:inline-flex;position:relative;z-index:2;}
 
     .burger{
       display:none;
-      width:44px;height:44px;
+      width:44px;
+      height:44px;
       border-radius:12px;
-      border:1px solid rgba(255,255,255,.12);
-      background:rgba(255,255,255,.06);
-      align-items:center;justify-content:center;
+      border:1px solid rgba(255,255,255,.14);
+      background:rgba(255,255,255,.08);
+      align-items:center;
+      justify-content:center;
       cursor:pointer;
-      transition:.2s;
+      transition:transform .2s ease, background .2s ease, border-color .2s ease;
+      flex-shrink:0;
+      appearance:none;
+      -webkit-appearance:none;
+      position:relative;
+      z-index:2;
     }
 
-    .burger:hover{transform:translateY(-1px)}
+    .burger:hover{
+      transform:translateY(-1px);
+      background:rgba(255,255,255,.11);
+    }
 
     .burger span{
-      width:20px;height:2px;background:#fff;display:block;position:relative;border-radius:2px;
+      width:20px;
+      height:2px;
+      background:#fff;
+      display:block;
+      position:relative;
+      border-radius:999px;
+      transition:background .22s ease, transform .22s ease;
     }
 
-    .burger span:before,.burger span:after{
-      content:"";position:absolute;left:0;width:20px;height:2px;background:#fff;border-radius:2px;
+    .burger span:before,
+    .burger span:after{
+      content:"";
+      position:absolute;
+      left:0;
+      width:20px;
+      height:2px;
+      background:#fff;
+      border-radius:999px;
+      transition:transform .28s ease, top .28s ease, opacity .18s ease;
     }
 
     .burger span:before{top:-6px}
     .burger span:after{top:6px}
 
+    .burger.active{
+      background:rgba(168,85,247,.16);
+      border-color:rgba(192,132,252,.34);
+    }
+
+    .burger.active span{background:transparent}
+    .burger.active span:before{top:0;transform:rotate(45deg)}
+    .burger.active span:after{top:0;transform:rotate(-45deg)}
+
     @media (max-width: 940px){
       .burger{display:flex}
       .navcta-desktop{display:none;}
+
       .links{
         position:absolute;
-        left:0; right:0;
+        left:0;
+        right:0;
         top:100%;
-        margin-top:12px;
-        display:flex;
+        margin-top:10px;
         flex-direction:column;
-        gap:10px;
+        align-items:stretch;
+        gap:8px;
         padding:14px;
-        border:1px solid var(--line);
+        border:1px solid rgba(255,255,255,.10);
         border-radius:18px;
-        background:rgba(5,7,20,.92);
+        background:rgba(8,11,26,.90);
+        backdrop-filter:blur(14px);
+        -webkit-backdrop-filter:blur(14px);
         box-shadow:var(--shadow);
         opacity:0;
-        transform:translateY(-10px);
+        transform:translateY(-10px) scale(.985);
+        transform-origin:top center;
         pointer-events:none;
-        transition:.22s ease;
+        transition:opacity .22s ease, transform .22s ease;
       }
+
       .links.open{
         opacity:1;
-        transform:translateY(0);
+        transform:translateY(0) scale(1);
         pointer-events:auto;
       }
+
       .links a{padding:12px 12px}
-      .navcta-mobile{display:inline-flex;width:100%;margin-top:6px;}
+      .navcta-mobile{
+        display:inline-flex;
+        width:100%;
+        margin-top:6px;
+      }
     }
 
-    header{padding:34px 0 10px}
+    header{
+      padding:18px 0 6px;
+    }
 
     .hero{
-      margin-top:22px;
+      margin-top:10px;
       border-radius:24px;
       border:1px solid rgba(255,255,255,.10);
       background:
-        radial-gradient(700px 500px at 20% 20%, rgba(124,58,237,.30), transparent 60%),
-        radial-gradient(700px 500px at 85% 35%, rgba(168,85,247,.22), transparent 55%),
-        rgba(255,255,255,.03);
-      box-shadow:var(--shadow);
-      padding:28px;
+        radial-gradient(720px 500px at 16% 16%, rgba(168,85,247,.18), transparent 58%),
+        radial-gradient(680px 460px at 86% 28%, rgba(192,132,252,.11), transparent 56%),
+        linear-gradient(180deg, rgba(255,255,255,.055), rgba(255,255,255,.03));
+      box-shadow:var(--shadow), var(--bubble-glow);
+      padding:22px 24px;
       overflow:hidden;
+      position:relative;
     }
 
     h1{
       margin:0 0 12px;
-      font-size:clamp(34px, 7.2vw, 54px);
-      line-height:1.06;
-      letter-spacing:-.02em;
+      font-size:clamp(30px, 6vw, 50px);
+      line-height:1.05;
+      letter-spacing:-.025em;
+      overflow-wrap:anywhere;
+      max-width:14ch;
     }
 
     h2{
-      margin:0 0 10px;
+      margin:0 0 8px;
       font-size:32px;
       letter-spacing:-.02em;
     }
@@ -218,6 +343,42 @@
     }
 
     .sub{max-width:70ch}
+    .compact{
+      color:var(--muted);
+      line-height:1.7;
+      margin:0;
+      font-size:15px;
+    }
+
+    .expandable{
+      display:block;
+      margin-top:10px;
+    }
+
+    .expandable .full{display:none}
+    .expandable.open .full{display:block}
+    .expandable.open .preview{display:none}
+
+    .text-toggle{
+      margin-top:12px;
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      background:rgba(255,255,255,.08);
+      border:1px solid rgba(255,255,255,.14);
+      color:#fff;
+      border-radius:999px;
+      padding:8px 12px;
+      font-size:13px;
+      font-weight:800;
+      cursor:pointer;
+      transition:.2s;
+    }
+
+    .text-toggle:hover{
+      transform:translateY(-1px);
+      background:rgba(255,255,255,.11);
+    }
 
     .badgeRow{
       display:flex;
@@ -229,23 +390,35 @@
     .pill{
       padding:8px 12px;
       border-radius:999px;
-      border:1px solid rgba(168,85,247,.25);
-      background:rgba(124,58,237,.10);
-      color:rgba(255,255,255,.88);
+      border:1px solid rgba(192,132,252,.24);
+      background:rgba(168,85,247,.10);
+      color:rgba(255,255,255,.92);
       font-size:12px;
       font-weight:800;
       letter-spacing:.10em;
       text-transform:uppercase;
+      box-shadow:0 0 20px rgba(192,132,252,.06);
     }
 
     .ctaRow{
       display:flex;
       gap:12px;
       flex-wrap:wrap;
-      margin-top:20px;
+      margin-top:18px;
     }
 
     section{padding:26px 0}
+
+    .sectionHead{
+      margin-bottom:16px;
+    }
+
+    .sectionHead p{
+      color:var(--muted);
+      line-height:1.7;
+      margin:0;
+      max-width:72ch;
+    }
 
     .gridTeam{
       display:grid;
@@ -253,12 +426,22 @@
       gap:14px;
     }
 
+    .grid3{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:14px;
+    }
+
+    .card,
+    .ctaBox{
+      box-shadow:var(--shadow), var(--bubble-glow);
+    }
+
     .card{
-      background:rgba(255,255,255,.04);
+      background:linear-gradient(180deg, rgba(255,255,255,.055), rgba(255,255,255,.035));
       border:1px solid rgba(255,255,255,.10);
       border-radius:var(--r);
       padding:20px;
-      box-shadow:var(--shadow);
       transition:.25s;
     }
 
@@ -269,13 +452,14 @@
       margin-bottom:10px;
       padding:7px 11px;
       border-radius:999px;
-      border:1px solid rgba(168,85,247,.25);
-      background:rgba(124,58,237,.12);
-      color:rgba(255,255,255,.9);
+      border:1px solid rgba(192,132,252,.24);
+      background:rgba(168,85,247,.12);
+      color:rgba(255,255,255,.92);
       font-size:11px;
       font-weight:900;
       letter-spacing:.12em;
       text-transform:uppercase;
+      box-shadow:0 0 20px rgba(192,132,252,.06);
     }
 
     .memberName{
@@ -290,26 +474,20 @@
       margin:0;
     }
 
-    .grid3{
-      display:grid;
-      grid-template-columns:repeat(3,1fr);
-      gap:14px;
-    }
-
     .ctaBox{
       margin-top:8px;
       border-radius:24px;
       border:1px solid rgba(255,255,255,.10);
-      background:rgba(255,255,255,.03);
-      box-shadow:var(--shadow);
+      background:linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.03));
       padding:18px;
     }
 
     footer{
-      padding:26px 0 40px;
-      border-top:1px solid var(--line);
+      padding:28px 0 76px;
+      border-top:1px solid rgba(255,255,255,.10);
       color:var(--muted);
       font-size:13px;
+      background:linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.03));
     }
 
     .foot{
@@ -317,6 +495,21 @@
       justify-content:space-between;
       gap:16px;
       flex-wrap:wrap;
+    }
+
+    .footNav{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      align-items:center;
+    }
+
+    .footNav a{
+      color:var(--muted);
+    }
+
+    .footNav a:hover{
+      color:#fff;
     }
 
     .reveal{
@@ -334,7 +527,7 @@
     .reveal.delay2{transition-delay:.12s}
     .reveal.delay3{transition-delay:.18s}
 
-    @media (max-width: 900px){
+    @media (max-width: 980px){
       .gridTeam,
       .grid3{
         grid-template-columns:1fr;
@@ -342,15 +535,10 @@
 
       h1{font-size:38px}
       h2{font-size:28px}
-      .brand img{height:64px}
+    }
 
-      .ctaBox div{
-        width:100%;
-      }
-
-      .ctaBox .btn{
-        width:100%;
-      }
+    @media (max-width: 720px){
+      .brand img{height:60px}
     }
   </style>
 </head>
@@ -374,7 +562,7 @@
 
       <a class="btn navcta-desktop" href="kontakt.html">Objednat konzultaci</a>
 
-      <button class="burger" id="burger" aria-label="Otevřít menu" aria-expanded="false">
+      <button class="burger" id="burger" aria-label="Otevřít menu" aria-expanded="false" aria-controls="navLinks">
         <span></span>
       </button>
     </div>
@@ -383,10 +571,26 @@
   <header>
     <div class="wrap">
       <div class="hero reveal">
-        <h1>Kdo stojí za Marvonix</h1>
-        <p class="sub">
-          Marvonix nestaví na prázdných frázích, ale na lidech, kteří řeší výkon, systémy a reálné výsledky. Každý člen týmu má jasnou roli a společný cíl: pomáhat autoservisům růst efektivně a bez chaosu.
-        </p>
+        <h1>
+          Kdo stojí za
+          <span class="hl">Marvonix</span>
+        </h1>
+
+        <div class="expandable" data-expandable>
+          <div class="preview">
+            <p class="compact">
+              Jasné role, výkon, systémy a růst bez chaosu.
+            </p>
+          </div>
+
+          <div class="full">
+            <p class="sub">
+              Marvonix nestaví na prázdných frázích, ale na lidech, kteří řeší výkon, systémy a reálné výsledky. Každý člen týmu má jasnou roli a společný cíl: pomáhat autoservisům růst efektivně a bez chaosu.
+            </p>
+          </div>
+
+          <button class="text-toggle" type="button">Zjistit více</button>
+        </div>
 
         <div class="ctaRow">
           <a class="btn" href="kontakt.html">Objednat konzultaci</a>
@@ -403,82 +607,180 @@
   </header>
 
   <section>
-    <div class="wrap" style="margin-bottom:16px">
+    <div class="wrap sectionHead">
       <h2 class="reveal">Náš tým</h2>
       <p class="reveal delay1">Každý z nás řeší jinou část růstu, ale všichni pracujeme na jednom cíli: přivádět klientům relevantní zakázky a budovat systém, který dává smysl.</p>
     </div>
 
     <div class="wrap gridTeam">
-      <div class="card reveal">
+      <div class="card reveal expandable" data-expandable>
         <div class="roleTag">CEO</div>
         <h3 class="memberName">Martin</h3>
-        <p class="memberText">
-          Řídí směr agentury, obchod a spolupráci s klienty. Zaměřuje se na to, aby marketing přinášel reálné zakázky, ne jen „hezká čísla“ v reportech.
-        </p>
+
+        <div class="preview">
+          <p class="memberText">Směr agentury, obchod, klientské vedení.</p>
+        </div>
+
+        <div class="full">
+          <p class="memberText">
+            Řídí směr agentury, obchod a spolupráci s klienty. Zaměřuje se na to, aby marketing přinášel reálné zakázky, ne jen „hezká čísla“ v reportech.
+          </p>
+        </div>
+
+        <button class="text-toggle" type="button">Zjistit více</button>
       </div>
 
-      <div class="card reveal delay1">
+      <div class="card reveal delay1 expandable" data-expandable>
         <div class="roleTag">CTO</div>
         <h3 class="memberName">Václav</h3>
-        <p class="memberText">
-          Zajišťuje technické řešení, weby, systémy a měření. Dohlíží na to, aby technická část fungovala rychle, správně a bez zbytečných chyb.
-        </p>
+
+        <div class="preview">
+          <p class="memberText">Technické řešení, weby, systémy, měření.</p>
+        </div>
+
+        <div class="full">
+          <p class="memberText">
+            Zajišťuje technické řešení, weby, systémy a měření. Dohlíží na to, aby technická část fungovala rychle, správně a bez zbytečných chyb.
+          </p>
+        </div>
+
+        <button class="text-toggle" type="button">Zjistit více</button>
       </div>
 
-      <div class="card reveal delay2">
+      <div class="card reveal delay2 expandable" data-expandable>
         <div class="roleTag">CMO</div>
         <h3 class="memberName">Petr</h3>
-        <p class="memberText">
-          Řídí marketingové kampaně a strategii. Zaměřuje se na výkon, testování a škálování toho, co funguje pro klienty nejlépe.
-        </p>
+
+        <div class="preview">
+          <p class="memberText">Marketingové kampaně, strategie, škálování.</p>
+        </div>
+
+        <div class="full">
+          <p class="memberText">
+            Řídí marketingové kampaně a strategii. Zaměřuje se na výkon, testování a škálování toho, co funguje pro klienty nejlépe.
+          </p>
+        </div>
+
+        <button class="text-toggle" type="button">Zjistit více</button>
       </div>
 
-      <div class="card reveal delay3">
+      <div class="card reveal delay3 expandable" data-expandable>
         <div class="roleTag">CSO</div>
         <h3 class="memberName">Anna</h3>
-        <p class="memberText">
-          Řídí obchodní komunikaci a podporuje růst klientských příležitostí. Pomáhá rozvíjet vztahy, koordinovat komunikaci a posouvat obchodní část Marvonixu dopředu.
-        </p>
+
+        <div class="preview">
+          <p class="memberText">Obchodní komunikace, vztahy, příležitosti.</p>
+        </div>
+
+        <div class="full">
+          <p class="memberText">
+            Řídí obchodní komunikaci a podporuje růst klientských příležitostí. Pomáhá rozvíjet vztahy, koordinovat komunikaci a posouvat obchodní část Marvonixu dopředu.
+          </p>
+        </div>
+
+        <button class="text-toggle" type="button">Zjistit více</button>
       </div>
 
-      <div class="card reveal delay1">
+      <div class="card reveal delay1 expandable" data-expandable>
         <div class="roleTag">CIO</div>
         <h3 class="memberName">Nicolas</h3>
-        <p class="memberText">
-          Přináší nové technologické a inovační přístupy do interních procesů i klientských řešení. Jeho role je hledat chytřejší cesty, jak zvyšovat efektivitu a výkon.
-        </p>
+
+        <div class="preview">
+          <p class="memberText">Inovace, efektivita, nové přístupy.</p>
+        </div>
+
+        <div class="full">
+          <p class="memberText">
+            Přináší nové technologické a inovační přístupy do interních procesů i klientských řešení. Jeho role je hledat chytřejší cesty, jak zvyšovat efektivitu a výkon.
+          </p>
+        </div>
+
+        <button class="text-toggle" type="button">Zjistit více</button>
       </div>
 
-      <div class="card reveal delay2">
+      <div class="card reveal delay2 expandable" data-expandable>
+        <div class="roleTag">COO</div>
+        <h3 class="memberName">Dominik</h3>
+
+        <div class="preview">
+          <p class="memberText">Operace, workflow, pořádek v procesech.</p>
+        </div>
+
+        <div class="full">
+          <p class="memberText">
+            Řídí operace a hlídá workflow celé agentury. Dohlíží na to, aby procesy navazovaly, práce měla řád a každý úkol prošel systémem správně a včas.
+          </p>
+        </div>
+
+        <button class="text-toggle" type="button">Zjistit více</button>
+      </div>
+
+      <div class="card reveal delay3 expandable" data-expandable>
         <div class="roleTag">Jak fungujeme</div>
         <h3 class="memberName">Výkon před egem</h3>
-        <p class="memberText">
-          Nejsme velká agentura s vrstvami managementu. Jsme tým, který se rozhoduje rychle, pracuje systematicky a soustředí se na výsledky.
-        </p>
+
+        <div class="preview">
+          <p class="memberText">Malý tým. Rychlé rozhodování. Jasný směr.</p>
+        </div>
+
+        <div class="full">
+          <p class="memberText">
+            Nejsme velká agentura s vrstvami managementu. Jsme tým, který se rozhoduje rychle, pracuje systematicky a soustředí se na výsledky.
+          </p>
+        </div>
+
+        <button class="text-toggle" type="button">Zjistit více</button>
       </div>
     </div>
   </section>
 
   <section>
-    <div class="wrap" style="margin-bottom:16px">
+    <div class="wrap sectionHead">
       <h2 class="reveal">Na čem stavíme</h2>
       <p class="reveal delay1">To, jak pracujeme uvnitř, se přímo promítá do kvality spolupráce s klienty.</p>
     </div>
 
     <div class="wrap grid3">
-      <div class="card reveal">
+      <div class="card reveal expandable" data-expandable>
         <h3>Jasné role</h3>
-        <p>Každý v týmu ví, za co odpovídá. Díky tomu je komunikace rychlá a práce efektivní.</p>
+
+        <div class="preview">
+          <p>Každý ví, za co odpovídá.</p>
+        </div>
+
+        <div class="full">
+          <p>Každý v týmu ví, za co odpovídá. Díky tomu je komunikace rychlá a práce efektivní.</p>
+        </div>
+
+        <button class="text-toggle" type="button">Zjistit více</button>
       </div>
 
-      <div class="card reveal delay1">
+      <div class="card reveal delay1 expandable" data-expandable>
         <h3>Vlastní systém</h3>
-        <p>Pracujeme ve vlastním interním OS, kde máme přehled o úkolech, klientech, procesech i výsledcích.</p>
+
+        <div class="preview">
+          <p>Úkoly, klienti, procesy, výsledky.</p>
+        </div>
+
+        <div class="full">
+          <p>Pracujeme ve vlastním interním OS, kde máme přehled o úkolech, klientech, procesech i výsledcích.</p>
+        </div>
+
+        <button class="text-toggle" type="button">Zjistit více</button>
       </div>
 
-      <div class="card reveal delay2">
+      <div class="card reveal delay2 expandable" data-expandable>
         <h3>Dlouhodobý růst</h3>
-        <p>Neřešíme jednorázový hype. Stavíme procesy a marketing tak, aby klientům fungovaly i dlouhodobě.</p>
+
+        <div class="preview">
+          <p>Ne hype. Funkční systém.</p>
+        </div>
+
+        <div class="full">
+          <p>Neřešíme jednorázový hype. Stavíme procesy a marketing tak, aby klientům fungovaly i dlouhodobě.</p>
+        </div>
+
+        <button class="text-toggle" type="button">Zjistit více</button>
       </div>
     </div>
   </section>
@@ -487,12 +789,22 @@
     <div class="wrap">
       <div class="ctaBox reveal delay1">
         <div style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:center">
-          <div>
+          <div class="expandable" data-expandable style="margin-top:0">
             <div style="font-weight:900;font-size:16px;margin-bottom:4px">Chcete s námi probrat váš autoservis?</div>
-            <div style="color:var(--muted);font-size:13px;line-height:1.5">
-              Napište nám základní informace o vaší kapacitě, typu zakázek a cíli. Navrhneme další krok.
+
+            <div class="preview">
+              <p class="compact">Kapacita, typ zakázek, cíl růstu.</p>
             </div>
+
+            <div class="full">
+              <div style="color:var(--muted);font-size:13px;line-height:1.6">
+                Napište nám základní informace o vaší kapacitě, typu zakázek a cíli. Navrhneme další krok.
+              </div>
+            </div>
+
+            <button class="text-toggle" type="button">Zjistit více</button>
           </div>
+
           <div style="display:flex;gap:10px;flex-wrap:wrap">
             <a class="btn" href="kontakt.html">Objednat konzultaci</a>
             <a class="btn secondary" href="o-nas.html">Jak přemýšlíme</a>
@@ -508,7 +820,8 @@
         <b style="letter-spacing:.14em;text-transform:uppercase;">Marvonix</b>
         <div style="opacity:.75;font-size:12px">Marketing pro autoservisy</div>
       </div>
-    <div class="footNav">
+
+      <div class="footNav">
         <a href="index.html">Domů</a> ·
         <a href="sluzby.html">Služby</a> ·
         <a href="o-nas.html">O nás</a> ·
@@ -516,9 +829,11 @@
         <a href="audity.html">Audity</a> ·
         <a href="kontakt.html">Kontakt</a>
       </div>
+
       <div>
         Kontakt: <a href="mailto:info@marvonix.cz">info@marvonix.cz</a>
       </div>
+
       <div>
         © <span id="y"></span> Marvonix
       </div>
@@ -533,16 +848,22 @@
 
     function closeMenu(){
       navLinks.classList.remove('open');
+      burger.classList.remove('active');
       burger.setAttribute('aria-expanded','false');
     }
 
     burger.addEventListener('click', () => {
       const open = navLinks.classList.toggle('open');
+      burger.classList.toggle('active', open);
       burger.setAttribute('aria-expanded', open ? 'true' : 'false');
     });
 
     document.addEventListener('click', (e) => {
       if (!navLinks.contains(e.target) && !burger.contains(e.target)) closeMenu();
+    });
+
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 940) closeMenu();
     });
 
     const io = new IntersectionObserver((entries)=>{
@@ -555,6 +876,16 @@
     }, {threshold:0.12});
 
     document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+    document.querySelectorAll('[data-expandable]').forEach((box) => {
+      const btn = box.querySelector('.text-toggle');
+      if(!btn) return;
+
+      btn.addEventListener('click', () => {
+        const isOpen = box.classList.toggle('open');
+        btn.textContent = isOpen ? 'Skrýt' : 'Zjistit více';
+      });
+    });
   </script>
 </body>
 </html>
