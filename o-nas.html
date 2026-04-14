@@ -9,38 +9,81 @@
 
   <style>
     :root{
-      --bg:#050714;
-      --bg2:#0c1026;
-      --purple:#7c3aed;
-      --purple2:#a855f7;
-      --text:#fff;
-      --muted:rgba(255,255,255,.75);
-      --muted2:rgba(255,255,255,.58);
+      --bg:#060818;
+      --bg2:#0d1230;
+      --bg3:#18214a;
+
+      --purple:#a855f7;
+      --purple2:#c084fc;
+
+      --text:#ffffff;
+      --muted:rgba(255,255,255,.78);
+      --muted2:rgba(255,255,255,.60);
+
       --line:rgba(255,255,255,.10);
-      --line2:rgba(168,85,247,.26);
-      --shadow:0 18px 60px rgba(0,0,0,.45);
-      --shadow-soft:0 12px 30px rgba(124,58,237,.16);
-      --r:18px;
+      --line2:rgba(192,132,252,.30);
+
+      --shadow:0 18px 60px rgba(0,0,0,.42);
+      --cta-glow:0 18px 50px rgba(168,85,247,.22);
+      --cta-glow-strong:0 25px 70px rgba(168,85,247,.40);
+      --bubble-glow:
+        0 18px 50px rgba(168,85,247,.16),
+        0 0 0 1px rgba(192,132,252,.07);
+
+      --r:20px;
       --max:1120px;
       --pad:20px;
-      --navH:86px;
+      --navH:82px;
     }
 
     *{box-sizing:border-box}
 
-    html,body{
+    html{
       margin:0;
-      background:
-        radial-gradient(900px 600px at 15% 10%, rgba(124,58,237,.25), transparent 60%),
-        radial-gradient(800px 600px at 90% 20%, rgba(168,85,247,.18), transparent 60%),
-        linear-gradient(160deg,var(--bg),var(--bg2));
+      padding:0;
+      min-height:100%;
+      background:#060818;
+      overflow-x:hidden;
+      scroll-behavior:smooth;
+    }
+
+    body{
+      margin:0;
+      padding:0;
+      min-height:100vh;
       color:var(--text);
       font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Arial;
       overflow-x:hidden;
+      background:
+        radial-gradient(900px 620px at 12% 8%, rgba(168,85,247,.18), transparent 58%),
+        radial-gradient(820px 560px at 88% 18%, rgba(24,33,74,.70), transparent 56%),
+        radial-gradient(760px 520px at 78% 12%, rgba(192,132,252,.10), transparent 50%),
+        linear-gradient(180deg,var(--bg),var(--bg2) 52%, var(--bg3));
+      -webkit-overflow-scrolling:touch;
+      position:relative;
+    }
+
+    body::before{
+      content:"";
+      position:fixed;
+      inset:0;
+      z-index:-1;
+      pointer-events:none;
+      background:
+        radial-gradient(900px 620px at 12% 8%, rgba(168,85,247,.18), transparent 58%),
+        radial-gradient(820px 560px at 88% 18%, rgba(24,33,74,.70), transparent 56%),
+        radial-gradient(760px 520px at 78% 12%, rgba(192,132,252,.10), transparent 50%),
+        linear-gradient(180deg,var(--bg),var(--bg2) 52%, var(--bg3));
     }
 
     a{color:inherit;text-decoration:none}
     .wrap{max-width:var(--max);margin:0 auto;padding:0 var(--pad)}
+
+    .hl{
+      color:#fff;
+      font-weight:900;
+      text-shadow:0 0 16px rgba(192,132,252,.12);
+    }
 
     .btn{
       display:inline-flex;
@@ -52,7 +95,7 @@
       background:linear-gradient(135deg,var(--purple),var(--purple2));
       color:#fff;
       font-weight:900;
-      box-shadow:0 18px 50px rgba(124,58,237,.22);
+      box-shadow:var(--cta-glow);
       transition:.25s;
       white-space:nowrap;
       border:0;
@@ -61,28 +104,39 @@
 
     .btn:hover{
       transform:translateY(-2px);
-      box-shadow:0 25px 70px rgba(124,58,237,.40);
+      box-shadow:var(--cta-glow-strong);
     }
 
     .btn.secondary{
       background:rgba(255,255,255,.08);
-      box-shadow:none;
-      border:1px solid rgba(255,255,255,.12);
+      border:1px solid rgba(255,255,255,.14);
+      color:#fff;
       font-weight:800;
+      box-shadow:0 0 0 1px rgba(255,255,255,.03);
     }
 
     .btn.secondary:hover{
-      transform:translateY(-2px);
-      box-shadow:0 14px 40px rgba(0,0,0,.35);
+      background:rgba(255,255,255,.11);
     }
 
     .nav{
       position:sticky;
       top:0;
-      z-index:50;
-      backdrop-filter: blur(12px);
-      background:rgba(5,7,20,.75);
-      border-bottom:1px solid var(--line);
+      z-index:200;
+      background:rgba(5,7,20,.26);
+      backdrop-filter:blur(16px);
+      -webkit-backdrop-filter:blur(16px);
+      border-bottom:1px solid rgba(255,255,255,.06);
+    }
+
+    .nav::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      pointer-events:none;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,0)),
+        radial-gradient(520px 140px at 14% 0%, rgba(168,85,247,.08), transparent 72%);
     }
 
     .navin{
@@ -91,16 +145,32 @@
       align-items:center;
       justify-content:space-between;
       gap:14px;
-      padding:14px 0;
       min-height:var(--navH);
+      padding:12px 0;
     }
 
-    .brand{display:flex;align-items:center;gap:14px}
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:14px;
+      position:relative;
+      z-index:2;
+    }
+
     .brand img{
-      height:72px;
+      height:68px;
       width:auto;
       display:block;
-      filter:drop-shadow(0 18px 40px rgba(124,58,237,.35));
+      filter:
+        drop-shadow(0 0 6px rgba(168,85,247,.14))
+        drop-shadow(0 0 18px rgba(192,132,252,.10));
+      transition:.25s ease;
+    }
+
+    .brand:hover img{
+      filter:
+        drop-shadow(0 0 8px rgba(168,85,247,.18))
+        drop-shadow(0 0 20px rgba(192,132,252,.12));
     }
 
     .links{
@@ -109,42 +179,54 @@
       align-items:center;
       color:var(--muted);
       font-size:14px;
+      position:relative;
+      z-index:2;
     }
 
     .links a{
-      padding:10px 8px;
-      border-radius:10px;
+      padding:10px 10px;
+      border-radius:12px;
       transition:.2s;
     }
 
     .links a:hover{
       color:#fff;
-      background:rgba(255,255,255,.06);
+      background:rgba(255,255,255,.05);
+      box-shadow:0 0 0 1px rgba(192,132,252,.08), 0 0 14px rgba(192,132,252,.06);
     }
 
     .links a.active{
       color:#fff;
-      background:rgba(124,58,237,.18);
-      border:1px solid rgba(124,58,237,.35);
+      background:rgba(168,85,247,.14);
+      border:1px solid rgba(192,132,252,.24);
+      box-shadow:0 0 14px rgba(192,132,252,.08);
     }
 
     .navcta-mobile{display:none;}
-    .navcta-desktop{display:inline-flex;}
+    .navcta-desktop{display:inline-flex;position:relative;z-index:2;}
 
     .burger{
       display:none;
       width:44px;
       height:44px;
       border-radius:12px;
-      border:1px solid rgba(255,255,255,.12);
-      background:rgba(255,255,255,.06);
+      border:1px solid rgba(255,255,255,.14);
+      background:rgba(255,255,255,.08);
       align-items:center;
       justify-content:center;
       cursor:pointer;
-      transition:.2s;
+      transition:transform .2s ease, background .2s ease, border-color .2s ease;
+      flex-shrink:0;
+      appearance:none;
+      -webkit-appearance:none;
+      position:relative;
+      z-index:2;
     }
 
-    .burger:hover{transform:translateY(-1px)}
+    .burger:hover{
+      transform:translateY(-1px);
+      background:rgba(255,255,255,.11);
+    }
 
     .burger span{
       width:20px;
@@ -152,7 +234,8 @@
       background:#fff;
       display:block;
       position:relative;
-      border-radius:2px;
+      border-radius:999px;
+      transition:background .22s ease, transform .22s ease;
     }
 
     .burger span:before,
@@ -163,11 +246,21 @@
       width:20px;
       height:2px;
       background:#fff;
-      border-radius:2px;
+      border-radius:999px;
+      transition:transform .28s ease, top .28s ease, opacity .18s ease;
     }
 
     .burger span:before{top:-6px}
     .burger span:after{top:6px}
+
+    .burger.active{
+      background:rgba(168,85,247,.16);
+      border-color:rgba(192,132,252,.34);
+    }
+
+    .burger.active span{background:transparent}
+    .burger.active span:before{top:0;transform:rotate(45deg)}
+    .burger.active span:after{top:0;transform:rotate(-45deg)}
 
     @media (max-width: 940px){
       .burger{display:flex}
@@ -178,66 +271,67 @@
         left:0;
         right:0;
         top:100%;
-        margin-top:12px;
-        display:flex;
+        margin-top:10px;
         flex-direction:column;
-        gap:10px;
+        align-items:stretch;
+        gap:8px;
         padding:14px;
-        border:1px solid var(--line);
+        border:1px solid rgba(255,255,255,.10);
         border-radius:18px;
-        background:rgba(5,7,20,.92);
+        background:rgba(8,11,26,.90);
+        backdrop-filter:blur(14px);
+        -webkit-backdrop-filter:blur(14px);
         box-shadow:var(--shadow);
         opacity:0;
-        transform:translateY(-10px);
+        transform:translateY(-10px) scale(.985);
+        transform-origin:top center;
         pointer-events:none;
-        transition:.22s ease;
+        transition:opacity .22s ease, transform .22s ease;
       }
 
       .links.open{
         opacity:1;
-        transform:translateY(0);
+        transform:translateY(0) scale(1);
         pointer-events:auto;
       }
 
       .links a{padding:12px 12px}
-      .navcta-mobile{display:inline-flex;width:100%;margin-top:6px}
+      .navcta-mobile{
+        display:inline-flex;
+        width:100%;
+        margin-top:6px;
+      }
     }
 
-    header{padding:34px 0 10px}
+    header{
+      padding:18px 0 6px;
+    }
 
     .hero{
-      margin-top:22px;
+      margin-top:10px;
       border-radius:24px;
       border:1px solid rgba(255,255,255,.10);
       background:
-        radial-gradient(700px 500px at 20% 20%, rgba(124,58,237,.30), transparent 60%),
-        radial-gradient(700px 500px at 85% 35%, rgba(168,85,247,.22), transparent 55%),
-        rgba(255,255,255,.03);
-      box-shadow:var(--shadow);
-      padding:28px;
+        radial-gradient(720px 500px at 16% 16%, rgba(168,85,247,.18), transparent 58%),
+        radial-gradient(680px 460px at 86% 28%, rgba(192,132,252,.11), transparent 56%),
+        linear-gradient(180deg, rgba(255,255,255,.055), rgba(255,255,255,.03));
+      box-shadow:var(--shadow), var(--bubble-glow);
+      padding:22px 24px;
       overflow:hidden;
       position:relative;
     }
 
-    .hero::after{
-      content:"";
-      position:absolute;
-      inset:auto -120px -140px auto;
-      width:280px;
-      height:280px;
-      background:radial-gradient(circle, rgba(168,85,247,.16), transparent 70%);
-      pointer-events:none;
-    }
-
     h1{
       margin:0 0 12px;
-      font-size:clamp(34px, 7.2vw, 54px);
-      line-height:1.06;
-      letter-spacing:-.02em;
+      font-size:clamp(30px, 6vw, 50px);
+      line-height:1.05;
+      letter-spacing:-.025em;
+      overflow-wrap:anywhere;
+      max-width:14ch;
     }
 
     h2{
-      margin:0 0 10px;
+      margin:0 0 8px;
       font-size:32px;
       letter-spacing:-.02em;
     }
@@ -248,8 +342,42 @@
       margin:0;
     }
 
-    .sub{
-      max-width:68ch;
+    .sub{max-width:68ch}
+    .compact{
+      color:var(--muted);
+      line-height:1.7;
+      margin:0;
+      font-size:15px;
+    }
+
+    .expandable{
+      display:block;
+      margin-top:10px;
+    }
+
+    .expandable .full{display:none}
+    .expandable.open .full{display:block}
+    .expandable.open .preview{display:none}
+
+    .text-toggle{
+      margin-top:12px;
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      background:rgba(255,255,255,.08);
+      border:1px solid rgba(255,255,255,.14);
+      color:#fff;
+      border-radius:999px;
+      padding:8px 12px;
+      font-size:13px;
+      font-weight:800;
+      cursor:pointer;
+      transition:.2s;
+    }
+
+    .text-toggle:hover{
+      transform:translateY(-1px);
+      background:rgba(255,255,255,.11);
     }
 
     .badgeRow{
@@ -262,32 +390,51 @@
     .pill{
       padding:8px 12px;
       border-radius:999px;
-      border:1px solid rgba(168,85,247,.25);
-      background:rgba(124,58,237,.10);
-      color:rgba(255,255,255,.88);
+      border:1px solid rgba(192,132,252,.24);
+      background:rgba(168,85,247,.10);
+      color:rgba(255,255,255,.92);
       font-size:12px;
       font-weight:800;
       letter-spacing:.10em;
       text-transform:uppercase;
+      box-shadow:0 0 20px rgba(192,132,252,.06);
     }
 
     .ctaRow{
       display:flex;
       gap:12px;
       flex-wrap:wrap;
-      margin-top:20px;
+      margin-top:18px;
     }
 
     .miniTrust{
       margin-top:14px;
       display:flex;
-      gap:12px;
+      gap:10px;
       flex-wrap:wrap;
       color:var(--muted2);
       font-size:13px;
     }
 
+    .miniTrust span{
+      background:rgba(255,255,255,.04);
+      border:1px solid rgba(255,255,255,.08);
+      padding:8px 10px;
+      border-radius:999px;
+    }
+
     section{padding:26px 0}
+
+    .sectionHead{
+      margin-bottom:16px;
+    }
+
+    .sectionHead p{
+      color:var(--muted);
+      line-height:1.7;
+      margin:0;
+      max-width:72ch;
+    }
 
     .grid2{
       display:grid;
@@ -301,12 +448,17 @@
       gap:14px;
     }
 
+    .card,
+    .highlightBox,
+    .ctaBox{
+      box-shadow:var(--shadow), var(--bubble-glow);
+    }
+
     .card{
-      background:rgba(255,255,255,.04);
+      background:linear-gradient(180deg, rgba(255,255,255,.055), rgba(255,255,255,.035));
       border:1px solid rgba(255,255,255,.10);
       border-radius:var(--r);
       padding:18px;
-      box-shadow:var(--shadow);
       transition:.25s;
     }
 
@@ -315,46 +467,44 @@
     .card p{margin:0;color:var(--muted);line-height:1.65}
 
     .highlightBox{
-      margin-top:10px;
+      margin-top:12px;
       padding:16px 18px;
       border-radius:18px;
       border:1px solid var(--line2);
-      background:linear-gradient(180deg, rgba(124,58,237,.10), rgba(255,255,255,.03));
-      box-shadow:var(--shadow-soft);
+      background:linear-gradient(180deg, rgba(168,85,247,.08), rgba(255,255,255,.035));
       display:flex;
       gap:18px;
       flex-wrap:wrap;
-      align-items:center;
+      align-items:flex-start;
       justify-content:space-between;
+    }
+
+    .highlightBox > div{
+      min-width:260px;
+      flex:1 1 320px;
     }
 
     .highlightBox strong{
       display:block;
       font-size:15px;
-      margin-bottom:4px;
-    }
-
-    .highlightBox span{
-      color:var(--muted);
-      font-size:13px;
-      line-height:1.55;
+      margin-bottom:6px;
     }
 
     .ctaBox{
       margin-top:14px;
       border-radius:24px;
       border:1px solid rgba(255,255,255,.10);
-      background:rgba(255,255,255,.03);
-      box-shadow:var(--shadow);
+      background:linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.03));
       padding:18px;
     }
 
     footer{
-      padding:26px 0 40px;
-      border-top:1px solid var(--line);
+      padding:28px 0 76px;
+      border-top:1px solid rgba(255,255,255,.10);
       color:var(--muted);
       font-size:13px;
       margin-top:8px;
+      background:linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.03));
     }
 
     .foot{
@@ -394,7 +544,7 @@
     .reveal.delay2{transition-delay:.12s}
     .reveal.delay3{transition-delay:.18s}
 
-    @media (max-width: 900px){
+    @media (max-width: 980px){
       .grid2,
       .grid3{
         grid-template-columns:1fr;
@@ -402,20 +552,10 @@
 
       h1{font-size:38px}
       h2{font-size:28px}
-      .brand img{height:64px}
+    }
 
-      .ctaBox div{
-        width:100%;
-      }
-
-      .ctaBox .btn{
-        width:100%;
-      }
-
-      .highlightBox{
-        flex-direction:column;
-        align-items:flex-start;
-      }
+    @media (max-width: 720px){
+      .brand img{height:60px}
     }
   </style>
 </head>
@@ -439,7 +579,7 @@
 
       <a class="btn navcta-desktop" href="kontakt.html">Objednat konzultaci</a>
 
-      <button class="burger" id="burger" aria-label="Otevřít menu" aria-expanded="false">
+      <button class="burger" id="burger" aria-label="Otevřít menu" aria-expanded="false" aria-controls="navLinks">
         <span></span>
       </button>
     </div>
@@ -448,10 +588,27 @@
   <header>
     <div class="wrap">
       <div class="hero reveal">
-        <h1>Stavíme marketing pro autoservisy, který dává smysl</h1>
-        <p class="sub">
-          Marvonix je agentura zaměřená na výkon, měření a stabilní růst autoservisů. Nehoníme vanity metrics ani „hezké prezentace“. Zajímá nás, kolik relevantních poptávek dokážeme přivést a jaký mají reálný přínos pro váš servis.
-        </p>
+        <h1>
+          Stavíme marketing pro autoservisy,
+          který dává
+          <span class="hl">smysl</span>
+        </h1>
+
+        <div class="expandable" data-expandable>
+          <div class="preview">
+            <p class="compact">
+              Výkon, měření, relevantní poptávky, reálný přínos pro servis.
+            </p>
+          </div>
+
+          <div class="full">
+            <p class="sub">
+              Marvonix je agentura zaměřená na výkon, měření a stabilní růst autoservisů. Nehoníme vanity metrics ani „hezké prezentace“. Zajímá nás, kolik <span class="hl">relevantních poptávek</span> dokážeme přivést a jaký mají reálný přínos pro váš servis.
+            </p>
+          </div>
+
+          <button class="text-toggle" type="button">Zjistit více</button>
+        </div>
 
         <div class="ctaRow">
           <a class="btn" href="kontakt.html">Objednat konzultaci</a>
@@ -472,96 +629,214 @@
       </div>
 
       <div class="highlightBox reveal delay1">
-        <div>
+        <div class="expandable" data-expandable>
           <strong>Proč nám to dává smysl</strong>
-          <span>Autoservisy fungují lokálně, mají jasné služby a jejich růst se dá velmi dobře řídit přes výkon, kapacitu a sezónnost.</span>
+
+          <div class="preview">
+            <p class="compact">Lokální trh, jasné služby, výkon, sezónnost.</p>
+          </div>
+
+          <div class="full">
+            <p>Autoservisy fungují lokálně, mají jasné služby a jejich růst se dá velmi dobře řídit přes výkon, kapacitu a sezónnost.</p>
+          </div>
+
+          <button class="text-toggle" type="button">Zjistit více</button>
         </div>
-        <div>
+
+        <div class="expandable" data-expandable>
           <strong>Co tím získává klient</strong>
-          <span>Větší kontrolu nad poptávkami, lepší přehled o výkonu a marketing, který je postavený na číslech.</span>
+
+          <div class="preview">
+            <p class="compact">Kontrola nad poptávkami, výkonem a dalšími kroky.</p>
+          </div>
+
+          <div class="full">
+            <p>Větší kontrolu nad poptávkami, lepší přehled o výkonu a marketing, který je postavený na číslech.</p>
+          </div>
+
+          <button class="text-toggle" type="button">Zjistit více</button>
         </div>
       </div>
     </div>
   </header>
 
   <section>
-    <div class="wrap" style="margin-bottom:16px">
+    <div class="wrap sectionHead">
       <h2 class="reveal">Na čem si zakládáme</h2>
       <p class="reveal delay1">Spolupráci stavíme na tom, aby klient přesně věděl, co děláme, proč to děláme a co od toho čekáme.</p>
     </div>
 
     <div class="wrap grid2">
-      <div class="card reveal">
+      <div class="card reveal expandable" data-expandable>
         <h3>Výsledky před dojmem</h3>
-        <p>Neřešíme jen to, jak reklama vypadá, ale hlavně to, jestli přivádí zakázky za rozumnou cenu a ve správný čas.</p>
+
+        <div class="preview">
+          <p>Ne vzhled. Výsledek.</p>
+        </div>
+
+        <div class="full">
+          <p>Neřešíme jen to, jak reklama vypadá, ale hlavně to, jestli přivádí zakázky za rozumnou cenu a ve správný čas.</p>
+        </div>
+
+        <button class="text-toggle" type="button">Zjistit více</button>
       </div>
 
-      <div class="card reveal delay1">
+      <div class="card reveal delay1 expandable" data-expandable>
         <h3>Transparentní komunikace</h3>
-        <p>Říkáme věci narovinu. Pokud něco nefunguje, upravíme to. Pokud něco dává smysl škálovat, řekneme to taky.</p>
+
+        <div class="preview">
+          <p>Věci říkáme narovinu.</p>
+        </div>
+
+        <div class="full">
+          <p>Říkáme věci narovinu. Pokud něco nefunguje, upravíme to. Pokud něco dává smysl škálovat, řekneme to taky.</p>
+        </div>
+
+        <button class="text-toggle" type="button">Zjistit více</button>
       </div>
 
-      <div class="card reveal delay2">
+      <div class="card reveal delay2 expandable" data-expandable>
         <h3>Rozhodování podle dat</h3>
-        <p>Bez měření je marketing jen odhad. Stavíme na číslech, konverzích, kapacitě servisu a kvalitě poptávek.</p>
+
+        <div class="preview">
+          <p>Čísla, konverze, kapacita, kvalita leadů.</p>
+        </div>
+
+        <div class="full">
+          <p>Bez měření je marketing jen odhad. Stavíme na číslech, konverzích, kapacitě servisu a kvalitě poptávek.</p>
+        </div>
+
+        <button class="text-toggle" type="button">Zjistit více</button>
       </div>
 
-      <div class="card reveal delay3">
+      <div class="card reveal delay3 expandable" data-expandable>
         <h3>Dlouhodobý pohled</h3>
-        <p>Nechceme jednorázový hype. Chceme systém, který autoservisu pomůže růst dlouhodobě a bez chaosu.</p>
+
+        <div class="preview">
+          <p>Systém místo jednorázového hype.</p>
+        </div>
+
+        <div class="full">
+          <p>Nechceme jednorázový hype. Chceme systém, který autoservisu pomůže růst dlouhodobě a bez chaosu.</p>
+        </div>
+
+        <button class="text-toggle" type="button">Zjistit více</button>
       </div>
     </div>
   </section>
 
   <section>
-    <div class="wrap" style="margin-bottom:16px">
+    <div class="wrap sectionHead">
       <h2 class="reveal">Proč právě autoservisy</h2>
       <p class="reveal delay1">Specializace nám umožňuje jít víc do hloubky, chápat sezónnost a stavět marketing podle reálného fungování servisu.</p>
     </div>
 
     <div class="wrap grid3">
-      <div class="card reveal">
+      <div class="card reveal expandable" data-expandable>
         <h3>Lokální trh</h3>
-        <p>Autoservisy fungují lokálně. To znamená přesnější cílení, jasnější strategii a rychlejší vyhodnocení výsledků.</p>
+
+        <div class="preview">
+          <p>Přesnější cílení, jasnější strategie.</p>
+        </div>
+
+        <div class="full">
+          <p>Autoservisy fungují lokálně. To znamená přesnější cílení, jasnější strategii a rychlejší vyhodnocení výsledků.</p>
+        </div>
+
+        <button class="text-toggle" type="button">Zjistit více</button>
       </div>
 
-      <div class="card reveal delay1">
+      <div class="card reveal delay1 expandable" data-expandable>
         <h3>Silný intent</h3>
-        <p>Když někdo hledá servis, pneuservis nebo opravu, často už má konkrétní potřebu. To je silný základ pro výkon.</p>
+
+        <div class="preview">
+          <p>Konkrétní potřeba = silný základ výkonu.</p>
+        </div>
+
+        <div class="full">
+          <p>Když někdo hledá servis, pneuservis nebo opravu, často už má konkrétní potřebu. To je silný základ pro výkon.</p>
+        </div>
+
+        <button class="text-toggle" type="button">Zjistit více</button>
       </div>
 
-      <div class="card reveal delay2">
+      <div class="card reveal delay2 expandable" data-expandable>
         <h3>Sezónnost a kapacita</h3>
-        <p>Pneu, klima, STK, servisní špičky. Marketing musí odpovídat tomu, co servis zvládne a kdy to dává největší smysl.</p>
+
+        <div class="preview">
+          <p>Pneu, klima, STK, servisní špičky.</p>
+        </div>
+
+        <div class="full">
+          <p>Pneu, klima, STK, servisní špičky. Marketing musí odpovídat tomu, co servis zvládne a kdy to dává největší smysl.</p>
+        </div>
+
+        <button class="text-toggle" type="button">Zjistit více</button>
       </div>
     </div>
   </section>
 
   <section>
-    <div class="wrap" style="margin-bottom:16px">
+    <div class="wrap sectionHead">
       <h2 class="reveal">Jak pracujeme</h2>
       <p class="reveal delay1">Nejdřív potřebujeme pochopit realitu servisu. Teprve potom dává smysl řešit kanály, kampaně a rozpočet.</p>
     </div>
 
     <div class="wrap grid2">
-      <div class="card reveal">
+      <div class="card reveal expandable" data-expandable>
         <h3>1. Zjistíme čísla a kapacitu</h3>
-        <p>Kolik aut za měsíc zvládnete, jaká je průměrná hodnota zakázky a kde jsou vaše nejsilnější služby.</p>
+
+        <div class="preview">
+          <p>Kolik aut, jaká hodnota zakázky, nejsilnější služby.</p>
+        </div>
+
+        <div class="full">
+          <p>Kolik aut za měsíc zvládnete, jaká je průměrná hodnota zakázky a kde jsou vaše nejsilnější služby.</p>
+        </div>
+
+        <button class="text-toggle" type="button">Zjistit více</button>
       </div>
 
-      <div class="card reveal delay1">
+      <div class="card reveal delay1 expandable" data-expandable>
         <h3>2. Navrhneme směr</h3>
-        <p>Vybereme vhodný balíček, kanály a první kroky, které dávají smysl pro váš konkrétní servis a lokalitu.</p>
+
+        <div class="preview">
+          <p>Balíček, kanály, první kroky.</p>
+        </div>
+
+        <div class="full">
+          <p>Vybereme vhodný balíček, kanály a první kroky, které dávají smysl pro váš konkrétní servis a lokalitu.</p>
+        </div>
+
+        <button class="text-toggle" type="button">Zjistit více</button>
       </div>
 
-      <div class="card reveal delay2">
+      <div class="card reveal delay2 expandable" data-expandable>
         <h3>3. Spustíme a měříme</h3>
-        <p>Kampaně nespouštíme naslepo. Měříme, vyhodnocujeme a podle dat upravujeme další postup.</p>
+
+        <div class="preview">
+          <p>Ne naslepo. Podle dat.</p>
+        </div>
+
+        <div class="full">
+          <p>Kampaně nespouštíme naslepo. Měříme, vyhodnocujeme a podle dat upravujeme další postup.</p>
+        </div>
+
+        <button class="text-toggle" type="button">Zjistit více</button>
       </div>
 
-      <div class="card reveal delay3">
+      <div class="card reveal delay3 expandable" data-expandable>
         <h3>4. Zlepšujeme výkon</h3>
-        <p>Průběžně hledáme, co zlepšit. Nejen v reklamě, ale i v tom, jak servis pracuje s poptávkou a kapacitou.</p>
+
+        <div class="preview">
+          <p>Reklama, lead flow, kapacita servisu.</p>
+        </div>
+
+        <div class="full">
+          <p>Průběžně hledáme, co zlepšit. Nejen v reklamě, ale i v tom, jak servis pracuje s poptávkou a kapacitou.</p>
+        </div>
+
+        <button class="text-toggle" type="button">Zjistit více</button>
       </div>
     </div>
   </section>
@@ -570,12 +845,22 @@
     <div class="wrap">
       <div class="ctaBox reveal delay1">
         <div style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:center">
-          <div>
+          <div class="expandable" data-expandable style="margin-top:0">
             <div style="font-weight:900;font-size:16px;margin-bottom:4px">Chcete zjistit, jestli to dává smysl i pro vás?</div>
-            <div style="color:var(--muted);font-size:13px;line-height:1.5">
-              Napište nám kapacitu aut za měsíc, průměrnou hodnotu zakázky a město, kde působíte. Podle toho navrhneme další krok.
+
+            <div class="preview">
+              <p class="compact">Kapacita aut, hodnota zakázky, město.</p>
             </div>
+
+            <div class="full">
+              <div style="color:var(--muted);font-size:13px;line-height:1.6">
+                Napište nám kapacitu aut za měsíc, průměrnou hodnotu zakázky a město, kde působíte. Podle toho navrhneme další krok.
+              </div>
+            </div>
+
+            <button class="text-toggle" type="button">Zjistit více</button>
           </div>
+
           <div style="display:flex;gap:10px;flex-wrap:wrap">
             <a class="btn" href="kontakt.html">Objednat konzultaci</a>
             <a class="btn secondary" href="tym.html">Poznat tým</a>
@@ -619,16 +904,22 @@
 
     function closeMenu(){
       navLinks.classList.remove('open');
+      burger.classList.remove('active');
       burger.setAttribute('aria-expanded','false');
     }
 
     burger.addEventListener('click', () => {
       const open = navLinks.classList.toggle('open');
+      burger.classList.toggle('active', open);
       burger.setAttribute('aria-expanded', open ? 'true' : 'false');
     });
 
     document.addEventListener('click', (e) => {
       if (!navLinks.contains(e.target) && !burger.contains(e.target)) closeMenu();
+    });
+
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 940) closeMenu();
     });
 
     const io = new IntersectionObserver((entries)=>{
@@ -641,6 +932,16 @@
     }, {threshold:0.12});
 
     document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+    document.querySelectorAll('[data-expandable]').forEach((box) => {
+      const btn = box.querySelector('.text-toggle');
+      if(!btn) return;
+
+      btn.addEventListener('click', () => {
+        const isOpen = box.classList.toggle('open');
+        btn.textContent = isOpen ? 'Skrýt' : 'Zjistit více';
+      });
+    });
   </script>
 </body>
 </html>
