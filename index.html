@@ -9,18 +9,24 @@
 
   <style>
     :root{
-      --bg:#050714;
-      --bg2:#0c1026;
-      --purple:#7c3aed;
-      --purple2:#a855f7;
+      --bg:#0b1124;
+      --bg2:#141c39;
+      --bg3:#1c2550;
+      --purple:#ad7cff;
+      --purple2:#d3a6ff;
+      --purple3:#c392ff;
       --text:#ffffff;
-      --muted:rgba(255,255,255,.75);
-      --muted2:rgba(255,255,255,.58);
-      --line:rgba(255,255,255,.10);
-      --line2:rgba(168,85,247,.28);
-      --shadow:0 18px 60px rgba(0,0,0,.45);
-      --shadow-soft:0 12px 30px rgba(124,58,237,.16);
-      --r:18px;
+      --muted:rgba(255,255,255,.82);
+      --muted2:rgba(255,255,255,.66);
+      --line:rgba(255,255,255,.14);
+      --line2:rgba(211,166,255,.34);
+      --panel:rgba(255,255,255,.07);
+      --panel2:rgba(255,255,255,.10);
+      --shadow:0 18px 60px rgba(0,0,0,.30);
+      --shadow-soft:0 12px 34px rgba(173,124,255,.16);
+      --glow-soft:0 0 0 1px rgba(211,166,255,.14), 0 0 24px rgba(211,166,255,.10);
+      --glow-card:0 0 0 1px rgba(211,166,255,.10), 0 10px 35px rgba(173,124,255,.10);
+      --r:20px;
       --max:1120px;
       --pad:20px;
       --navH:86px;
@@ -28,22 +34,29 @@
 
     *{box-sizing:border-box}
 
-    html,body{
+    html{
       margin:0;
       padding:0;
       min-height:100%;
-      background:
-        radial-gradient(900px 600px at 15% 10%, rgba(124,58,237,.25), transparent 60%),
-        radial-gradient(800px 600px at 90% 20%, rgba(168,85,247,.18), transparent 60%),
-        linear-gradient(160deg,var(--bg),var(--bg2));
-      color:var(--text);
-      font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Arial;
+      background:#0b1124;
       overflow-x:hidden;
-      overscroll-behavior:none;
-      -webkit-overflow-scrolling:touch;
+      scroll-behavior:smooth;
     }
 
     body{
+      margin:0;
+      padding:0;
+      min-height:100vh;
+      background:
+        radial-gradient(1000px 680px at 10% 8%, rgba(173,124,255,.22), transparent 58%),
+        radial-gradient(900px 700px at 88% 14%, rgba(211,166,255,.16), transparent 56%),
+        radial-gradient(850px 520px at 50% 58%, rgba(110,134,255,.09), transparent 60%),
+        linear-gradient(180deg,var(--bg),var(--bg2) 50%, var(--bg3));
+      color:var(--text);
+      font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Arial;
+      overflow-x:hidden;
+      overflow-y:auto;
+      -webkit-overflow-scrolling:touch;
       position:relative;
     }
 
@@ -53,13 +66,27 @@
       inset:0;
       z-index:-1;
       background:
-        radial-gradient(900px 600px at 15% 10%, rgba(124,58,237,.25), transparent 60%),
-        radial-gradient(800px 600px at 90% 20%, rgba(168,85,247,.18), transparent 60%),
-        linear-gradient(160deg,var(--bg),var(--bg2));
+        radial-gradient(1000px 680px at 10% 8%, rgba(173,124,255,.18), transparent 58%),
+        radial-gradient(900px 700px at 88% 14%, rgba(211,166,255,.12), transparent 56%),
+        radial-gradient(850px 520px at 50% 58%, rgba(110,134,255,.07), transparent 60%),
+        linear-gradient(180deg,var(--bg),var(--bg2) 50%, var(--bg3));
       pointer-events:none;
     }
 
+    body::after{
+      content:"";
+      display:block;
+      height:48px;
+    }
+
     a{color:inherit;text-decoration:none}
+    strong.hl,
+    .hl{
+      color:#fff;
+      font-weight:900;
+      text-shadow:0 0 18px rgba(211,166,255,.18);
+    }
+
     .wrap{max-width:var(--max);margin:0 auto;padding:0 var(--pad)}
 
     .btn{
@@ -72,7 +99,7 @@
       background:linear-gradient(135deg,var(--purple),var(--purple2));
       color:#fff;
       font-weight:900;
-      box-shadow:0 18px 50px rgba(124,58,237,.22);
+      box-shadow:0 16px 40px rgba(173,124,255,.22);
       transition:.25s;
       white-space:nowrap;
       border:0;
@@ -81,29 +108,30 @@
 
     .btn:hover{
       transform:translateY(-2px);
-      box-shadow:0 25px 70px rgba(124,58,237,.40);
+      box-shadow:0 22px 56px rgba(173,124,255,.28);
     }
 
     .btn.secondary{
       background:rgba(255,255,255,.08);
-      box-shadow:none;
-      border:1px solid rgba(255,255,255,.12);
+      border:1px solid rgba(255,255,255,.14);
+      box-shadow:var(--glow-soft);
       color:#fff;
       font-weight:800;
     }
 
     .btn.secondary:hover{
       transform:translateY(-2px);
-      box-shadow:0 14px 40px rgba(0,0,0,.35);
+      background:rgba(255,255,255,.11);
     }
 
     .nav{
-      position:sticky;
-      top:0;
+      position:relative;
+      top:auto;
       z-index:50;
       backdrop-filter: blur(12px);
-      background:rgba(5,7,20,.75);
-      border-bottom:1px solid var(--line);
+      -webkit-backdrop-filter: blur(12px);
+      background:rgba(11,17,36,.34);
+      border-bottom:1px solid rgba(255,255,255,.10);
     }
 
     .navin{
@@ -116,12 +144,26 @@
       min-height:var(--navH);
     }
 
-    .brand{display:flex;align-items:center;gap:14px}
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:14px;
+    }
+
     .brand img{
       height:72px;
       width:auto;
       display:block;
-      filter:drop-shadow(0 18px 40px rgba(124,58,237,.35));
+      filter:
+        drop-shadow(0 0 10px rgba(173,124,255,.18))
+        drop-shadow(0 0 22px rgba(173,124,255,.12));
+      transition:.25s ease;
+    }
+
+    .brand:hover img{
+      filter:
+        drop-shadow(0 0 12px rgba(173,124,255,.22))
+        drop-shadow(0 0 26px rgba(173,124,255,.15));
     }
 
     .links{
@@ -133,20 +175,23 @@
     }
 
     .links a{
-      padding:10px 8px;
-      border-radius:10px;
+      padding:10px 10px;
+      border-radius:12px;
       transition:.2s;
+      position:relative;
     }
 
     .links a:hover{
       color:#fff;
-      background:rgba(255,255,255,.06);
+      background:rgba(255,255,255,.07);
+      box-shadow:0 0 0 1px rgba(211,166,255,.10), 0 0 18px rgba(211,166,255,.08);
     }
 
     .links a.active{
       color:#fff;
-      background:rgba(124,58,237,.18);
-      border:1px solid rgba(124,58,237,.35);
+      background:rgba(173,124,255,.15);
+      border:1px solid rgba(211,166,255,.28);
+      box-shadow:0 0 18px rgba(211,166,255,.10);
     }
 
     .navcta-mobile{display:none;}
@@ -157,18 +202,21 @@
       width:44px;
       height:44px;
       border-radius:12px;
-      border:1px solid rgba(255,255,255,.12);
-      background:rgba(255,255,255,.06);
+      border:1px solid rgba(255,255,255,.14);
+      background:rgba(255,255,255,.08);
       align-items:center;
       justify-content:center;
       cursor:pointer;
       transition:transform .2s ease, background .2s ease, border-color .2s ease;
       flex-shrink:0;
+      appearance:none;
+      -webkit-appearance:none;
+      box-shadow:var(--glow-soft);
     }
 
     .burger:hover{
       transform:translateY(-1px);
-      background:rgba(255,255,255,.09);
+      background:rgba(255,255,255,.11);
     }
 
     .burger span{
@@ -197,8 +245,8 @@
     .burger span:after{top:6px}
 
     .burger.active{
-      background:rgba(124,58,237,.14);
-      border-color:rgba(168,85,247,.34);
+      background:rgba(173,124,255,.16);
+      border-color:rgba(211,166,255,.34);
     }
 
     .burger.active span{
@@ -218,6 +266,7 @@
     @media (max-width: 940px){
       .burger{display:flex}
       .navcta-desktop{display:none;}
+
       .links{
         position:absolute;
         left:0;
@@ -230,35 +279,39 @@
         padding:14px;
         border:1px solid var(--line);
         border-radius:18px;
-        background:rgba(5,7,20,.92);
-        box-shadow:var(--shadow);
+        background:rgba(17,24,52,.88);
+        box-shadow:var(--shadow), var(--glow-soft);
         opacity:0;
         transform:translateY(-10px) scale(.98);
         transform-origin:top center;
         pointer-events:none;
         transition:opacity .22s ease, transform .22s ease;
       }
+
       .links.open{
         opacity:1;
         transform:translateY(0) scale(1);
         pointer-events:auto;
       }
+
       .links a{padding:12px 12px}
       .navcta-mobile{display:inline-flex;width:100%;margin-top:6px;}
     }
 
-    header{padding:34px 0 10px}
+    header{
+      padding:30px 0 10px;
+    }
 
     .hero{
-      margin-top:22px;
-      border-radius:24px;
-      border:1px solid rgba(255,255,255,.10);
+      margin-top:12px;
+      border-radius:26px;
+      border:1px solid rgba(255,255,255,.12);
       background:
-        radial-gradient(700px 500px at 20% 20%, rgba(124,58,237,.30), transparent 60%),
-        radial-gradient(700px 500px at 85% 35%, rgba(168,85,247,.22), transparent 55%),
-        rgba(255,255,255,.03);
-      box-shadow:var(--shadow);
-      padding:28px;
+        radial-gradient(760px 540px at 18% 18%, rgba(173,124,255,.26), transparent 58%),
+        radial-gradient(720px 500px at 86% 30%, rgba(211,166,255,.18), transparent 56%),
+        linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.05));
+      box-shadow:var(--shadow), var(--glow-card);
+      padding:30px;
       overflow:hidden;
       position:relative;
     }
@@ -267,9 +320,9 @@
       content:"";
       position:absolute;
       inset:auto -120px -140px auto;
-      width:300px;
-      height:300px;
-      background:radial-gradient(circle, rgba(168,85,247,.18), transparent 70%);
+      width:320px;
+      height:320px;
+      background:radial-gradient(circle, rgba(211,166,255,.18), transparent 70%);
       pointer-events:none;
     }
 
@@ -281,14 +334,14 @@
     }
 
     .heroGrid > *{min-width:0}
-    .sideCard{min-width:0}
 
     h1{
-      margin:0 0 12px;
-      font-size:clamp(34px, 7.6vw, 56px);
-      line-height:1.05;
-      letter-spacing:-.02em;
+      margin:0 0 14px;
+      font-size:clamp(34px, 7vw, 58px);
+      line-height:1.04;
+      letter-spacing:-.025em;
       overflow-wrap:anywhere;
+      max-width:12ch;
     }
 
     h2{
@@ -299,47 +352,101 @@
 
     .sub{
       color:var(--muted);
-      line-height:1.7;
+      line-height:1.8;
       margin:0;
-      max-width:60ch;
+      max-width:64ch;
+      font-size:16px;
+    }
+
+    .expandable{
+      display:block;
+      margin-top:10px;
+    }
+
+    .expandable .more{
+      display:none;
+    }
+
+    .expandable.open .more{
+      display:inline;
+    }
+
+    .expandable .fade{
+      display:inline;
+    }
+
+    .expandable.open .fade{
+      display:none;
+    }
+
+    .text-toggle{
+      margin-top:10px;
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      background:rgba(255,255,255,.08);
+      border:1px solid rgba(255,255,255,.14);
+      color:#fff;
+      border-radius:999px;
+      padding:8px 12px;
+      font-size:13px;
+      font-weight:800;
+      cursor:pointer;
+      box-shadow:var(--glow-soft);
+      transition:.2s;
+    }
+
+    .text-toggle:hover{
+      transform:translateY(-1px);
+      background:rgba(255,255,255,.11);
     }
 
     .badgeRow{
       display:flex;
       gap:10px;
       flex-wrap:wrap;
-      margin-top:14px;
+      margin-top:16px;
     }
 
     .pill{
       padding:8px 12px;
       border-radius:999px;
-      border:1px solid rgba(168,85,247,.25);
-      background:rgba(124,58,237,.10);
-      color:rgba(255,255,255,.88);
+      border:1px solid rgba(211,166,255,.26);
+      background:rgba(173,124,255,.10);
+      color:rgba(255,255,255,.92);
       font-size:12px;
       font-weight:800;
       letter-spacing:.10em;
       text-transform:uppercase;
+      box-shadow:0 0 20px rgba(211,166,255,.06);
     }
 
     .ctaRow{
       display:flex;
       gap:12px;
       flex-wrap:wrap;
-      margin-top:18px;
+      margin-top:20px;
     }
 
     .sideCard{
-      border-radius:18px;
-      border:1px solid rgba(255,255,255,.10);
-      background:rgba(0,0,0,.20);
-      box-shadow:0 18px 60px rgba(0,0,0,.35);
+      min-width:0;
+      border-radius:20px;
+      border:1px solid rgba(255,255,255,.12);
+      background:linear-gradient(180deg, rgba(255,255,255,.09), rgba(255,255,255,.06));
+      box-shadow:var(--shadow), var(--glow-card);
       padding:18px;
       display:flex;
       flex-direction:column;
       justify-content:space-between;
       gap:14px;
+    }
+
+    .sideDot{
+      width:10px;
+      height:10px;
+      border-radius:999px;
+      background:linear-gradient(135deg,var(--purple),var(--purple2));
+      box-shadow:0 0 0 6px rgba(173,124,255,.12), 0 0 18px rgba(211,166,255,.18);
     }
 
     .kv{
@@ -353,24 +460,21 @@
       display:flex;
       justify-content:space-between;
       gap:12px;
-      padding:10px 12px;
-      border-radius:14px;
-      background:rgba(255,255,255,.04);
-      border:1px solid rgba(255,255,255,.08);
-      color:rgba(255,255,255,.90);
+      padding:12px 13px;
+      border-radius:15px;
+      background:rgba(255,255,255,.06);
+      border:1px solid rgba(255,255,255,.10);
+      color:rgba(255,255,255,.94);
       min-width:0;
       flex-wrap:wrap;
       align-items:flex-start;
-    }
-
-    .kv .row b,
-    .kv .row span{
-      min-width:0;
+      box-shadow:0 0 18px rgba(211,166,255,.05);
     }
 
     .kv .row span{
       overflow-wrap:anywhere;
       word-break:break-word;
+      color:var(--muted);
     }
 
     @media (max-width: 520px){
@@ -385,7 +489,7 @@
     }
 
     .miniTrust{
-      margin-top:14px;
+      margin-top:16px;
       display:flex;
       gap:12px;
       flex-wrap:wrap;
@@ -393,64 +497,148 @@
       font-size:13px;
     }
 
-    section{padding:26px 0}
+    .miniTrust span{
+      background:rgba(255,255,255,.04);
+      border:1px solid rgba(255,255,255,.08);
+      padding:8px 10px;
+      border-radius:999px;
+    }
+
+    .scrollMouseWrap{
+      margin-top:20px;
+      display:flex;
+      align-items:center;
+      gap:12px;
+      flex-wrap:wrap;
+    }
+
+    .scrollMouseBtn{
+      display:inline-flex;
+      align-items:center;
+      gap:12px;
+      padding:0;
+      background:none;
+      border:0;
+      color:rgba(255,255,255,.90);
+      cursor:pointer;
+      font-weight:800;
+    }
+
+    .mouse{
+      width:28px;
+      height:44px;
+      border-radius:18px;
+      border:2px solid rgba(255,255,255,.42);
+      position:relative;
+      display:inline-block;
+      background:rgba(255,255,255,.03);
+      box-shadow:var(--glow-soft);
+    }
+
+    .mouse::before{
+      content:"";
+      position:absolute;
+      left:50%;
+      top:8px;
+      width:4px;
+      height:8px;
+      margin-left:-2px;
+      border-radius:999px;
+      background:linear-gradient(180deg,var(--purple2),#fff);
+      animation:wheel 1.4s ease-in-out infinite;
+      box-shadow:0 0 12px rgba(211,166,255,.26);
+    }
+
+    @keyframes wheel{
+      0%{opacity:0; transform:translateY(0)}
+      30%{opacity:1}
+      100%{opacity:0; transform:translateY(12px)}
+    }
+
+    section{
+      padding:28px 0;
+    }
+
+    .sectionHead{
+      margin-bottom:16px;
+    }
+
+    .sectionHead p{
+      color:var(--muted);
+      line-height:1.7;
+      margin:0;
+      max-width:72ch;
+    }
 
     .grid3{
       display:grid;
       grid-template-columns:repeat(3,1fr);
-      gap:14px;
+      gap:16px;
     }
 
     .card{
-      background:rgba(255,255,255,.04);
-      border:1px solid rgba(255,255,255,.10);
+      background:linear-gradient(180deg, rgba(255,255,255,.085), rgba(255,255,255,.055));
+      border:1px solid rgba(255,255,255,.12);
       border-radius:var(--r);
       padding:18px;
-      box-shadow:var(--shadow);
+      box-shadow:var(--shadow), var(--glow-card);
       transition:.25s;
       transform:translateY(0);
     }
 
-    .card:hover{transform:translateY(-4px)}
-    .card h3{margin:0 0 8px}
-    .card p{margin:0;color:var(--muted);line-height:1.6}
+    .card:hover{
+      transform:translateY(-4px);
+    }
+
+    .card h3{
+      margin:0 0 8px;
+      font-size:20px;
+    }
+
+    .card p{
+      margin:0;
+      color:var(--muted);
+      line-height:1.7;
+    }
 
     .split{
       display:grid;
       grid-template-columns:1fr 1fr;
-      gap:14px;
+      gap:16px;
       align-items:start;
     }
 
     .pricingTeaser{
       display:grid;
       grid-template-columns:repeat(3,1fr);
-      gap:14px;
+      gap:16px;
       margin-top:8px;
     }
 
     .priceCard{
-      background:rgba(255,255,255,.04);
-      border:1px solid rgba(255,255,255,.10);
+      background:linear-gradient(180deg, rgba(255,255,255,.085), rgba(255,255,255,.055));
+      border:1px solid rgba(255,255,255,.12);
       border-radius:var(--r);
       padding:20px;
-      box-shadow:var(--shadow);
+      box-shadow:var(--shadow), var(--glow-card);
       transition:.25s;
     }
 
-    .priceCard:hover{transform:translateY(-4px)}
+    .priceCard:hover{
+      transform:translateY(-4px);
+    }
 
     .priceCard.featured{
-      border:1px solid rgba(168,85,247,.35);
-      background:linear-gradient(180deg, rgba(124,58,237,.14), rgba(255,255,255,.04));
-      box-shadow:0 20px 60px rgba(124,58,237,.12);
+      border:1px solid rgba(211,166,255,.36);
+      background:linear-gradient(180deg, rgba(173,124,255,.14), rgba(255,255,255,.06));
+      box-shadow:0 18px 50px rgba(173,124,255,.12), 0 0 0 1px rgba(211,166,255,.08);
     }
 
     .mini{
       font-size:12px;
       letter-spacing:.12em;
       text-transform:uppercase;
-      color:rgba(255,255,255,.72);
+      color:rgba(255,255,255,.78);
       font-weight:900;
       margin-bottom:8px;
     }
@@ -466,26 +654,26 @@
     .priceSub{
       color:var(--muted);
       font-size:14px;
-      line-height:1.6;
+      line-height:1.7;
       margin-bottom:14px;
     }
 
     .priceList{
       margin:0;
       padding-left:18px;
-      color:rgba(255,255,255,.86);
-      line-height:1.7;
+      color:rgba(255,255,255,.90);
+      line-height:1.8;
     }
 
     .steps{
       display:grid;
       grid-template-columns:repeat(3,1fr);
-      gap:14px;
+      gap:16px;
     }
 
     .stepNum{
-      width:34px;
-      height:34px;
+      width:36px;
+      height:36px;
       border-radius:999px;
       display:inline-flex;
       align-items:center;
@@ -493,21 +681,26 @@
       background:linear-gradient(135deg,var(--purple),var(--purple2));
       font-weight:900;
       margin-bottom:12px;
-      box-shadow:0 12px 28px rgba(124,58,237,.25);
+      box-shadow:0 12px 28px rgba(173,124,255,.22);
     }
 
     .proofBar{
-      margin-top:10px;
+      margin-top:14px;
       padding:16px 18px;
       border-radius:18px;
       border:1px solid var(--line2);
-      background:linear-gradient(180deg, rgba(124,58,237,.10), rgba(255,255,255,.03));
-      box-shadow:var(--shadow-soft);
+      background:linear-gradient(180deg, rgba(173,124,255,.10), rgba(255,255,255,.05));
+      box-shadow:var(--shadow-soft), var(--glow-soft);
       display:flex;
       gap:18px;
       flex-wrap:wrap;
       align-items:center;
       justify-content:space-between;
+    }
+
+    .proofBar > div{
+      min-width:260px;
+      flex:1 1 320px;
     }
 
     .proofBar strong{
@@ -519,26 +712,27 @@
     .proofBar span{
       color:var(--muted);
       font-size:13px;
-      line-height:1.55;
+      line-height:1.65;
     }
 
     .logoStrip{
       display:grid;
       grid-template-columns:repeat(4,1fr);
       gap:12px;
-      margin-top:14px;
+      margin-top:16px;
     }
 
     .logoItem{
       border-radius:14px;
-      border:1px solid rgba(255,255,255,.08);
-      background:rgba(255,255,255,.03);
+      border:1px solid rgba(255,255,255,.10);
+      background:rgba(255,255,255,.055);
       padding:14px;
       text-align:center;
-      color:rgba(255,255,255,.82);
+      color:rgba(255,255,255,.90);
       font-size:13px;
       font-weight:800;
       letter-spacing:.03em;
+      box-shadow:var(--glow-soft);
     }
 
     .faq{
@@ -551,11 +745,12 @@
     }
 
     footer{
-      padding:26px 0 40px;
-      border-top:1px solid var(--line);
+      padding:28px 0 76px;
+      border-top:1px solid rgba(255,255,255,.10);
       color:var(--muted);
       font-size:13px;
       margin-top:8px;
+      background:linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.03));
     }
 
     .foot{
@@ -598,8 +793,9 @@
     .mx-popup-backdrop{
       position:fixed;
       inset:0;
-      background:rgba(0,0,0,.62);
+      background:rgba(0,0,0,.56);
       backdrop-filter:blur(6px);
+      -webkit-backdrop-filter:blur(6px);
       display:flex;
       align-items:center;
       justify-content:center;
@@ -620,11 +816,11 @@
       border-radius:24px;
       border:1px solid rgba(255,255,255,.12);
       background:
-        radial-gradient(700px 500px at 20% 20%, rgba(124,58,237,.24), transparent 60%),
-        radial-gradient(700px 500px at 85% 35%, rgba(168,85,247,.18), transparent 55%),
-        linear-gradient(160deg, rgba(5,7,20,.96), rgba(12,16,38,.96));
+        radial-gradient(700px 500px at 20% 20%, rgba(173,124,255,.20), transparent 60%),
+        radial-gradient(700px 500px at 85% 35%, rgba(211,166,255,.16), transparent 55%),
+        linear-gradient(160deg, rgba(11,17,36,.96), rgba(20,28,57,.96));
       color:#fff;
-      box-shadow:0 30px 90px rgba(0,0,0,.55);
+      box-shadow:0 30px 90px rgba(0,0,0,.45), var(--glow-soft);
       padding:28px;
       position:relative;
       transform:translateY(14px) scale(.98);
@@ -663,14 +859,15 @@
       display:inline-flex;
       padding:8px 12px;
       border-radius:999px;
-      border:1px solid rgba(168,85,247,.25);
-      background:rgba(124,58,237,.10);
+      border:1px solid rgba(211,166,255,.25);
+      background:rgba(173,124,255,.10);
       color:rgba(255,255,255,.9);
       font-size:12px;
       font-weight:800;
       letter-spacing:.10em;
       text-transform:uppercase;
       margin-bottom:14px;
+      box-shadow:var(--glow-soft);
     }
 
     .mx-popup h3{
@@ -689,7 +886,7 @@
 
     .mx-popup-note{
       margin-top:14px;
-      color:rgba(255,255,255,.82);
+      color:rgba(255,255,255,.86);
       font-size:14px;
       line-height:1.7;
       padding:14px 16px;
@@ -726,16 +923,10 @@
       }
       .brand img{height:64px}
       .proofBar{flex-direction:column;align-items:flex-start}
-      .mx-popup{
-        padding:22px;
-      }
-      .mx-popup-actions{
-        flex-direction:column;
-      }
-      .mx-popup-actions .btn{
-        width:100%;
-        min-width:0;
-      }
+      .mx-popup{padding:22px}
+      .mx-popup-actions{flex-direction:column}
+      .mx-popup-actions .btn{width:100%;min-width:0}
+      .scrollMouseWrap{margin-top:18px}
     }
   </style>
 </head>
@@ -770,15 +961,27 @@
       <div class="hero reveal">
         <div class="heroGrid">
           <div>
-            <div style="letter-spacing:.22em;text-transform:uppercase;font-weight:900;font-size:12px;color:rgba(255,255,255,.75)">
+            <div style="letter-spacing:.22em;text-transform:uppercase;font-weight:900;font-size:12px;color:rgba(255,255,255,.78)">
               Google Ads • Meta Ads • Marketing pro autoservisy
             </div>
 
-            <h1>Přivádíme autoservisům více zakázek pomocí výkonnostního marketingu</h1>
+            <h1>
+              Přivádíme autoservisům
+              <span class="hl">více zakázek</span>
+              pomocí
+              <span class="hl">výkonnostního marketingu</span>
+            </h1>
 
-            <p class="sub">
-              Pomáháme autoservisům získávat relevantní poptávky, lépe využít kapacitu a růst bez chaosu. Nestavíme marketing na dojmech, ale na číslech, měření a reálných výsledcích.
-            </p>
+            <div class="expandable" data-expandable>
+              <p class="sub">
+                Pomáháme autoservisům získávat <span class="hl">relevantní poptávky</span>, lépe využít kapacitu a růst bez chaosu.
+                <span class="fade">…</span>
+                <span class="more">
+                  Nestavíme marketing na dojmech, ale na <span class="hl">číslech</span>, měření a reálných výsledcích. Každý krok navrhujeme tak, aby dával smysl pro typ servisu, lokalitu i skutečnou kapacitu týmu.
+                </span>
+              </p>
+              <button class="text-toggle" type="button">Zjistit více</button>
+            </div>
 
             <div class="ctaRow">
               <a class="btn" href="kontakt.html">Objednat konzultaci</a>
@@ -796,21 +999,41 @@
               <span>✓ Transparentní reporting</span>
               <span>✓ Rychlé rozhodování a malý tým</span>
             </div>
+
+            <div class="scrollMouseWrap">
+              <button class="scrollMouseBtn" id="scrollMouseBtn" type="button" aria-label="Posunout níže">
+                <span class="mouse" aria-hidden="true"></span>
+                <span>Sjet níže</span>
+              </button>
+            </div>
           </div>
 
           <aside class="sideCard reveal delay1">
             <div style="display:flex;justify-content:space-between;gap:10px;align-items:flex-start">
               <div>
                 <div style="font-weight:900;font-size:16px;margin-bottom:2px">Co získáte</div>
-                <div style="color:var(--muted);font-size:13px;line-height:1.5">jasná čísla, kontrolu a relevantní poptávky</div>
+                <div style="color:var(--muted);font-size:13px;line-height:1.6">
+                  jasná čísla, větší kontrolu a <span class="hl">relevantní poptávky</span>
+                </div>
               </div>
-              <div style="width:10px;height:10px;border-radius:999px;background:linear-gradient(135deg,var(--purple),var(--purple2));box-shadow:0 0 0 6px rgba(124,58,237,.12)"></div>
+              <div class="sideDot"></div>
             </div>
 
             <div class="kv">
-              <div class="row"><b>Co řešíme</b><span style="color:var(--muted)">zakázky, kapacita, marže</span></div>
-              <div class="row"><b>Kanály</b><span style="color:var(--muted)">Google + Meta</span></div>
-              <div class="row" style="grid-column:1/3"><b>Výsledek</b><span style="color:var(--muted)">poptávky, které dává smysl vzít</span></div>
+              <div class="row"><b>Co řešíme</b><span>zakázky, kapacita, marže</span></div>
+              <div class="row"><b>Kanály</b><span>Google + Meta</span></div>
+              <div class="row" style="grid-column:1/3"><b>Výsledek</b><span>poptávky, které dává smysl vzít</span></div>
+            </div>
+
+            <div class="expandable" data-expandable>
+              <p class="sub" style="font-size:14px;max-width:none">
+                Neprodáváme jen reklamu.
+                <span class="fade">…</span>
+                <span class="more">
+                  Pomáháme nastavit i to, aby se z poptávky stal <span class="hl">reálný termín</span>, z termínu zakázka a ze zakázky růst, který servis zvládne odbavit.
+                </span>
+              </p>
+              <button class="text-toggle" type="button">Zjistit více</button>
             </div>
 
             <a class="btn bigBtn" href="kontakt.html">Chci konzultaci</a>
@@ -820,36 +1043,84 @@
 
       <div class="proofBar reveal delay1">
         <div>
-          <strong>Specializace místo všeho pro všechny</strong>
-          <span>Zaměřujeme se na autoservisy, protože u nich dává lokální performance marketing největší smysl.</span>
+          <strong><span class="hl">Specializace</span> místo všeho pro všechny</strong>
+          <div class="expandable" data-expandable>
+            <span>
+              Zaměřujeme se na autoservisy, protože u nich dává lokální performance marketing největší smysl.
+              <span class="fade">…</span>
+              <span class="more">
+                Díky tomu víme, jak pracovat se sezónností, kapacitou servisu, typy zakázek i lokální konkurencí.
+              </span>
+            </span>
+            <button class="text-toggle" type="button">Zjistit více</button>
+          </div>
         </div>
+
         <div>
-          <strong>Výkon místo omáčky</strong>
-          <span>Neprodáváme “aktivitu”. Zajímá nás, kolik relevantních zakázek dokážeme přivést.</span>
+          <strong><span class="hl">Výkon</span> místo omáčky</strong>
+          <div class="expandable" data-expandable>
+            <span>
+              Neprodáváme “aktivitu”. Zajímá nás, kolik relevantních zakázek dokážeme přivést.
+              <span class="fade">…</span>
+              <span class="more">
+                Sledujeme, co opravdu funguje, co je potřeba omezit a kde se dá zlepšit návratnost i kvalita poptávek.
+              </span>
+            </span>
+            <button class="text-toggle" type="button">Zjistit více</button>
+          </div>
         </div>
       </div>
     </div>
   </header>
 
-  <section>
+  <section id="nextSection">
     <div class="wrap">
-      <div style="margin-bottom:16px">
-        <h2 class="reveal">Proč právě Marvonix</h2>
-        <p class="reveal delay1">Marketing stavíme tak, aby dával smysl z pohledu kapacity servisu, typu zakázek i sezónnosti.</p>
+      <div class="sectionHead">
+        <h2 class="reveal">Proč právě <span class="hl">Marvonix</span></h2>
+        <p class="reveal delay1">Marketing stavíme tak, aby dával smysl z pohledu kapacity servisu, typu zakázek i sezónnosti. Nechceme jen návštěvnost, ale výsledek, který se promítne do reality servisu.</p>
       </div>
 
       <div class="grid3">
         <div class="card reveal">
           <h3>Růst bez chaosu</h3>
-          <p>Čistá struktura kampaní, měření a kontrola nad tím, co opravdu funguje.</p>
+          <div class="expandable" data-expandable>
+            <p>
+              Čistá struktura kampaní, měření a kontrola nad tím, co opravdu funguje.
+              <span class="fade">…</span>
+              <span class="more">
+                Všechno nastavujeme tak, aby bylo jasné, odkud leady chodí, co stojí a jaký mají přínos.
+              </span>
+            </p>
+            <button class="text-toggle" type="button">Zjistit více</button>
+          </div>
         </div>
+
         <div class="card reveal delay1">
           <h3>Sezónnost pod kontrolou</h3>
-          <p>Pneu, klima, STK nebo servisní špičky — kampaně stavíme podle období a lokální poptávky.</p>
+          <div class="expandable" data-expandable>
+            <p>
+              Pneu, klima, STK nebo servisní špičky — kampaně stavíme podle období a lokální poptávky.
+              <span class="fade">…</span>
+              <span class="more">
+                Nejedeme stejné rozpočty a stejná sdělení pořád dokola, ale přizpůsobujeme výkon realitě trhu.
+              </span>
+            </p>
+            <button class="text-toggle" type="button">Zjistit více</button>
+          </div>
         </div>
+
         <div class="card reveal delay2">
           <h3>Transparentní spolupráce</h3>
-          <p>Bez mlžení a bez omáčky. Uvidíte čísla, výsledky i další krok dopředu.</p>
+          <div class="expandable" data-expandable>
+            <p>
+              Bez mlžení a bez omáčky. Uvidíte čísla, výsledky i další krok dopředu.
+              <span class="fade">…</span>
+              <span class="more">
+                Každý měsíc víte, co se udělalo, co to přineslo a co má největší prioritu dál.
+              </span>
+            </p>
+            <button class="text-toggle" type="button">Zjistit více</button>
+          </div>
         </div>
       </div>
     </div>
@@ -857,7 +1128,7 @@
 
   <section>
     <div class="wrap">
-      <div style="margin-bottom:16px">
+      <div class="sectionHead">
         <h2 class="reveal">Orientační balíčky</h2>
         <p class="reveal delay1">Každý servis má jinou kapacitu a jiný cíl. Tohle je orientační rozdělení našich nejčastějších spoluprací.</p>
       </div>
@@ -905,7 +1176,7 @@
 
   <section>
     <div class="wrap">
-      <div style="margin-bottom:16px">
+      <div class="sectionHead">
         <h2 class="reveal">Pro koho je to vhodné</h2>
         <p class="reveal delay1">Nejvíc smysl dává spolupráce tam, kde servis ví, co chce růstově zlepšit, a zvládne pracovat s novými poptávkami.</p>
       </div>
@@ -936,7 +1207,7 @@
 
   <section>
     <div class="wrap">
-      <div style="margin-bottom:16px">
+      <div class="sectionHead">
         <h2 class="reveal">Jak spolupráce probíhá</h2>
         <p class="reveal delay1">Jednoduše, rychle a bez zbytečného chaosu.</p>
       </div>
@@ -947,11 +1218,13 @@
           <h3>Konzultace</h3>
           <p>Zjistíme vaši kapacitu, průměrnou hodnotu zakázky a cíl spolupráce.</p>
         </div>
+
         <div class="card reveal delay1">
           <div class="stepNum">2</div>
           <h3>Návrh postupu</h3>
           <p>Navrhneme vhodný balíček, kanály a první kroky, které dávají smysl pro váš servis.</p>
         </div>
+
         <div class="card reveal delay2">
           <div class="stepNum">3</div>
           <h3>Spuštění a optimalizace</h3>
@@ -965,7 +1238,17 @@
     <div class="wrap split">
       <div class="card reveal">
         <h3>Jak začneme</h3>
-        <p>Pošlete kapacitu aut za měsíc, průměrnou hodnotu zakázky a město, kde působíte. Podle toho navrhneme další kroky.</p>
+        <div class="expandable" data-expandable>
+          <p>
+            Pošlete kapacitu aut za měsíc, průměrnou hodnotu zakázky a město, kde působíte.
+            <span class="fade">…</span>
+            <span class="more">
+              Podle toho navrhneme další kroky, vhodný typ kampaní a realistický plán růstu.
+            </span>
+          </p>
+          <button class="text-toggle" type="button">Zjistit více</button>
+        </div>
+
         <div style="margin-top:14px;display:flex;gap:10px;flex-wrap:wrap">
           <a class="btn" href="kontakt.html">Objednat konzultaci</a>
           <a class="btn secondary" href="o-nas.html">Kdo jsme</a>
@@ -974,8 +1257,18 @@
 
       <div class="card reveal delay1">
         <h3>Co od vás potřebujeme</h3>
-        <p>Rychlou reakci na poptávky a přehled o kapacitě. Marketing přivede zákazníky — servis je musí umět přijmout.</p>
-        <div style="margin-top:14px;color:rgba(255,255,255,.85);font-size:13px;line-height:1.6">
+        <div class="expandable" data-expandable>
+          <p>
+            Rychlou reakci na poptávky a přehled o kapacitě.
+            <span class="fade">…</span>
+            <span class="more">
+              Marketing přivede zákazníky, ale servis je musí umět přijmout, odbavit a proměnit v reálnou zakázku. Proto řešíme i to, co se děje po leadu.
+            </span>
+          </p>
+          <button class="text-toggle" type="button">Zjistit více</button>
+        </div>
+
+        <div style="margin-top:14px;color:rgba(255,255,255,.88);font-size:13px;line-height:1.7">
           Tip: pomůžeme vám nastavit jednoduchý proces „poptávka → telefon → termín“.
         </div>
       </div>
@@ -984,7 +1277,7 @@
 
   <section>
     <div class="wrap">
-      <div style="margin-bottom:16px">
+      <div class="sectionHead">
         <h2 class="reveal">Časté otázky</h2>
         <p class="reveal delay1">Krátce a bez omáčky.</p>
       </div>
@@ -1012,7 +1305,7 @@
     <div class="wrap foot">
       <div>
         <b style="letter-spacing:.14em;text-transform:uppercase;">Marvonix</b>
-        <div style="opacity:.75;font-size:12px">Marketing pro autoservisy</div>
+        <div style="opacity:.78;font-size:12px">Marketing pro autoservisy</div>
       </div>
 
       <div class="footNav">
@@ -1097,6 +1390,25 @@
     }, {threshold: 0.12});
 
     document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+    document.querySelectorAll('[data-expandable]').forEach((box) => {
+      const btn = box.querySelector('.text-toggle');
+      if(!btn) return;
+
+      btn.addEventListener('click', () => {
+        const isOpen = box.classList.toggle('open');
+        btn.textContent = isOpen ? 'Skrýt' : 'Zjistit více';
+      });
+    });
+
+    const scrollMouseBtn = document.getElementById('scrollMouseBtn');
+    const nextSection = document.getElementById('nextSection');
+
+    if (scrollMouseBtn && nextSection) {
+      scrollMouseBtn.addEventListener('click', () => {
+        nextSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    }
 
     const charityPopup = document.getElementById('charityPopup');
     const charityPopupClose = document.getElementById('charityPopupClose');
