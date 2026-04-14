@@ -11,23 +11,32 @@
     :root{
       --bg:#050714;
       --bg2:#0c1026;
-      --bg3:#131935;
+      --bg3:#141938;
+
       --purple:#a855f7;
       --purple2:#c084fc;
-      --purple3:#b46bff;
+
       --text:#ffffff;
       --muted:rgba(255,255,255,.78);
       --muted2:rgba(255,255,255,.60);
+
       --line:rgba(255,255,255,.10);
       --line2:rgba(192,132,252,.28);
-      --panel:rgba(255,255,255,.05);
-      --panel2:rgba(255,255,255,.07);
+
       --shadow:0 18px 60px rgba(0,0,0,.42);
       --shadow-soft:0 12px 34px rgba(168,85,247,.14);
-      --glow-soft:0 0 0 1px rgba(192,132,252,.12), 0 0 20px rgba(192,132,252,.08);
+
       --cta-glow:0 18px 50px rgba(168,85,247,.22);
       --cta-glow-strong:0 25px 70px rgba(168,85,247,.40);
-      --bubble-glow:0 18px 50px rgba(168,85,247,.16);
+
+      --bubble-glow:
+        0 18px 50px rgba(168,85,247,.14),
+        0 0 0 1px rgba(192,132,252,.06);
+
+      --logo-glow:
+        drop-shadow(0 0 6px rgba(168,85,247,.14))
+        drop-shadow(0 0 18px rgba(192,132,252,.10));
+
       --r:20px;
       --max:1120px;
       --pad:20px;
@@ -49,15 +58,14 @@
       margin:0;
       padding:0;
       min-height:100vh;
+      color:var(--text);
+      font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Arial;
+      overflow-x:hidden;
       background:
         radial-gradient(900px 620px at 12% 8%, rgba(168,85,247,.18), transparent 58%),
         radial-gradient(760px 560px at 88% 16%, rgba(192,132,252,.12), transparent 56%),
         radial-gradient(700px 420px at 50% 58%, rgba(98,118,255,.06), transparent 60%),
         linear-gradient(180deg,var(--bg),var(--bg2) 52%, var(--bg3));
-      color:var(--text);
-      font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Arial;
-      overflow-x:hidden;
-      overflow-y:auto;
       -webkit-overflow-scrolling:touch;
       position:relative;
     }
@@ -67,33 +75,21 @@
       position:fixed;
       inset:0;
       z-index:-1;
+      pointer-events:none;
       background:
         radial-gradient(900px 620px at 12% 8%, rgba(168,85,247,.18), transparent 58%),
         radial-gradient(760px 560px at 88% 16%, rgba(192,132,252,.12), transparent 56%),
         radial-gradient(700px 420px at 50% 58%, rgba(98,118,255,.06), transparent 60%),
         linear-gradient(180deg,var(--bg),var(--bg2) 52%, var(--bg3));
-      pointer-events:none;
-    }
-
-    body::after{
-      content:"";
-      display:block;
-      height:48px;
     }
 
     a{color:inherit;text-decoration:none}
+    .wrap{max-width:var(--max);margin:0 auto;padding:0 var(--pad)}
 
-    .hl,
-    strong.hl{
+    .hl{
       color:#fff;
       font-weight:900;
-      text-shadow:0 0 18px rgba(192,132,252,.14);
-    }
-
-    .wrap{
-      max-width:var(--max);
-      margin:0 auto;
-      padding:0 var(--pad);
+      text-shadow:0 0 16px rgba(192,132,252,.12);
     }
 
     .btn{
@@ -121,24 +117,33 @@
     .btn.secondary{
       background:rgba(255,255,255,.08);
       border:1px solid rgba(255,255,255,.14);
-      box-shadow:var(--glow-soft);
       color:#fff;
       font-weight:800;
+      box-shadow:0 0 0 1px rgba(255,255,255,.03);
     }
 
     .btn.secondary:hover{
-      transform:translateY(-2px);
       background:rgba(255,255,255,.11);
     }
 
     .nav{
       position:sticky;
       top:0;
-      z-index:50;
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      background:rgba(5,7,20,.58);
-      border-bottom:1px solid rgba(255,255,255,.08);
+      z-index:200;
+      background:rgba(5,7,20,.34);
+      backdrop-filter:blur(14px);
+      -webkit-backdrop-filter:blur(14px);
+      border-bottom:1px solid rgba(255,255,255,.06);
+    }
+
+    .nav::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      pointer-events:none;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,0)),
+        radial-gradient(500px 120px at 15% 0%, rgba(168,85,247,.10), transparent 70%);
     }
 
     .navin{
@@ -147,23 +152,23 @@
       align-items:center;
       justify-content:space-between;
       gap:14px;
-      padding:14px 0;
       min-height:var(--navH);
+      padding:14px 0;
     }
 
     .brand{
       display:flex;
       align-items:center;
       gap:14px;
+      position:relative;
+      z-index:2;
     }
 
     .brand img{
       height:72px;
       width:auto;
       display:block;
-      filter:
-        drop-shadow(0 0 6px rgba(168,85,247,.14))
-        drop-shadow(0 0 16px rgba(192,132,252,.10));
+      filter:var(--logo-glow);
       transition:.25s ease;
     }
 
@@ -179,13 +184,14 @@
       align-items:center;
       color:var(--muted);
       font-size:14px;
+      position:relative;
+      z-index:2;
     }
 
     .links a{
       padding:10px 10px;
       border-radius:12px;
       transition:.2s;
-      position:relative;
     }
 
     .links a:hover{
@@ -202,7 +208,7 @@
     }
 
     .navcta-mobile{display:none;}
-    .navcta-desktop{display:inline-flex;}
+    .navcta-desktop{display:inline-flex; position:relative; z-index:2;}
 
     .burger{
       display:none;
@@ -218,7 +224,8 @@
       flex-shrink:0;
       appearance:none;
       -webkit-appearance:none;
-      box-shadow:var(--glow-soft);
+      position:relative;
+      z-index:2;
     }
 
     .burger:hover{
@@ -256,19 +263,9 @@
       border-color:rgba(192,132,252,.34);
     }
 
-    .burger.active span{
-      background:transparent;
-    }
-
-    .burger.active span:before{
-      top:0;
-      transform:rotate(45deg);
-    }
-
-    .burger.active span:after{
-      top:0;
-      transform:rotate(-45deg);
-    }
+    .burger.active span{background:transparent}
+    .burger.active span:before{top:0;transform:rotate(45deg)}
+    .burger.active span:after{top:0;transform:rotate(-45deg)}
 
     @media (max-width: 940px){
       .burger{display:flex}
@@ -279,17 +276,19 @@
         left:0;
         right:0;
         top:100%;
-        margin-top:12px;
-        display:flex;
+        margin-top:10px;
         flex-direction:column;
-        gap:10px;
+        align-items:stretch;
+        gap:8px;
         padding:14px;
-        border:1px solid var(--line);
+        border:1px solid rgba(255,255,255,.10);
         border-radius:18px;
-        background:rgba(12,16,38,.92);
-        box-shadow:var(--shadow), var(--glow-soft);
+        background:rgba(8,11,26,.92);
+        backdrop-filter:blur(14px);
+        -webkit-backdrop-filter:blur(14px);
+        box-shadow:var(--shadow);
         opacity:0;
-        transform:translateY(-10px) scale(.98);
+        transform:translateY(-10px) scale(.985);
         transform-origin:top center;
         pointer-events:none;
         transition:opacity .22s ease, transform .22s ease;
@@ -301,8 +300,15 @@
         pointer-events:auto;
       }
 
-      .links a{padding:12px 12px}
-      .navcta-mobile{display:inline-flex;width:100%;margin-top:6px;}
+      .links a{
+        padding:12px 12px;
+      }
+
+      .navcta-mobile{
+        display:inline-flex;
+        width:100%;
+        margin-top:6px;
+      }
     }
 
     header{
@@ -370,21 +376,10 @@
       margin-top:10px;
     }
 
-    .expandable .more{
-      display:none;
-    }
-
-    .expandable.open .more{
-      display:inline;
-    }
-
-    .expandable .fade{
-      display:inline;
-    }
-
-    .expandable.open .fade{
-      display:none;
-    }
+    .expandable .more{display:none}
+    .expandable.open .more{display:inline}
+    .expandable .fade{display:inline}
+    .expandable.open .fade{display:none}
 
     .text-toggle{
       margin-top:10px;
@@ -399,7 +394,6 @@
       font-size:13px;
       font-weight:800;
       cursor:pointer;
-      box-shadow:var(--glow-soft);
       transition:.2s;
     }
 
@@ -435,12 +429,19 @@
       margin-top:20px;
     }
 
+    .sideCard,
+    .card,
+    .priceCard,
+    .proofBar,
+    .logoItem{
+      box-shadow:var(--shadow), var(--bubble-glow);
+    }
+
     .sideCard{
       min-width:0;
       border-radius:20px;
       border:1px solid rgba(255,255,255,.10);
       background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.04));
-      box-shadow:var(--shadow), var(--bubble-glow);
       padding:18px;
       display:flex;
       flex-direction:column;
@@ -539,7 +540,6 @@
       position:relative;
       display:inline-block;
       background:rgba(255,255,255,.03);
-      box-shadow:var(--glow-soft);
     }
 
     .mouse::before{
@@ -588,7 +588,6 @@
       border:1px solid rgba(255,255,255,.10);
       border-radius:var(--r);
       padding:18px;
-      box-shadow:var(--shadow), var(--bubble-glow);
       transition:.25s;
       transform:translateY(0);
     }
@@ -627,7 +626,6 @@
       border:1px solid rgba(255,255,255,.10);
       border-radius:var(--r);
       padding:20px;
-      box-shadow:var(--shadow), var(--bubble-glow);
       transition:.25s;
     }
 
@@ -697,11 +695,10 @@
       border-radius:18px;
       border:1px solid var(--line2);
       background:linear-gradient(180deg, rgba(168,85,247,.08), rgba(255,255,255,.035));
-      box-shadow:var(--shadow-soft), 0 14px 34px rgba(168,85,247,.14);
       display:flex;
       gap:18px;
       flex-wrap:wrap;
-      align-items:center;
+      align-items:flex-start;
       justify-content:space-between;
     }
 
@@ -717,6 +714,12 @@
     }
 
     .proofBar span{
+      color:var(--muted);
+      font-size:13px;
+      line-height:1.65;
+    }
+
+    .proofText{
       color:var(--muted);
       font-size:13px;
       line-height:1.65;
@@ -739,7 +742,6 @@
       font-size:13px;
       font-weight:800;
       letter-spacing:.03em;
-      box-shadow:var(--glow-soft);
     }
 
     .faq{
@@ -827,7 +829,7 @@
         radial-gradient(700px 500px at 85% 35%, rgba(192,132,252,.16), transparent 55%),
         linear-gradient(160deg, rgba(5,7,20,.96), rgba(12,16,38,.96));
       color:#fff;
-      box-shadow:0 30px 90px rgba(0,0,0,.45), var(--glow-soft);
+      box-shadow:0 30px 90px rgba(0,0,0,.45), 0 0 0 1px rgba(192,132,252,.06);
       padding:28px;
       position:relative;
       transform:translateY(14px) scale(.98);
@@ -874,7 +876,6 @@
       letter-spacing:.10em;
       text-transform:uppercase;
       margin-bottom:14px;
-      box-shadow:var(--glow-soft);
     }
 
     .mx-popup h3{
@@ -929,7 +930,7 @@
         grid-template-columns:1fr;
       }
       .brand img{height:64px}
-      .proofBar{flex-direction:column;align-items:flex-start}
+      .proofBar{flex-direction:column}
       .mx-popup{padding:22px}
       .mx-popup-actions{flex-direction:column}
       .mx-popup-actions .btn{width:100%;min-width:0}
@@ -1051,29 +1052,29 @@
       <div class="proofBar reveal delay1">
         <div>
           <strong><span class="hl">Specializace</span> místo všeho pro všechny</strong>
-          <div class="expandable" data-expandable>
-            <span>
-              Zaměřujeme se na autoservisy, protože u nich dává lokální performance marketing největší smysl.
-              <span class="fade">…</span>
-              <span class="more">
-                Díky tomu víme, jak pracovat se sezónností, kapacitou servisu, typy zakázek i lokální konkurencí.
-              </span>
+          <div class="proofText expandable" data-expandable>
+            Zaměřujeme se na autoservisy, protože u nich dává lokální performance marketing největší smysl.
+            <span class="fade">…</span>
+            <span class="more">
+              Díky tomu víme, jak pracovat se sezónností, kapacitou servisu, typy zakázek i lokální konkurencí.
             </span>
-            <button class="text-toggle" type="button">Zjistit více</button>
+            <div>
+              <button class="text-toggle" type="button">Zjistit více</button>
+            </div>
           </div>
         </div>
 
         <div>
           <strong><span class="hl">Výkon</span> místo omáčky</strong>
-          <div class="expandable" data-expandable>
-            <span>
-              Neprodáváme “aktivitu”. Zajímá nás, kolik relevantních zakázek dokážeme přivést.
-              <span class="fade">…</span>
-              <span class="more">
-                Sledujeme, co opravdu funguje, co je potřeba omezit a kde se dá zlepšit návratnost i kvalita poptávek.
-              </span>
+          <div class="proofText expandable" data-expandable>
+            Neprodáváme “aktivitu”. Zajímá nás, kolik relevantních zakázek dokážeme přivést.
+            <span class="fade">…</span>
+            <span class="more">
+              Sledujeme, co opravdu funguje, co je potřeba omezit a kde se dá zlepšit návratnost i kvalita poptávek.
             </span>
-            <button class="text-toggle" type="button">Zjistit více</button>
+            <div>
+              <button class="text-toggle" type="button">Zjistit více</button>
+            </div>
           </div>
         </div>
       </div>
@@ -1090,44 +1091,17 @@
       <div class="grid3">
         <div class="card reveal">
           <h3>Růst bez chaosu</h3>
-          <div class="expandable" data-expandable>
-            <p>
-              Čistá struktura kampaní, měření a kontrola nad tím, co opravdu funguje.
-              <span class="fade">…</span>
-              <span class="more">
-                Všechno nastavujeme tak, aby bylo jasné, odkud leady chodí, co stojí a jaký mají přínos.
-              </span>
-            </p>
-            <button class="text-toggle" type="button">Zjistit více</button>
-          </div>
+          <p>Čistá struktura kampaní, měření a kontrola nad tím, co opravdu funguje.</p>
         </div>
 
         <div class="card reveal delay1">
           <h3>Sezónnost pod kontrolou</h3>
-          <div class="expandable" data-expandable>
-            <p>
-              Pneu, klima, STK nebo servisní špičky — kampaně stavíme podle období a lokální poptávky.
-              <span class="fade">…</span>
-              <span class="more">
-                Nejedeme stejné rozpočty a stejná sdělení pořád dokola, ale přizpůsobujeme výkon realitě trhu.
-              </span>
-            </p>
-            <button class="text-toggle" type="button">Zjistit více</button>
-          </div>
+          <p>Pneu, klima, STK nebo servisní špičky — kampaně stavíme podle období a lokální poptávky.</p>
         </div>
 
         <div class="card reveal delay2">
           <h3>Transparentní spolupráce</h3>
-          <div class="expandable" data-expandable>
-            <p>
-              Bez mlžení a bez omáčky. Uvidíte čísla, výsledky i další krok dopředu.
-              <span class="fade">…</span>
-              <span class="more">
-                Každý měsíc víte, co se udělalo, co to přineslo a co má největší prioritu dál.
-              </span>
-            </p>
-            <button class="text-toggle" type="button">Zjistit více</button>
-          </div>
+          <p>Bez mlžení a bez omáčky. Uvidíte čísla, výsledky i další krok dopředu.</p>
         </div>
       </div>
     </div>
