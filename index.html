@@ -535,6 +535,120 @@
     .reveal.delay2{transition-delay:.12s}
     .reveal.delay3{transition-delay:.18s}
 
+    .mx-popup-backdrop{
+      position:fixed;
+      inset:0;
+      background:rgba(0,0,0,.62);
+      backdrop-filter:blur(6px);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:20px;
+      z-index:9999;
+      opacity:0;
+      visibility:hidden;
+      transition:.28s ease;
+    }
+
+    .mx-popup-backdrop.show{
+      opacity:1;
+      visibility:visible;
+    }
+
+    .mx-popup{
+      width:min(100%, 560px);
+      border-radius:24px;
+      border:1px solid rgba(255,255,255,.12);
+      background:
+        radial-gradient(700px 500px at 20% 20%, rgba(124,58,237,.24), transparent 60%),
+        radial-gradient(700px 500px at 85% 35%, rgba(168,85,247,.18), transparent 55%),
+        linear-gradient(160deg, rgba(5,7,20,.96), rgba(12,16,38,.96));
+      color:#fff;
+      box-shadow:0 30px 90px rgba(0,0,0,.55);
+      padding:28px;
+      position:relative;
+      transform:translateY(14px) scale(.98);
+      transition:.28s ease;
+    }
+
+    .mx-popup-backdrop.show .mx-popup{
+      transform:translateY(0) scale(1);
+    }
+
+    .mx-popup-close{
+      position:absolute;
+      top:14px;
+      right:14px;
+      width:40px;
+      height:40px;
+      border-radius:12px;
+      border:1px solid rgba(255,255,255,.12);
+      background:rgba(255,255,255,.06);
+      color:#fff;
+      font-size:22px;
+      line-height:1;
+      cursor:pointer;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      transition:.2s;
+    }
+
+    .mx-popup-close:hover{
+      background:rgba(255,255,255,.12);
+      transform:translateY(-1px);
+    }
+
+    .mx-popup-kicker{
+      display:inline-flex;
+      padding:8px 12px;
+      border-radius:999px;
+      border:1px solid rgba(168,85,247,.25);
+      background:rgba(124,58,237,.10);
+      color:rgba(255,255,255,.9);
+      font-size:12px;
+      font-weight:800;
+      letter-spacing:.10em;
+      text-transform:uppercase;
+      margin-bottom:14px;
+    }
+
+    .mx-popup h3{
+      margin:0 0 10px;
+      font-size:clamp(30px, 5vw, 42px);
+      line-height:1.05;
+      letter-spacing:-.02em;
+    }
+
+    .mx-popup p{
+      margin:0;
+      color:var(--muted);
+      line-height:1.75;
+      font-size:16px;
+    }
+
+    .mx-popup-note{
+      margin-top:14px;
+      color:rgba(255,255,255,.82);
+      font-size:14px;
+      line-height:1.7;
+      padding:14px 16px;
+      border-radius:16px;
+      border:1px solid rgba(255,255,255,.08);
+      background:rgba(255,255,255,.04);
+    }
+
+    .mx-popup-actions{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+      margin-top:20px;
+    }
+
+    .mx-popup-actions .btn{
+      min-width:190px;
+    }
+
     @media (max-width: 980px){
       h1{font-size:44px}
       .heroGrid{grid-template-columns:1fr}
@@ -552,6 +666,16 @@
       }
       .brand img{height:64px}
       .proofBar{flex-direction:column;align-items:flex-start}
+      .mx-popup{
+        padding:22px;
+      }
+      .mx-popup-actions{
+        flex-direction:column;
+      }
+      .mx-popup-actions .btn{
+        width:100%;
+        min-width:0;
+      }
     }
   </style>
 </head>
@@ -850,6 +974,33 @@
     </div>
   </footer>
 
+  <div class="mx-popup-backdrop" id="charityPopup" aria-hidden="true">
+    <div class="mx-popup" role="dialog" aria-modal="true" aria-labelledby="mxPopupTitle">
+      <button class="mx-popup-close" id="charityPopupClose" aria-label="Zavřít">×</button>
+
+      <div class="mx-popup-kicker">Pomoc, která může zachránit život</div>
+
+      <h3 id="mxPopupTitle">Někdo právě čeká na svého dárce kostní dřeně.</h3>
+
+      <p>
+        Registrace do registru dárců zabere jen pár minut. Pro člověka s leukémií nebo jiným vážným onemocněním ale může znamenat úplně všechno.
+      </p>
+
+      <div class="mx-popup-note">
+        V Marvonix věříme, že úspěch má smysl jen tehdy, když pomáháme i mimo business. Proto vás chceme poprosit o jediné — zvažte registraci do registru dárců kostní dřeně.
+      </div>
+
+      <div class="mx-popup-actions">
+        <a class="btn" href="https://www.kostnidren.cz" target="_blank" rel="noopener noreferrer">
+          Chci pomoci
+        </a>
+        <button class="btn secondary" id="charityPopupLater" type="button">
+          Teď ne
+        </button>
+      </div>
+    </div>
+  </div>
+
   <script>
     document.getElementById('y').textContent = new Date().getFullYear();
 
@@ -880,6 +1031,50 @@
     }, {threshold: 0.12});
 
     document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+    const charityPopup = document.getElementById('charityPopup');
+    const charityPopupClose = document.getElementById('charityPopupClose');
+    const charityPopupLater = document.getElementById('charityPopupLater');
+    const charityPopupStorageKey = 'marvonix_charity_popup_hidden_until';
+
+    function hideCharityPopup(days = 7){
+      const hiddenUntil = Date.now() + (days * 24 * 60 * 60 * 1000);
+      localStorage.setItem(charityPopupStorageKey, String(hiddenUntil));
+      charityPopup.classList.remove('show');
+      charityPopup.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    }
+
+    function showCharityPopup(){
+      charityPopup.classList.add('show');
+      charityPopup.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function canShowCharityPopup(){
+      const hiddenUntil = localStorage.getItem(charityPopupStorageKey);
+      if(!hiddenUntil) return true;
+      return Date.now() > Number(hiddenUntil);
+    }
+
+    if (canShowCharityPopup()) {
+      setTimeout(() => {
+        showCharityPopup();
+      }, 8000);
+    }
+
+    charityPopupClose.addEventListener('click', () => hideCharityPopup(7));
+    charityPopupLater.addEventListener('click', () => hideCharityPopup(7));
+
+    charityPopup.addEventListener('click', (e) => {
+      if (e.target === charityPopup) hideCharityPopup(7);
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && charityPopup.classList.contains('show')) {
+        hideCharityPopup(7);
+      }
+    });
   </script>
 </body>
 </html>
