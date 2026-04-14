@@ -30,6 +30,8 @@
 
     html,body{
       margin:0;
+      padding:0;
+      min-height:100%;
       background:
         radial-gradient(900px 600px at 15% 10%, rgba(124,58,237,.25), transparent 60%),
         radial-gradient(800px 600px at 90% 20%, rgba(168,85,247,.18), transparent 60%),
@@ -37,6 +39,24 @@
       color:var(--text);
       font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Arial;
       overflow-x:hidden;
+      overscroll-behavior:none;
+      -webkit-overflow-scrolling:touch;
+    }
+
+    body{
+      position:relative;
+    }
+
+    body::before{
+      content:"";
+      position:fixed;
+      inset:0;
+      z-index:-1;
+      background:
+        radial-gradient(900px 600px at 15% 10%, rgba(124,58,237,.25), transparent 60%),
+        radial-gradient(800px 600px at 90% 20%, rgba(168,85,247,.18), transparent 60%),
+        linear-gradient(160deg,var(--bg),var(--bg2));
+      pointer-events:none;
     }
 
     a{color:inherit;text-decoration:none}
@@ -134,35 +154,74 @@
 
     .burger{
       display:none;
-      width:44px;height:44px;
+      width:44px;
+      height:44px;
       border-radius:12px;
       border:1px solid rgba(255,255,255,.12);
       background:rgba(255,255,255,.06);
-      align-items:center;justify-content:center;
+      align-items:center;
+      justify-content:center;
       cursor:pointer;
-      transition:.2s;
+      transition:transform .2s ease, background .2s ease, border-color .2s ease;
+      flex-shrink:0;
     }
 
-    .burger:hover{transform:translateY(-1px)}
+    .burger:hover{
+      transform:translateY(-1px);
+      background:rgba(255,255,255,.09);
+    }
 
     .burger span{
-      width:20px;height:2px;background:#fff;display:block;position:relative;border-radius:2px;
+      width:20px;
+      height:2px;
+      background:#fff;
+      display:block;
+      position:relative;
+      border-radius:999px;
+      transition:background .22s ease, transform .22s ease;
     }
 
-    .burger span:before,.burger span:after{
-      content:"";position:absolute;left:0;width:20px;height:2px;background:#fff;border-radius:2px;
-      transition:.2s;
+    .burger span:before,
+    .burger span:after{
+      content:"";
+      position:absolute;
+      left:0;
+      width:20px;
+      height:2px;
+      background:#fff;
+      border-radius:999px;
+      transition:transform .28s ease, top .28s ease, opacity .18s ease;
     }
 
     .burger span:before{top:-6px}
     .burger span:after{top:6px}
+
+    .burger.active{
+      background:rgba(124,58,237,.14);
+      border-color:rgba(168,85,247,.34);
+    }
+
+    .burger.active span{
+      background:transparent;
+    }
+
+    .burger.active span:before{
+      top:0;
+      transform:rotate(45deg);
+    }
+
+    .burger.active span:after{
+      top:0;
+      transform:rotate(-45deg);
+    }
 
     @media (max-width: 940px){
       .burger{display:flex}
       .navcta-desktop{display:none;}
       .links{
         position:absolute;
-        left:0; right:0;
+        left:0;
+        right:0;
         top:100%;
         margin-top:12px;
         display:flex;
@@ -174,13 +233,14 @@
         background:rgba(5,7,20,.92);
         box-shadow:var(--shadow);
         opacity:0;
-        transform:translateY(-10px);
+        transform:translateY(-10px) scale(.98);
+        transform-origin:top center;
         pointer-events:none;
-        transition:.22s ease;
+        transition:opacity .22s ease, transform .22s ease;
       }
       .links.open{
         opacity:1;
-        transform:translateY(0);
+        transform:translateY(0) scale(1);
         pointer-events:auto;
       }
       .links a{padding:12px 12px}
@@ -699,7 +759,7 @@
 
       <a class="btn navcta-desktop" href="kontakt.html">Objednat konzultaci</a>
 
-      <button class="burger" id="burger" aria-label="Otevřít menu" aria-expanded="false">
+      <button class="burger" id="burger" aria-label="Otevřít menu" aria-expanded="false" aria-controls="navLinks">
         <span></span>
       </button>
     </div>
@@ -1009,16 +1069,22 @@
 
     function closeMenu(){
       navLinks.classList.remove('open');
+      burger.classList.remove('active');
       burger.setAttribute('aria-expanded','false');
     }
 
     burger.addEventListener('click', () => {
       const open = navLinks.classList.toggle('open');
+      burger.classList.toggle('active', open);
       burger.setAttribute('aria-expanded', open ? 'true' : 'false');
     });
 
     document.addEventListener('click', (e) => {
       if (!navLinks.contains(e.target) && !burger.contains(e.target)) closeMenu();
+    });
+
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 940) closeMenu();
     });
 
     const io = new IntersectionObserver((entries)=>{
