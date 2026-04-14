@@ -9,38 +9,26 @@
 
   <style>
     :root{
-      --bg:#050714;
-      --bg2:#0c1026;
-      --bg3:#141938;
-
+      --bg:#060818;
+      --bg2:#0d1230;
+      --bg3:#18214a;
       --purple:#a855f7;
       --purple2:#c084fc;
-
       --text:#ffffff;
       --muted:rgba(255,255,255,.78);
       --muted2:rgba(255,255,255,.60);
-
       --line:rgba(255,255,255,.10);
-      --line2:rgba(192,132,252,.28);
-
+      --line2:rgba(192,132,252,.30);
       --shadow:0 18px 60px rgba(0,0,0,.42);
-      --shadow-soft:0 12px 34px rgba(168,85,247,.14);
-
       --cta-glow:0 18px 50px rgba(168,85,247,.22);
       --cta-glow-strong:0 25px 70px rgba(168,85,247,.40);
-
       --bubble-glow:
-        0 18px 50px rgba(168,85,247,.14),
-        0 0 0 1px rgba(192,132,252,.06);
-
-      --logo-glow:
-        drop-shadow(0 0 6px rgba(168,85,247,.14))
-        drop-shadow(0 0 18px rgba(192,132,252,.10));
-
+        0 18px 50px rgba(168,85,247,.16),
+        0 0 0 1px rgba(192,132,252,.07);
       --r:20px;
       --max:1120px;
       --pad:20px;
-      --navH:86px;
+      --navH:82px;
     }
 
     *{box-sizing:border-box}
@@ -49,7 +37,7 @@
       margin:0;
       padding:0;
       min-height:100%;
-      background:#050714;
+      background:#060818;
       overflow-x:hidden;
       scroll-behavior:smooth;
     }
@@ -63,8 +51,8 @@
       overflow-x:hidden;
       background:
         radial-gradient(900px 620px at 12% 8%, rgba(168,85,247,.18), transparent 58%),
-        radial-gradient(760px 560px at 88% 16%, rgba(192,132,252,.12), transparent 56%),
-        radial-gradient(700px 420px at 50% 58%, rgba(98,118,255,.06), transparent 60%),
+        radial-gradient(820px 560px at 88% 18%, rgba(24,33,74,.70), transparent 56%),
+        radial-gradient(760px 520px at 78% 12%, rgba(192,132,252,.10), transparent 50%),
         linear-gradient(180deg,var(--bg),var(--bg2) 52%, var(--bg3));
       -webkit-overflow-scrolling:touch;
       position:relative;
@@ -78,8 +66,8 @@
       pointer-events:none;
       background:
         radial-gradient(900px 620px at 12% 8%, rgba(168,85,247,.18), transparent 58%),
-        radial-gradient(760px 560px at 88% 16%, rgba(192,132,252,.12), transparent 56%),
-        radial-gradient(700px 420px at 50% 58%, rgba(98,118,255,.06), transparent 60%),
+        radial-gradient(820px 560px at 88% 18%, rgba(24,33,74,.70), transparent 56%),
+        radial-gradient(760px 520px at 78% 12%, rgba(192,132,252,.10), transparent 50%),
         linear-gradient(180deg,var(--bg),var(--bg2) 52%, var(--bg3));
     }
 
@@ -130,9 +118,9 @@
       position:sticky;
       top:0;
       z-index:200;
-      background:rgba(5,7,20,.34);
-      backdrop-filter:blur(14px);
-      -webkit-backdrop-filter:blur(14px);
+      background:rgba(5,7,20,.26);
+      backdrop-filter:blur(16px);
+      -webkit-backdrop-filter:blur(16px);
       border-bottom:1px solid rgba(255,255,255,.06);
     }
 
@@ -143,7 +131,7 @@
       pointer-events:none;
       background:
         linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,0)),
-        radial-gradient(500px 120px at 15% 0%, rgba(168,85,247,.10), transparent 70%);
+        radial-gradient(520px 140px at 14% 0%, rgba(168,85,247,.08), transparent 72%);
     }
 
     .navin{
@@ -153,7 +141,7 @@
       justify-content:space-between;
       gap:14px;
       min-height:var(--navH);
-      padding:14px 0;
+      padding:12px 0;
     }
 
     .brand{
@@ -165,10 +153,12 @@
     }
 
     .brand img{
-      height:72px;
+      height:68px;
       width:auto;
       display:block;
-      filter:var(--logo-glow);
+      filter:
+        drop-shadow(0 0 6px rgba(168,85,247,.14))
+        drop-shadow(0 0 18px rgba(192,132,252,.10));
       transition:.25s ease;
     }
 
@@ -283,7 +273,7 @@
         padding:14px;
         border:1px solid rgba(255,255,255,.10);
         border-radius:18px;
-        background:rgba(8,11,26,.92);
+        background:rgba(8,11,26,.90);
         backdrop-filter:blur(14px);
         -webkit-backdrop-filter:blur(14px);
         box-shadow:var(--shadow);
@@ -300,10 +290,7 @@
         pointer-events:auto;
       }
 
-      .links a{
-        padding:12px 12px;
-      }
-
+      .links a{padding:12px 12px}
       .navcta-mobile{
         display:inline-flex;
         width:100%;
@@ -312,49 +299,39 @@
     }
 
     header{
-      padding:30px 0 10px;
+      padding:18px 0 6px;
     }
 
     .hero{
-      margin-top:14px;
-      border-radius:26px;
+      margin-top:10px;
+      border-radius:24px;
       border:1px solid rgba(255,255,255,.10);
       background:
-        radial-gradient(760px 540px at 18% 18%, rgba(168,85,247,.22), transparent 58%),
-        radial-gradient(720px 500px at 86% 30%, rgba(192,132,252,.14), transparent 56%),
-        linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.035));
+        radial-gradient(720px 500px at 16% 16%, rgba(168,85,247,.18), transparent 58%),
+        radial-gradient(680px 460px at 86% 28%, rgba(192,132,252,.11), transparent 56%),
+        linear-gradient(180deg, rgba(255,255,255,.055), rgba(255,255,255,.03));
       box-shadow:var(--shadow), var(--bubble-glow);
-      padding:30px;
+      padding:22px 24px;
       overflow:hidden;
       position:relative;
     }
 
-    .hero::after{
-      content:"";
-      position:absolute;
-      inset:auto -120px -140px auto;
-      width:320px;
-      height:320px;
-      background:radial-gradient(circle, rgba(192,132,252,.15), transparent 70%);
-      pointer-events:none;
-    }
-
     .heroGrid{
       display:grid;
-      grid-template-columns:1.3fr .9fr;
-      gap:18px;
+      grid-template-columns:1.2fr .8fr;
+      gap:16px;
       align-items:stretch;
     }
 
     .heroGrid > *{min-width:0}
 
     h1{
-      margin:0 0 14px;
-      font-size:clamp(34px, 7vw, 58px);
-      line-height:1.04;
+      margin:0 0 12px;
+      font-size:clamp(30px, 6vw, 50px);
+      line-height:1.05;
       letter-spacing:-.025em;
       overflow-wrap:anywhere;
-      max-width:12ch;
+      max-width:14ch;
     }
 
     h2{
@@ -365,10 +342,17 @@
 
     .sub{
       color:var(--muted);
-      line-height:1.8;
+      line-height:1.75;
       margin:0;
       max-width:64ch;
       font-size:16px;
+    }
+
+    .compact{
+      color:var(--muted);
+      line-height:1.7;
+      margin:0;
+      font-size:15px;
     }
 
     .expandable{
@@ -376,13 +360,20 @@
       margin-top:10px;
     }
 
-    .expandable .more{display:none}
-    .expandable.open .more{display:inline}
-    .expandable .fade{display:inline}
-    .expandable.open .fade{display:none}
+    .expandable .full{
+      display:none;
+    }
+
+    .expandable.open .full{
+      display:block;
+    }
+
+    .expandable.open .preview{
+      display:none;
+    }
 
     .text-toggle{
-      margin-top:10px;
+      margin-top:12px;
       display:inline-flex;
       align-items:center;
       gap:8px;
@@ -426,14 +417,16 @@
       display:flex;
       gap:12px;
       flex-wrap:wrap;
-      margin-top:20px;
+      margin-top:18px;
     }
 
     .sideCard,
     .card,
     .priceCard,
     .proofBar,
-    .logoItem{
+    .logoItem,
+    .faq .card,
+    .kv .row{
       box-shadow:var(--shadow), var(--bubble-glow);
     }
 
@@ -476,7 +469,6 @@
       min-width:0;
       flex-wrap:wrap;
       align-items:flex-start;
-      box-shadow:0 0 18px rgba(192,132,252,.06);
     }
 
     .kv .row span{
@@ -497,9 +489,9 @@
     }
 
     .miniTrust{
-      margin-top:16px;
+      margin-top:14px;
       display:flex;
-      gap:12px;
+      gap:10px;
       flex-wrap:wrap;
       color:var(--muted2);
       font-size:13px;
@@ -513,7 +505,7 @@
     }
 
     .scrollMouseWrap{
-      margin-top:20px;
+      margin-top:18px;
       display:flex;
       align-items:center;
       gap:12px;
@@ -636,7 +628,7 @@
     .priceCard.featured{
       border:1px solid rgba(192,132,252,.32);
       background:linear-gradient(180deg, rgba(168,85,247,.12), rgba(255,255,255,.04));
-      box-shadow:var(--shadow), 0 18px 50px rgba(168,85,247,.20);
+      box-shadow:0 18px 50px rgba(168,85,247,.20), var(--bubble-glow);
     }
 
     .mini{
@@ -710,19 +702,14 @@
     .proofBar strong{
       display:block;
       font-size:15px;
-      margin-bottom:4px;
-    }
-
-    .proofBar span{
-      color:var(--muted);
-      font-size:13px;
-      line-height:1.65;
+      margin-bottom:6px;
     }
 
     .proofText{
       color:var(--muted);
-      font-size:13px;
-      line-height:1.65;
+      font-size:14px;
+      line-height:1.7;
+      margin:0;
     }
 
     .logoStrip{
@@ -915,12 +902,12 @@
     }
 
     @media (max-width: 980px){
-      h1{font-size:44px}
+      h1{font-size:40px}
       .heroGrid{grid-template-columns:1fr}
     }
 
     @media (max-width: 720px){
-      h1{font-size:38px}
+      h1{font-size:34px}
       h2{font-size:28px}
       .grid3,
       .split,
@@ -929,12 +916,11 @@
       .logoStrip{
         grid-template-columns:1fr;
       }
-      .brand img{height:64px}
+      .brand img{height:60px}
       .proofBar{flex-direction:column}
       .mx-popup{padding:22px}
       .mx-popup-actions{flex-direction:column}
       .mx-popup-actions .btn{width:100%;min-width:0}
-      .scrollMouseWrap{margin-top:18px}
     }
   </style>
 </head>
@@ -981,13 +967,18 @@
             </h1>
 
             <div class="expandable" data-expandable>
-              <p class="sub">
-                Pomáháme autoservisům získávat <span class="hl">relevantní poptávky</span>, lépe využít kapacitu a růst bez chaosu.
-                <span class="fade">…</span>
-                <span class="more">
-                  Nestavíme marketing na dojmech, ale na <span class="hl">číslech</span>, měření a reálných výsledcích. Každý krok navrhujeme tak, aby dával smysl pro typ servisu, lokalitu i skutečnou kapacitu týmu.
-                </span>
-              </p>
+              <div class="preview">
+                <p class="compact">
+                  <span class="hl">Relevantní poptávky</span>, lepší využití kapacity, růst bez chaosu.
+                </p>
+              </div>
+
+              <div class="full">
+                <p class="sub">
+                  Pomáháme autoservisům získávat <span class="hl">relevantní poptávky</span>, lépe využít kapacitu a růst bez chaosu. Nestavíme marketing na dojmech, ale na <span class="hl">číslech</span>, měření a reálných výsledcích. Každý krok navrhujeme tak, aby dával smysl pro typ servisu, lokalitu i skutečnou kapacitu týmu.
+                </p>
+              </div>
+
               <button class="text-toggle" type="button">Zjistit více</button>
             </div>
 
@@ -1034,13 +1025,18 @@
             </div>
 
             <div class="expandable" data-expandable>
-              <p class="sub" style="font-size:14px;max-width:none">
-                Neprodáváme jen reklamu.
-                <span class="fade">…</span>
-                <span class="more">
-                  Pomáháme nastavit i to, aby se z poptávky stal <span class="hl">reálný termín</span>, z termínu zakázka a ze zakázky růst, který servis zvládne odbavit.
-                </span>
-              </p>
+              <div class="preview">
+                <p class="compact">
+                  <span class="hl">Lead</span> → telefon → termín → zakázka.
+                </p>
+              </div>
+
+              <div class="full">
+                <p class="sub" style="font-size:14px;max-width:none">
+                  Neprodáváme jen reklamu. Pomáháme nastavit i to, aby se z poptávky stal <span class="hl">reálný termín</span>, z termínu zakázka a ze zakázky růst, který servis zvládne odbavit.
+                </p>
+              </div>
+
               <button class="text-toggle" type="button">Zjistit více</button>
             </div>
 
@@ -1050,32 +1046,32 @@
       </div>
 
       <div class="proofBar reveal delay1">
-        <div>
+        <div class="expandable" data-expandable>
           <strong><span class="hl">Specializace</span> místo všeho pro všechny</strong>
-          <div class="proofText expandable" data-expandable>
-            Zaměřujeme se na autoservisy, protože u nich dává lokální performance marketing největší smysl.
-            <span class="fade">…</span>
-            <span class="more">
-              Díky tomu víme, jak pracovat se sezónností, kapacitou servisu, typy zakázek i lokální konkurencí.
-            </span>
-            <div>
-              <button class="text-toggle" type="button">Zjistit více</button>
-            </div>
+
+          <div class="preview">
+            <p class="proofText">Autoservisy, lokální výkon, sezónnost.</p>
           </div>
+
+          <div class="full">
+            <p class="proofText">Zaměřujeme se na autoservisy, protože u nich dává lokální performance marketing největší smysl. Díky tomu víme, jak pracovat se sezónností, kapacitou servisu, typy zakázek i lokální konkurencí.</p>
+          </div>
+
+          <button class="text-toggle" type="button">Zjistit více</button>
         </div>
 
-        <div>
+        <div class="expandable" data-expandable>
           <strong><span class="hl">Výkon</span> místo omáčky</strong>
-          <div class="proofText expandable" data-expandable>
-            Neprodáváme “aktivitu”. Zajímá nás, kolik relevantních zakázek dokážeme přivést.
-            <span class="fade">…</span>
-            <span class="more">
-              Sledujeme, co opravdu funguje, co je potřeba omezit a kde se dá zlepšit návratnost i kvalita poptávek.
-            </span>
-            <div>
-              <button class="text-toggle" type="button">Zjistit více</button>
-            </div>
+
+          <div class="preview">
+            <p class="proofText">Ne aktivita. Výsledek.</p>
           </div>
+
+          <div class="full">
+            <p class="proofText">Neprodáváme “aktivitu”. Zajímá nás, kolik relevantních zakázek dokážeme přivést. Sledujeme, co opravdu funguje, co je potřeba omezit a kde se dá zlepšit návratnost i kvalita poptávek.</p>
+          </div>
+
+          <button class="text-toggle" type="button">Zjistit více</button>
         </div>
       </div>
     </div>
@@ -1085,23 +1081,41 @@
     <div class="wrap">
       <div class="sectionHead">
         <h2 class="reveal">Proč právě <span class="hl">Marvonix</span></h2>
-        <p class="reveal delay1">Marketing stavíme tak, aby dával smysl z pohledu kapacity servisu, typu zakázek i sezónnosti. Nechceme jen návštěvnost, ale výsledek, který se promítne do reality servisu.</p>
+        <p class="reveal delay1">Marketing stavíme tak, aby dával smysl z pohledu kapacity servisu, typu zakázek i sezónnosti.</p>
       </div>
 
       <div class="grid3">
-        <div class="card reveal">
+        <div class="card reveal expandable" data-expandable>
           <h3>Růst bez chaosu</h3>
-          <p>Čistá struktura kampaní, měření a kontrola nad tím, co opravdu funguje.</p>
+          <div class="preview">
+            <p>Struktura, měření, kontrola.</p>
+          </div>
+          <div class="full">
+            <p>Čistá struktura kampaní, měření a kontrola nad tím, co opravdu funguje. Všechno nastavujeme tak, aby bylo jasné, odkud leady chodí, co stojí a jaký mají přínos.</p>
+          </div>
+          <button class="text-toggle" type="button">Zjistit více</button>
         </div>
 
-        <div class="card reveal delay1">
+        <div class="card reveal delay1 expandable" data-expandable>
           <h3>Sezónnost pod kontrolou</h3>
-          <p>Pneu, klima, STK nebo servisní špičky — kampaně stavíme podle období a lokální poptávky.</p>
+          <div class="preview">
+            <p>Pneu, klima, STK, špičky.</p>
+          </div>
+          <div class="full">
+            <p>Pneu, klima, STK nebo servisní špičky — kampaně stavíme podle období a lokální poptávky. Nejedeme stejné rozpočty a stejná sdělení pořád dokola, ale přizpůsobujeme výkon realitě trhu.</p>
+          </div>
+          <button class="text-toggle" type="button">Zjistit více</button>
         </div>
 
-        <div class="card reveal delay2">
+        <div class="card reveal delay2 expandable" data-expandable>
           <h3>Transparentní spolupráce</h3>
-          <p>Bez mlžení a bez omáčky. Uvidíte čísla, výsledky i další krok dopředu.</p>
+          <div class="preview">
+            <p>Čísla, výsledky, další krok.</p>
+          </div>
+          <div class="full">
+            <p>Bez mlžení a bez omáčky. Uvidíte čísla, výsledky i další krok dopředu. Každý měsíc víte, co se udělalo, co to přineslo a co má největší prioritu dál.</p>
+          </div>
+          <button class="text-toggle" type="button">Zjistit více</button>
         </div>
       </div>
     </div>
@@ -1111,41 +1125,68 @@
     <div class="wrap">
       <div class="sectionHead">
         <h2 class="reveal">Orientační balíčky</h2>
-        <p class="reveal delay1">Každý servis má jinou kapacitu a jiný cíl. Tohle je orientační rozdělení našich nejčastějších spoluprací.</p>
+        <p class="reveal delay1">Každý servis má jinou kapacitu a jiný cíl.</p>
       </div>
 
       <div class="pricingTeaser">
-        <div class="priceCard reveal">
+        <div class="priceCard reveal expandable" data-expandable>
           <div class="mini">Jednorázově</div>
           <div class="price">10 000–20 000 Kč</div>
-          <div class="priceSub">Podle rozsahu webu, technického nastavení a zvolených kanálů.</div>
-          <ul class="priceList">
-            <li>web / landing page</li>
-            <li>nastavení Google Ads a / nebo Meta Ads</li>
-            <li>základní měření</li>
-          </ul>
+
+          <div class="preview">
+            <p class="priceSub">Web, nastavení reklam, základní měření.</p>
+          </div>
+
+          <div class="full">
+            <div class="priceSub">Podle rozsahu webu, technického nastavení a zvolených kanálů.</div>
+            <ul class="priceList">
+              <li>web / landing page</li>
+              <li>nastavení Google Ads a / nebo Meta Ads</li>
+              <li>základní měření</li>
+            </ul>
+          </div>
+
+          <button class="text-toggle" type="button">Zjistit více</button>
         </div>
 
-        <div class="priceCard featured reveal delay1">
+        <div class="priceCard featured reveal delay1 expandable" data-expandable>
           <div class="mini">Měsíční správa</div>
           <div class="price">15 000 Kč / měsíc</div>
-          <div class="priceSub">Stabilní správa kampaní a pravidelná optimalizace pro většinu servisů.</div>
-          <ul class="priceList">
-            <li>správa kampaní</li>
-            <li>optimalizace a reporting</li>
-            <li>konzultace a další kroky</li>
-          </ul>
+
+          <div class="preview">
+            <p class="priceSub">Stabilní správa a optimalizace.</p>
+          </div>
+
+          <div class="full">
+            <div class="priceSub">Stabilní správa kampaní a pravidelná optimalizace pro většinu servisů.</div>
+            <ul class="priceList">
+              <li>správa kampaní</li>
+              <li>optimalizace a reporting</li>
+              <li>konzultace a další kroky</li>
+            </ul>
+          </div>
+
+          <button class="text-toggle" type="button">Zjistit více</button>
         </div>
 
-        <div class="priceCard reveal delay2">
+        <div class="priceCard reveal delay2 expandable" data-expandable>
           <div class="mini">Rozšířená správa</div>
           <div class="price">20 000 Kč / měsíc</div>
-          <div class="priceSub">Pro servisy, které chtějí širší podporu růstu a víc než jen správu reklam.</div>
-          <ul class="priceList">
-            <li>vše z měsíční správy</li>
-            <li>rozšířená strategie</li>
-            <li>web / landing pages / lead flow</li>
-          </ul>
+
+          <div class="preview">
+            <p class="priceSub">Strategie, web, lead flow.</p>
+          </div>
+
+          <div class="full">
+            <div class="priceSub">Pro servisy, které chtějí širší podporu růstu a víc než jen správu reklam.</div>
+            <ul class="priceList">
+              <li>vše z měsíční správy</li>
+              <li>rozšířená strategie</li>
+              <li>web / landing pages / lead flow</li>
+            </ul>
+          </div>
+
+          <button class="text-toggle" type="button">Zjistit více</button>
         </div>
       </div>
 
@@ -1159,21 +1200,41 @@
     <div class="wrap">
       <div class="sectionHead">
         <h2 class="reveal">Pro koho je to vhodné</h2>
-        <p class="reveal delay1">Nejvíc smysl dává spolupráce tam, kde servis ví, co chce růstově zlepšit, a zvládne pracovat s novými poptávkami.</p>
+        <p class="reveal delay1">Nejvíc smysl dává spolupráce tam, kde servis ví, co chce růstově zlepšit.</p>
       </div>
 
       <div class="grid3">
-        <div class="card reveal">
+        <div class="card reveal expandable" data-expandable>
           <h3>Pneuservisy</h3>
-          <p>Silně sezónní služba, kde rychlost, lokální viditelnost a správné načasování rozhodují o výsledku.</p>
+          <div class="preview">
+            <p>Sezónní služba, rychlost, lokální viditelnost.</p>
+          </div>
+          <div class="full">
+            <p>Silně sezónní služba, kde rychlost, lokální viditelnost a správné načasování rozhodují o výsledku.</p>
+          </div>
+          <button class="text-toggle" type="button">Zjistit více</button>
         </div>
-        <div class="card reveal delay1">
+
+        <div class="card reveal delay1 expandable" data-expandable>
           <h3>Menší a střední autoservisy</h3>
-          <p>Servisy, které chtějí stabilnější přísun zakázek, lepší využití kapacity a větší kontrolu nad růstem.</p>
+          <div class="preview">
+            <p>Stabilnější přísun zakázek a lepší kapacita.</p>
+          </div>
+          <div class="full">
+            <p>Servisy, které chtějí stabilnější přísun zakázek, lepší využití kapacity a větší kontrolu nad růstem.</p>
+          </div>
+          <button class="text-toggle" type="button">Zjistit více</button>
         </div>
-        <div class="card reveal delay2">
+
+        <div class="card reveal delay2 expandable" data-expandable>
           <h3>Servisy s ambicí růst</h3>
-          <p>Pokud nechcete jen “být na internetu”, ale opravdu řešit výkon a návratnost, dává to největší smysl.</p>
+          <div class="preview">
+            <p>Výkon, návratnost, systematický růst.</p>
+          </div>
+          <div class="full">
+            <p>Pokud nechcete jen “být na internetu”, ale opravdu řešit výkon a návratnost, dává to největší smysl.</p>
+          </div>
+          <button class="text-toggle" type="button">Zjistit více</button>
         </div>
       </div>
 
@@ -1194,22 +1255,40 @@
       </div>
 
       <div class="steps">
-        <div class="card reveal">
+        <div class="card reveal expandable" data-expandable>
           <div class="stepNum">1</div>
           <h3>Konzultace</h3>
-          <p>Zjistíme vaši kapacitu, průměrnou hodnotu zakázky a cíl spolupráce.</p>
+          <div class="preview">
+            <p>Kapacita, hodnota zakázky, cíl.</p>
+          </div>
+          <div class="full">
+            <p>Zjistíme vaši kapacitu, průměrnou hodnotu zakázky a cíl spolupráce.</p>
+          </div>
+          <button class="text-toggle" type="button">Zjistit více</button>
         </div>
 
-        <div class="card reveal delay1">
+        <div class="card reveal delay1 expandable" data-expandable>
           <div class="stepNum">2</div>
           <h3>Návrh postupu</h3>
-          <p>Navrhneme vhodný balíček, kanály a první kroky, které dávají smysl pro váš servis.</p>
+          <div class="preview">
+            <p>Balíček, kanály, první kroky.</p>
+          </div>
+          <div class="full">
+            <p>Navrhneme vhodný balíček, kanály a první kroky, které dávají smysl pro váš servis.</p>
+          </div>
+          <button class="text-toggle" type="button">Zjistit více</button>
         </div>
 
-        <div class="card reveal delay2">
+        <div class="card reveal delay2 expandable" data-expandable>
           <div class="stepNum">3</div>
           <h3>Spuštění a optimalizace</h3>
-          <p>Spustíme kampaně, měříme výsledky a průběžně optimalizujeme výkon.</p>
+          <div class="preview">
+            <p>Kampaně, měření, průběžný výkon.</p>
+          </div>
+          <div class="full">
+            <p>Spustíme kampaně, měříme výsledky a průběžně optimalizujeme výkon.</p>
+          </div>
+          <button class="text-toggle" type="button">Zjistit více</button>
         </div>
       </div>
     </div>
@@ -1217,18 +1296,18 @@
 
   <section>
     <div class="wrap split">
-      <div class="card reveal">
+      <div class="card reveal expandable" data-expandable>
         <h3>Jak začneme</h3>
-        <div class="expandable" data-expandable>
-          <p>
-            Pošlete kapacitu aut za měsíc, průměrnou hodnotu zakázky a město, kde působíte.
-            <span class="fade">…</span>
-            <span class="more">
-              Podle toho navrhneme další kroky, vhodný typ kampaní a realistický plán růstu.
-            </span>
-          </p>
-          <button class="text-toggle" type="button">Zjistit více</button>
+
+        <div class="preview">
+          <p>Kapacita aut, průměrná hodnota zakázky, město.</p>
         </div>
+
+        <div class="full">
+          <p>Pošlete kapacitu aut za měsíc, průměrnou hodnotu zakázky a město, kde působíte. Podle toho navrhneme další kroky, vhodný typ kampaní a realistický plán růstu.</p>
+        </div>
+
+        <button class="text-toggle" type="button">Zjistit více</button>
 
         <div style="margin-top:14px;display:flex;gap:10px;flex-wrap:wrap">
           <a class="btn" href="kontakt.html">Objednat konzultaci</a>
@@ -1236,22 +1315,21 @@
         </div>
       </div>
 
-      <div class="card reveal delay1">
+      <div class="card reveal delay1 expandable" data-expandable>
         <h3>Co od vás potřebujeme</h3>
-        <div class="expandable" data-expandable>
-          <p>
-            Rychlou reakci na poptávky a přehled o kapacitě.
-            <span class="fade">…</span>
-            <span class="more">
-              Marketing přivede zákazníky, ale servis je musí umět přijmout, odbavit a proměnit v reálnou zakázku. Proto řešíme i to, co se děje po leadu.
-            </span>
-          </p>
-          <button class="text-toggle" type="button">Zjistit více</button>
+
+        <div class="preview">
+          <p>Rychlá reakce na poptávky, přehled o kapacitě.</p>
         </div>
 
-        <div style="margin-top:14px;color:rgba(255,255,255,.88);font-size:13px;line-height:1.7">
-          Tip: pomůžeme vám nastavit jednoduchý proces „poptávka → telefon → termín“.
+        <div class="full">
+          <p>Rychlou reakci na poptávky a přehled o kapacitě. Marketing přivede zákazníky, ale servis je musí umět přijmout, odbavit a proměnit v reálnou zakázku. Proto řešíme i to, co se děje po leadu.</p>
+          <div style="margin-top:14px;color:rgba(255,255,255,.88);font-size:13px;line-height:1.7">
+            Tip: pomůžeme vám nastavit jednoduchý proces „poptávka → telefon → termín“.
+          </div>
         </div>
+
+        <button class="text-toggle" type="button">Zjistit více</button>
       </div>
     </div>
   </section>
@@ -1264,19 +1342,37 @@
       </div>
 
       <div class="faq">
-        <div class="card reveal">
+        <div class="card reveal expandable" data-expandable>
           <h3>Je to vhodné i pro menší autoservis?</h3>
-          <p>Ano, pokud máte kapacitu přijímat nové zakázky a chcete růst systematicky, ne náhodně.</p>
+          <div class="preview">
+            <p>Ano, pokud má kapacitu přijímat nové zakázky.</p>
+          </div>
+          <div class="full">
+            <p>Ano, pokud máte kapacitu přijímat nové zakázky a chcete růst systematicky, ne náhodně.</p>
+          </div>
+          <button class="text-toggle" type="button">Zjistit více</button>
         </div>
 
-        <div class="card reveal delay1">
+        <div class="card reveal delay1 expandable" data-expandable>
           <h3>Musím mít velký reklamní rozpočet?</h3>
-          <p>Ne nutně. Důležité je, aby rozpočet odpovídal cíli, lokalitě a tomu, co reálně zvládnete odbavit.</p>
+          <div class="preview">
+            <p>Ne. Rozpočet musí odpovídat cíli a kapacitě.</p>
+          </div>
+          <div class="full">
+            <p>Ne nutně. Důležité je, aby rozpočet odpovídal cíli, lokalitě a tomu, co reálně zvládnete odbavit.</p>
+          </div>
+          <button class="text-toggle" type="button">Zjistit více</button>
         </div>
 
-        <div class="card reveal delay2">
+        <div class="card reveal delay2 expandable" data-expandable>
           <h3>Co když nevím, jaký balíček je pro mě vhodný?</h3>
-          <p>Od toho je první konzultace. Podíváme se na kapacitu, typ zakázek a navrhneme směr, který dává smysl.</p>
+          <div class="preview">
+            <p>Od toho je první konzultace.</p>
+          </div>
+          <div class="full">
+            <p>Od toho je první konzultace. Podíváme se na kapacitu, typ zakázek a navrhneme směr, který dává smysl.</p>
+          </div>
+          <button class="text-toggle" type="button">Zjistit více</button>
         </div>
       </div>
     </div>
