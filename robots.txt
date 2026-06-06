@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://marvonix.cz/sitemap.xml
