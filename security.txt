@@ -1,3 +1,0 @@
-Contact: mailto:info@marvonix.cz
-Preferred-Languages: cs, en
-Canonical: https://marvonix.cz/security.txt
