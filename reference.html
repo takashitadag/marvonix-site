@@ -943,14 +943,27 @@ input, textarea, select, button{font:inherit;max-width:100%}
 }
 footer a{color:inherit;text-decoration:none}footer a:hover{text-decoration:underline;color:#fff}
 </style>
-<style>.refGrid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:28px}.refCard{border:1px solid var(--line);border-radius:28px;background:linear-gradient(180deg,rgba(255,255,255,.095),rgba(255,255,255,.045));padding:24px;box-shadow:var(--shadow);position:relative;overflow:hidden}.refCard:before{content:'';position:absolute;inset:-90px -90px auto auto;width:190px;height:190px;border-radius:50%;background:radial-gradient(circle,rgba(168,85,247,.22),transparent 65%)}.refTag{display:inline-flex;border:1px solid rgba(192,132,252,.28);background:rgba(168,85,247,.13);border-radius:999px;padding:7px 11px;font-size:12px;font-weight:950;letter-spacing:.12em;text-transform:uppercase;color:#fff;margin-bottom:14px}.refText{color:var(--muted);line-height:1.75;font-size:15px;margin:0 0 20px}.refPerson{display:flex;align-items:center;gap:12px;border-top:1px solid rgba(255,255,255,.10);padding-top:16px}.avatar{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;background:rgba(168,85,247,.18);border:1px solid rgba(192,132,252,.24);font-weight:950}.refPerson b{display:block}.refPerson span{display:block;color:var(--muted2);font-size:13px}.empty{grid-column:1/-1;border:1px dashed var(--line);border-radius:24px;padding:28px;text-align:center;color:var(--muted)}@media(max-width:980px){.refGrid{grid-template-columns:1fr 1fr}}@media(max-width:720px){.refGrid{grid-template-columns:1fr}}</style></head><body>
+<style>.refGrid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:28px}.refCard{border:1px solid var(--line);border-radius:28px;background:linear-gradient(180deg,rgba(255,255,255,.095),rgba(255,255,255,.045));padding:24px;box-shadow:var(--shadow);position:relative;overflow:hidden}.refCard:before{content:'';position:absolute;inset:-90px -90px auto auto;width:190px;height:190px;border-radius:50%;background:radial-gradient(circle,rgba(168,85,247,.22),transparent 65%)}.refTag{display:inline-flex;border:1px solid rgba(192,132,252,.28);background:rgba(168,85,247,.13);border-radius:999px;padding:7px 11px;font-size:12px;font-weight:950;letter-spacing:.12em;text-transform:uppercase;color:#fff;margin-bottom:14px}.refText{color:var(--muted);line-height:1.75;font-size:15px;margin:0 0 20px}.refPerson{display:flex;align-items:center;gap:12px;border-top:1px solid rgba(255,255,255,.10);padding-top:16px}.avatar{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;background:rgba(168,85,247,.18);border:1px solid rgba(192,132,252,.24);font-weight:950}.refPerson b{display:block}.refPerson span{display:block;color:var(--muted2);font-size:13px}.empty{grid-column:1/-1;border:1px dashed var(--line);border-radius:24px;padding:28px;text-align:center;color:var(--muted)}@media(max-width:980px){.refGrid{grid-template-columns:1fr 1fr}}@media(max-width:720px){.refGrid{grid-template-columns:1fr}}
+
+/* Marvonix sjednocení hlavičky, patičky a základní funkčnosti */
+body{display:flex;flex-direction:column;min-height:100vh}
+main{flex:1 0 auto}
+footer{margin-top:auto}
+.footerCopyright{align-self:end}
+.nav .links a.active{color:#fff}
+.nav .links a.active::after{opacity:1;transform:scaleX(1)}
+@media(max-width:520px){
+  .professional-footer{text-align:left}
+  .footerCopyright{align-self:auto}
+}
+</style></head><body>
 <div class="nav">
 <div class="wrap navin">
 <a aria-label="Marvonix" class="brand" href="index.html">
 <img alt="Logo Marvonix" decoding="async" loading="lazy" src="logo.png"/>
 </a>
 <div class="links" id="navLinks">
-<a class="active" href="index.html">Domů</a>
+<a href="index.html">Domů</a>
 <a href="sluzby.html">Služby</a>
 <a href="o-nas.html">O nás</a>
 <a href="tym.html">Tým</a>
@@ -960,11 +973,11 @@ footer a{color:inherit;text-decoration:none}footer a:hover{text-decoration:under
 <a class="btn navcta-mobile" href="kontakt.html">Objednat konzultaci</a>
 </div>
 <a class="btn navcta-desktop" href="kontakt.html">Objednat konzultaci</a>
-<button aria-controls="navLinks" aria-expanded="false" aria-label="Otevřít menu" class="burger" id="burger">
+<button aria-controls="navLinks" aria-expanded="false" aria-label="Otevřít menu" class="burger" id="burger" type="button">
 <span></span>
 </button>
 </div>
-
+</div>
 <header><div class="wrap"><div class="hero reveal"><div class="heroInner"><div><span class="eyebrow">Reference klientů</span><h1>Zkušenosti klientů s Marvonixem</h1><p class="lead">Důvěryhodnost nestojí na slibech, ale na reálné spolupráci, výsledcích a zpětné vazbě klientů.</p><div class="heroActions"><a class="btn" href="kontakt.html">Chci spolupráci</a><a class="btn secondary" href="audity.html">Zobrazit audity</a></div></div></div></div></div></header>
 <section><div class="wrap sectionHead"><h2 class="reveal">Reference</h2><p class="reveal delay1">Zveřejněné reference lze spravovat přes administraci. Skryté záznamy zůstávají v databázi, ale návštěvníkům se neukazují.</p></div><div class="wrap refGrid" id="referencesGrid"><div class="empty">Reference se načítají.</div></div></section>
 <section><div class="wrap"><div class="ctaBox reveal"><h2>Chceš podobný výsledek pro svůj web nebo marketing?</h2><p>Ozvi se a projdeme, kde má tvoje firma nejrychlejší prostor pro zlepšení.</p><div class="ctaRow"><a class="btn" href="kontakt.html">Kontaktovat Marvonix</a><a class="btn secondary" href="sluzby.html">Zobrazit služby</a></div></div></div></section>
@@ -997,10 +1010,10 @@ footer a{color:inherit;text-decoration:none}footer a:hover{text-decoration:under
 <a href="obchodni-podminky.html">Obchodní podmínky</a>
 <a href="pristupnost.html">Přístupnost</a>
 </div>
-<div class="footerSmall">
-        © <span id="y"></span> Marvonix. Všechna práva vyhrazena.<br/>
-        Tento web slouží jako prezentace služeb značky Marvonix.
-      </div>
+<div class="footerSmall footerCopyright">
+© <span id="y"></span> Marvonix. Všechna práva vyhrazena.<br/>
+Tento web slouží jako prezentace služeb značky Marvonix.
+</div>
 </div>
 </footer>
 <script>

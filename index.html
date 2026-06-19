@@ -971,6 +971,19 @@ input, textarea, select, button{font:inherit;max-width:100%}
   footer .foot, .professional-footer{display:grid!important;grid-template-columns:1fr!important;gap:22px!important}
 }
 footer a{color:inherit;text-decoration:none}footer a:hover{text-decoration:underline;color:#fff}
+
+
+/* Marvonix sjednocení hlavičky, patičky a základní funkčnosti */
+body{display:flex;flex-direction:column;min-height:100vh}
+main{flex:1 0 auto}
+footer{margin-top:auto}
+.footerCopyright{align-self:end}
+.nav .links a.active{color:#fff}
+.nav .links a.active::after{opacity:1;transform:scaleX(1)}
+@media(max-width:520px){
+  .professional-footer{text-align:left}
+  .footerCopyright{align-self:auto}
+}
 </style>
 <meta content="https://marvonix.cz/logo.png" name="twitter:image"/></head>
 <body>
@@ -990,7 +1003,7 @@ footer a{color:inherit;text-decoration:none}footer a:hover{text-decoration:under
 <a class="btn navcta-mobile" href="kontakt.html">Objednat konzultaci</a>
 </div>
 <a class="btn navcta-desktop" href="kontakt.html">Objednat konzultaci</a>
-<button aria-controls="navLinks" aria-expanded="false" aria-label="Otevřít menu" class="burger" id="burger">
+<button aria-controls="navLinks" aria-expanded="false" aria-label="Otevřít menu" class="burger" id="burger" type="button">
 <span></span>
 </button>
 </div>
@@ -1389,10 +1402,10 @@ footer a{color:inherit;text-decoration:none}footer a:hover{text-decoration:under
 <a href="obchodni-podminky.html">Obchodní podmínky</a>
 <a href="pristupnost.html">Přístupnost</a>
 </div>
-<div class="footerSmall">
-        © <span id="y"></span> Marvonix. Všechna práva vyhrazena.<br/>
-        Tento web slouží jako prezentace služeb značky Marvonix.
-      </div>
+<div class="footerSmall footerCopyright">
+© <span id="y"></span> Marvonix. Všechna práva vyhrazena.<br/>
+Tento web slouží jako prezentace služeb značky Marvonix.
+</div>
 </div>
 </footer>
 <div aria-hidden="true" class="mx-popup-backdrop" id="charityPopup">
