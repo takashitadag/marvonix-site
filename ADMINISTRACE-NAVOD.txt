@@ -1,0 +1,28 @@
+MARVONIX ADMINISTRACE
+
+1) Supabase
+- V Supabase otevři SQL Editor.
+- Spusť obsah souboru supabase-schema.sql.
+
+2) Vercel Environment Variables
+Přidej stejné proměnné jako u webu Kamily:
+- SUPABASE_URL
+- SUPABASE_SECRET_KEY
+- ADMIN_PASSWORD
+
+3) Redeploy
+Po přidání proměnných udělej ve Vercelu Redeploy bez cache.
+
+4) Administrace
+Otevři:
+https://marvonix.cz/admin.html
+
+Spravované typy obsahu:
+- Tým
+- Reference klientů
+- Reference k auditům
+
+5) Stránky
+- reference.html načítá Reference klientů
+- tym.html načítá Tým, pokud je v databázi obsah
+- audity.html má sekci Reference k auditům
