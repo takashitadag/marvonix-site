@@ -2,58 +2,146 @@
 <html lang="cs">
 <head>
 <meta charset="utf-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
 <meta name="robots" content="noindex, nofollow"/>
-<title>Administrace obsahu | Marvonix</title>
+<title>Administrace | Marvonix</title>
 <meta name="theme-color" content="#060818"/>
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data: https:; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline'; connect-src 'self' https://api.web3forms.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self'"/>
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data: https:; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline'; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'"/>
 <style>
-:root{--bg:#060818;--bg2:#0d1230;--purple:#a855f7;--purple2:#c084fc;--text:#fff;--muted:rgba(255,255,255,.72);--line:rgba(255,255,255,.12);--danger:#ef4444;--ok:#22c55e;--r:22px;--max:1120px;--pad:20px}*{box-sizing:border-box}body{margin:0;min-height:100vh;background:radial-gradient(900px 620px at 12% 8%,rgba(168,85,247,.18),transparent 58%),linear-gradient(180deg,var(--bg),var(--bg2));color:var(--text);font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Arial}.wrap{max-width:var(--max);margin:0 auto;padding:0 var(--pad)}a{color:inherit;text-decoration:none}.top{border-bottom:1px solid var(--line);background:rgba(5,7,20,.36);backdrop-filter:blur(16px)}.topin{min-height:86px;display:flex;align-items:center;justify-content:space-between;gap:18px}.brand{font-weight:950;letter-spacing:.16em;text-transform:uppercase}.nav{display:flex;gap:10px;flex-wrap:wrap}.btn,button{display:inline-flex;align-items:center;justify-content:center;border:0;border-radius:999px;padding:12px 18px;background:linear-gradient(135deg,var(--purple),var(--purple2));color:#fff;font-weight:900;letter-spacing:.08em;text-transform:uppercase;cursor:pointer}.btn.secondary,button.secondary{background:rgba(255,255,255,.08);border:1px solid var(--line)}button.danger{background:rgba(239,68,68,.92)}main{padding:56px 0 80px}.panel{border:1px solid var(--line);border-radius:var(--r);background:linear-gradient(180deg,rgba(255,255,255,.08),rgba(255,255,255,.04));box-shadow:0 20px 70px rgba(0,0,0,.32);padding:28px;margin-bottom:24px}h1{font-size:clamp(34px,6vw,72px);line-height:.98;margin:0 0 14px;letter-spacing:-.05em}h2{font-size:30px;margin:0 0 18px}.muted{color:var(--muted);line-height:1.7}.grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}.field{display:grid;gap:8px;margin-bottom:14px}label{font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:900;color:rgba(255,255,255,.86)}input,select,textarea{width:100%;border:1px solid var(--line);border-radius:16px;background:rgba(255,255,255,.06);color:#fff;padding:14px 14px;font:inherit;outline:none}textarea{min-height:140px;resize:vertical}input:focus,select:focus,textarea:focus{border-color:rgba(192,132,252,.55);box-shadow:0 0 0 4px rgba(168,85,247,.13)}.actions{display:flex;gap:12px;flex-wrap:wrap;align-items:center}.message{display:none;margin:14px 0 0;padding:14px 16px;border-radius:16px;border:1px solid var(--line);color:#fff}.message.show{display:block}.message.err{border-color:rgba(239,68,68,.45);background:rgba(239,68,68,.12)}.message.ok{border-color:rgba(34,197,94,.45);background:rgba(34,197,94,.12)}.items{display:grid;gap:14px}.item{display:grid;grid-template-columns:1fr auto;gap:18px;align-items:start;border:1px solid var(--line);border-radius:20px;background:rgba(255,255,255,.045);padding:18px}.item h3{margin:0 0 6px;font-size:22px}.tag{display:inline-flex;margin-bottom:8px;border:1px solid rgba(192,132,252,.28);background:rgba(168,85,247,.12);padding:6px 10px;border-radius:999px;color:#fff;font-size:12px;font-weight:900;letter-spacing:.08em;text-transform:uppercase}.switch{display:flex;gap:9px;align-items:center;margin:10px 0}.switch input{width:22px;height:22px}.empty{padding:24px;border:1px dashed var(--line);border-radius:18px;color:var(--muted);text-align:center}@media(max-width:760px){.grid{grid-template-columns:1fr}.topin,.item{grid-template-columns:1fr;display:grid}.nav{justify-content:flex-start}.actions button,.actions a{width:100%}}
+:root{
+  --bg:#060818;--bg2:#0d1230;--bg3:#18214a;--purple:#a855f7;--purple2:#c084fc;--text:#fff;--muted:rgba(255,255,255,.76);--muted2:rgba(255,255,255,.56);--line:rgba(255,255,255,.11);--line2:rgba(192,132,252,.32);--danger:#ef4444;--ok:#22c55e;--warning:#f59e0b;--r:22px;--max:1180px;--pad:20px;--navH:82px;--shadow:0 22px 70px rgba(0,0,0,.38)
+}
+*{box-sizing:border-box}
+html{min-height:100%;background:#060818;scroll-behavior:smooth}
+body{margin:0;min-height:100vh;color:var(--text);font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Arial;background:radial-gradient(900px 620px at 12% 8%,rgba(168,85,247,.18),transparent 58%),radial-gradient(820px 560px at 88% 18%,rgba(24,33,74,.70),transparent 56%),linear-gradient(180deg,var(--bg),var(--bg2) 52%,var(--bg3));overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(900px 620px at 12% 8%,rgba(168,85,247,.18),transparent 58%),radial-gradient(820px 560px at 88% 18%,rgba(24,33,74,.70),transparent 56%),linear-gradient(180deg,var(--bg),var(--bg2) 52%,var(--bg3))}
+a{color:inherit;text-decoration:none}.wrap{max-width:var(--max);margin:0 auto;padding:0 var(--pad)}
+.nav{position:sticky;top:0;z-index:100;background:rgba(5,7,20,.30);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid rgba(255,255,255,.07)}
+.navin{min-height:var(--navH);display:flex;align-items:center;justify-content:space-between;gap:16px}.brand{display:flex;align-items:center;gap:12px;font-weight:950;letter-spacing:.18em;text-transform:uppercase}.brand img{height:58px;width:auto;display:block;filter:drop-shadow(0 0 12px rgba(192,132,252,.13))}.adminBadge{font-size:11px;color:var(--muted2);border:1px solid var(--line);border-radius:999px;padding:7px 10px;letter-spacing:.14em;text-transform:uppercase}.links{display:flex;gap:10px;align-items:center;flex-wrap:wrap}.btn,button{display:inline-flex;align-items:center;justify-content:center;gap:9px;min-height:44px;border:0;border-radius:999px;padding:12px 18px;background:linear-gradient(135deg,var(--purple),var(--purple2));color:#fff;font-weight:950;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;box-shadow:0 18px 46px rgba(168,85,247,.20);transition:.22s;font-size:13px}.btn:hover,button:hover{transform:translateY(-1px);box-shadow:0 22px 58px rgba(168,85,247,.34)}.btn.secondary,button.secondary{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);box-shadow:none}.btn.ghost,button.ghost{background:transparent;border:1px solid var(--line);box-shadow:none}.btn.danger,button.danger{background:rgba(239,68,68,.90);box-shadow:none}
+main{padding:42px 0 72px}.hero{display:grid;grid-template-columns:1.1fr .9fr;gap:22px;align-items:stretch;margin-bottom:22px}.glass{border:1px solid var(--line);border-radius:28px;background:linear-gradient(180deg,rgba(255,255,255,.09),rgba(255,255,255,.045));box-shadow:var(--shadow)}.heroMain{padding:34px}.kicker{color:rgba(216,180,254,.86);letter-spacing:.18em;font-weight:950;text-transform:uppercase;font-size:12px;margin-bottom:12px}h1{font-size:clamp(38px,6vw,74px);line-height:.95;letter-spacing:-.06em;margin:0 0 16px}h2{font-size:clamp(26px,3vw,38px);letter-spacing:-.04em;margin:0 0 12px}.lead,.muted{color:var(--muted);line-height:1.75}.heroSide{padding:26px;display:grid;gap:14px}.stat{border:1px solid var(--line);border-radius:20px;padding:16px;background:rgba(255,255,255,.045)}.stat strong{display:block;font-size:24px}.stat span{display:block;margin-top:4px;color:var(--muted2);font-size:13px;line-height:1.5}.loginBox{max-width:620px;margin:0 auto}.panel{padding:26px;margin-bottom:22px}.adminGrid{display:grid;grid-template-columns:310px 1fr;gap:22px;align-items:start}.side{position:sticky;top:104px;padding:18px}.typeList{display:grid;gap:10px}.typeBtn{justify-content:flex-start;width:100%;border-radius:18px;background:rgba(255,255,255,.055);border:1px solid var(--line);box-shadow:none;text-align:left}.typeBtn.active{background:linear-gradient(135deg,rgba(168,85,247,.28),rgba(192,132,252,.16));border-color:var(--line2)}.typeBtn small{display:block;color:var(--muted2);letter-spacing:0;text-transform:none;font-weight:700;margin-top:3px}.adminShell{display:grid;gap:22px}.formGrid{display:grid;grid-template-columns:1fr 1fr;gap:16px}.field{display:grid;gap:8px}.field.wide{grid-column:1/-1}label{font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:950;color:rgba(255,255,255,.88)}input,select,textarea{width:100%;border:1px solid var(--line);border-radius:18px;background:rgba(255,255,255,.065);color:#fff;padding:14px 16px;font:inherit;outline:none;min-height:52px}select option{background:#11152d;color:#fff}textarea{min-height:154px;resize:vertical;line-height:1.6}input:focus,select:focus,textarea:focus{border-color:rgba(192,132,252,.58);box-shadow:0 0 0 4px rgba(168,85,247,.13)}.hint{color:var(--muted2);font-size:12px;line-height:1.5}.switch{display:inline-flex;gap:10px;align-items:center;margin:5px 0;color:var(--muted);font-weight:800}.switch input{width:22px;height:22px;min-height:0}.actions{display:flex;gap:12px;flex-wrap:wrap;align-items:center}.message{display:none;margin:14px 0 0;padding:14px 16px;border-radius:18px;border:1px solid var(--line);line-height:1.55}.message.show{display:block}.message.err{border-color:rgba(239,68,68,.48);background:rgba(239,68,68,.13)}.message.ok{border-color:rgba(34,197,94,.48);background:rgba(34,197,94,.12)}.message.warn{border-color:rgba(245,158,11,.50);background:rgba(245,158,11,.12)}.toolbar{display:flex;gap:12px;align-items:center;justify-content:space-between;flex-wrap:wrap;margin-bottom:16px}.filterTabs{display:flex;gap:8px;flex-wrap:wrap}.filterTabs button{min-height:38px;padding:9px 13px;font-size:11px;background:rgba(255,255,255,.06);border:1px solid var(--line);box-shadow:none}.filterTabs button.active{background:rgba(168,85,247,.24);border-color:var(--line2)}.items{display:grid;gap:14px}.item{display:grid;grid-template-columns:1fr auto;gap:16px;align-items:stretch;border:1px solid var(--line);border-radius:22px;background:rgba(255,255,255,.047);padding:18px}.item h3{margin:0 0 7px;font-size:22px;letter-spacing:-.02em}.itemText{color:var(--muted);line-height:1.65;margin:10px 0 0}.tag{display:inline-flex;align-items:center;gap:7px;margin-bottom:8px;border:1px solid rgba(192,132,252,.27);background:rgba(168,85,247,.12);padding:6px 10px;border-radius:999px;color:#fff;font-size:11px;font-weight:950;letter-spacing:.08em;text-transform:uppercase}.tag.hidden{border-color:rgba(245,158,11,.38);background:rgba(245,158,11,.12)}.itemActions{display:grid;grid-template-columns:1fr;gap:8px;min-width:118px}.itemActions button{border-radius:16px;min-height:42px;padding:10px 13px;font-size:11px}.empty{padding:24px;border:1px dashed var(--line);border-radius:20px;color:var(--muted);text-align:center}.hiddenField{display:none!important}.quickHelp{display:grid;gap:10px;margin-top:14px}.quickHelp div{padding:13px 14px;border-radius:18px;background:rgba(255,255,255,.045);border:1px solid var(--line);color:var(--muted);line-height:1.6;font-size:13px}.quickHelp b{color:#fff}.footer{padding:0 20px 34px;color:rgba(255,255,255,.62);font-size:13px;line-height:1.7;text-align:center}@media(max-width:900px){.hero{grid-template-columns:1fr}.adminGrid{grid-template-columns:1fr}.side{position:static}.formGrid{grid-template-columns:1fr}.links{display:none}.item{grid-template-columns:1fr}.itemActions{grid-template-columns:1fr 1fr}.actions button,.actions a{flex:1}.brand img{height:48px}}@media(max-width:540px){main{padding-top:24px}.heroMain,.panel{padding:20px}.itemActions{grid-template-columns:1fr}.btn,button{width:100%}}
 </style>
 </head>
 <body>
-<header class="top"><div class="wrap topin"><a class="brand" href="index.html">Marvonix</a><nav class="nav"><a class="btn secondary" href="index.html">Web</a><a class="btn secondary" href="reference.html">Reference</a><a class="btn secondary" href="tym.html">Tým</a><a class="btn secondary" href="audity.html">Audity</a></nav></div></header>
+<header class="nav">
+  <div class="wrap navin">
+    <a class="brand" href="index.html"><img src="logo.png" alt="Marvonix"/><span class="adminBadge">Administrace</span></a>
+    <nav class="links" aria-label="Administrace">
+      <a class="btn secondary" href="index.html">Web</a>
+      <a class="btn secondary" href="reference.html">Reference</a>
+      <a class="btn secondary" href="tym.html">Tým</a>
+      <a class="btn secondary" href="audity.html">Audity</a>
+    </nav>
+  </div>
+</header>
 <main class="wrap">
-<section class="panel" id="loginPanel"><h1>Administrace obsahu</h1><p class="muted">Správa týmu, klientských referencí a referencí k auditům. Stránka je skrytá před vyhledávači.</p><div class="field"><label for="password">Heslo</label><input id="password" type="password" autocomplete="current-password"/></div><div class="actions"><button id="loginBtn" type="button">Přihlásit</button></div><div class="message err" id="loginMessage"></div></section>
-<section class="panel" id="adminPanel" hidden><div class="actions" style="justify-content:space-between;margin-bottom:18px"><h2>Obsah webu</h2><button class="secondary" id="logoutBtn" type="button">Odhlásit</button></div><form id="contentForm"><input type="hidden" id="itemId"/><div class="grid"><div class="field"><label for="type">Typ obsahu</label><select id="type"><option value="references">Reference klientů</option><option value="audit_references">Reference k auditům</option><option value="team">Člen týmu</option></select></div><div class="field"><label for="sort_order">Pořadí</label><input id="sort_order" type="number" value="0"/></div></div><div class="grid"><div class="field"><label for="title">Název / jméno</label><input id="title" required placeholder="Daniela K. / Martin / Audit pro lokální firmu"/></div><div class="field"><label for="role">Role / pozice</label><input id="role" placeholder="CEO / Klient / Majitel firmy"/></div></div><div class="grid"><div class="field"><label for="subtitle">Lokalita / krátký popis</label><input id="subtitle" placeholder="Olomouc / marketingový audit / web"/></div><div class="field"><label for="tag">Štítek</label><input id="tag" placeholder="Doporučuji / Web / Audit"/></div></div><div class="grid"><div class="field"><label for="score">Skóre auditu</label><input id="score" type="number" min="0" max="100" placeholder="např. 84"/></div><div class="field"><label for="external_url">Odkaz</label><input id="external_url" type="url" placeholder="https://..."/></div></div><div class="field"><label for="image_url">URL obrázku</label><input id="image_url" type="url" placeholder="https://..."/></div><div class="field"><label for="body">Text</label><textarea id="body" required placeholder="Hlavní text reference nebo popis člena týmu..."></textarea></div><label class="switch"><input id="visible" type="checkbox" checked/> Zobrazit na webu</label><div class="actions"><button id="saveBtn" type="submit">Uložit</button><button class="secondary" id="newBtn" type="button">Nový záznam</button></div><div class="message" id="formMessage"></div></form></section>
-<section class="panel" id="listPanel" hidden><h2>Uložený obsah</h2><div class="items" id="items"></div></section>
+  <section class="hero" id="loginPanel">
+    <div class="glass heroMain">
+      <div class="kicker">Marvonix OS</div>
+      <h1>Správa obsahu webu</h1>
+      <p class="lead">Jedno místo pro tým, klientské reference a reference k auditům. Obsah se ukládá do databáze a po zveřejnění se propíše na web.</p>
+    </div>
+    <div class="glass panel loginBox">
+      <h2>Přihlášení</h2>
+      <p class="muted">Zadej administrátorské heslo.</p>
+      <div class="field"><label for="password">Heslo</label><input id="password" type="password" autocomplete="current-password"/></div>
+      <div class="actions"><button id="loginBtn" type="button">Přihlásit</button></div>
+      <div class="message err" id="loginMessage"></div>
+    </div>
+  </section>
+
+  <section id="dashboard" hidden>
+    <div class="hero">
+      <div class="glass heroMain">
+        <div class="kicker">Obsahový systém</div>
+        <h1>Administrace Marvonixu</h1>
+        <p class="lead">Zvol typ obsahu, vyplň pouze relevantní pole a ulož. Administrace je navržená tak, aby seděla k webu a nebyla zbytečně přeplácaná.</p>
+      </div>
+      <div class="glass heroSide">
+        <div class="stat"><strong id="statAll">0</strong><span>celkem záznamů v databázi</span></div>
+        <div class="stat"><strong id="statVisible">0</strong><span>zveřejněných na webu</span></div>
+        <button class="secondary" id="logoutBtn" type="button">Odhlásit</button>
+      </div>
+    </div>
+
+    <div class="adminGrid">
+      <aside class="glass side">
+        <div class="kicker">Typ obsahu</div>
+        <div class="typeList">
+          <button class="typeBtn active" data-type="references" type="button">Reference klientů <small>Recenze, případové pochvaly a výsledky spolupráce.</small></button>
+          <button class="typeBtn" data-type="audit_references" type="button">Reference k auditům <small>Krátké výstupy a anonymní hodnocení auditů.</small></button>
+          <button class="typeBtn" data-type="team" type="button">Tým <small>Členové týmu, role a krátké medailonky.</small></button>
+        </div>
+        <div class="quickHelp" id="typeHelp"></div>
+      </aside>
+
+      <div class="adminShell">
+        <section class="glass panel" id="adminPanel">
+          <div class="toolbar"><div><div class="kicker" id="formKicker">Reference klientů</div><h2 id="formTitle">Nová reference</h2></div><button class="ghost" id="newBtn" type="button">Nový záznam</button></div>
+          <form id="contentForm">
+            <input type="hidden" id="itemId"/>
+            <input type="hidden" id="type" value="references"/>
+            <div class="formGrid">
+              <div class="field"><label id="titleLabel" for="title">Jméno klienta / název</label><input id="title" required placeholder="Daniela K."/></div>
+              <div class="field"><label for="sort_order">Pořadí</label><input id="sort_order" type="number" value="0"/><div class="hint">Nižší číslo se zobrazí dříve.</div></div>
+              <div class="field" data-field="subtitle"><label id="subtitleLabel" for="subtitle">Lokalita / krátký popis</label><input id="subtitle" placeholder="Olomouc"/></div>
+              <div class="field" data-field="role"><label id="roleLabel" for="role">Role / pozice</label><input id="role" placeholder="Klientka"/></div>
+              <div class="field" data-field="tag"><label id="tagLabel" for="tag">Štítek</label><input id="tag" placeholder="Doporučuji"/></div>
+              <div class="field" data-field="score"><label for="score">Skóre auditu</label><input id="score" type="number" min="0" max="100" placeholder="např. 84"/></div>
+              <div class="field wide" data-field="image_url"><label for="image_url">URL obrázku</label><input id="image_url" type="url" placeholder="https://..."/><div class="hint">Nepovinné. U týmu může sloužit jako fotka člena.</div></div>
+              <div class="field wide" data-field="external_url"><label for="external_url">Odkaz</label><input id="external_url" type="url" placeholder="https://..."/></div>
+              <div class="field wide"><label id="bodyLabel" for="body">Text</label><textarea id="body" required placeholder="Hlavní text reference nebo popis člena týmu..."></textarea></div>
+            </div>
+            <label class="switch"><input id="visible" type="checkbox" checked/> Zobrazit na webu</label>
+            <div class="actions"><button id="saveBtn" type="submit">Uložit záznam</button><button class="secondary" id="previewBtn" type="button">Zobrazit výstup</button></div>
+            <div class="message" id="formMessage"></div>
+          </form>
+        </section>
+
+        <section class="glass panel" id="listPanel">
+          <div class="toolbar"><div><div class="kicker">Databáze</div><h2>Uložený obsah</h2></div><div class="filterTabs"><button class="active" data-filter="all" type="button">Vše</button><button data-filter="references" type="button">Reference</button><button data-filter="audit_references" type="button">Audity</button><button data-filter="team" type="button">Tým</button></div></div>
+          <div class="items" id="items"></div>
+        </section>
+      </div>
+    </div>
+  </section>
 </main>
-<footer class="wrap" style="padding:0 20px 34px;color:rgba(255,255,255,.62);font-size:13px;line-height:1.7">
-Marvonix administrace obsahu · <a href="index.html">Zpět na web</a> · <a href="pravni-informace.html">Právní informace</a>
-</footer>
+<footer class="footer">Marvonix administrace obsahu · <a href="index.html">Zpět na web</a> · <a href="pravni-informace.html">Právní informace</a></footer>
 <script>
-const state={password:sessionStorage.getItem('marvonixAdminPassword')||'',items:[]};
+const state={password:sessionStorage.getItem('marvonixAdminPassword')||'',items:[],filter:'all',type:'references'};
 const $=id=>document.getElementById(id);
-const fields=['itemId','type','title','role','subtitle','tag','score','external_url','image_url','body','visible','sort_order'];
+const configs={
+  references:{label:'Reference klientů',titleNew:'Nová klientská reference',titleEdit:'Úprava klientské reference',titleLabel:'Jméno klienta',subtitleLabel:'Lokalita / projekt',roleLabel:'Podpis pod referencí',tagLabel:'Štítek',bodyLabel:'Text reference',placeholders:{title:'Daniela K.',subtitle:'Pronájem bytu · Olomouc',role:'Klientka',tag:'Doporučuji',body:'Paní Kopřivová byla skvělá, vše proběhlo rychle a bez problémů.'},hide:['score','image_url','external_url'],help:['<b>Reference klientů</b> se zobrazují na stránce Reference.','Používej zkrácená jména typu Daniela K. nebo Petr S.']},
+  audit_references:{label:'Reference k auditům',titleNew:'Nová reference k auditu',titleEdit:'Úprava reference k auditu',titleLabel:'Název / firma',subtitleLabel:'Krátký popis auditu',roleLabel:'Role klienta',tagLabel:'Štítek',bodyLabel:'Shrnutí / zpětná vazba',placeholders:{title:'Audit lokální firmy',subtitle:'Marketingový audit webu',role:'Majitel firmy',tag:'Audit',body:'Audit nám jasně ukázal, kde web ztrácí poptávky a co opravit jako první.'},hide:['image_url'],help:['<b>Auditní reference</b> se propisují do stránky Audity.','Skóre vyplň jen tehdy, když ho chceš použít ve výstupu.']},
+  team:{label:'Člen týmu',titleNew:'Nový člen týmu',titleEdit:'Úprava člena týmu',titleLabel:'Jméno člena',subtitleLabel:'Krátký popis',roleLabel:'Pozice v týmu',tagLabel:'Oblast',bodyLabel:'Medailonek člena týmu',placeholders:{title:'Martin Sobotka',subtitle:'Strategie, obchod a vedení projektů.',role:'CEO & Founder',tag:'Vedení',body:'Zakladatel Marvonixu. Vede směr značky, strategii a obchodní rozvoj.'},hide:['score','external_url'],help:['<b>Tým</b> se zobrazuje na stránce Tým.','URL obrázku je nepovinné. Pokud zůstane prázdná, web použije textovou kartu.']}
+};
 function msg(el,text,type='err'){el.textContent=text;el.className='message show '+type;}
 function clearMsg(el){el.textContent='';el.className='message';}
-async function api(method='GET',payload=null){
-  const options={method,headers:{'Content-Type':'application/json','x-admin-password':state.password}};
-  if(payload) options.body=JSON.stringify(payload);
-  const url=method==='GET'?'/api/marvonix-data?admin=1':'/api/marvonix-data';
-  const res=await fetch(url,options);const data=await res.json().catch(()=>({ok:false,message:'Neplatná odpověď serveru.'}));
-  if(!res.ok||!data.ok) throw new Error(data.message||'Požadavek selhal.');return data;
-}
-function showAdmin(){ $('loginPanel').hidden=true; $('adminPanel').hidden=false; $('listPanel').hidden=false; }
-function showLogin(){ $('loginPanel').hidden=false; $('adminPanel').hidden=true; $('listPanel').hidden=true; }
-function formData(){ return {id:$('itemId').value,type:$('type').value,title:$('title').value,role:$('role').value,subtitle:$('subtitle').value,tag:$('tag').value,score:$('score').value,external_url:$('external_url').value,image_url:$('image_url').value,body:$('body').value,visible:$('visible').checked,sort_order:$('sort_order').value}; }
-function resetForm(){ $('contentForm').reset(); $('itemId').value=''; $('visible').checked=true; $('sort_order').value='0'; clearMsg($('formMessage')); }
-function fillForm(item){ $('itemId').value=item.id; $('type').value=item.type; $('title').value=item.title||''; $('role').value=item.role||''; $('subtitle').value=item.subtitle||''; $('tag').value=item.tag||''; $('score').value=item.score??''; $('external_url').value=item.external_url||''; $('image_url').value=item.image_url||''; $('body').value=item.body||''; $('visible').checked=!!item.visible; $('sort_order').value=item.sort_order||0; window.scrollTo({top:0,behavior:'smooth'}); }
-function labelType(t){return {team:'Tým',references:'Reference klientů',audit_references:'Reference k auditům'}[t]||t;}
-function render(){
-  const box=$('items');
-  if(!state.items.length){box.innerHTML='<div class="empty">Zatím není uložený žádný obsah.</div>';return;}
-  box.innerHTML=state.items.map(item=>`<article class="item"><div><span class="tag">${labelType(item.type)}${item.visible?'':' • skryto'}</span><h3>${esc(item.title)}</h3><p class="muted">${esc(item.role||item.subtitle||'')}</p><p class="muted">${esc((item.body||'').slice(0,220))}${(item.body||'').length>220?'…':''}</p></div><div class="actions"><button type="button" onclick="editItem('${item.id}')">Upravit</button><button class="danger" type="button" onclick="deleteItem('${item.id}')">Smazat</button></div></article>`).join('');
-}
 function esc(v){return String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[c]));}
+async function api(method='GET',payload=null){const options={method,headers:{'Content-Type':'application/json','x-admin-password':state.password}};if(payload) options.body=JSON.stringify(payload);const url=method==='GET'?'/api/marvonix-data?admin=1':'/api/marvonix-data';const res=await fetch(url,options);const data=await res.json().catch(()=>({ok:false,message:'Neplatná odpověď serveru.'}));if(!res.ok||!data.ok) throw new Error(data.message||'Požadavek selhal.');return data;}
+function showAdmin(){$('loginPanel').hidden=true;$('dashboard').hidden=false;}
+function showLogin(){$('loginPanel').hidden=false;$('dashboard').hidden=true;}
+function setType(type){state.type=type;$('type').value=type;const cfg=configs[type];document.querySelectorAll('.typeBtn').forEach(btn=>btn.classList.toggle('active',btn.dataset.type===type));$('formKicker').textContent=cfg.label;$('formTitle').textContent=$('itemId').value?cfg.titleEdit:cfg.titleNew;$('titleLabel').textContent=cfg.titleLabel;$('subtitleLabel').textContent=cfg.subtitleLabel;$('roleLabel').textContent=cfg.roleLabel;$('tagLabel').textContent=cfg.tagLabel;$('bodyLabel').textContent=cfg.bodyLabel;$('title').placeholder=cfg.placeholders.title;$('subtitle').placeholder=cfg.placeholders.subtitle;$('role').placeholder=cfg.placeholders.role;$('tag').placeholder=cfg.placeholders.tag;$('body').placeholder=cfg.placeholders.body;document.querySelectorAll('[data-field]').forEach(el=>el.classList.toggle('hiddenField',cfg.hide.includes(el.dataset.field)));$('typeHelp').innerHTML=cfg.help.map(t=>`<div>${t}</div>`).join('');}
+function formData(){return {id:$('itemId').value,type:$('type').value,title:$('title').value,role:$('role').value,subtitle:$('subtitle').value,tag:$('tag').value,score:$('score').value,external_url:$('external_url').value,image_url:$('image_url').value,body:$('body').value,visible:$('visible').checked,sort_order:$('sort_order').value};}
+function resetForm(){const current=state.type;$('contentForm').reset();$('itemId').value='';$('visible').checked=true;$('sort_order').value='0';setType(current);clearMsg($('formMessage'));window.scrollTo({top:0,behavior:'smooth'});}
+function fillForm(item){state.type=item.type||'references';$('itemId').value=item.id;$('type').value=state.type;$('title').value=item.title||'';$('role').value=item.role||'';$('subtitle').value=item.subtitle||'';$('tag').value=item.tag||'';$('score').value=item.score??'';$('external_url').value=item.external_url||'';$('image_url').value=item.image_url||'';$('body').value=item.body||'';$('visible').checked=!!item.visible;$('sort_order').value=item.sort_order||0;setType(state.type);clearMsg($('formMessage'));window.scrollTo({top:0,behavior:'smooth'});}
+function labelType(t){return configs[t]?.label||t;}
+function itemSubtitle(item){return [item.role,item.subtitle,item.tag].filter(Boolean).join(' · ');}
+function renderStats(){const all=state.items.length;const visible=state.items.filter(i=>i.visible).length;$('statAll').textContent=all;$('statVisible').textContent=visible;}
+function render(){renderStats();const box=$('items');const items=state.filter==='all'?state.items:state.items.filter(i=>i.type===state.filter);if(!items.length){box.innerHTML='<div class="empty">Zatím tu není žádný záznam pro vybraný filtr.</div>';return;}box.innerHTML=items.map(item=>`<article class="item"><div><span class="tag ${item.visible?'':'hidden'}">${labelType(item.type)}${item.visible?'':' · skryto'}</span><h3>${esc(item.title)}</h3><div class="muted">${esc(itemSubtitle(item)||'Bez doplňujícího popisu')}</div><p class="itemText">${esc((item.body||'').slice(0,240))}${(item.body||'').length>240?'…':''}</p></div><div class="itemActions"><button type="button" onclick="editItem('${item.id}')">Upravit</button><button class="secondary" type="button" onclick="toggleVisible('${item.id}')">${item.visible?'Skrýt':'Zobrazit'}</button><button class="danger" type="button" onclick="deleteItem('${item.id}')">Smazat</button></div></article>`).join('');}
 async function load(){const data=await api('GET');state.items=data.items||[];render();}
-window.editItem=id=>{const item=state.items.find(i=>String(i.id)===String(id));if(item) fillForm(item);};
+window.editItem=id=>{const item=state.items.find(i=>String(i.id)===String(id));if(item)fillForm(item);};
+window.toggleVisible=async id=>{const item=state.items.find(i=>String(i.id)===String(id));if(!item)return;await api('PUT',{...item,visible:!item.visible});await load();};
 window.deleteItem=async id=>{if(!confirm('Opravdu smazat záznam?'))return;await api('DELETE',{id});await load();resetForm();};
-$('loginBtn').addEventListener('click',async()=>{state.password=$('password').value.trim();try{await load();sessionStorage.setItem('marvonixAdminPassword',state.password);showAdmin();}catch(e){msg($('loginMessage'),e.message);}});
+document.querySelectorAll('.typeBtn').forEach(btn=>btn.addEventListener('click',()=>{setType(btn.dataset.type);resetForm();}));
+document.querySelectorAll('.filterTabs button').forEach(btn=>btn.addEventListener('click',()=>{state.filter=btn.dataset.filter;document.querySelectorAll('.filterTabs button').forEach(b=>b.classList.toggle('active',b===btn));render();}));
+$('loginBtn').addEventListener('click',async()=>{state.password=$('password').value.trim();clearMsg($('loginMessage'));try{await load();sessionStorage.setItem('marvonixAdminPassword',state.password);showAdmin();setType(state.type);}catch(e){msg($('loginMessage'),e.message);}});
+$('password').addEventListener('keydown',e=>{if(e.key==='Enter')$('loginBtn').click();});
 $('logoutBtn').addEventListener('click',()=>{sessionStorage.removeItem('marvonixAdminPassword');state.password='';showLogin();});
 $('newBtn').addEventListener('click',resetForm);
-$('contentForm').addEventListener('submit',async e=>{e.preventDefault();clearMsg($('formMessage'));try{const data=formData();await api(data.id?'PUT':'POST',data);msg($('formMessage'),'Uloženo.','ok');await load();resetForm();}catch(err){msg($('formMessage'),err.message);}});
-if(state.password){load().then(showAdmin).catch(()=>{sessionStorage.removeItem('marvonixAdminPassword');showLogin();});}
+$('previewBtn').addEventListener('click',()=>{const data=formData();msg($('formMessage'),`${labelType(data.type)}: ${data.title||'Bez názvu'}${data.visible?' bude zveřejněno.':' bude skryté.'}`,'warn');});
+$('contentForm').addEventListener('submit',async e=>{e.preventDefault();clearMsg($('formMessage'));try{const data=formData();await api(data.id?'PUT':'POST',data);msg($('formMessage'),'Záznam uložen.','ok');await load();resetForm();}catch(err){msg($('formMessage'),err.message);}});
+setType(state.type);
+if(state.password){load().then(()=>{showAdmin();setType(state.type);}).catch(()=>{sessionStorage.removeItem('marvonixAdminPassword');showLogin();});}
 </script>
 </body>
 </html>
